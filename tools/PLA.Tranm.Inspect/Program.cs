@@ -8,6 +8,8 @@ internal static class Program
 {
     private static int Main(string[] args)
     {
+        if (args.Length>0 && args[0]=="--batch")
+            return NativeBatch.Run(args);
         if (args.Length != 3)
         {
             Console.Error.WriteLine("Usage: PLA.Tranm.Inspect <native.tranm-or-bin> <matching-native.trskl> <out.json>");
