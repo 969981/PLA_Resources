@@ -133,3 +133,5 @@ jobs:
           if-no-files-found: warn
 
 # Real native terminal formats: preserve raw 10/16/32-bit values and all array layers.
+
+# Recheck after fixing C# variable shadowing in packed RGB conversion.
