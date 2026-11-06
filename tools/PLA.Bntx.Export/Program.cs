@@ -1,5 +1,7 @@
 using BnTxx;
 using System.Collections;
+using System.Diagnostics;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Reflection;
@@ -18,15 +20,58 @@ internal static class Program
     private static string HashFile(string path) =>
         Hash(File.ReadAllBytes(path));
 
+    private static Bitmap DecodeAstc(Assembly assembly, object texture, string decoderExe, string stage, int index)
+    {
+        if (!File.Exists(decoderExe))
+            throw new FileNotFoundException("Pinned astcenc decoder is missing", decoderExe);
+        string astcPath = Path.Combine(stage, $"_temporary_{index:D4}.astc");
+        string pngPath = Path.Combine(stage, $"_temporary_{index:D4}.png");
+        try
+        {
+            // Use the native BnTxx ASTC block-linear unswizzle routine.
+            var astcClass = assembly.GetType("BnTxx.ASTC", throwOnError: true)!;
+            var save = astcClass.GetMethod("Save", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static)
+                ?? throw new MissingMethodException("BnTxx.ASTC.Save");
+            save.Invoke(null, [texture, astcPath]);
+            var info = new FileInfo(astcPath);
+            if (!info.Exists || info.Length < 32)
+                throw new InvalidDataException("No meaningful native ASTC blocks");
+            var start = new ProcessStartInfo(decoderExe) {
+                UseShellExecute = false, RedirectStandardOutput = true, RedirectStandardError = true,
+                CreateNoWindow = true
+            };
+            start.ArgumentList.Add("-dl");
+            start.ArgumentList.Add(astcPath);
+            start.ArgumentList.Add(pngPath);
+            start.ArgumentList.Add("-silent");
+            using var proc = Process.Start(start) ?? throw new IOException("Unable to start astcenc");
+            if (!proc.WaitForExit(120_000)) {
+                proc.Kill(entireProcessTree: true);
+                throw new TimeoutException("astcenc exceeded 120 seconds");
+            }
+            string stderr = proc.StandardError.ReadToEnd();
+            if (proc.ExitCode != 0 || !File.Exists(pngPath))
+                throw new InvalidDataException($"astcenc exit {proc.ExitCode}: {stderr[..Math.Min(stderr.Length, 400)]}");
+            // Bitmap(string) holds the PNG file open: clone to a detached bitmap.
+            using var source = new Bitmap(pngPath);
+            return new Bitmap(source);
+        }
+        finally {
+            if (File.Exists(astcPath)) File.Delete(astcPath);
+            if (File.Exists(pngPath)) File.Delete(pngPath);
+        }
+    }
+
     private static int Main(string[] args)
     {
-        if (args.Length != 2)
+        if (args.Length is not (2 or 3))
         {
-            Console.Error.WriteLine("Usage: PLA.Bntx.Export.exe <input-bntx-any-extension> <new-output-dir>");
+            Console.Error.WriteLine("Usage: PLA.Bntx.Export.exe <input-bntx-any-extension> <new-output-dir> [astcenc-exe]");
             return 2;
         }
         string input = Path.GetFullPath(args[0]);
         string dir = Path.GetFullPath(args[1]);
+        string? astcenc = args.Length == 3 ? Path.GetFullPath(args[2]) : null;
         try
         {
             if (!File.Exists(input))
@@ -81,8 +126,18 @@ internal static class Program
                     object?[] methodArgs = { texture, null, 0 };
                     bool decoded = (bool)(decoder.Invoke(null, methodArgs) ??
                         throw new InvalidDataException("Decoder returned null"));
-                    if (!decoded || methodArgs[1] is not Bitmap source)
-                        throw new NotSupportedException("BnTxx has no decoder for this texture format");
+                    Bitmap source;
+                    if (decoded && methodArgs[1] is Bitmap native)
+                    {
+                        source = native;
+                        rec["decoder"] = "BnTxx";
+                    }
+                    else if (fmt.StartsWith("ASTC", StringComparison.Ordinal) && astcenc is not null)
+                    {
+                        source = DecodeAstc(assembly, texture, astcenc, dir, index);
+                        rec["decoder"] = "BnTxxASTCUnswizzle+ARM_astcenc";
+                    }
+                    else throw new NotSupportedException($"No native pixel decoder for {fmt}");
                     using (source)
                     {
                         // Explicit original decoded BGRA pixels, not a placeholder image.
@@ -117,7 +172,8 @@ internal static class Program
                     }
                 }
                 catch (Exception ex) when (ex is InvalidDataException or NotSupportedException
-                      or TargetInvocationException or ExternalException or ArgumentException)
+                      or TargetInvocationException or ExternalException or ArgumentException
+                      or IOException or Win32Exception or TimeoutException)
                 {
                     if (File.Exists(dst)) File.Delete(dst);
                     rec["reason"] = ex.GetBaseException().Message;
@@ -128,7 +184,7 @@ internal static class Program
             }
             var manifest = new {
                 schema_version = 1, source_sha256 = Hash(content),
-                source_size = content.Length, tool = "PLA.Bntx.Export/BnTxx",
+                source_size = content.Length, tool = "PLA.Bntx.Export/BnTxx+ASTCENC",
                 texture_count = index, verified, unsupported,
                 state = index > 0 && unsupported == 0 ? "VERIFIED" : "PARTIAL",
                 textures = reports
