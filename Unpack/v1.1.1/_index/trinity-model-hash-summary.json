@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "game": "PLA",
+  "version": "1.1.1",
+  "method": "exact FNV1a64 match against pkNX native model path templates",
+  "pokemon_archives": 356,
+  "confirmed_member_paths": 3875,
+  "extensions": {
+    ".trmbf": 1055,
+    ".trmdl": 356,
+    ".trmmt": 351,
+    ".trmsh": 1055,
+    ".trmtr": 356,
+    ".trpokecfg": 351,
+    ".trskl": 351
+  },
+  "state": "CONFIRMED_HASH",
+  "warning": "Only matched paths are confirmed; animation names outside templates remain unknown",
+  "source_run_id": 42166597611
+}
