@@ -51,8 +51,15 @@ def work(args:tuple)->dict:
     if item['state']!='VERIFIED':continue
     name=item['output_name']
     dst=staged/name
-    if name!=Path(name).name or dst.stat().st_size<=0 or digest(dst)!=item['output_sha256']:
+    if name!=Path(name).name or not dst.is_file() or dst.stat().st_size<=0 or digest(dst)!=item['output_sha256']:
      raise RuntimeError('output PNG hash validation failed')
+    if 'hdr_rgb32f_file' in item:
+     hdr=item['hdr_rgb32f_file']
+     hf=staged/hdr
+     if hdr!=Path(hdr).name or not hf.is_file() or hf.stat().st_size!=int(item['width'])*int(item['height'])*12:
+      raise RuntimeError('HDR float32 pixel payload missing or wrong size')
+     if digest(hf)!=item['hdr_rgb32f_sha256']:
+      raise RuntimeError('HDR float32 pixel SHA mismatch')
    if final.exists():shutil.rmtree(final)
    shutil.copytree(staged,final)
    record.update(state=status,textures=meta['texture_count'],
