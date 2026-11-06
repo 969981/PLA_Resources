@@ -1,0 +1,71 @@
+name: PLA BNTX native pixel export validation
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/pla-secondary-format-census]
+    paths:
+      - 'tools/PLA.Bntx.Export/**'
+      - 'scripts/convert_pla_bntx.py'
+      - '.github/workflows/pla-bntx-verify.yml'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  build-and-real-samples:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: PLA
+          sparse-checkout: |
+            tools/PLA.Bntx.Export/
+            scripts/convert_pla_bntx.py
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/SV_Resources
+          ref: 50307e4227e74d59d0f3f32e08f99125be80b34b
+          path: SV
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            tools/gftool/NxMiddleware/BnTxx/
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build BnTxx based PLA native-pixel CLI
+        shell: pwsh
+        run: |
+          $p = Join-Path (Get-Location) "SV/tools/gftool/NxMiddleware/BnTxx"
+          dotnet build "PLA/tools/PLA.Bntx.Export/PLA.Bntx.Export.csproj" -c Release "-p:BnTxxRoot=$p"
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-gfpak-real-samples
+          repository: 969981/PLA_Resources
+          run-id: 42160235620
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: PLA/.pla-work/extracted
+      - name: Try actual model/UI/field BNTX members
+        shell: pwsh
+        run: |
+          python PLA/scripts/convert_pla_bntx.py `
+            --root "PLA/.pla-work/extracted" `
+            --dest "PLA/.pla-work/bntx-converted" `
+            --cli "PLA/tools/PLA.Bntx.Export/bin/Release/net10.0-windows/PLA.Bntx.Export.dll" `
+            --jobs 2 --limit 8 `
+            --ledger "PLA/.pla-work/bntx-sample-results.jsonl"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-bntx-real-pixel-smoke
+          path: |
+            PLA/.pla-work/bntx-sample-results.jsonl
+            PLA/.pla-work/bntx-converted/**/converted/**
+          if-no-files-found: warn
+          retention-days: 14

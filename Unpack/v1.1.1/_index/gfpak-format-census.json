@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "stage": "PLA_v1.1.1_gfpak_format_census",
+  "source_run_id": 42160235620,
+  "original_archives": 678,
+  "expected_archives": 678,
+  "member_count": 102452,
+  "member_bytes": 7331069407,
+  "states": {
+    "VERIFIED": 102452
+  },
+  "formats": {
+    "flatbuffer_candidate": 89546,
+    "bntx": 11903,
+    "unknown": 862,
+    "sarc": 140,
+    "ahtb": 1
+  },
+  "families": {
+    "container": 140,
+    "structured": 89546,
+    "table": 1,
+    "texture": 11903,
+    "unknown": 862
+  },
+  "unknown_examples": [
+    {
+      "source_gfpak": "bin/archive/field/terrain/ha_area00_s01.gfpak",
+      "member_path": "entry_00000_75E57DA7DB6C68B1.bin",
+      "size_bytes": 62968,
+      "magic_hex": "0000F5F854414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/terrain/ha_area00_s02.gfpak",
+      "member_path": "entry_00000_018DFE113A9FBA52.bin",
+      "size_bytes": 1967080,
+      "magic_hex": "001E03E854414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/terrain/ha_area00_s03_j.gfpak",
+      "member_path": "entry_00000_7BB1175C9E06165C.bin",
+      "size_bytes": 5516,
+      "magic_hex": "0000158C54414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/terrain/ha_area00_s03_m.gfpak",
+      "member_path": "entry_00000_4A9C6A92085498C3.bin",
+      "size_bytes": 5516,
+      "magic_hex": "0000158C54414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/terrain/ha_area00_s03_q.gfpak",
+      "member_path": "entry_00000_CD9BDCE935E6AF1F.bin",
+      "size_bytes": 5516,
+      "magic_hex": "0000158C54414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/terrain/ha_area00_s12_c.gfpak",
+      "member_path": "entry_00000_DB6A3E820B8DFA07.bin",
+      "size_bytes": 4268,
+      "magic_hex": "000010AC54414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/terrain/ha_area00_s16_a.gfpak",
+      "member_path": "entry_00000_7EE40DCF728EC515.bin",
+      "size_bytes": 5756,
+      "magic_hex": "0000167C54414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/terrain/ha_area02_s01_a.gfpak",
+      "member_path": "entry_00000_C43E797723F356DB.bin",
+      "size_bytes": 4332,
+      "magic_hex": "000010EC54414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/terrain/ha_area02_s01_d.gfpak",
+      "member_path": "entry_00000_F2183C7CBD3B1C12.bin",
+      "size_bytes": 4332,
+      "magic_hex": "000010EC54414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/terrain/ha_area02_s02.gfpak",
+      "member_path": "entry_00000_FF085C77EF0E5948.bin",
+      "size_bytes": 4924,
+      "magic_hex": "0000133C54414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/collision.gfpak",
+      "member_path": "entry_00000_408B8F76354E9697.bin",
+      "size_bytes": 3748,
+      "magic_hex": "00000EA454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/collision.gfpak",
+      "member_path": "entry_00001_261C3F72CB4430AF.bin",
+      "size_bytes": 3764,
+      "magic_hex": "00000EB454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/collision.gfpak",
+      "member_path": "entry_00002_C9D8DC416EC053D6.bin",
+      "size_bytes": 3764,
+      "magic_hex": "00000EB454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/collision.gfpak",
+      "member_path": "entry_00003_CFA5FB28DDF8F078.bin",
+      "size_bytes": 4064,
+      "magic_hex": "00000FE054414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/collision.gfpak",
+      "member_path": "entry_00004_E3C67934DF7E9D45.bin",
+      "size_bytes": 4772,
+      "magic_hex": "000012A454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/collision.gfpak",
+      "member_path": "entry_00005_C8F0C96B1B79DA70.bin",
+      "size_bytes": 4772,
+      "magic_hex": "000012A454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/collision.gfpak",
+      "member_path": "entry_00006_DF03DBFA12D62587.bin",
+      "size_bytes": 3556,
+      "magic_hex": "00000DE454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/collision.gfpak",
+      "member_path": "entry_00007_2020A3E45EE0B183.bin",
+      "size_bytes": 3748,
+      "magic_hex": "00000EA454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/collision.gfpak",
+      "member_path": "entry_00008_1484E3768A55D0BA.bin",
+      "size_bytes": 3748,
+      "magic_hex": "00000EA454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/collision.gfpak",
+      "member_path": "entry_00009_B2BE88114D9E1AED.bin",
+      "size_bytes": 3940,
+      "magic_hex": "00000F6454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/resident_release.gfpak",
+      "member_path": "entry_00003_8BA080614DF99D2D.bin",
+      "size_bytes": 213608,
+      "magic_hex": "5646584220202020"
+    },
+    {
+      "source_gfpak": "bin/archive/field/resident_release.gfpak",
+      "member_path": "entry_00004_E13CBEFB9C76BE1B.bin",
+      "size_bytes": 1008232,
+      "magic_hex": "5646584220202020"
+    },
+    {
+      "source_gfpak": "bin/archive/field/resident_release.gfpak",
+      "member_path": "entry_00005_821DF842E14D08E8.bin",
+      "size_bytes": 287336,
+      "magic_hex": "5646584220202020"
+    },
+    {
+      "source_gfpak": "bin/archive/field/resident_release.gfpak",
+      "member_path": "entry_00006_7A4C1F0085AF90DE.bin",
+      "size_bytes": 184936,
+      "magic_hex": "5646584220202020"
+    },
+    {
+      "source_gfpak": "bin/archive/field/resident_release.gfpak",
+      "member_path": "entry_00007_E9958FA19BD0422B.bin",
+      "size_bytes": 655976,
+      "magic_hex": "5646584220202020"
+    },
+    {
+      "source_gfpak": "bin/archive/field/resident_release.gfpak",
+      "member_path": "entry_00008_8B0354B7ED5FCCD4.bin",
+      "size_bytes": 1704616,
+      "magic_hex": "5646584220202020"
+    },
+    {
+      "source_gfpak": "bin/archive/field/resident_release.gfpak",
+      "member_path": "entry_00009_D29175D5F7470A15.bin",
+      "size_bytes": 549544,
+      "magic_hex": "5646584220202020"
+    },
+    {
+      "source_gfpak": "bin/archive/field/resident_release.gfpak",
+      "member_path": "entry_00010_073915ED305AD67C.bin",
+      "size_bytes": 782952,
+      "magic_hex": "5646584220202020"
+    },
+    {
+      "source_gfpak": "bin/archive/field/resident_release.gfpak",
+      "member_path": "entry_00011_C92CFEB357CB8C8D.bin",
+      "size_bytes": 62056,
+      "magic_hex": "5646584220202020"
+    },
+    {
+      "source_gfpak": "bin/archive/field/resident_release.gfpak",
+      "member_path": "entry_00012_411B515287025119.bin",
+      "size_bytes": 3445544,
+      "magic_hex": "5646584220202020"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/resident_bg_parts_model.gfpak",
+      "member_path": "entry_00008_E3C67934DF7E9D45.bin",
+      "size_bytes": 4772,
+      "magic_hex": "000012A454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/resident_bg_parts_model.gfpak",
+      "member_path": "entry_00026_C8F0C96B1B79DA70.bin",
+      "size_bytes": 4772,
+      "magic_hex": "000012A454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/resident_bg_parts_model.gfpak",
+      "member_path": "entry_00048_2020A3E45EE0B183.bin",
+      "size_bytes": 3748,
+      "magic_hex": "00000EA454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/resident_bg_parts_model.gfpak",
+      "member_path": "entry_00070_1484E3768A55D0BA.bin",
+      "size_bytes": 3748,
+      "magic_hex": "00000EA454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/resident_bg_parts_model.gfpak",
+      "member_path": "entry_00092_B2BE88114D9E1AED.bin",
+      "size_bytes": 3940,
+      "magic_hex": "00000F6454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/resident_bg_parts_model.gfpak",
+      "member_path": "entry_00115_DE576C497F6D8F28.bin",
+      "size_bytes": 3956,
+      "magic_hex": "00000F7454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/resident_bg_parts_model.gfpak",
+      "member_path": "entry_00137_7BB1E512F3F0B7FD.bin",
+      "size_bytes": 3956,
+      "magic_hex": "00000F7454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/resident_bg_parts_model.gfpak",
+      "member_path": "entry_00160_0E104298E7DE964A.bin",
+      "size_bytes": 3956,
+      "magic_hex": "00000F7454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/resident_bg_parts_model.gfpak",
+      "member_path": "entry_00178_D04275FF58E3811B.bin",
+      "size_bytes": 4868,
+      "magic_hex": "0000130454414730"
+    },
+    {
+      "source_gfpak": "bin/archive/field/model/pack/resident_bg_parts_model.gfpak",
+      "member_path": "entry_00195_064DFC4CD6575654.bin",
+      "size_bytes": 4868,
+      "magic_hex": "0000130454414730"
+    }
+  ],
+  "all_native_member_sha256_verified": true,
+  "complete": true,
+  "census_run_id": 42166825950
+}
