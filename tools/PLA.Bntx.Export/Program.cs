@@ -402,11 +402,11 @@ internal static class Program
                     {
                         int code = Convert.ToInt32(type.GetField("FormatType")?.GetValue(texture));
                         int variant = Convert.ToInt32(type.GetField("FormatVariant")?.GetValue(texture));
-                        var decoded = DecodeExtendedFormat(texture, code, variant, width, height, dir, index);
-                        source = decoded.First;
+                        var extendedResult = DecodeExtendedFormat(texture, code, variant, width, height, dir, index);
+                        source = extendedResult.First;
                         rec["decoder"] = "BnTxx-GOB+nn::gfx native high precision";
-                        rec["array_layers"] = decoded.Layers.Count;
-                        rec["layers"] = decoded.Layers;
+                        rec["array_layers"] = extendedResult.Layers.Count;
+                        rec["layers"] = extendedResult.Layers;
                         rec["precision_note"] = "Packed 10-bit / RGBA float data preserved; PNG is 8-bit preview";
                     }
                     else if (fmt.StartsWith("ASTC", StringComparison.Ordinal) && astcenc is not null)
