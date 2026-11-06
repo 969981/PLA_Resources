@@ -76,7 +76,7 @@ def main()->int:
  a=p.parse_args()
  if a.jobs<1 or a.limit<0 or a.timeout<1:p.error('invalid jobs,limit,timeout')
  if not a.cli.is_file():p.error('compiled CLI absent')
- files=detect(a.root)
+ files=detect(a.root.resolve())
  if a.limit: files=files[:a.limit]
  a.ledger.parent.mkdir(parents=True,exist_ok=True)
  states={}
