@@ -89,3 +89,7 @@ Downloaded artifacts are not automatically committed to `master`.
 
 Current statuses: **native extraction implemented and tested on 3 real packs**;
 **all-678 coverage not yet certified**; **secondary semantic parsers pending**.
+
+## Source volume restoration discovered by full run
+
+The first full attempt ([run #42159501834](https://github.com/969981/PLA_Resources/actions/runs/42159501834)) stopped correctly before conversion: 677 literal `.gfpak` files were present on checkout, versus 678 in the input CSV. GitHub's full tree contains the remaining source as the pair `bin/archive/field/model/pack/ha_area04.gfpak.7z.001` (90 MiB) and `.002` (2.6 MiB). The new `scripts/restore_pla_gfpak_volumes.py` uses 7z integrity tests, the original inventory byte size and a streaming SHA-256 receipt to reconstruct it in the ephemeral Actions worktree. This is **not** a missing original resource, and the full run must verify 678 literal inputs **after** restoration.
