@@ -26,3 +26,7 @@ The planner **only plans tasks**. It cannot extract `gfpak` or other game format
 4. Use parallel incremental processing, auditable per-source statuses and versioned manifests.
 
 No ROM data, secret, key or proprietary dependency should be copied into tools/tests as a fixture.
+
+## GFPak R3 verification (2026-11-06)
+
+Remote RomFS /1 now includes actual GFPak resources, though 19,095-file source-hash reconciliation is separate. Three Pokemon/UI/field packs successfully passed native extraction and SHA-256 validation in [Actions #42158997746](https://github.com/969981/PLA_Resources/actions/runs/42158997746). For a bounded multiprocessing extraction of the other 675 archives and four-shard Actions execution, see [pipeline guide](docs/gfpak-parallel-pipeline.md). The original R0 findings above are historical; they are not a current remote inventory audit.
