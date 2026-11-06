@@ -8,5 +8,6 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="$(BnTxxRoot)/BnTxx.csproj" />
+    <PackageReference Include="BCnEncoder.Net" Version="2.3.0" />
   </ItemGroup>
 </Project>
