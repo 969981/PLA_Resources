@@ -23,6 +23,13 @@ class TestPLASecondaryCensus(unittest.TestCase):
   struct.pack_into('<HH',b,8,4,8)
   self.assertTrue(possible_flatbuffer(b,len(b)))
   self.assertEqual(classify(b,len(b))[2],'CANDIDATE')
+ def test_signed_vtable_forward_reference(self):
+  b=bytearray(64)
+  struct.pack_into('<I',b,0,4)
+  struct.pack_into('<i',b,4,-32)
+  struct.pack_into('<HH',b,36,8,8)
+  self.assertTrue(possible_flatbuffer(b,len(b)))
+  self.assertEqual(classify(b,len(b))[:3],('flatbuffer_candidate','structured','CANDIDATE'))
  def test_paths(self):
   self.assertTrue(safe_relative('entry_00001.nested/entry_00002.bin'))
   for p in ('../x','/x','C:/x','a/../b',r'C:\temp'):
