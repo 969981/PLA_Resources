@@ -6,6 +6,7 @@ Unsupported encodings remain PARTIAL rather than being copied or renamed.
 from __future__ import annotations
 import argparse
 from concurrent.futures import ProcessPoolExecutor, as_completed
+from collections import Counter
 import hashlib
 import json
 import os
@@ -29,14 +30,14 @@ def detect(root:Path)->list[Path]:
  return sorted(result)
 
 def work(args:tuple)->dict:
- path,root,dest,cli,dotnet,timeout=args
+ path,root,dest,cli,dotnet,timeout,astcenc=args
  relative=path.relative_to(root).as_posix()
  final=dest/relative/'converted'
  record={'source_member':relative,'source_sha256':digest(path),'stage':'convert_bntx'}
  final.parent.mkdir(parents=True,exist_ok=True)
  with tempfile.TemporaryDirectory(prefix='.bntx-',dir=final.parent) as temp:
   staged=Path(temp)
-  command=([dotnet,str(cli)] if cli.suffix.lower()=='.dll' else [str(cli)])+[str(path),str(staged)]
+  command=([dotnet,str(cli)] if cli.suffix.lower()=='.dll' else [str(cli)])+[str(path),str(staged)]+([str(astcenc)] if astcenc else [])
   try:
    cp=subprocess.run(command,capture_output=True,text=True,timeout=timeout,check=False)
    manifest=staged/'conversion.json'
@@ -56,6 +57,9 @@ def work(args:tuple)->dict:
    shutil.copytree(staged,final)
    record.update(state=status,textures=meta['texture_count'],
                  verified=meta['verified'],unsupported=meta['unsupported'],
+                 native_formats=dict(Counter(str(x.get('native_format','Unknown')) for x in meta['textures'])),
+                 unsupported_formats=dict(Counter(str(x.get('native_format','Unknown')) for x in meta['textures'] if x.get('state')!='VERIFIED')),
+                 errors=[{'index':x.get('index'), 'format':x.get('native_format'),'reason':x.get('reason')} for x in meta['textures'] if x.get('state')!='VERIFIED'],
                  output=str(final))
   except (OSError,KeyError,ValueError,RuntimeError,subprocess.TimeoutExpired) as ex:
    record.update(state='FAILED',error=str(ex))
@@ -67,6 +71,9 @@ def main()->int:
  p.add_argument('--dest',type=Path,required=True)
  p.add_argument('--cli',type=Path,required=True)
  p.add_argument('--dotnet',default='dotnet')
+ p.add_argument('--astcenc',type=Path)
+ p.add_argument('--only-previous-partial',type=Path)
+ p.add_argument('--expected-selected',type=int)
  p.add_argument('--jobs',type=int,default=min(os.cpu_count() or 2,3))
  p.add_argument('--limit',type=int,default=0)
  p.add_argument('--expected-bntx',type=int)
@@ -77,15 +84,23 @@ def main()->int:
  a=p.parse_args()
  if a.jobs<1 or a.limit<0 or a.timeout<1:p.error('invalid jobs,limit,timeout')
  if not a.cli.is_file():p.error('compiled CLI absent')
+ if a.astcenc and not a.astcenc.is_file():p.error('astcenc binary absent')
  files=detect(a.root.resolve())
  if a.expected_bntx is not None and len(files)!=a.expected_bntx:
   print(f'BNTX census mismatch: discovered={len(files)} expected={a.expected_bntx}')
   return 1
+ if a.only_previous_partial:
+  if not a.only_previous_partial.is_file():p.error('previous partial ledger missing')
+  sources={json.loads(line)['source_member'].replace('\\','/') for line in a.only_previous_partial.read_text(encoding='utf-8').splitlines() if line.strip() and json.loads(line)['state']=='PARTIAL'}
+  files=[p for p in files if p.relative_to(a.root.resolve()).as_posix() in sources]
+  if len(files)!=len(sources):p.error(f'found {len(files)} original PARTIAL sources, expected {len(sources)}')
+ if a.expected_selected is not None and len(files)!=a.expected_selected:
+  p.error(f'selected count={len(files)} expected={a.expected_selected}')
  if a.limit: files=files[:a.limit]
  a.ledger.parent.mkdir(parents=True,exist_ok=True)
  states={}
  with a.ledger.open('w',encoding='utf-8') as f,ProcessPoolExecutor(max_workers=a.jobs) as pool:
-  tasks=[(x,a.root.resolve(),a.dest.resolve(),a.cli.resolve(),a.dotnet,a.timeout) for x in files]
+  tasks=[(x,a.root.resolve(),a.dest.resolve(),a.cli.resolve(),a.dotnet,a.timeout,a.astcenc.resolve() if a.astcenc else None) for x in files]
   future={pool.submit(work,t):t[0] for t in tasks}
   for item in as_completed(future):
    try:rec=item.result()
