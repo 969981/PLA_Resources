@@ -111,3 +111,5 @@ jobs:
           path: .pla-work/coverage/bntx-coverage.json
           retention-days: 14
           if-no-files-found: warn
+
+# Full BNTX stage runs on verified source run 42160235620; decoded images remain artifact-only.
