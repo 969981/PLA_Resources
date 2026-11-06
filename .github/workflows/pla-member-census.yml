@@ -51,22 +51,22 @@ jobs:
       - name: Download native extraction shard from verified original run
         uses: actions/download-artifact@v4
         with:
-          name: pla-gfpak-extracted-shard-\${{ matrix.shard }}
+          name: pla-gfpak-extracted-shard-${{ matrix.shard }}
           repository: 969981/PLA_Resources
           run-id: 42160235620
-          github-token: \${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           path: .pla-work/extracted
       - name: Scan native members with bounded verification threads
         run: |
           python scripts/census_pla_extracted.py \
             --root .pla-work/extracted \
             --out .pla-work/census \
-            --jobs 4 --expected-packs \${{ matrix.packs }} --strict
+            --jobs 4 --expected-packs ${{ matrix.packs }} --strict
       - name: Publish compact census evidence
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: pla-member-census-shard-\${{ matrix.shard }}
+          name: pla-member-census-shard-${{ matrix.shard }}
           path: .pla-work/census/
           retention-days: 14
           if-no-files-found: warn
