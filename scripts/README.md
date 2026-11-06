@@ -21,3 +21,11 @@ To check real local source presence, optionally pass `--source-root "J:\ROMS\Nin
 - `Run-PLA-Parallel.py`, `Audit-PLA-Coverage.py`: parallel jobs, resume, failure retry and total reconciliation.
 
 Do not call proposed scripts implemented until they are written, tested and proven against real assets.
+
+## Implemented R3 extraction scripts (2026-11-06)
+
+`sync_pla_tools.py` pins upstream sources; `extract_pla_gfpak.py` implements multiprocessing, threaded hash validation, deterministic shards, incremental resume and retries; `audit_pla_gfpak_coverage.py` verifies all 678 source outcomes. The .NET 10 native adapter is `tools/PLA.GFPak.Cli`. Three real packs passed [Actions #42158997746](https://github.com/969981/PLA_Resources/actions/runs/42158997746). Refer to [pipeline guide](../docs/gfpak-parallel-pipeline.md). The older \"proposed\" section is the original R0 roadmap, not current implementation status.
+
+### Split GFPak input restoration
+
+`restore_pla_gfpak_volumes.py` restores the archive `ha_area04.gfpak` from its already-tracked `.7z.001/.002` volumes, checks 7z CRC, expected inventory size and SHA-256, and leaves original volumes untouched. Full Actions runs it before the 678 input count gate. See [GFPak pipeline](../docs/gfpak-parallel-pipeline.md).

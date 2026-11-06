@@ -26,3 +26,13 @@ The planner **only plans tasks**. It cannot extract `gfpak` or other game format
 4. Use parallel incremental processing, auditable per-source statuses and versioned manifests.
 
 No ROM data, secret, key or proprietary dependency should be copied into tools/tests as a fixture.
+
+## GFPak R3 verification (2026-11-06)
+
+Remote RomFS /1 now includes actual GFPak resources, though 19,095-file source-hash reconciliation is separate. Three Pokemon/UI/field packs successfully passed native extraction and SHA-256 validation in [Actions #42158997746](https://github.com/969981/PLA_Resources/actions/runs/42158997746). For a bounded multiprocessing extraction of the other 675 archives and four-shard Actions execution, see [pipeline guide](docs/gfpak-parallel-pipeline.md). The original R0 findings above are historical; they are not a current remote inventory audit.
+
+**GFPak source detail:** `ha_area04.gfpak` is tracked as two 7z parts rather than a literal `.gfpak` blob. Native full extraction restores it in the runner before checking the expected 678 containers. See `scripts/restore_pla_gfpak_volumes.py`.
+
+## R3 GFPak full native extraction verified (2026-11-06)
+
+[GitHub Actions #42160235620](https://github.com/969981/PLA_Resources/actions/runs/42160235620) succeeded: 159 + 177 + 170 + 172 = 678/678 original top-level GFPaks VERIFIED; aggregate coverage complete=true, problems=[]. The split ha_area04.gfpak was restored and verified as 97,534,896 bytes. Extracted byte artifacts are stored with 14-day retention, not committed to Git. See [pipeline guide](docs/gfpak-parallel-pipeline.md). Secondary texture/model/animation/text/audio parsing and 19,101-file NCA source reconciliation are still future stages.
