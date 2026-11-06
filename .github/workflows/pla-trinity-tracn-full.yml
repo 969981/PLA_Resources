@@ -1,0 +1,60 @@
+name: PLA full 370 native TRACN animation child recovery
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/pla-astc-trinity-batch]
+    paths:
+      - 'scripts/recover_pla_trinity_animation_files.py'
+      - '.github/workflows/pla-trinity-tracn-full.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  recover:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-tracn-full]')
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {shard: 0, tables: 89}
+          - {shard: 1, tables: 95}
+          - {shard: 2, tables: 94}
+          - {shard: 3, tables: 92}
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts/recover_pla_model_hashes.py
+            scripts/recover_pla_trinity_animation_files.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-trinity-animation-reference-catalog
+          repository: 969981/PLA_Resources
+          run-id: 42171060361
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: .pla-work/catalog
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-gfpak-extracted-shard-${{ matrix.shard }}
+          repository: 969981/PLA_Resources
+          run-id: 42160235620
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: .pla-work/native
+      - name: Hash-resolve all TRACN child animation files in the source shard
+        run: |
+          python scripts/recover_pla_trinity_animation_files.py --root .pla-work/native --catalog .pla-work/catalog/pla-animation-path-catalog.json --out .pla-work/animation-files --report .pla-work/metadata/tracn-shard-${{ matrix.shard }}.json --min-matches ${{ matrix.tables }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-tracn-child-files-shard-${{ matrix.shard }}
+          path: |
+            .pla-work/animation-files/**
+            .pla-work/metadata/tracn-shard-${{ matrix.shard }}.json
+          retention-days: 14
+          if-no-files-found: warn
