@@ -1,0 +1,82 @@
+name: PLA 19932 native TRANM frame/bone batch
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/pla-astc-trinity-batch]
+    paths:
+      - 'tools/PLA.Tranm.Inspect/**'
+      - 'scripts/prepare_pla_tranm_batch.py'
+      - '.github/workflows/pla-tranm-native-batch.yml'
+permissions:
+  actions: read
+  contents: read
+jobs:
+  typed-motion:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-tranm-batch]')
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {shard: 0, expected: 4721}
+          - {shard: 1, expected: 5187}
+          - {shard: 2, expected: 4990}
+          - {shard: 3, expected: 5034}
+    runs-on: windows-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: PLA
+          sparse-checkout: |
+            tools/PLA.Tranm.Inspect/
+            scripts/prepare_pla_tranm_batch.py
+            scripts/recover_pla_model_hashes.py
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/SV_Resources
+          ref: 50307e4227e74d59d0f3f32e08f99125be80b34b
+          path: SV
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            tools/gftool/GFTool.Core/
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-native-motion-census-51830
+          repository: 969981/PLA_Resources
+          run-id: 42177067017
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: PLA/.pla-work/motion-census
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-gfpak-extracted-shard-${{ matrix.shard }}
+          repository: 969981/PLA_Resources
+          run-id: 42160235620
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: PLA/.pla-work/native
+      - name: Verify native SHA256 and pair every source to original skeleton
+        shell: pwsh
+        run: |
+          python PLA/scripts/prepare_pla_tranm_batch.py --root "PLA/.pla-work/native" --index "PLA/.pla-work/motion-census/motion_paths.csv" --out "PLA/.pla-work/work/preflight.jsonl" --expected ${{ matrix.expected }}
+      - name: Build native typed animation parser
+        shell: pwsh
+        run: |
+          $root = Join-Path (Get-Location) "SV/tools/gftool/GFTool.Core"
+          dotnet build "PLA/tools/PLA.Tranm.Inspect/PLA.Tranm.Inspect.csproj" -c Release "-p:GftoolCoreRoot=$root"
+      - name: Parallel typed 19932 TRANM/TRSKL parsing and bone binding
+        shell: pwsh
+        run: |
+          dotnet "PLA/tools/PLA.Tranm.Inspect/bin/Release/net10.0/PLA.Tranm.Inspect.dll" --batch "PLA/.pla-work/work/preflight.jsonl" "PLA/.pla-work/work/shard-${{ matrix.shard }}.jsonl" "PLA/.pla-work/work/shard-${{ matrix.shard }}.json" 3
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-tranm-typed-shard-${{ matrix.shard }}
+          path: PLA/.pla-work/work/
+          retention-days: 14
+          if-no-files-found: warn
