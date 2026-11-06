@@ -1,0 +1,103 @@
+name: PLA extracted-member format census (4 shards)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/pla-secondary-format-census]
+    paths:
+      - 'scripts/census_pla_extracted.py'
+      - 'scripts/merge_pla_census.py'
+      - 'tests/test_pla_secondary_census.py'
+      - '.github/workflows/pla-member-census.yml'
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  synthetic:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-census]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test magic/signature and SHA-256 verification
+        run: python -m unittest discover -s tests -p 'test_pla_secondary_census.py' -v
+
+  census:
+    needs: synthetic
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { shard: 0, packs: 159 }
+          - { shard: 1, packs: 177 }
+          - { shard: 2, packs: 170 }
+          - { shard: 3, packs: 172 }
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts/census_pla_extracted.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download native extraction shard from verified original run
+        uses: actions/download-artifact@v4
+        with:
+          name: pla-gfpak-extracted-shard-\${{ matrix.shard }}
+          repository: 969981/PLA_Resources
+          run-id: 42160235620
+          github-token: \${{ secrets.GITHUB_TOKEN }}
+          path: .pla-work/extracted
+      - name: Scan native members with bounded verification threads
+        run: |
+          python scripts/census_pla_extracted.py \
+            --root .pla-work/extracted \
+            --out .pla-work/census \
+            --jobs 4 --expected-packs \${{ matrix.packs }} --strict
+      - name: Publish compact census evidence
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-member-census-shard-\${{ matrix.shard }}
+          path: .pla-work/census/
+          retention-days: 14
+          if-no-files-found: warn
+
+  aggregate:
+    needs: census
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts/merge_pla_census.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pla-member-census-shard-*
+          path: .pla-work/census-shards
+      - name: Verify all 678 archives and unique member paths
+        run: |
+          python scripts/merge_pla_census.py \
+            --root .pla-work/census-shards \
+            --expected-archives 678 \
+            --out .pla-work/aggregate/format-census.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-member-format-census-full
+          path: .pla-work/aggregate/format-census.json
+          retention-days: 14
+          if-no-files-found: warn
