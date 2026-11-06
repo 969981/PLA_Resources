@@ -71,3 +71,5 @@ jobs:
             PLA/.pla-work/gltf/**
           if-no-files-found: warn
           retention-days: 14
+
+# Reject output unless actual glTF meshes and a skin are present.
