@@ -80,3 +80,5 @@ jobs:
           path: PLA/.pla-work/work/
           retention-days: 14
           if-no-files-found: warn
+
+# Count gate: 4721 + 5187 + 4990 + 5034 = 19932 original SHA-matched TRANM sources.
