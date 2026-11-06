@@ -1,0 +1,60 @@
+name: PLA 51830 original unique motion member path census
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/pla-astc-trinity-batch]
+    paths:
+      - 'scripts/survey_pla_motion_hash_paths.py'
+      - '.github/workflows/pla-motion-native-census.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audit-motion:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-motion-census]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts/survey_pla_motion_hash_paths.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pla-member-census-shard-*
+          repository: 969981/PLA_Resources
+          run-id: 42166825950
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: .pla-work/native-census
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pla-tracn-child-files-shard-*
+          repository: 969981/PLA_Resources
+          run-id: 42172739282
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: .pla-work/animation-artifacts
+      - name: Merge actual TRACR animation files from four shards
+        run: |
+          mkdir -p .pla-work/motion
+          cp -a .pla-work/animation-artifacts/pla-tracn-child-files-shard-*/animation-files/. .pla-work/motion/
+      - name: Verify 51830 unique motion paths plus 1260 repeated references against original GFPak hashes
+        run: |
+          python scripts/survey_pla_motion_hash_paths.py \
+            --census \
+              .pla-work/native-census/pla-member-census-shard-0/members.csv \
+              .pla-work/native-census/pla-member-census-shard-1/members.csv \
+              .pla-work/native-census/pla-member-census-shard-2/members.csv \
+              .pla-work/native-census/pla-member-census-shard-3/members.csv \
+            --motion-root .pla-work/motion \
+            --out .pla-work/verified-motion
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-native-motion-census-51830
+          path: .pla-work/verified-motion/
+          retention-days: 14
+          if-no-files-found: warn
