@@ -1,0 +1,81 @@
+name: PLA 19446 native TRACM material visibility shape typed batch
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/pla-astc-trinity-batch]
+    paths:
+      - 'tools/PLA.Tracm.Inspect/**'
+      - 'scripts/prepare_pla_tracm_batch.py'
+      - '.github/workflows/pla-tracm-native-batch.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  parse:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-tracm-batch]')
+    runs-on: windows-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {shard: 0, expected: 4631}
+          - {shard: 1, expected: 5058}
+          - {shard: 2, expected: 4810}
+          - {shard: 3, expected: 4947}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: PLA
+          sparse-checkout: |
+            tools/PLA.Tracm.Inspect/
+            scripts/prepare_pla_tracm_batch.py
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/SV_Resources
+          ref: 50307e4227e74d59d0f3f32e08f99125be80b34b
+          path: SV
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            tools/gftool/GFTool.Core/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-native-motion-census-51830
+          repository: 969981/PLA_Resources
+          run-id: 42177067017
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: PLA/.pla-work/census
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-gfpak-extracted-shard-${{ matrix.shard }}
+          repository: 969981/PLA_Resources
+          run-id: 42160235620
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: PLA/.pla-work/native
+      - name: Verify every native TRACM source SHA and filename hash
+        shell: pwsh
+        run: |
+          python PLA/scripts/prepare_pla_tracm_batch.py --root "PLA/.pla-work/native" --index "PLA/.pla-work/census/motion_paths.csv" --out "PLA/.pla-work/work/preflight.jsonl" --expected ${{ matrix.expected }}
+      - name: Compile pinned native TRACM FlatBuffer decoder
+        shell: pwsh
+        run: |
+          $root = Join-Path (Get-Location) "SV/tools/gftool/GFTool.Core"
+          dotnet build "PLA/tools/PLA.Tracm.Inspect/PLA.Tracm.Inspect.csproj" -c Release "-p:GftoolCoreRoot=$root"
+      - name: Native material visibility and blendshape timeline parse with independent SHA recheck
+        shell: pwsh
+        run: |
+          dotnet "PLA/tools/PLA.Tracm.Inspect/bin/Release/net10.0/PLA.Tracm.Inspect.dll" "PLA/.pla-work/work/preflight.jsonl" "PLA/.pla-work/work/tracm-${{ matrix.shard }}.jsonl" "PLA/.pla-work/work/summary-${{ matrix.shard }}.json" 3
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-tracm-typed-shard-${{ matrix.shard }}
+          path: PLA/.pla-work/work/
+          retention-days: 14
+          if-no-files-found: warn
