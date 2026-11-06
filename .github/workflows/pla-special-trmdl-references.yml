@@ -67,3 +67,5 @@ jobs:
           path: results/special-trmdl-references.json
           retention-days: 14
           if-no-files-found: warn
+
+# This is a dependency-reference audit, not a claim of glTF mesh geometry export.
