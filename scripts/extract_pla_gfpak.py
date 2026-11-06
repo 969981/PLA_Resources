@@ -203,7 +203,7 @@ def main(argv: list[str] | None = None) -> int:
     work = [
         (rel, str(args.source_root.resolve()), str(args.dest.resolve()),
          str(args.cli.resolve()), args.dotnet, str(args.oodle.resolve()) if args.oodle else None,
-         args.max_depth, args.hash_threads, args.timeout, args.retries, args.resume, args.dry_run)
+         args.max_depth, args.hash_threads, args.timeout, args.retries, (args.resume or args.retry_failed), args.dry_run)
         for rel in selected
     ]
     args.ledger.parent.mkdir(parents=True, exist_ok=True)
