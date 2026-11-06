@@ -131,3 +131,5 @@ jobs:
           path: .pla-work/report/bntx-precise-full.json
           retention-days: 14
           if-no-files-found: warn
+
+# Real native terminal formats: preserve raw 10/16/32-bit values and all array layers.
