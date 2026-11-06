@@ -1,0 +1,113 @@
+name: PLA BNTX all 11903 real-pixel conversion
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/pla-secondary-format-census]
+    paths:
+      - 'scripts/convert_pla_bntx.py'
+      - 'scripts/audit_pla_bntx_coverage.py'
+      - '.github/workflows/pla-bntx-full.yml'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  convert:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-bntx-full]')
+    runs-on: windows-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {shard: 0, expected_bntx: 2989}
+          - {shard: 1, expected_bntx: 3616}
+          - {shard: 2, expected_bntx: 2318}
+          - {shard: 3, expected_bntx: 2980}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: PLA
+          sparse-checkout: |
+            tools/PLA.Bntx.Export/
+            scripts/convert_pla_bntx.py
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/SV_Resources
+          ref: 50307e4227e74d59d0f3f32e08f99125be80b34b
+          path: SV
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            tools/gftool/NxMiddleware/BnTxx/
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build pinned BnTxx decoder
+        shell: pwsh
+        run: |
+          $root = Join-Path (Get-Location) "SV/tools/gftool/NxMiddleware/BnTxx"
+          dotnet build "PLA/tools/PLA.Bntx.Export/PLA.Bntx.Export.csproj" -c Release "-p:BnTxxRoot=$root"
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-gfpak-extracted-shard-${{ matrix.shard }}
+          repository: 969981/PLA_Resources
+          run-id: 42160235620
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: PLA/.pla-work/extracted
+      - name: Real BGRA to PNG native pixel extraction, readback and SHA-256 verification
+        shell: pwsh
+        run: |
+          python PLA/scripts/convert_pla_bntx.py --root "PLA/.pla-work/extracted" --dest "PLA/.pla-work/bntx-converted" --cli "PLA/tools/PLA.Bntx.Export/bin/Release/net10.0-windows/PLA.Bntx.Export.dll" --expected-bntx ${{ matrix.expected_bntx }} --jobs 3 --strict --ledger "PLA/.pla-work/bntx-report/shard-${{ matrix.shard }}.jsonl"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-bntx-report-shard-${{ matrix.shard }}
+          path: PLA/.pla-work/bntx-report/shard-${{ matrix.shard }}.jsonl
+          retention-days: 14
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-bntx-png-shard-${{ matrix.shard }}
+          path: PLA/.pla-work/bntx-converted/**/converted/**
+          compression-level: 0
+          retention-days: 14
+          if-no-files-found: warn
+
+  coverage:
+    if: always() && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-bntx-full]'))
+    needs: [convert]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts/audit_pla_bntx_coverage.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pla-bntx-report-shard-*
+          path: .pla-work/bntx-reports
+      - name: Strict source coverage audit, preserving unsupported format evidence
+        run: |
+          python scripts/audit_pla_bntx_coverage.py \
+            --root .pla-work/bntx-reports \
+            --out .pla-work/coverage/bntx-coverage.json \
+            --strict
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-bntx-coverage-full
+          path: .pla-work/coverage/bntx-coverage.json
+          retention-days: 14
+          if-no-files-found: warn
