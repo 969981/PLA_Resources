@@ -123,3 +123,5 @@ jobs:
           path: .pla-work/coverage/bntx-final.json
           if-no-files-found: warn
           retention-days: 14
+
+# Validate last 58 native sources against 11903 original source hashes.
