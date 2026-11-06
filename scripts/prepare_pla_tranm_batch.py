@@ -45,7 +45,8 @@ def prepare(root:Path,index:Path,out:Path)->dict:
   skeleton_key=fnv64(f'bin/pokemon/{name[:6]}/{name}/mdl/{name}.trskl')
   skl=members.get(skeleton_key)
   if skl is None:
-   record.update(state='SKELETON_NOT_FOUND',source_sha256=motion['sha256'])
+   record.update(state='SKELETON_NOT_FOUND',source_sha256=motion['sha256'],
+      motion_path=str(raw.resolve()),source_bytes=int(motion['decoded_size']))
    status[record['state']]+=1;entries.append(record);continue
   sklpath=base/skl['path']
   skey=sklpath.as_posix()
