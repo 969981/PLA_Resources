@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "source": "D:\\a\\PLA_Resources\\PLA_Resources\\v1.1.1\\b38cd4c18831237d85312886f3a377b5_NCA\\1\\bin\\archive\\field\\terrain\\ha_area01_s01.gfpak",
+  "source_size": 3552,
+  "source_sha256": "f51b5c38901cd05341e1581b7c9d98f6f8135b5b0d57ca8e788e68b324b8a33e",
+  "parser": "pkNX.Containers.GFPack",
+  "max_depth": 2,
+  "archive_count": 1,
+  "extracted_count": 3,
+  "members": [
+    {
+      "path": "entry_00000_453900890FA99B61.bin",
+      "index": 0,
+      "depth": 0,
+      "full_path_hash": "453900890FA99B61",
+      "folder_mappings": [
+        {
+          "folder_hash": "6AA40A2688DEFC8F",
+          "filename_hash": "B58A168DDBC351D7"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 815,
+      "decoded_size": 2101352,
+      "sha256": "8ee796dddeb36e819c58aaa7e34fd8ea12f8036a79c805a8deec68630e93c7f8",
+      "magic_hex": "424E545800000000",
+      "format_hint": "bntx",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00001_A520CD5055C63932.bin",
+      "index": 1,
+      "depth": 0,
+      "full_path_hash": "A520CD5055C63932",
+      "folder_mappings": [
+        {
+          "folder_hash": "6AA40A2688DEFC8F",
+          "filename_hash": "2E4FB3259122742C"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 252,
+      "decoded_size": 392,
+      "sha256": "77bbac85413ee6d2448fd6fe8ae48eeb81dd84316385c6406d0918a0500d35fb",
+      "magic_hex": "0C00000008000800",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00002_9AEAC3FB072F5EF4.bin",
+      "index": 2,
+      "depth": 0,
+      "full_path_hash": "9AEAC3FB072F5EF4",
+      "folder_mappings": [
+        {
+          "folder_hash": "9EAF8EEB65EEFCB1",
+          "filename_hash": "F51DF0E8A1E65BB8"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 2227,
+      "decoded_size": 4924,
+      "sha256": "1977cb80e7bd26dd594edbbb5e33c21859122dd2655131f168a8d8d65c61e347",
+      "magic_hex": "0000133C54414730",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    }
+  ]
+}
