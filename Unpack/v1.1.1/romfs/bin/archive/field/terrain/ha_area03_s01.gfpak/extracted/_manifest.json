@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "source": "D:\\a\\PLA_Resources\\PLA_Resources\\v1.1.1\\b38cd4c18831237d85312886f3a377b5_NCA\\1\\bin\\archive\\field\\terrain\\ha_area03_s01.gfpak",
+  "source_size": 6192,
+  "source_sha256": "a5dfb92b23737e1ec77f53b0358fc5edbb57147b5a388fb3ff9392c62af5c760",
+  "parser": "pkNX.Containers.GFPack",
+  "max_depth": 2,
+  "archive_count": 1,
+  "extracted_count": 1,
+  "members": [
+    {
+      "path": "entry_00000_719F26BF5BB40B06.bin",
+      "index": 0,
+      "depth": 0,
+      "full_path_hash": "719F26BF5BB40B06",
+      "folder_mappings": [
+        {
+          "folder_hash": "1FF9438B4D403583",
+          "filename_hash": "F51DF0E8A1E65BB8"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 6074,
+      "decoded_size": 22248,
+      "sha256": "6913da4f4e4fab8a1210791154f137ad43ab800327198859246cae4bb6e8a3d6",
+      "magic_hex": "000056E854414730",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    }
+  ]
+}
