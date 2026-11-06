@@ -20,6 +20,24 @@ internal static class Program
     private static string HashFile(string path) =>
         Hash(File.ReadAllBytes(path));
 
+    // Graphics.DrawImage blends transparent pixels and mutates decoded colors.
+    // Copy each 32-bit BGRA row directly; this preserves native channel bytes.
+    private static TexturePixels ReadExactBgra(Bitmap bitmap)
+    {
+        var area = new Rectangle(0, 0, bitmap.Width, bitmap.Height);
+        var raw = new byte[checked(bitmap.Width * bitmap.Height * 4)];
+        var locked = bitmap.LockBits(area, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+        try
+        {
+            int rowBytes = checked(bitmap.Width * 4);
+            for (int y = 0; y < bitmap.Height; y++)
+                Marshal.Copy(IntPtr.Add(locked.Scan0, y * locked.Stride),
+                    raw, y * rowBytes, rowBytes);
+        }
+        finally { bitmap.UnlockBits(locked); }
+        return new TexturePixels(bitmap.Width, bitmap.Height, raw);
+    }
+
     private static Bitmap DecodeAstc(Assembly assembly, object texture, string decoderExe, string stage, int index)
     {
         if (!File.Exists(decoderExe))
@@ -141,7 +159,7 @@ internal static class Program
                     using (source)
                     {
                         // Explicit original decoded BGRA pixels, not a placeholder image.
-                        var pixels = TexturePixels.FromBitmap(source);
+                        var pixels = ReadExactBgra(source);
                         if (pixels.Width != width || pixels.Height != height ||
                             pixels.Bgra.LongLength != (long)width * height * 4)
                             throw new InvalidDataException("Decoded pixel count does not match metadata");
@@ -159,7 +177,7 @@ internal static class Program
                         finally { png.UnlockBits(locked); }
                         png.Save(dst, ImageFormat.Png);
                         using var check = new Bitmap(dst);
-                        var returned = TexturePixels.FromBitmap(check);
+                        var returned = ReadExactBgra(check);
                         if (returned.Width != width || returned.Height != height ||
                             !pixels.Bgra.AsSpan().SequenceEqual(returned.Bgra))
                             throw new InvalidDataException("PNG pixel readback differs from native decoded BGRA");
