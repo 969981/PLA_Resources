@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "game": "PLA",
+  "version": "1.1.1",
+  "stage": "typed_TRANM_full_coverage",
+  "source_count": 19932,
+  "typed_parsed": 19932,
+  "states": {
+    "VERIFIED": 16159,
+    "AUXILIARY_ONLY": 3076,
+    "BONE_UNMATCHED": 330,
+    "PARSED_NO_SKELETON": 367
+  },
+  "animation_tracks": 939319,
+  "channels": {
+    "matched_bones": 833468,
+    "helper_tracks": 88106,
+    "non_skeleton_tracks": 1218,
+    "scale_channels": 939319,
+    "rotation_channels": 939319,
+    "translation_channels": 939319
+  },
+  "fps_counts": {
+    "60": 19932
+  },
+  "per_shard": {
+    "0": 4721,
+    "1": 5187,
+    "2": 4990,
+    "3": 5034
+  },
+  "typed_complete": true,
+  "all_skeleton_bound": false,
+  "source_sha_checked": true,
+  "meaning": "All 19932 .tranm resources are parsed and each source byte SHA matches native manifests. 3076 resources contain additional non-skeleton helper rig tracks, 330 contain other non-skeleton targets, and 367 have no local corresponding skeleton. These are NOT all glTF animations.",
+  "run_id": 42194694871,
+  "evidence_artifact_id": 13491781681,
+  "source_motion_census_run_id": 42177067017
+}
