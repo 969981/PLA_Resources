@@ -1,0 +1,62 @@
+name: PLA native TRANM frame tracks and TRSKL bone binding
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/pla-astc-trinity-batch]
+    paths:
+      - 'tools/PLA.Tranm.Inspect/**'
+      - '.github/workflows/pla-tranm-bone-verify.yml'
+permissions:
+  contents: read
+jobs:
+  typed-real:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-tranm]')
+    runs-on: windows-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: PLA
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            tools/PLA.Tranm.Inspect/
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/PLA_Resources
+          ref: data/pla-v1.1.1-native-shard-3
+          path: Native
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0025_00_00.gfpak/extracted/entry_00012_B2CC1B4E1A0CAC0E.bin
+            Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0025_00_00.gfpak/extracted/entry_00157_92E44BDD7D2AF73F.bin
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/SV_Resources
+          ref: 50307e4227e74d59d0f3f32e08f99125be80b34b
+          path: SV
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            tools/gftool/GFTool.Core/
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Build native Trinity frame inspector
+        shell: pwsh
+        run: |
+          $root = Join-Path (Get-Location) "SV/tools/gftool/GFTool.Core"
+          dotnet build PLA/tools/PLA.Tranm.Inspect/PLA.Tranm.Inspect.csproj -c Release "-p:GftoolCoreRoot=$root"
+      - name: Parse real Pikachu motion and compare against real skeleton
+        shell: pwsh
+        run: |
+          $parent = "Native/Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0025_00_00.gfpak/extracted"
+          dotnet PLA/tools/PLA.Tranm.Inspect/bin/Release/net10.0/PLA.Tranm.Inspect.dll "$parent/entry_00012_B2CC1B4E1A0CAC0E.bin" "$parent/entry_00157_92E44BDD7D2AF73F.bin" "PLA/.pla-work/tranm/pikachu-verified-motion.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-pikachu-tranm-frame-bone-audit
+          path: PLA/.pla-work/tranm/pikachu-verified-motion.json
+          if-no-files-found: warn
+          retention-days: 14
