@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "policy": "pinned-external-source; no automatic vendoring into Git",
+  "reference_repository": "969981/SV_Resources",
+  "tools": [
+    {
+      "name": "pkNX",
+      "upstream": "https://github.com/kwsch/pkNX.git",
+      "commit": "d191cd0e5c05f2af81d9a41c1f1d82e6621b351a",
+      "priority": "P0",
+      "role": "PLA GFPak / Oodle / gameplay data",
+      "verified": "PLA support in upstream source; full sample extraction requires runtime test"
+    },
+    {
+      "name": "Switch-Toolbox",
+      "upstream": "https://github.com/KillzXGaming/Switch-Toolbox.git",
+      "commit": "3a3279140ca0fa54ce804a8d56d4653a491de613",
+      "priority": "P1",
+      "role": "BNTX, model/material/animation visual cross-check"
+    },
+    {
+      "name": "gftool",
+      "upstream": "https://github.com/pkZukan/gftool.git",
+      "commit": "cac7a210fcbef5ecf1ee108c10d1a1bdddc4cd4c",
+      "priority": "P1",
+      "role": "Trinity model/animation research; do not copy SV TRPFS entrypoint"
+    },
+    {
+      "name": "PokeDocs",
+      "upstream": "https://github.com/pkZukan/PokeDocs.git",
+      "commit": "242039cbcd9de3f5a424de5b68ae581f7bed2b23",
+      "priority": "P2",
+      "role": "schema/hash references; verify PLA coverage before use"
+    },
+    {
+      "name": "nx2elf",
+      "upstream": "https://github.com/shuffle2/nx2elf.git",
+      "commit": "a1760ba54e2aefb41444933f53b90e6e8b05c399",
+      "priority": "P2",
+      "role": "ExeFS NSO ELF reconstruction; separate stage"
+    }
+  ]
+}
