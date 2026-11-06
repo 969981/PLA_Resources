@@ -1,0 +1,69 @@
+name: PLA five special-form native TRMDL referenced resources
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/pla-astc-trinity-batch]
+    paths:
+      - 'scripts/inspect_pla_special_model_refs.py'
+      - '.github/workflows/pla-special-trmdl-references.yml'
+permissions:
+  contents: read
+jobs:
+  inspect:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-trmdl-deps]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: Code
+          sparse-checkout: |
+            scripts/inspect_pla_special_model_refs.py
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/PLA_Resources
+          ref: data/pla-v1.1.1-native-shard-0
+          path: Data0
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0549_71_41.gfpak/extracted/entry_00311_473FD630E607D263.bin
+            Unpack/v1.1.1/romfs/bin/archive/pokemon/pm1002_71_00.gfpak/extracted/entry_00274_5A4BAA410FDC8E70.bin
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/PLA_Resources
+          ref: data/pla-v1.1.1-native-shard-1
+          path: Data1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0751_71_41.gfpak/extracted/entry_00248_986BED2095B62D32.bin
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/PLA_Resources
+          ref: data/pla-v1.1.1-native-shard-2
+          path: Data2
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0059_71_41.gfpak/extracted/entry_00275_C4155D8A90E10399.bin
+            Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0101_71_41.gfpak/extracted/entry_00309_0DC7F7842B4291DB.bin
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse five exact native TRMDL FlatBuffer mesh/material/skeleton dependencies
+        run: |
+          python Code/scripts/inspect_pla_special_model_refs.py --files \
+            Data0/Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0549_71_41.gfpak/extracted/entry_00311_473FD630E607D263.bin \
+            Data0/Unpack/v1.1.1/romfs/bin/archive/pokemon/pm1002_71_00.gfpak/extracted/entry_00274_5A4BAA410FDC8E70.bin \
+            Data1/Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0751_71_41.gfpak/extracted/entry_00248_986BED2095B62D32.bin \
+            Data2/Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0059_71_41.gfpak/extracted/entry_00275_C4155D8A90E10399.bin \
+            Data2/Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0101_71_41.gfpak/extracted/entry_00309_0DC7F7842B4291DB.bin \
+            --out results/special-trmdl-references.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-five-special-trmdl-original-dependencies
+          path: results/special-trmdl-references.json
+          retention-days: 14
+          if-no-files-found: warn
