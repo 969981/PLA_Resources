@@ -142,7 +142,7 @@ def main()->int:
   run('git','add','-f','--',index.relative_to(repo).as_posix(),cwd=repo)
   count+=1;bytes_staged+=index.stat().st_size
   flush()
-  print('SUCCESS:',json.dumps(dict(shard=a.shard,branch=branch,batches=push_count,**audit_result)),flush=True)
+  print('SUCCESS:',json.dumps(dict(branch=branch,batches=push_count,**audit_result)),flush=True)
   return 0
  except (OSError,ValueError,KeyError,subprocess.CalledProcessError) as ex:
   print(f'PERSIST_FAILED: {ex}',file=sys.stderr,flush=True)
