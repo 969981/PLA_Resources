@@ -40,3 +40,5 @@ jobs:
           path: results/remote-native-shard-${{ matrix.shard }}.json
           retention-days: 14
           if-no-files-found: warn
+
+# No 7.33 GB re-download: verify final tree sizes directly from Git objects.
