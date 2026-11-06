@@ -9,10 +9,38 @@ import argparse
 from collections import Counter
 from concurrent.futures import ProcessPoolExecutor,as_completed
 import json
+import hashlib
+import struct
 from pathlib import Path
 import subprocess
 import os
 import sys
+
+def native_mesh_count(source:Path)->int|None:
+ """Read TRMDL field 1 vector count, following the actual FlatSharp schema.
+ Return None for invalid/unknown layout rather than claiming empty geometry.
+ """
+ try:
+  b=source.read_bytes()
+  if len(b)<16:return None
+  root=struct.unpack_from('<I',b,0)[0]
+  if root<4 or root+4>len(b):return None
+  delta=struct.unpack_from('<i',b,root)[0]
+  if not delta:return None
+  vt=root-delta
+  if vt<4 or vt+8>len(b):return None
+  vtlen=struct.unpack_from('<H',b,vt)[0]
+  if vtlen<8 or vtlen>256 or vt+vtlen>len(b):return None
+  slot=vt+4+2 # TRMDL.FlatBufferItem(1) = Meshes
+  off=struct.unpack_from('<H',b,slot)[0]
+  if not off:return 0
+  field=root+off
+  if field<0 or field+4>len(b):return None
+  vec=field+struct.unpack_from('<I',b,field)[0]
+  if vec<0 or vec+4>len(b):return None
+  count=struct.unpack_from('<I',b,vec)[0]
+  return int(count) if count<10000 else None
+ except (OSError,ValueError,struct.error):return None
 
 def convert(arg:tuple)->dict:
  model,root,out,exe,timeout=arg
@@ -23,7 +51,14 @@ def convert(arg:tuple)->dict:
  row={'original_native_model':rel.as_posix(),'state':'FAILED'}
  try:
   p=subprocess.run(cmd,capture_output=True,text=True,timeout=timeout,check=False)
-  if p.returncode:raise RuntimeError(f'Native exporter exit {p.returncode}: {p.stderr[-500:]}')
+  if p.returncode:
+   count=native_mesh_count(model)
+   if count==0:
+    row.update(state='NATIVE_NO_MESHES',native_mesh_ref_count=0,
+               source_sha256=hashlib.sha256(model.read_bytes()).hexdigest(),
+               evidence='TRMDL FlatBuffer field 1 is empty; no glTF geometry fabricated')
+    return row
+   raise RuntimeError(f'Native exporter exit {p.returncode}: {p.stderr[-1800:]}')
   if not target.is_file():raise ValueError('missing glTF output')
   data=json.loads(target.read_text(encoding='utf-8'))
   if data.get('asset',{}).get('version')!='2.0':raise ValueError('not glTF 2')
@@ -74,7 +109,9 @@ def main()->int:
    states[rec['state']]+=1
    print(rec['state'],rec['original_native_model'],flush=True)
    out.write(json.dumps(rec,ensure_ascii=False)+'\n')
- summary={'expected_models':len(models),'states':dict(states),'complete':states.get('VERIFIED_GEOMETRY',0)==len(models)}
+ summary={'expected_models':len(models),'states':dict(states),
+  'geometry_complete':states.get('VERIFIED_GEOMETRY',0)==len(models),
+  'source_coverage_complete':states.get('VERIFIED_GEOMETRY',0)+states.get('NATIVE_NO_MESHES',0)==len(models)}
  print(json.dumps(summary),flush=True)
- return int(a.strict and not summary['complete'])
+ return int(a.strict and not summary['source_coverage_complete'])
 if __name__=='__main__':raise SystemExit(main())
