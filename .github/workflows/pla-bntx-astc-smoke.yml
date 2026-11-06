@@ -84,3 +84,5 @@ jobs:
           if-no-files-found: warn
 
 # Sample uses exact SHA-256 pinned external codec release.
+
+# Strict native pixel readback now avoids Graphics alpha compositing.
