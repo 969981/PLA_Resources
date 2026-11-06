@@ -50,3 +50,5 @@ jobs:
             .pla-work/trinity-animations/**
           retention-days: 14
           if-no-files-found: warn
+
+# Validate actual TRACN animation child references by hash and native source SHA.
