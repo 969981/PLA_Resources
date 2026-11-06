@@ -43,7 +43,7 @@ def possible_flatbuffer(data: bytes, length: int) -> bool:
  root=struct.unpack_from('<I',data,0)[0]
  if root<4 or root+4>min(len(data),length): return False
  back=struct.unpack_from('<i',data,root)[0]
- if back<=0: return False
+ if back==0: return False
  vt=root-back
  if vt<4 or vt+4>min(len(data),length): return False
  vtlen,objlen=struct.unpack_from('<HH',data,vt)
@@ -59,6 +59,28 @@ def classify(head: bytes, size: int) -> tuple[str,str,str,bool]:
  if possible_flatbuffer(head,size):
   return 'flatbuffer_candidate','structured','CANDIDATE',True
  return 'unknown','unknown','UNKNOWN',False
+
+
+def possible_flatbuffer_file(path:Path,size:int)->bool:
+ # FlatBuffers permits signed offsets to a shared vtable after the object.
+ # Read vtable by position, not just in the first 64 KiB of a large member.
+ if size<12:return False
+ try:
+  with path.open('rb') as stream:
+   raw=stream.read(4)
+   if len(raw)!=4:return False
+   root=struct.unpack('<I',raw)[0]
+   if root<4 or root+4>size:return False
+   stream.seek(root)
+   back=struct.unpack('<i',stream.read(4))[0]
+   if back==0:return False
+   vt=root-back
+   if vt<4 or vt+4>size:return False
+   stream.seek(vt)
+   vtlen,objlen=struct.unpack('<HH',stream.read(4))
+   return 4<=vtlen<=2048 and vtlen%2==0 and objlen>=4 and vt+vtlen<=size and root+objlen<=size
+ except (OSError,ValueError,struct.error):
+  return False
 
 
 def safe_relative(path: str) -> bool:
@@ -90,6 +112,8 @@ def examine(arg:tuple) -> dict:
   if not verify and head[:8].hex().upper()!=str(m.get('magic_hex','')).upper():
    raise ValueError('magic differs from native manifest')
   fmt,family,confidence,flat=classify(head,size)
+  if fmt=='unknown' and possible_flatbuffer_file(file,size):
+   fmt,family,confidence,flat=('flatbuffer_candidate','structured','CANDIDATE',True)
   if bool(m.get('nested_gfpak',False))!=(fmt=='gfpak'):
    raise ValueError('nested magic mismatch')
   row.update(format=fmt,family=family,confidence=confidence,
