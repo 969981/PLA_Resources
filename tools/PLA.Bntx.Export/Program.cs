@@ -7,6 +7,8 @@ using System.Drawing.Imaging;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
+using System.Buffers.Binary;
+using System.Numerics;
 using System.Text.Json;
 
 // Headless native-pixel BNTX -> PNG exporter.
@@ -174,6 +176,142 @@ internal static class Program
         return (byte)Math.Clamp((int)Math.Round(255.0 * Math.Pow(linear, 1.0 / 2.2)), 0, 255);
     }
 
+    // These are nn::gfx::ChannelFormat 0x0E, 0x15 and 0x19. Every layer is
+    // decoded from a native GOB-tiled byte span, never a resized placeholder.
+    // Full-resolution scalar values remain available beside 8-bit PNG previews.
+    private static (Bitmap First, List<Dictionary<string, object?>> Layers) DecodeExtendedFormat(
+        object texture, int fmt, int variant, int width, int height, string stage, int textureIndex)
+    {
+        int bpp = fmt == 0x0E ? 4 : fmt == 0x15 ? 8 : 16;
+        if ((fmt == 0x0E && variant != 0x01) ||
+            ((fmt == 0x15 || fmt == 0x19) && variant != 0x05))
+            throw new NotSupportedException($"Unsupported native format 0x{fmt:X2}{variant:X2}");
+        var t = texture.GetType();
+        byte[] bytes = (byte[])(t.GetField("Data")?.GetValue(texture)
+            ?? throw new InvalidDataException("Missing tiled pixel data"));
+        int arrayCount = (int)(t.GetField("ArrayCount")?.GetValue(texture) ?? 0);
+        int mipCount = (int)(t.GetField("MipmapCount")?.GetValue(texture) ?? 0);
+        int log2 = (int)(t.GetField("BlockHeightLog2")?.GetValue(texture) ?? -1);
+        if (arrayCount is < 1 or > 1024 || mipCount != 1 || log2 is < 0 or > 5)
+            throw new NotSupportedException($"Unsupported array/mips/GOB layout layers={arrayCount}, mips={mipCount}, bh={log2}");
+
+        int bh = 1 << log2, widthGobs = checked((width * bpp + 63) / 64);
+        int heightGroups = checked((height + bh * 8 - 1) / (bh * 8));
+        int layerStride = checked(widthGobs * 512 * bh * heightGroups);
+        if ((long)layerStride * arrayCount != bytes.LongLength)
+            throw new InvalidDataException($"Native byte extent {bytes.Length} != {arrayCount} layers x {layerStride}");
+        int bppShift = BitOperations.TrailingZeroCount((uint)bpp);
+        int xShift = BitOperations.TrailingZeroCount((uint)(512 * bh));
+        int yShift = BitOperations.TrailingZeroCount((uint)(bh * 8));
+
+        var results = new List<Dictionary<string, object?>>();
+        Bitmap? first = null;
+        for (int layer = 0; layer < arrayCount; layer++)
+        {
+            byte[] preview = new byte[checked(width * height * 4)];
+            string rawExtension = fmt == 0x0E ? ".r10g10b10a2le" : ".rgba32f";
+            string rawName = $"texture_{textureIndex:D4}_layer_{layer:D3}{rawExtension}";
+            string pngName = $"texture_{textureIndex:D4}_layer_{layer:D3}.png";
+            string rawPath = Path.Combine(stage, rawName);
+            using (var writer = new BinaryWriter(File.Create(rawPath)))
+            {
+                for (int y = 0; y < height; y++)
+                    for (int x = 0; x < width; x++)
+                    {
+                        int X = x << bppShift;
+                        int offset = checked(layer * layerStride +
+                            (y >> yShift) * (512 * bh * widthGobs) +
+                            ((X >> 6) << xShift) +
+                            (((y & (bh * 8 - 1)) >> 3) << 9) +
+                            (((X & 0x3f) >> 5) << 8) +
+                            (((y & 7) >> 1) << 6) +
+                            (((X & 0x1f) >> 4) << 5) +
+                            ((y & 1) << 4) + (X & 0xf));
+                        if (offset < layer * layerStride || offset + bpp > (layer + 1) * layerStride)
+                            throw new InvalidDataException($"Native GOB pixel offset outside layer {layer}");
+                        int dest = checked((y * width + x) * 4);
+                        if (fmt == 0x0E)
+                        {
+                            uint p = BinaryPrimitives.ReadUInt32LittleEndian(bytes.AsSpan(offset, 4));
+                            int r = (int)(p & 1023), g = (int)((p >> 10) & 1023),
+                                b = (int)((p >> 20) & 1023), a = (int)((p >> 30) & 3);
+                            writer.Write(p);
+                            preview[dest] = (byte)((b * 255 + 511) / 1023);
+                            preview[dest + 1] = (byte)((g * 255 + 511) / 1023);
+                            preview[dest + 2] = (byte)((r * 255 + 511) / 1023);
+                            preview[dest + 3] = (byte)((a * 255 + 1) / 3);
+                        }
+                        else
+                        {
+                            float r, g, b, a;
+                            if (fmt == 0x15)
+                            {
+                                r = (float)BitConverter.UInt16BitsToHalf(BinaryPrimitives.ReadUInt16LittleEndian(bytes.AsSpan(offset, 2)));
+                                g = (float)BitConverter.UInt16BitsToHalf(BinaryPrimitives.ReadUInt16LittleEndian(bytes.AsSpan(offset + 2, 2)));
+                                b = (float)BitConverter.UInt16BitsToHalf(BinaryPrimitives.ReadUInt16LittleEndian(bytes.AsSpan(offset + 4, 2)));
+                                a = (float)BitConverter.UInt16BitsToHalf(BinaryPrimitives.ReadUInt16LittleEndian(bytes.AsSpan(offset + 6, 2)));
+                            }
+                            else
+                            {
+                                r = BitConverter.ToSingle(bytes, offset);
+                                g = BitConverter.ToSingle(bytes, offset + 4);
+                                b = BitConverter.ToSingle(bytes, offset + 8);
+                                a = BitConverter.ToSingle(bytes, offset + 12);
+                            }
+                            writer.Write(r);
+                            writer.Write(g);
+                            writer.Write(b);
+                            writer.Write(a);
+                            preview[dest] = ToneMap(b);
+                            preview[dest + 1] = ToneMap(g);
+                            preview[dest + 2] = ToneMap(r);
+                            preview[dest + 3] = (byte)(float.IsFinite(a) ?
+                                Math.Clamp((int)Math.Round(a * 255.0), 0, 255) : 0);
+                        }
+                    }
+            }
+            int rawBpp = fmt == 0x0E ? 4 : 16;
+            long expected = (long)width * height * rawBpp;
+            if (new FileInfo(rawPath).Length != expected)
+                throw new InvalidDataException("Native high-precision output length differs from texel count");
+            Bitmap image = CreateBgraBitmap(preview, width, height);
+            image.Save(Path.Combine(stage, pngName), ImageFormat.Png);
+            using (var check = new Bitmap(Path.Combine(stage, pngName)))
+            {
+                if (!ReadExactBgra(check).Bgra.AsSpan().SequenceEqual(preview))
+                    throw new InvalidDataException($"Layer {layer} PNG readback differs from decoded native texels");
+            }
+            results.Add(new Dictionary<string, object?> {
+                ["layer"] = layer,
+                ["png_file"] = pngName,
+                ["png_sha256"] = HashFile(Path.Combine(stage, pngName)),
+                ["native_decoded_file"] = rawName,
+                ["native_decoded_sha256"] = HashFile(rawPath),
+                ["native_decoded_bytes"] = expected
+            });
+            if (layer == 0) first = image;
+            else image.Dispose();
+        }
+        return (first ?? throw new InvalidDataException("No decoded native array layers"), results);
+    }
+
+    private static Bitmap CreateBgraBitmap(byte[] data, int width, int height)
+    {
+        if (data.LongLength != (long)width * height * 4)
+            throw new InvalidDataException("BGRA pixel length mismatch");
+        var bitmap = new Bitmap(width, height, PixelFormat.Format32bppArgb);
+        var rect = new Rectangle(0, 0, width, height);
+        var locked = bitmap.LockBits(rect, ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+        try
+        {
+            int stride = width * 4;
+            for (int y = 0; y < height; y++)
+                Marshal.Copy(data, y * stride, IntPtr.Add(locked.Scan0, y * locked.Stride), stride);
+        }
+        finally { bitmap.UnlockBits(locked); }
+        return bitmap;
+    }
+
     private static int Main(string[] args)
     {
         if (args.Length is not (2 or 3))
@@ -230,6 +368,8 @@ internal static class Program
                     ["native_variant"] = Convert.ToInt32(type.GetField("FormatVariant")?.GetValue(texture)),
                     ["native_block_height_log2"] = type.GetField("BlockHeightLog2")?.GetValue(texture),
                     ["native_data_bytes"] = (type.GetField("Data")?.GetValue(texture) as byte[])?.Length,
+                    ["native_array_count"] = type.GetField("ArrayCount")?.GetValue(texture),
+                    ["native_mipmap_count"] = type.GetField("MipmapCount")?.GetValue(texture),
                     ["state"] = "UNSUPPORTED"
                 };
                 try
@@ -257,6 +397,17 @@ internal static class Program
                         rec["hdr_rgb32f_file"] = hdrName;
                         rec["hdr_rgb32f_sha256"] = hdrSha;
                         rec["preview_note"] = "PNG is tone-mapped; .rgb32f preserves decoded HDR floats";
+                    }
+                    else if (Convert.ToInt32(type.GetField("FormatType")?.GetValue(texture)) is 0x0E or 0x15 or 0x19)
+                    {
+                        int code = Convert.ToInt32(type.GetField("FormatType")?.GetValue(texture));
+                        int variant = Convert.ToInt32(type.GetField("FormatVariant")?.GetValue(texture));
+                        var decoded = DecodeExtendedFormat(texture, code, variant, width, height, dir, index);
+                        source = decoded.First;
+                        rec["decoder"] = "BnTxx-GOB+nn::gfx native high precision";
+                        rec["array_layers"] = decoded.Layers.Count;
+                        rec["layers"] = decoded.Layers;
+                        rec["precision_note"] = "Packed 10-bit / RGBA float data preserved; PNG is 8-bit preview";
                     }
                     else if (fmt.StartsWith("ASTC", StringComparison.Ordinal) && astcenc is not null)
                     {
