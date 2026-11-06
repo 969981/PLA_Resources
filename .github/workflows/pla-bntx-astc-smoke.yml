@@ -82,3 +82,5 @@ jobs:
             PLA/.pla-work/astc-output/**/texture_*.png
           retention-days: 14
           if-no-files-found: warn
+
+# Sample uses exact SHA-256 pinned external codec release.
