@@ -1,0 +1,138 @@
+name: PLA GFPak native extraction (pkNX / parallel)
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Three real samples or all 678 top-level GFPaks"
+        type: choice
+        options: [samples, full]
+        default: samples
+  push:
+    branches: [feat/pla-gfpak-headless-parallel]
+    paths:
+      - "tools/PLA.GFPak.Cli/**"
+      - "tools/upstream.json"
+      - "scripts/extract_pla_gfpak.py"
+      - "scripts/sync_pla_tools.py"
+      - "tests/test_pla_gfpak_pipeline.py"
+      - ".github/workflows/pla-gfpak-extract.yml"
+  pull_request:
+    paths:
+      - "tools/PLA.GFPak.Cli/**"
+      - "tools/upstream.json"
+      - "scripts/extract_pla_gfpak.py"
+      - "scripts/sync_pla_tools.py"
+      - "tests/test_pla_gfpak_pipeline.py"
+      - ".github/workflows/pla-gfpak-extract.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  real-samples:
+    if: github.event_name != 'workflow_dispatch' || inputs.mode == 'samples'
+    runs-on: windows-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            scripts/
+            tools/PLA.GFPak.Cli/
+            tools/upstream.json
+            tools/deps/oo2core_8_win64.dll
+            tests/
+            v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/archive/pokemon/pm0025_00_00.gfpak
+            v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/archive/appli/battle_menu.gfpak
+            v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/archive/field/resident_release.gfpak
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Synthetic batch tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+      - name: Fetch exact pinned pkNX revision
+        run: python scripts/sync_pla_tools.py --only pkNX
+      - name: Build native headless CLI
+        shell: pwsh
+        run: |
+          $root = Join-Path $env:GITHUB_WORKSPACE ".pla-work/toolsrc/pkNX"
+          dotnet build tools/PLA.GFPak.Cli/PLA.GFPak.Cli.csproj -c Release "-p:PkNxRoot=$root"
+      - name: Extract Pokemon, UI, field packs and validate all members
+        shell: pwsh
+        run: |
+          python scripts/extract_pla_gfpak.py `
+            --source-root "v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1" `
+            --dest "Unpack/v1.1.1/romfs" `
+            --cli "tools/PLA.GFPak.Cli/bin/Release/net10.0/PLA.GFPak.Cli.dll" `
+            --oodle "tools/deps/oo2core_8_win64.dll" `
+            --samples --jobs 3 --hash-threads 2 --strict `
+            --ledger ".pla-work/v1.1.1/gfpak/samples.jsonl"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-gfpak-real-samples
+          path: |
+            .pla-work/v1.1.1/gfpak/samples.jsonl
+            Unpack/v1.1.1/romfs/**/extracted/**
+          if-no-files-found: warn
+          retention-days: 14
+
+  all-packs:
+    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'full'
+    runs-on: windows-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            scripts/
+            tools/PLA.GFPak.Cli/
+            tools/upstream.json
+            tools/deps/oo2core_8_win64.dll
+            v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/archive/
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch exact pinned pkNX revision
+        run: python scripts/sync_pla_tools.py --only pkNX
+      - name: Build native headless CLI
+        shell: pwsh
+        run: |
+          $root = Join-Path $env:GITHUB_WORKSPACE ".pla-work/toolsrc/pkNX"
+          dotnet build tools/PLA.GFPak.Cli/PLA.GFPak.Cli.csproj -c Release "-p:PkNxRoot=$root"
+      - name: Extract and verify deterministic source shard
+        shell: pwsh
+        run: |
+          python scripts/extract_pla_gfpak.py `
+            --source-root "v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1" `
+            --dest "Unpack/v1.1.1/romfs" `
+            --cli "tools/PLA.GFPak.Cli/bin/Release/net10.0/PLA.GFPak.Cli.dll" `
+            --oodle "tools/deps/oo2core_8_win64.dll" `
+            --expected-count 678 --jobs 3 --hash-threads 2 --shard-count 4 `
+            --shard-index ${{ matrix.shard }} --resume --strict `
+            --ledger ".pla-work/v1.1.1/gfpak/shard-${{ matrix.shard }}.jsonl"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-gfpak-shard-${{ matrix.shard }}
+          path: |
+            .pla-work/v1.1.1/gfpak/shard-${{ matrix.shard }}.jsonl
+            Unpack/v1.1.1/romfs/**/extracted/**
+          compression-level: 0
+          if-no-files-found: warn
+          retention-days: 14
