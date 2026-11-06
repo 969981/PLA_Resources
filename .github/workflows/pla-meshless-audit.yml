@@ -1,0 +1,55 @@
+name: PLA native empty-mesh forms audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/pla-astc-trinity-batch]
+    paths:
+      - 'scripts/audit_pla_meshless_models.py'
+      - 'scripts/batch_pla_trinity_gltf.py'
+      - '.github/workflows/pla-meshless-audit.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  verify:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-meshless]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - shard: 0
+            models: pm0549_71_41 pm1002_71_00
+          - shard: 1
+            models: pm0751_71_41
+          - shard: 2
+            models: pm0059_71_41 pm0101_71_41
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts/audit_pla_meshless_models.py
+            scripts/batch_pla_trinity_gltf.py
+            scripts/recover_pla_model_hashes.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-gfpak-extracted-shard-${{ matrix.shard }}
+          repository: 969981/PLA_Resources
+          run-id: 42160235620
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: .pla-work/native
+      - name: Verify original TRMDL byte hashes and native Meshes field 1
+        run: |
+          python scripts/audit_pla_meshless_models.py --root .pla-work/native --models ${{ matrix.models }} --out .pla-work/reports/native-meshless-shard-${{ matrix.shard }}.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-meshless-proof-shard-${{ matrix.shard }}
+          path: .pla-work/reports/
+          if-no-files-found: warn
+          retention-days: 14
