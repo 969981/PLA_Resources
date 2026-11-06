@@ -101,3 +101,5 @@ jobs:
           path: .pla-work/aggregate/format-census.json
           retention-days: 14
           if-no-files-found: warn
+
+# Real-data census is gated by the exact verified extraction run 42160235620.
