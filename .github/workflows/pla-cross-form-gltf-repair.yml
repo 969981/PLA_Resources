@@ -101,3 +101,5 @@ jobs:
             Code/.pla-work/gltf/**
           if-no-files-found: warn
           retention-days: 14
+
+# All 5 forms must have native donor mesh, buffer, skeleton and own special material to pass.
