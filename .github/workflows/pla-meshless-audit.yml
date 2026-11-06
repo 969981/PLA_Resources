@@ -55,3 +55,5 @@ jobs:
           retention-days: 14
 
 # Verifies five special forms have no model Meshes vector in their actual native bytes.
+
+# Run original source-backed 5 meshless variants across 3 shards.
