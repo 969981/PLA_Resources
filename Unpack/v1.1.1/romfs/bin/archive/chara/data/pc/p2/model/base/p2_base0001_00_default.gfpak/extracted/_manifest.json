@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "source": "D:\\a\\PLA_Resources\\PLA_Resources\\v1.1.1\\b38cd4c18831237d85312886f3a377b5_NCA\\1\\bin\\archive\\chara\\data\\pc\\p2\\model\\base\\p2_base0001_00_default.gfpak",
+  "source_size": 4496,
+  "source_sha256": "85fcb2b3d4cbbfec9f3841df221f5b9a1346de47f3fb80313303b85a0e5dddd9",
+  "parser": "pkNX.Containers.GFPack",
+  "max_depth": 2,
+  "archive_count": 1,
+  "extracted_count": 2,
+  "members": [
+    {
+      "path": "entry_00000_BCEC57D3B3463323.bin",
+      "index": 0,
+      "depth": 0,
+      "full_path_hash": "BCEC57D3B3463323",
+      "folder_mappings": [
+        {
+          "folder_hash": "02145ED19C800D64",
+          "filename_hash": "A94CE415188543B6"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 166,
+      "decoded_size": 164,
+      "sha256": "413c293e4f11fb05261d416cf68b695ba5fe054855b45ca53c82768e92c11f94",
+      "magic_hex": "1800000000001200",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00001_348E97D3F6922FE2.bin",
+      "index": 1,
+      "depth": 0,
+      "full_path_hash": "348E97D3F6922FE2",
+      "folder_mappings": [
+        {
+          "folder_hash": "02145ED19C800D64",
+          "filename_hash": "E9DF3C14ABD9620B"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 4149,
+      "decoded_size": 15448,
+      "sha256": "d276ca9195be91717531a1fdae00c9942b1cc3be4fcb7517a6bad70f20585868",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    }
+  ]
+}
