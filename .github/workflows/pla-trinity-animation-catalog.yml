@@ -44,3 +44,5 @@ jobs:
           path: .pla-work/trinity/pla-animation-path-catalog.json
           retention-days: 14
           if-no-files-found: warn
+
+# Extract animation names from game-authored FlatBuffer data, never guesses.
