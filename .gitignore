@@ -17,7 +17,3 @@ __pycache__/
 Unpack/**/_tmp/
 Unpack/**/_cache/
 Unpack/**/.work/
-# never commit locally supplied restricted dependencies
-**/prod.keys
-**/title.keys
-**/oo2core*.dll
