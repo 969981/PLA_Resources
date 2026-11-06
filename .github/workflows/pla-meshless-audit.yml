@@ -53,3 +53,5 @@ jobs:
           path: .pla-work/reports/
           if-no-files-found: warn
           retention-days: 14
+
+# Verifies five special forms have no model Meshes vector in their actual native bytes.
