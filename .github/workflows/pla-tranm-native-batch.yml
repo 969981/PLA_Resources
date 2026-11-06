@@ -82,3 +82,32 @@ jobs:
           if-no-files-found: warn
 
 # Count gate: 4721 + 5187 + 4990 + 5034 = 19932 original SHA-matched TRANM sources.
+
+  coverage:
+    if: always() && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-tranm-batch]'))
+    needs: typed-motion
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts/audit_pla_tranm_native_batch.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pla-tranm-typed-shard-*
+          path: .pla-work/typed-shards
+      - name: Verify all 19932 original SHA-based sources and separate rig helpers from real bones
+        run: |
+          python scripts/audit_pla_tranm_native_batch.py --root .pla-work/typed-shards --out .pla-work/coverage/tranm-typed-full.json --strict
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-tranm-typed-full-coverage
+          path: .pla-work/coverage/tranm-typed-full.json
+          retention-days: 14
+          if-no-files-found: warn
