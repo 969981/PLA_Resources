@@ -9,9 +9,9 @@ internal static class Program
 {
     private static int Main(string[] args)
     {
-        if (args.Length != 2)
+        if (args.Length is not (2 or 3))
         {
-            Console.Error.WriteLine("Usage: PLA.Trinity.Inspect <Pokemon-model.gfpak> <output-json>");
+            Console.Error.WriteLine("Usage: PLA.Trinity.Inspect <Pokemon-model.gfpak> <output-json> [Oodle-DLL]");
             return 2;
         }
         try
@@ -23,6 +23,16 @@ internal static class Program
                 throw new NotSupportedException($"Non-Pokemon PLA GFPak not yet mapped: {stem}");
             if (!File.Exists(source))
                 throw new FileNotFoundException("Original source GFPak missing", source);
+            if (args.Length == 3)
+            {
+                string oodlePath = Path.GetFullPath(args[2]);
+                if (!File.Exists(oodlePath)) throw new FileNotFoundException("Oodle DLL absent", oodlePath);
+                System.Runtime.InteropServices.NativeLibrary.SetDllImportResolver(
+                    typeof(GFPack).Assembly, (name, _, _) =>
+                        name == Oodle.OodleLibraryPath
+                        ? System.Runtime.InteropServices.NativeLibrary.Load(oodlePath)
+                        : IntPtr.Zero);
+            }
             byte[] bytes = File.ReadAllBytes(source);
             if (!bytes.AsSpan().StartsWith("GFLXPACK"u8))
                 throw new InvalidDataException("Invalid native GFPak magic");
