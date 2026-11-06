@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "stage": "PLA_v1.1.1_gfpak_format_census",
+  "source_run_id": 42160235620,
+  "original_archives": 678,
+  "expected_archives": 678,
+  "member_count": 102452,
+  "member_bytes": 7331069407,
+  "states": {
+    "VERIFIED": 102452
+  },
+  "formats": {
+    "flatbuffer_candidate": 48710,
+    "unknown": 41698,
+    "bntx": 11903,
+    "sarc": 140,
+    "ahtb": 1
+  },
+  "families": {
+    "container": 140,
+    "structured": 48710,
+    "table": 1,
+    "texture": 11903,
+    "unknown": 41698
+  },
+  "unknown_examples": [
+    {
+      "source_gfpak": "bin/archive/appli/battle_menu_ita.gfpak",
+      "member_path": "entry_00007_9AB916085B89F54D.bin",
+      "size_bytes": 46376,
+      "magic_hex": "040000001C4FFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/battle_menu_ita.gfpak",
+      "member_path": "entry_00012_BFE262B70C8D3B07.bin",
+      "size_bytes": 4076,
+      "magic_hex": "04000000D8F2FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/battle_resident.gfpak",
+      "member_path": "entry_00003_5092D857D1749412.bin",
+      "size_bytes": 23548,
+      "magic_hex": "0400000004A8FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/battle_resident.gfpak",
+      "member_path": "entry_00005_06EC69245A74A475.bin",
+      "size_bytes": 37616,
+      "magic_hex": "040000003071FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/battle_resident.gfpak",
+      "member_path": "entry_00007_04290ACDC4FAAFC6.bin",
+      "size_bytes": 63240,
+      "magic_hex": "04000000000DFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/battle_resident.gfpak",
+      "member_path": "entry_00009_BFE262B70C8D3B07.bin",
+      "size_bytes": 4076,
+      "magic_hex": "04000000D8F2FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/pause_menu.gfpak",
+      "member_path": "entry_00001_C71FBB1583ED5C8A.bin",
+      "size_bytes": 49252,
+      "magic_hex": "040000007045FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/pause_menu.gfpak",
+      "member_path": "entry_00003_663EF71A2B70C09F.bin",
+      "size_bytes": 2764,
+      "magic_hex": "0400000030F9FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/pause_menu.gfpak",
+      "member_path": "entry_00005_CBD411098BB58A5B.bin",
+      "size_bytes": 8804,
+      "magic_hex": "04000000ACE1FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/pause_menu.gfpak",
+      "member_path": "entry_00007_03924058C16CAABE.bin",
+      "size_bytes": 21804,
+      "magic_hex": "0400000084AFFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/ai/ai.gfpak",
+      "member_path": "entry_00056_98DD6C45F490373A.bin",
+      "size_bytes": 1152,
+      "magic_hex": "040000002EFDFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/ai/ai.gfpak",
+      "member_path": "entry_00057_AD73AF1EFCFEFB9C.bin",
+      "size_bytes": 2184,
+      "magic_hex": "04000000FAFAFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/ai/ai.gfpak",
+      "member_path": "entry_00058_1FE70680D1CAC042.bin",
+      "size_bytes": 1736,
+      "magic_hex": "0400000072FDFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/ai/ai.gfpak",
+      "member_path": "entry_00059_21E1404F0FBA4483.bin",
+      "size_bytes": 1888,
+      "magic_hex": "040000001EFDFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/ai/ai.gfpak",
+      "member_path": "entry_00060_93D0618470E01EF9.bin",
+      "size_bytes": 1720,
+      "magic_hex": "040000005EFDFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/ai/ai.gfpak",
+      "member_path": "entry_00061_43B8E8CCF31DDA57.bin",
+      "size_bytes": 1220,
+      "magic_hex": "040000006AFDFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/ai/ai.gfpak",
+      "member_path": "entry_00065_CAE2EB40E5BB970B.bin",
+      "size_bytes": 5804,
+      "magic_hex": "04000000C2F5FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/ai/ai.gfpak",
+      "member_path": "entry_00066_808784C6ACC7A907.bin",
+      "size_bytes": 6532,
+      "magic_hex": "040000005EF5FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/ai/ai.gfpak",
+      "member_path": "entry_00067_8EDD680B183C57FA.bin",
+      "size_bytes": 6468,
+      "magic_hex": "040000006AF5FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/ai/ai.gfpak",
+      "member_path": "entry_00068_9866C8236FD86606.bin",
+      "size_bytes": 12096,
+      "magic_hex": "040000005ED9FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/battle_menu_spa.gfpak",
+      "member_path": "entry_00007_9AB916085B89F54D.bin",
+      "size_bytes": 46376,
+      "magic_hex": "040000001C4FFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/battle_menu_spa.gfpak",
+      "member_path": "entry_00012_BFE262B70C8D3B07.bin",
+      "size_bytes": 4076,
+      "magic_hex": "04000000D8F2FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/resident_hud_arc00.gfpak",
+      "member_path": "entry_00001_D649475A7079CDBB.bin",
+      "size_bytes": 8416,
+      "magic_hex": "0400000090E0FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/resident_hud_arc00.gfpak",
+      "member_path": "entry_00003_49632F696D494EDC.bin",
+      "size_bytes": 17460,
+      "magic_hex": "040000003CBEFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/resident_hud_arc00.gfpak",
+      "member_path": "entry_00005_D34E155BEE9ED619.bin",
+      "size_bytes": 7320,
+      "magic_hex": "0400000050E6FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/resident_hud_arc00.gfpak",
+      "member_path": "entry_00007_790B56DD9BE57EAA.bin",
+      "size_bytes": 4340,
+      "magic_hex": "0400000070F0FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/resident_hud_arc00.gfpak",
+      "member_path": "entry_00009_AB6C71581531032A.bin",
+      "size_bytes": 102436,
+      "magic_hex": "040000008C72FEFF"
+    },
+    {
+      "source_gfpak": "bin/archive/chara/data/tr/tr0003_00_ouji.gfpak",
+      "member_path": "entry_00017_3C0852837F6E0EA4.bin",
+      "size_bytes": 10172,
+      "magic_hex": "0400000078DCFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/chara/data/tr/tr0003_00_ouji.gfpak",
+      "member_path": "entry_00028_FEA27262A1EDC2BE.bin",
+      "size_bytes": 6200,
+      "magic_hex": "0400000004EBFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/chara/data/tr/tr0003_00_ouji.gfpak",
+      "member_path": "entry_00030_5C0E40F034A5A934.bin",
+      "size_bytes": 708,
+      "magic_hex": "0400000092FDFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/battle_menu.gfpak",
+      "member_path": "entry_00007_9AB916085B89F54D.bin",
+      "size_bytes": 46376,
+      "magic_hex": "040000001C4FFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/battle_menu.gfpak",
+      "member_path": "entry_00012_BFE262B70C8D3B07.bin",
+      "size_bytes": 4076,
+      "magic_hex": "04000000D8F2FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/battle_menu_eng.gfpak",
+      "member_path": "entry_00007_9AB916085B89F54D.bin",
+      "size_bytes": 46376,
+      "magic_hex": "040000001C4FFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/battle_menu_eng.gfpak",
+      "member_path": "entry_00012_BFE262B70C8D3B07.bin",
+      "size_bytes": 4076,
+      "magic_hex": "04000000D8F2FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/battle_menu_sch.gfpak",
+      "member_path": "entry_00007_9AB916085B89F54D.bin",
+      "size_bytes": 46376,
+      "magic_hex": "040000001C4FFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/battle_menu_sch.gfpak",
+      "member_path": "entry_00012_BFE262B70C8D3B07.bin",
+      "size_bytes": 4076,
+      "magic_hex": "04000000D8F2FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/battle_menu_tch.gfpak",
+      "member_path": "entry_00007_9AB916085B89F54D.bin",
+      "size_bytes": 46376,
+      "magic_hex": "040000001C4FFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/appli/battle_menu_tch.gfpak",
+      "member_path": "entry_00012_BFE262B70C8D3B07.bin",
+      "size_bytes": 4076,
+      "magic_hex": "04000000D8F2FFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/chara/data/pc/dressup_motion.gfpak",
+      "member_path": "entry_00000_DEC0789E79D1891C.bin",
+      "size_bytes": 796,
+      "magic_hex": "040000006EFDFFFF"
+    },
+    {
+      "source_gfpak": "bin/archive/chara/data/pc/dressup_motion.gfpak",
+      "member_path": "entry_00002_DEC06C9E79D174B8.bin",
+      "size_bytes": 4988,
+      "magic_hex": "04000000AAF9FFFF"
+    }
+  ],
+  "all_native_member_sha256_verified": true,
+  "complete": true
+}
