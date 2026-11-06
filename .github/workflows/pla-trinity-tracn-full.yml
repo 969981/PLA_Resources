@@ -58,3 +58,5 @@ jobs:
             .pla-work/metadata/tracn-shard-${{ matrix.shard }}.json
           retention-days: 14
           if-no-files-found: warn
+
+# Four native source shard reference counts: 89+95+94+92=370.
