@@ -16,6 +16,7 @@ on:
       - "scripts/extract_pla_gfpak.py"
       - "scripts/sync_pla_tools.py"
       - "tests/test_pla_gfpak_pipeline.py"
+      - "scripts/audit_pla_gfpak_coverage.py"
       - ".github/workflows/pla-gfpak-extract.yml"
   pull_request:
     paths:
@@ -129,10 +130,42 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: pla-gfpak-shard-${{ matrix.shard }}
-          path: |
-            .pla-work/v1.1.1/gfpak/shard-${{ matrix.shard }}.jsonl
-            Unpack/v1.1.1/romfs/**/extracted/**
+          name: pla-gfpak-ledger-shard-${{ matrix.shard }}
+          path: .pla-work/v1.1.1/gfpak/shard-${{ matrix.shard }}.jsonl
+          if-no-files-found: warn
+          retention-days: 14
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-gfpak-extracted-shard-${{ matrix.shard }}
+          path: Unpack/v1.1.1/romfs/**/extracted/**
           compression-level: 0
+          if-no-files-found: warn
+          retention-days: 14
+
+  audit-coverage:
+    if: always() && github.event_name == 'workflow_dispatch' && inputs.mode == 'full'
+    needs: [all-packs]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            scripts/audit_pla_gfpak_coverage.py
+            PLA_1.1.1_files.csv
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pla-gfpak-ledger-shard-*
+          merge-multiple: true
+          path: .pla-work/v1.1.1/gfpak
+      - name: Reconcile all 678 originals and report incomplete shards
+        run: python scripts/audit_pla_gfpak_coverage.py --inventory PLA_1.1.1_files.csv --ledger .pla-work/v1.1.1/gfpak/shard-0.jsonl .pla-work/v1.1.1/gfpak/shard-1.jsonl .pla-work/v1.1.1/gfpak/shard-2.jsonl .pla-work/v1.1.1/gfpak/shard-3.jsonl --expected 678 --out .pla-work/v1.1.1/gfpak/coverage.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-gfpak-coverage
+          path: .pla-work/v1.1.1/gfpak/coverage.json
           if-no-files-found: warn
           retention-days: 14
