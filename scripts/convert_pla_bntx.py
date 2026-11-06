@@ -69,6 +69,7 @@ def main()->int:
  p.add_argument('--dotnet',default='dotnet')
  p.add_argument('--jobs',type=int,default=min(os.cpu_count() or 2,3))
  p.add_argument('--limit',type=int,default=0)
+ p.add_argument('--expected-bntx',type=int)
  p.add_argument('--timeout',type=int,default=300)
  p.add_argument('--ledger',type=Path,required=True)
  p.add_argument('--require-found',action='store_true')
@@ -77,6 +78,9 @@ def main()->int:
  if a.jobs<1 or a.limit<0 or a.timeout<1:p.error('invalid jobs,limit,timeout')
  if not a.cli.is_file():p.error('compiled CLI absent')
  files=detect(a.root.resolve())
+ if a.expected_bntx is not None and len(files)!=a.expected_bntx:
+  print(f'BNTX census mismatch: discovered={len(files)} expected={a.expected_bntx}')
+  return 1
  if a.limit: files=files[:a.limit]
  a.ledger.parent.mkdir(parents=True,exist_ok=True)
  states={}
