@@ -58,3 +58,5 @@ jobs:
           path: .pla-work/verified-motion/
           retention-days: 14
           if-no-files-found: warn
+
+# Native motion census is SHA- and FNV64-grounded, explicit duplicate-reference accounting.
