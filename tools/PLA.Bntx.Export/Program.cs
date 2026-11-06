@@ -80,6 +80,100 @@ internal static class Program
         }
     }
 
+    // Decode native BNTX BC6H GOB-tiled 4x4 blocks into linear float32 RGB.
+    // A preview PNG is NOT a lossless HDR representation. The .rgb32f file is.
+    private static Bitmap DecodeBC6(
+        Assembly assembly, object texture, string stage, int index,
+        int width, int height, int formatVariant, out string hdrName, out string hdrHash)
+    {
+        if (formatVariant is not (0x01 or 0x02 or 0x05 or 0x0A))
+            throw new NotSupportedException($"BC6H variant 0x{formatVariant:X2} is not mapped");
+        bool signed = formatVariant is 0x02 or 0x05;
+        var type = texture.GetType();
+        byte[] source = (byte[])(type.GetField("Data")?.GetValue(texture)
+            ?? throw new InvalidDataException("Missing BC6H block data"));
+        int log2 = (int)(type.GetField("BlockHeightLog2")?.GetValue(texture) ?? -1);
+        if (log2 is < 0 or > 5)
+            throw new InvalidDataException($"BC6H native block height exponent {log2} out of bounds");
+        int bxCount = checked((width + 3) / 4), byCount = checked((height + 3) / 4);
+        var swizzleType = assembly.GetType("BnTxx.BlockLinearSwizzle", throwOnError: true)!;
+        object swizzle = Activator.CreateInstance(swizzleType,
+            BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic,
+            binder: null, args: [bxCount, 16, 1 << log2], culture: null)
+            ?? throw new InvalidDataException("BC6H native GOB mapping unavailable");
+        var getOffset = swizzleType.GetMethod("GetSwizzleOffset",
+            BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+            ?? throw new MissingMethodException("BlockLinearSwizzle.GetSwizzleOffset");
+        byte[] blocks = new byte[checked(bxCount * byCount * 16)];
+        for (int y = 0; y < byCount; y++)
+        {
+            for (int x = 0; x < bxCount; x++)
+            {
+                int sourceOffset = (int)(getOffset.Invoke(swizzle, [x, y])
+                    ?? throw new InvalidDataException("Null native block offset"));
+                if (sourceOffset < 0 || sourceOffset + 16 > source.Length)
+                    throw new InvalidDataException($"BC6H block {x},{y} outside native byte span");
+                Buffer.BlockCopy(source, sourceOffset, blocks, (y * bxCount + x) * 16, 16);
+            }
+        }
+        int paddedWidth = checked(bxCount * 4), paddedHeight = checked(byCount * 4);
+        var codec = signed ? BCnEncoder.Shared.CompressionFormat.Bc6S
+                           : BCnEncoder.Shared.CompressionFormat.Bc6U;
+        var floats = new BCnEncoder.Decoder.BcDecoder()
+            .DecodeRawHdr(blocks, paddedWidth, paddedHeight, codec);
+        if (floats.Length != paddedWidth * paddedHeight)
+            throw new InvalidDataException("BC6H HDR texel count mismatch");
+
+        byte[] preview = new byte[checked(width * height * 4)];
+        hdrName = $"texture_{index:D4}.rgb32f";
+        string rawPath = Path.Combine(stage, hdrName);
+        using (var writer = new BinaryWriter(File.Create(rawPath)))
+        {
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    var color = floats[y * paddedWidth + x];
+                    // Bitwise-preserving float32 RGB, raster order; PNG is tonemapped preview only.
+                    writer.Write(color.r);
+                    writer.Write(color.g);
+                    writer.Write(color.b);
+                    int dest = (y * width + x) * 4;
+                    preview[dest + 0] = ToneMap(color.b);
+                    preview[dest + 1] = ToneMap(color.g);
+                    preview[dest + 2] = ToneMap(color.r);
+                    preview[dest + 3] = 255;
+                }
+            }
+        }
+        if (new FileInfo(rawPath).Length != (long)width * height * 12)
+            throw new InvalidDataException("BC6H HDR float32 output byte count mismatch");
+        hdrHash = HashFile(rawPath);
+        using (var check = File.OpenRead(rawPath))
+        {
+            if (SHA256.HashData(check).Length != 32)
+                throw new InvalidDataException("BC6H file readback failed");
+        }
+        var bitmap = new Bitmap(width, height, PixelFormat.Format32bppArgb);
+        var rect = new Rectangle(0, 0, width, height);
+        var locked = bitmap.LockBits(rect, ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
+        try
+        {
+            int row = width * 4;
+            for (int y = 0; y < height; y++)
+                Marshal.Copy(preview, y * row, IntPtr.Add(locked.Scan0, y * locked.Stride), row);
+        }
+        finally { bitmap.UnlockBits(locked); }
+        return bitmap;
+    }
+
+    private static byte ToneMap(float color)
+    {
+        if (!float.IsFinite(color) || color <= 0) return 0;
+        double linear = color / (1.0 + color);
+        return (byte)Math.Clamp((int)Math.Round(255.0 * Math.Pow(linear, 1.0 / 2.2)), 0, 255);
+    }
+
     private static int Main(string[] args)
     {
         if (args.Length is not (2 or 3))
@@ -133,6 +227,9 @@ internal static class Program
                 var rec = new Dictionary<string, object?> {
                     ["index"] = index, ["original_name"] = name, ["native_format"] = fmt,
                     ["width"] = width, ["height"] = height,
+                    ["native_variant"] = Convert.ToInt32(type.GetField("FormatVariant")?.GetValue(texture)),
+                    ["native_block_height_log2"] = type.GetField("BlockHeightLog2")?.GetValue(texture),
+                    ["native_data_bytes"] = (type.GetField("Data")?.GetValue(texture) as byte[])?.Length,
                     ["state"] = "UNSUPPORTED"
                 };
                 try
@@ -149,6 +246,17 @@ internal static class Program
                     {
                         source = native;
                         rec["decoder"] = "BnTxx";
+                    }
+                    else if (Convert.ToInt32(type.GetField("FormatType")?.GetValue(texture)) == 0x1F)
+                    {
+                        int variant = Convert.ToInt32(type.GetField("FormatVariant")?.GetValue(texture));
+                        source = DecodeBC6(assembly, texture, dir, index,
+                            width, height, variant, out string hdrName, out string hdrSha);
+                        rec["decoder"] = "BCnEncoder.Net/BC6H_HDR";
+                        rec["native_variant"] = variant;
+                        rec["hdr_rgb32f_file"] = hdrName;
+                        rec["hdr_rgb32f_sha256"] = hdrSha;
+                        rec["preview_note"] = "PNG is tone-mapped; .rgb32f preserves decoded HDR floats";
                     }
                     else if (fmt.StartsWith("ASTC", StringComparison.Ordinal) && astcenc is not null)
                     {
