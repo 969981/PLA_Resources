@@ -81,3 +81,32 @@ jobs:
           if-no-files-found: warn
 
 # Four original-shard totals: 4631+5058+4810+4947=19446 TRACM resources.
+
+  coverage:
+    if: always() && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-tracm-batch]'))
+    needs: parse
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts/audit_pla_tracm_native_batch.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pla-tracm-typed-shard-*
+          path: .pla-work/shards
+      - name: Validate all 19446 independent typed source and SHA evidence
+        run: |
+          python scripts/audit_pla_tracm_native_batch.py --root .pla-work/shards --out .pla-work/coverage/tracm-coverage.json --strict
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-tracm-typed-full-coverage
+          path: .pla-work/coverage/tracm-coverage.json
+          retention-days: 14
+          if-no-files-found: warn
