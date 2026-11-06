@@ -1,0 +1,303 @@
+﻿{
+    "Game":  "Pokemon Legends: Arceus",
+    "Version":  "1.1.1",
+    "SourceMode":  "FileSystem",
+    "Source":  "J:\\ROMS\\Nintendo Switch\\Pokemon\\Pokemon Legends Arceus\\v1.1.1",
+    "GeneratedAt":  "2026-11-06T08:49:02.8632924+08:00",
+    "FileCount":  19102,
+    "NcaResourceFileCount":  19101,
+    "DirectoryCount":  1219,
+    "TotalBytes":  6468079628,
+    "HashEnabled":  false,
+    "ScanErrorCount":  0,
+    "ScanComplete":  true,
+    "SectionCounts":  [
+                          {
+                              "Section":  "ExeFS",
+                              "Count":  6
+                          },
+                          {
+                              "Section":  "Other",
+                              "Count":  1
+                          },
+                          {
+                              "Section":  "RomFS",
+                              "Count":  19095
+                          }
+                      ],
+    "TopModules":  [
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "message",
+                           "Count":  6557,
+                           "SizeBytes":  41562800
+                       },
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "demo",
+                           "Count":  2773,
+                           "SizeBytes":  162681540
+                       },
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "appli",
+                           "Count":  2262,
+                           "SizeBytes":  765060598
+                       },
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "effect",
+                           "Count":  2108,
+                           "SizeBytes":  2653204920
+                       },
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "chara",
+                           "Count":  1603,
+                           "SizeBytes":  70358180
+                       },
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "haxe",
+                           "Count":  874,
+                           "SizeBytes":  99792585
+                       },
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "pml",
+                           "Count":  864,
+                           "SizeBytes":  665264
+                       },
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "archive",
+                           "Count":  679,
+                           "SizeBytes":  1700922152
+                       },
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "field",
+                           "Count":  508,
+                           "SizeBytes":  118764892
+                       },
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "trainer",
+                           "Count":  377,
+                           "SizeBytes":  166184
+                       },
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "event",
+                           "Count":  227,
+                           "SizeBytes":  2011064
+                       },
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "misc",
+                           "Count":  109,
+                           "SizeBytes":  746540
+                       },
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "system_resource",
+                           "Count":  74,
+                           "SizeBytes":  23297488
+                       },
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "sound",
+                           "Count":  36,
+                           "SizeBytes":  771351080
+                       },
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "pokemon",
+                           "Count":  21,
+                           "SizeBytes":  2313384
+                       },
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "capture",
+                           "Count":  11,
+                           "SizeBytes":  22216
+                       },
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "flagwork",
+                           "Count":  7,
+                           "SizeBytes":  45925
+                       },
+                       {
+                           "Section":  "ExeFS",
+                           "Module":  "ExeFS",
+                           "Count":  6,
+                           "SizeBytes":  45976034
+                       },
+                       {
+                           "Section":  "RomFS",
+                           "Module":  "font",
+                           "Count":  5,
+                           "SizeBytes":  7152704
+                       },
+                       {
+                           "Section":  "Other",
+                           "Module":  "Other",
+                           "Count":  1,
+                           "SizeBytes":  1984078
+                       }
+                   ],
+    "TopExtensions":  [
+                          {
+                              "Extension":  ".dat",
+                              "Count":  3339,
+                              "SizeBytes":  29298804
+                          },
+                          {
+                              "Extension":  ".tbl",
+                              "Count":  3227,
+                              "SizeBytes":  12392765
+                          },
+                          {
+                              "Extension":  ".bntx",
+                              "Count":  2969,
+                              "SizeBytes":  799668528
+                          },
+                          {
+                              "Extension":  ".ptcl",
+                              "Count":  1748,
+                              "SizeBytes":  2651902688
+                          },
+                          {
+                              "Extension":  ".tranm",
+                              "Count":  1522,
+                              "SizeBytes":  19544648
+                          },
+                          {
+                              "Extension":  ".bin",
+                              "Count":  914,
+                              "SizeBytes":  20911646
+                          },
+                          {
+                              "Extension":  ".blua",
+                              "Count":  874,
+                              "SizeBytes":  99792585
+                          },
+                          {
+                              "Extension":  ".wazabin",
+                              "Count":  851,
+                              "SizeBytes":  122588
+                          },
+                          {
+                              "Extension":  ".gfpak",
+                              "Count":  678,
+                              "SizeBytes":  1700039584
+                          },
+                          {
+                              "Extension":  ".wbin",
+                              "Count":  304,
+                              "SizeBytes":  1001932
+                          },
+                          {
+                              "Extension":  ".trmbf",
+                              "Count":  281,
+                              "SizeBytes":  25706868
+                          },
+                          {
+                              "Extension":  ".trmsh",
+                              "Count":  281,
+                              "SizeBytes":  206988
+                          },
+                          {
+                              "Extension":  ".arc",
+                              "Count":  257,
+                              "SizeBytes":  250716592
+                          },
+                          {
+                              "Extension":  ".trmtr",
+                              "Count":  253,
+                              "SizeBytes":  410412
+                          },
+                          {
+                              "Extension":  ".trmdl",
+                              "Count":  253,
+                              "SizeBytes":  53952
+                          },
+                          {
+                              "Extension":  ".trskl",
+                              "Count":  199,
+                              "SizeBytes":  189444
+                          },
+                          {
+                              "Extension":  ".trcma",
+                              "Count":  147,
+                              "SizeBytes":  1071628
+                          },
+                          {
+                              "Extension":  ".tracp",
+                              "Count":  126,
+                              "SizeBytes":  19848
+                          },
+                          {
+                              "Extension":  ".tracr",
+                              "Count":  126,
+                              "SizeBytes":  135348
+                          },
+                          {
+                              "Extension":  ".tracn",
+                              "Count":  126,
+                              "SizeBytes":  40032
+                          },
+                          {
+                              "Extension":  ".tracs",
+                              "Count":  126,
+                              "SizeBytes":  645084
+                          },
+                          {
+                              "Extension":  ".tracl",
+                              "Count":  126,
+                              "SizeBytes":  141812
+                          },
+                          {
+                              "Extension":  ".hkx",
+                              "Count":  80,
+                              "SizeBytes":  2370020
+                          },
+                          {
+                              "Extension":  ".bnsh",
+                              "Count":  42,
+                              "SizeBytes":  21839368
+                          },
+                          {
+                              "Extension":  ".trspb",
+                              "Count":  35,
+                              "SizeBytes":  3224
+                          },
+                          {
+                              "Extension":  ".tracm",
+                              "Count":  35,
+                              "SizeBytes":  1847344
+                          },
+                          {
+                              "Extension":  ".trcol",
+                              "Count":  31,
+                              "SizeBytes":  122076
+                          },
+                          {
+                              "Extension":  ".bnk",
+                              "Count":  31,
+                              "SizeBytes":  97087748
+                          },
+                          {
+                              "Extension":  ".trsha",
+                              "Count":  27,
+                              "SizeBytes":  51488
+                          },
+                          {
+                              "Extension":  ".traef",
+                              "Count":  25,
+                              "SizeBytes":  15808
+                          }
+                      ],
+    "Explanation":  "TreeText counts represent listed paths only; no byte sizes or disk verification."
+}
