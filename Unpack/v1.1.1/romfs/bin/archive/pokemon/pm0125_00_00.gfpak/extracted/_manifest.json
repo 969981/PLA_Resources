@@ -1,0 +1,3299 @@
+{
+  "schema_version": 1,
+  "source": "D:\\a\\PLA_Resources\\PLA_Resources\\v1.1.1\\b38cd4c18831237d85312886f3a377b5_NCA\\1\\bin\\archive\\pokemon\\pm0125_00_00.gfpak",
+  "source_size": 1490720,
+  "source_sha256": "15f85a2c781466e64fc6f97d7d6b7c1945f62c877f2970906e889370373cd4b9",
+  "parser": "pkNX.Containers.GFPack",
+  "max_depth": 2,
+  "archive_count": 1,
+  "extracted_count": 173,
+  "members": [
+    {
+      "path": "entry_00000_D0799CCC12152F74.bin",
+      "index": 0,
+      "depth": 0,
+      "full_path_hash": "D0799CCC12152F74",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "F6EB597AC2D2D5B5"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 946,
+      "decoded_size": 4624,
+      "sha256": "1afcaf1e8d0ae577cc8d1affc0f2d4875e810e919975a6948ef5bce8e343db94",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00001_D068A0CC1206C30D.bin",
+      "index": 1,
+      "depth": 0,
+      "full_path_hash": "D068A0CC1206C30D",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "F6C5357AC2B1C94C"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 4134,
+      "decoded_size": 14264,
+      "sha256": "732e5ae593a9ba4ec34602f5f49e25a17e4480f72ad1f44e40975eac7ab88fa8",
+      "magic_hex": "0C00000008000E00",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00002_2B5B0354DF2FFDF8.bin",
+      "index": 2,
+      "depth": 0,
+      "full_path_hash": "2B5B0354DF2FFDF8",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "4F273A21B4627EFB"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 190,
+      "decoded_size": 288,
+      "sha256": "1c3487b51b577da32af6454f92d7ef384a4209579ddb5a440b7ad23f85304abe",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00003_2B652754DF388FA9.bin",
+      "index": 3,
+      "depth": 0,
+      "full_path_hash": "2B652754DF388FA9",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "4F021E21B443332A"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 7423,
+      "decoded_size": 12800,
+      "sha256": "d4ff6444a0dce1b9a7737adbe47e99ff5e9c875c045ff90a4cb02df9d5b467b0",
+      "magic_hex": "0400000068CFFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00004_3B64AAA95D9D6E16.bin",
+      "index": 4,
+      "depth": 0,
+      "full_path_hash": "3B64AAA95D9D6E16",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "6C8B0080A9FFC337"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 726,
+      "decoded_size": 2144,
+      "sha256": "7b9a2c26985151a6757c7507c04702bfeb88796678e1d55bf1be242447969800",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00005_3B5EB1A95D990E4D.bin",
+      "index": 5,
+      "depth": 0,
+      "full_path_hash": "3B5EB1A95D990E4D",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "6C9F1980AA1096BC"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 371,
+      "decoded_size": 712,
+      "sha256": "f7a78aeedbfae08384952c56d810fa71ff206e66e4395a74f05ec00a634d1e10",
+      "magic_hex": "040000008EFDFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00006_3B6FA6A95DA76ECF.bin",
+      "index": 6,
+      "depth": 0,
+      "full_path_hash": "3B6FA6A95DA76ECF",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "6CB72480AA253B4E"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 15840,
+      "decoded_size": 24836,
+      "sha256": "f69e972dc09dc0a8d35a97d8f1fdbb4372c6db6267e097f6a7121375056f9ff7",
+      "magic_hex": "0400000008A1FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00007_6202AB1D7AC35413.bin",
+      "index": 7,
+      "depth": 0,
+      "full_path_hash": "6202AB1D7AC35413",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "1F9D3C742F756C1E"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 727,
+      "decoded_size": 2144,
+      "sha256": "84dbd625b9baa60bdf0582461bd1bae71cd5c199fdbf8e626e4aaa2badfe1f6c",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00008_61FBA41D7ABD2980.bin",
+      "index": 8,
+      "depth": 0,
+      "full_path_hash": "61FBA41D7ABD2980",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "1F9633742F6F3E25"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 365,
+      "decoded_size": 712,
+      "sha256": "80789d1e0fe8cd31204b28bf88452853b2e5ab08e64c073bc45cebb679cfb588",
+      "magic_hex": "040000008EFDFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00009_6213AF1D7AD1CE12.bin",
+      "index": 9,
+      "depth": 0,
+      "full_path_hash": "6213AF1D7AD1CE12",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "1F7058742F4EADC7"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 17543,
+      "decoded_size": 25832,
+      "sha256": "5b541c044c5f7e70a65252c325e0ad99d8b49a6f0950d8a5002693c5a02d8ba5",
+      "magic_hex": "04000000209DFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00010_6A78E4180726B096.bin",
+      "index": 10,
+      "depth": 0,
+      "full_path_hash": "6A78E4180726B096",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "7AE5C4AD6FB60A9F"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 190,
+      "decoded_size": 288,
+      "sha256": "b4f42007a8095c333897162cb5eaf6a3b46ccc4b01be846957cf80791cca9b8d",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00011_6A72EB18072250CD.bin",
+      "index": 11,
+      "depth": 0,
+      "full_path_hash": "6A72EB18072250CD",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "7AF9EDAD6FC6F954"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 362,
+      "decoded_size": 712,
+      "sha256": "13a61cbb61134f38f8fa53c59aaa824fd38efeed0aa0009aa84e149d521aefd9",
+      "magic_hex": "040000008EFDFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00012_6A83E0180730B14F.bin",
+      "index": 12,
+      "depth": 0,
+      "full_path_hash": "6A83E0180730B14F",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "7ADAC8AD6FAC09E6"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 10899,
+      "decoded_size": 17196,
+      "sha256": "e91945187ed291b37d6308adc648711bb5691e3fac87d598a59e1a3938b6f906",
+      "magic_hex": "04000000C8C1FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00013_E7BCD3E9006F49B8.bin",
+      "index": 13,
+      "depth": 0,
+      "full_path_hash": "E7BCD3E9006F49B8",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "26B0A67DDFF8526F"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 190,
+      "decoded_size": 288,
+      "sha256": "b4f42007a8095c333897162cb5eaf6a3b46ccc4b01be846957cf80791cca9b8d",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00014_E7A7EEE9005D1B8F.bin",
+      "index": 14,
+      "depth": 0,
+      "full_path_hash": "E7A7EEE9005D1B8F",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "26C48F7DE008D464"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 371,
+      "decoded_size": 712,
+      "sha256": "35a2b43625c54d8f5c5ac8611aef5968fbb687b9180274b0989eaca4cc52c3ed",
+      "magic_hex": "040000008EFDFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00015_E7C6F7E90077DB69.bin",
+      "index": 15,
+      "depth": 0,
+      "full_path_hash": "E7C6F7E90077DB69",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "26A6AA7DDFF004B6"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 11000,
+      "decoded_size": 17252,
+      "sha256": "0fd6d2ad5e392812edb4bae007e66895243b2cca5dfedb32e8682dd38149a250",
+      "magic_hex": "04000000A0C1FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00016_B103FCBA6596880A.bin",
+      "index": 16,
+      "depth": 0,
+      "full_path_hash": "B103FCBA6596880A",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "A4B6698DD5241335"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 190,
+      "decoded_size": 288,
+      "sha256": "cfc1dd1b5077a7be563981127c0c866d209486dcca734af35326604142d27099",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00017_B11813BA65A75829.bin",
+      "index": 17,
+      "depth": 0,
+      "full_path_hash": "B11813BA65A75829",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "A4A14E8DD511894A"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 365,
+      "decoded_size": 712,
+      "sha256": "5d0a67d1d25a19ead3cfe69a5badb48a0d133af8e2c8b56ae098e206867d9bd4",
+      "magic_hex": "040000008EFDFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00018_B12918BA65B5D3DB.bin",
+      "index": 18,
+      "depth": 0,
+      "full_path_hash": "B12918BA65B5D3DB",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "A490458DD50306CC"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 8264,
+      "decoded_size": 13360,
+      "sha256": "8cef89b0754a188971a28b4d846550eb96b2ea07705df953a2129d8e6eb1894a",
+      "magic_hex": "040000006CCFFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00019_B2EA22481C27CC52.bin",
+      "index": 19,
+      "depth": 0,
+      "full_path_hash": "B2EA22481C27CC52",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "6C22F0CD1E431EF7"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 553,
+      "decoded_size": 1424,
+      "sha256": "75fdfe031d97ed9890efe666678264b7000478cef0d8d792425b2782cab355bb",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00020_B2FE49481C38B7A1.bin",
+      "index": 20,
+      "depth": 0,
+      "full_path_hash": "B2FE49481C38B7A1",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "6C3709CD1E53F27C"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 327,
+      "decoded_size": 512,
+      "sha256": "21f042653744237b5128e4625e400b760cc205ef84113dcd56fcb6e62bf65d9d",
+      "magic_hex": "040000005EFEFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00021_B2D91E481C195253.bin",
+      "index": 21,
+      "depth": 0,
+      "full_path_hash": "B2D91E481C195253",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "6C4F14CD1E68970E"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 3796,
+      "decoded_size": 8880,
+      "sha256": "2e5408d4919d88cc9f3f501494fd5c2cb56c122558cf0fa4b6f88da300ff40cf",
+      "magic_hex": "04000000E8E2FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00022_DCCAB697AE2334CD.bin",
+      "index": 22,
+      "depth": 0,
+      "full_path_hash": "DCCAB697AE2334CD",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "0E5876EAF391D25A"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 556,
+      "decoded_size": 1420,
+      "sha256": "e7b04aab678aba124a6867f0935b60200286a0e4aa1ca953466194df0aef2708",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00023_DCDBB297AE31A134.bin",
+      "index": 23,
+      "depth": 0,
+      "full_path_hash": "DCDBB297AE31A134",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "0E7E52EAF3B2646B"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 4144,
+      "decoded_size": 8028,
+      "sha256": "f1c776321117eac64b3c8f620b2a60c783433025552692fc13ef2ea43a517505",
+      "magic_hex": "0400000018E2FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00024_3F89F2A3087F8E51.bin",
+      "index": 24,
+      "depth": 0,
+      "full_path_hash": "3F89F2A3087F8E51",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "05FF043CDD695780"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 750,
+      "decoded_size": 2464,
+      "sha256": "8c537901eba87569d5b5d5492c18ee06fd5b72cba7ac4368abdd44f7a014e3dd",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00025_3F8FF7A30884027E.bin",
+      "index": 25,
+      "depth": 0,
+      "full_path_hash": "3F8FF7A30884027E",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "05EB2F3CDD58F787"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 481,
+      "decoded_size": 1144,
+      "sha256": "324de3c2e8f63e80742b1a4e183027220a3f1cea12218092b4835fefd8de5785",
+      "magic_hex": "04000000E6FBFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00026_3FB60EA308A4F8D0.bin",
+      "index": 26,
+      "depth": 0,
+      "full_path_hash": "3FB60EA308A4F8D0",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "05D3283CDD4459C1"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 14936,
+      "decoded_size": 24072,
+      "sha256": "02e568ba102385e09360de3e4750bc0536083e725f839b2f5b5286e7e9b50a5f",
+      "magic_hex": "040000003CA4FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00027_21177DA53A790365.bin",
+      "index": 27,
+      "depth": 0,
+      "full_path_hash": "21177DA53A790365",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "3462C20AAF39E0E6"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 553,
+      "decoded_size": 1424,
+      "sha256": "75fdfe031d97ed9890efe666678264b7000478cef0d8d792425b2782cab355bb",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00028_2103A2A53A68993A.bin",
+      "index": 28,
+      "depth": 0,
+      "full_path_hash": "2103A2A53A68993A",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "345CC90AAF35811D"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 327,
+      "decoded_size": 512,
+      "sha256": "21f042653744237b5128e4625e400b760cc205ef84113dcd56fcb6e62bf65d9d",
+      "magic_hex": "040000005EFEFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00029_20F299A53A5A16BC.bin",
+      "index": 29,
+      "depth": 0,
+      "full_path_hash": "20F299A53A5A16BC",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "346DBE0AAF43E19F"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 3222,
+      "decoded_size": 7312,
+      "sha256": "963654dfd3a77db9355b835da438dce4979bba421eaccf3e7dfd277641fbfad4",
+      "magic_hex": "04000000DCE8FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00030_F4FD0AE1083FF1AC.bin",
+      "index": 30,
+      "depth": 0,
+      "full_path_hash": "F4FD0AE1083FF1AC",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "E0E7D7D3197E6039"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 556,
+      "decoded_size": 1420,
+      "sha256": "c7209953aaab83068ab70de2ab786b10b5f4d0dc534e7530467bd678b729647e",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00031_F5222EE1085F4B15.bin",
+      "index": 31,
+      "depth": 0,
+      "full_path_hash": "F5222EE1085F4B15",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "E0DCF3D319748848"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 3916,
+      "decoded_size": 7768,
+      "sha256": "f8e8394331edd6fc58a622b99d5da848c60f4c62b3a6608d1054e2ee326041ef",
+      "magic_hex": "0400000010E3FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00032_5A5E1FC625F67F56.bin",
+      "index": 32,
+      "depth": 0,
+      "full_path_hash": "5A5E1FC625F67F56",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "21A4712E2879AD8D"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 553,
+      "decoded_size": 1424,
+      "sha256": "7e1b60c881b9cc37ef325b13327eab23f78ca8c13765ef16a45c53ce09e62148",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00033_5A681BC625FECD0F.bin",
+      "index": 33,
+      "depth": 0,
+      "full_path_hash": "5A681BC625FECD0F",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "21B56D2E288819F4"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 5754,
+      "decoded_size": 10824,
+      "sha256": "c383c403a4d0e98ebd1d4e110c352a48e953998ffffe170cd910af777c141fb7",
+      "magic_hex": "0400000044D9FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00034_11085C356D33E73D.bin",
+      "index": 34,
+      "depth": 0,
+      "full_path_hash": "11085C356D33E73D",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "B30F531B1CF7D620"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 556,
+      "decoded_size": 1420,
+      "sha256": "c7209953aaab83068ab70de2ab786b10b5f4d0dc534e7530467bd678b729647e",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00035_111958356D4253A4.bin",
+      "index": 35,
+      "depth": 0,
+      "full_path_hash": "111958356D4253A4",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "B2E2771B1CD12561"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 3998,
+      "decoded_size": 8040,
+      "sha256": "54e8598d6210a9e40c40aee6f6e8e766670a6002ae07835ebeb161d27c27bd08",
+      "magic_hex": "0400000018E2FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00036_DB54E088EF825956.bin",
+      "index": 36,
+      "depth": 0,
+      "full_path_hash": "DB54E088EF825956",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "9309916FD713E735"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 840,
+      "decoded_size": 2624,
+      "sha256": "0c4ac72f649f5c31d7559527ff7dc5dee25fa768d78e3b93abca3cc729415b61",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00037_DB4DE788EF7C468D.bin",
+      "index": 37,
+      "depth": 0,
+      "full_path_hash": "DB4DE788EF7C468D",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "92F4766FD7015D4A"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 438,
+      "decoded_size": 828,
+      "sha256": "50aa670abe549310efd66e946e20522521fff857714ae37dd8f35ee157f6315f",
+      "magic_hex": "0400000022FDFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00038_DB5EDC88EF8AA70F.bin",
+      "index": 38,
+      "depth": 0,
+      "full_path_hash": "DB5EDC88EF8AA70F",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "92E36D6FD6F2DACC"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 12684,
+      "decoded_size": 21800,
+      "sha256": "eda9dd19bd11d43e653173adfb30c98f22fa0b69184c86565042cd4eb53b8d38",
+      "magic_hex": "040000009CACFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00039_AC121301F28DCEB9.bin",
+      "index": 39,
+      "depth": 0,
+      "full_path_hash": "AC121301F28DCEB9",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "0F713EB38FF2D3D0"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 915,
+      "decoded_size": 3344,
+      "sha256": "4c670a2df1e3b36cf2c869c579351b25b0b7734d88c436d8ef50847bda604137",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00040_AC182801F2925E16.bin",
+      "index": 40,
+      "depth": 0,
+      "full_path_hash": "AC182801F2925E16",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "0F5C29B38FE05417"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 471,
+      "decoded_size": 1000,
+      "sha256": "9e8e17eaed249f2a7edf19fffc3b14a820c56115b1ba8534fbc7dc0e6a225dfc",
+      "magic_hex": "040000006EFCFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00041_AC072F01F283F6C8.bin",
+      "index": 41,
+      "depth": 0,
+      "full_path_hash": "AC072F01F283F6C8",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "0F4522B38FCD6951"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 15012,
+      "decoded_size": 24240,
+      "sha256": "fc559a77e097fda0232af1c48da1c7ce3124fc896a835e3aae002bbd4214a3db",
+      "magic_hex": "04000000F0A7FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00042_284C71A02D699D06.bin",
+      "index": 42,
+      "depth": 0,
+      "full_path_hash": "284C71A02D699D06",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "0AC79640C25C0DF1"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 556,
+      "decoded_size": 1420,
+      "sha256": "3cf048fc96728c730e08b5cff2689d47fc450e83e749bab17bb3c4b3b3ef21a5",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00043_28566DA02D71EABF.bin",
+      "index": 43,
+      "depth": 0,
+      "full_path_hash": "28566DA02D71EABF",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "0AF3B240C2817870"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 5838,
+      "decoded_size": 11828,
+      "sha256": "ce4dd1f546d3ffeea4bc58bf08cf97ce4d6d187c47fc1bf6ad860aacabc8f226",
+      "magic_hex": "0C00000008000E00",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00044_C92C2F2D0117A77A.bin",
+      "index": 44,
+      "depth": 0,
+      "full_path_hash": "C92C2F2D0117A77A",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "936B6C7F3CCB97A7"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 1149,
+      "decoded_size": 5024,
+      "sha256": "dce40693a48524a947b8a90953efe35b3d97cfa55df82592fd16d5037ef9b474",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00045_C941062D0129BDD9.bin",
+      "index": 45,
+      "depth": 0,
+      "full_path_hash": "C941062D0129BDD9",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "9380457F3CDDB16C"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 639,
+      "decoded_size": 2296,
+      "sha256": "9e3a424901826c942f990067f69dcde669b95f424d8cf40b5ccb1be5b1e18834",
+      "magic_hex": "0400000056F7FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00046_C9520B2D0138398B.bin",
+      "index": 46,
+      "depth": 0,
+      "full_path_hash": "C9520B2D0138398B",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "9397507F3CF0A2FE"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 27877,
+      "decoded_size": 42164,
+      "sha256": "7e58400367d77f87fcd790d9308f695a20c87f17031eed0e03b9f0d29d57a47e",
+      "magic_hex": "04000000C45EFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00047_FC71C6583387B92D.bin",
+      "index": 47,
+      "depth": 0,
+      "full_path_hash": "FC71C6583387B92D",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "FDA588ABB6C084BC"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 189,
+      "decoded_size": 284,
+      "sha256": "0a7d982d1f9bf844faaf29b260d0c387f00d01240e3ef898a7341834a2995113",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00048_FC82C25833962594.bin",
+      "index": 48,
+      "depth": 0,
+      "full_path_hash": "FC82C25833962594",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "FDCA6CABB6DF7165"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 8059,
+      "decoded_size": 13388,
+      "sha256": "99695ac3429d488ab3b8a05aa61085847c820f79c7b1c28fdd277cbc25b1fe92",
+      "magic_hex": "0400000050CDFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00049_ECC16F10DB9DFC1A.bin",
+      "index": 49,
+      "depth": 0,
+      "full_path_hash": "ECC16F10DB9DFC1A",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "82ABE0079DBF90BD"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 190,
+      "decoded_size": 288,
+      "sha256": "e80aa374a110d89cffc81e354f2aa8af734bdc5e3f8b813a074c93e097156f15",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00050_ECD54610DBAE5F79.bin",
+      "index": 50,
+      "depth": 0,
+      "full_path_hash": "ECD54610DBAE5F79",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "8296F5079DAD5862"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 197,
+      "decoded_size": 328,
+      "sha256": "7eff8ee6a2670953cfef6f9228af824bf6c20226c0e3a5f101674aff27296f86",
+      "magic_hex": "0400000016FFFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00051_ECE64B10DBBCDB2B.bin",
+      "index": 51,
+      "depth": 0,
+      "full_path_hash": "ECE64B10DBBCDB2B",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "82BCDC079DCDFD24"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 8017,
+      "decoded_size": 13896,
+      "sha256": "76b0e776505ea3d94327d9912bffe8dc4dce8452b47d61bba1e5f4e21d458372",
+      "magic_hex": "0400000060CBFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00052_B7EFEAF27E5CB816.bin",
+      "index": 52,
+      "depth": 0,
+      "full_path_hash": "B7EFEAF27E5CB816",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "BA28C4C0EC04EDCB"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 189,
+      "decoded_size": 284,
+      "sha256": "90c2a2667e6a22091ea46be688cfa2b7b45e9e1f3b90803a5a1608fce310072f",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00053_B7FAE6F27E66B8CF.bin",
+      "index": 53,
+      "depth": 0,
+      "full_path_hash": "B7FAE6F27E66B8CF",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "BA03E8C0EBE60EBA"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 12078,
+      "decoded_size": 18624,
+      "sha256": "63b3ed5fcee9efb5217cc401f864c672bb46b7ccac935b121755ceacc591fa9a",
+      "magic_hex": "04000000D8B8FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00054_0CBE83D26C473DE6.bin",
+      "index": 54,
+      "depth": 0,
+      "full_path_hash": "0CBE83D26C473DE6",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "BC2BD36B07F3FF91"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 880,
+      "decoded_size": 3264,
+      "sha256": "e3eeb6a64ca9c34cb5e3b843788b82075ee0e005496d7d2c5dabc5404dae6f8f",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00055_0CB88AD26C42DE1D.bin",
+      "index": 55,
+      "depth": 0,
+      "full_path_hash": "0CB88AD26C42DE1D",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "BC32D86B07FA26BE"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 384,
+      "decoded_size": 644,
+      "sha256": "08e15beb3d91e24218716db57c650dbfaa2d6e976fb9fa302e7b8f7a7419aad4",
+      "magic_hex": "04000000DAFDFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00056_0CC97FD26C513E9F.bin",
+      "index": 56,
+      "depth": 0,
+      "full_path_hash": "0CC97FD26C513E9F",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "BC57EF6B08196A10"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 27214,
+      "decoded_size": 44432,
+      "sha256": "46e7aa454633538df8bf78d961283c4c2384600ff350e1120bbaf03ab79bd5c1",
+      "magic_hex": "04000000785AFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00057_31585297EB67C93D.bin",
+      "index": 57,
+      "depth": 0,
+      "full_path_hash": "31585297EB67C93D",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "E718A1FE1F525ED6"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 189,
+      "decoded_size": 284,
+      "sha256": "9a6c67f05c60aba87d797264a836d8ef18a99c9eaa9436886683295506182846",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00058_31436797EB5590E2.bin",
+      "index": 58,
+      "depth": 0,
+      "full_path_hash": "31436797EB5590E2",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "E711A8FE1F4C4C0D"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 622,
+      "decoded_size": 1468,
+      "sha256": "480d3168f813cf65136ef5829b218abe4275544d025fe0e9866af18c62283006",
+      "magic_hex": "04000000A2FAFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00059_31694E97EB7635A4.bin",
+      "index": 59,
+      "depth": 0,
+      "full_path_hash": "31694E97EB7635A4",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "E7229DFE1F5AAC8F"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 17986,
+      "decoded_size": 28328,
+      "sha256": "970341ad4948dad3d07396afa3110fac7d182bc7763d626353d5a34ab18ef1c6",
+      "magic_hex": "04000000B098FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00060_B4F9E0B5857CC97F.bin",
+      "index": 60,
+      "depth": 0,
+      "full_path_hash": "B4F9E0B5857CC97F",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "583571ED249D1540"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 189,
+      "decoded_size": 284,
+      "sha256": "6caf6370e856fa266eaf599afdc411d6df6b0e2ace618ee08721b33cea8808d6",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00061_B50F09B5858F6B34.bin",
+      "index": 61,
+      "depth": 0,
+      "full_path_hash": "B50F09B5858F6B34",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "58209CED248B0247"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 607,
+      "decoded_size": 1468,
+      "sha256": "c211490618948e028754edea1037361a36488630670da127b18fa8b88939e2ad",
+      "magic_hex": "04000000A2FAFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00062_B4EFE4B585747BC6.bin",
+      "index": 62,
+      "depth": 0,
+      "full_path_hash": "B4EFE4B585747BC6",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "580995ED24781781"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 22532,
+      "decoded_size": 35560,
+      "sha256": "bb97255712fcbd60f3f6e89c291dc694c248051493e661cb3f418c1e87ab1403",
+      "magic_hex": "040000005478FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00063_9DCF03CCBBF39880.bin",
+      "index": 63,
+      "depth": 0,
+      "full_path_hash": "9DCF03CCBBF39880",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "4ADB3859312E85B1"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 189,
+      "decoded_size": 284,
+      "sha256": "db71bb5e55275b9d0968991bf81f6079cccd7b521feeb173bdbb8e02c311a2cb",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00064_9DBB2ECCBBE33887.bin",
+      "index": 64,
+      "depth": 0,
+      "full_path_hash": "9DBB2ECCBBE33887",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "4AE23D593134ACDE"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 463,
+      "decoded_size": 828,
+      "sha256": "d4613057af85cefc9fbf391afe174c162c16ff32600fb90b03b48bbfa7f0bdcb",
+      "magic_hex": "0400000022FDFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00065_9DA327CCBBCE9AC1.bin",
+      "index": 65,
+      "depth": 0,
+      "full_path_hash": "9DA327CCBBCE9AC1",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "4B0754593153F030"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 12539,
+      "decoded_size": 20536,
+      "sha256": "02625edea67935859726c40aa8cccbb961767289fd2a5a461eccc002f02c11fd",
+      "magic_hex": "0400000070B5FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00066_E910398BD1FC34BD.bin",
+      "index": 66,
+      "depth": 0,
+      "full_path_hash": "E910398BD1FC34BD",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "1E5DE4E92DC3E602"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 190,
+      "decoded_size": 288,
+      "sha256": "537560870d26f35f1a785d922dba5c10fce444e9e62693fdb9436c7e4d90a332",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00067_E921358BD20AA124.bin",
+      "index": 67,
+      "depth": 0,
+      "full_path_hash": "E921358BD20AA124",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "1E4CE0E92DB56C03"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 4544,
+      "decoded_size": 9132,
+      "sha256": "94c4c4fbb4eec6946f6071f4938d14a475016b6f107a4483612374db25a996ea",
+      "magic_hex": "04000000C4DDFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00068_0DDA5A700DDCFEAB.bin",
+      "index": 68,
+      "depth": 0,
+      "full_path_hash": "0DDA5A700DDCFEAB",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "CFA9F2864D34E96E"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 189,
+      "decoded_size": 284,
+      "sha256": "50ba0d95c672a5404595fd6097255cc5b9444096e64bf0512888d6a2dcd5d2e3",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00069_0DD383700DD725A8.bin",
+      "index": 69,
+      "depth": 0,
+      "full_path_hash": "0DD383700DD725A8",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "CFA2E9864D2EBB75"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 287,
+      "decoded_size": 380,
+      "sha256": "6bbe22e78ea76bef33c889df830b1ead233b3c404742be78aa9f03dad1049a63",
+      "magic_hex": "04000000DAFEFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00070_0DB57E700DBE1F9A.bin",
+      "index": 70,
+      "depth": 0,
+      "full_path_hash": "0DB57E700DBE1F9A",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "CF7DCE864D0F7157"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 9587,
+      "decoded_size": 15544,
+      "sha256": "cf24d952635a044fe38fb1a152e878038db3e094dc3dbe9b4b9c871497d430a0",
+      "magic_hex": "0400000008C7FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00071_3A95AE5A429848FA.bin",
+      "index": 71,
+      "depth": 0,
+      "full_path_hash": "3A95AE5A429848FA",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "6C8EBB6385636A0B"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 189,
+      "decoded_size": 284,
+      "sha256": "c6086589563c9e9f85afa830e17ef594a4e8909e4c27d2693de09a6375b10a49",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00072_3AAA855A42AA5F59.bin",
+      "index": 72,
+      "depth": 0,
+      "full_path_hash": "3AAA855A42AA5F59",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "6C87E463855D9108"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 392,
+      "decoded_size": 692,
+      "sha256": "540d25896c14f9d25566ed170547b4a679f4fb8af65c56388ce7985cbbb01eb0",
+      "magic_hex": "040000009AFDFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00073_3ABB8A5A42B8DB0B.bin",
+      "index": 73,
+      "depth": 0,
+      "full_path_hash": "3ABB8A5A42B8DB0B",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "6C68DF638542D7FA"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 14889,
+      "decoded_size": 23572,
+      "sha256": "9ba3b8ec839baae52f4fee685d495186bfa28db22d1f7b35c1d566bf7fb3e513",
+      "magic_hex": "0400000084ACFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00074_46D0D80348368123.bin",
+      "index": 74,
+      "depth": 0,
+      "full_path_hash": "46D0D80348368123",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "2873355D23A710C0"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 190,
+      "decoded_size": 288,
+      "sha256": "6d8246b0ccea2e0b57714328ab5716ab8bab2b1fc13572939ad264870aa8c189",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00075_46E1DC034844FB22.bin",
+      "index": 75,
+      "depth": 0,
+      "full_path_hash": "46E1DC034844FB22",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "2847595D23821301"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 9530,
+      "decoded_size": 18132,
+      "sha256": "10f403deb3e9c84ba7ed0c26322e77f9f908bc115bd08f1182d43a05a6de28a1",
+      "magic_hex": "04000000B0BAFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00076_AA17022C9CF984F5.bin",
+      "index": 76,
+      "depth": 0,
+      "full_path_hash": "AA17022C9CF984F5",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "C7147782FF8CD250"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 189,
+      "decoded_size": 284,
+      "sha256": "c6086589563c9e9f85afa830e17ef594a4e8909e4c27d2693de09a6375b10a49",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00077_AA02E72C9CE8AE0A.bin",
+      "index": 77,
+      "depth": 0,
+      "full_path_hash": "AA02E72C9CE8AE0A",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "C6FF6282FF7A5297"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 288,
+      "decoded_size": 380,
+      "sha256": "d3241c08b0ba0f9fed72e9238ee0176117a7cfeee7f6094bd88f3755cb348160",
+      "magic_hex": "04000000DAFEFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00078_A9F1DE2C9CDA2B8C.bin",
+      "index": 78,
+      "depth": 0,
+      "full_path_hash": "A9F1DE2C9CDA2B8C",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "C6E85B82FF6767D1"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 13072,
+      "decoded_size": 20040,
+      "sha256": "b7c6c2cb36d6ac60b4299f1b36ddc857816cecffe18ebcbbfb9beee403e9f5ec",
+      "magic_hex": "04000000A0B6FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00079_4F9D2CA4F1E57F6A.bin",
+      "index": 79,
+      "depth": 0,
+      "full_path_hash": "4F9D2CA4F1E57F6A",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "51243BF0F8437939"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 549,
+      "decoded_size": 1424,
+      "sha256": "7b41fae39fe8a9ba48710d8d16a0f6011d46ce1c32dd8ab97b2135dbbab226bb",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00080_4FB143A4F1F64F89.bin",
+      "index": 80,
+      "depth": 0,
+      "full_path_hash": "4FB143A4F1F64F89",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "512A50F0F8480896"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 273,
+      "decoded_size": 376,
+      "sha256": "6c6167efa35033b7cdb1a4ad9de7d73e1439ef513eb11ef8398aaf1ec4aeca0d",
+      "magic_hex": "04000000D6FEFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00081_4FC248A4F204CB3B.bin",
+      "index": 81,
+      "depth": 0,
+      "full_path_hash": "4FC248A4F204CB3B",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "511957F0F839A148"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 4358,
+      "decoded_size": 9752,
+      "sha256": "26f6749794098d8a0cf24f7d1f2a2971365bb81c805aa385ee4a2ab89d0dc90e",
+      "magic_hex": "04000000A8DCFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00082_FD9A22BA3364CB3D.bin",
+      "index": 82,
+      "depth": 0,
+      "full_path_hash": "FD9A22BA3364CB3D",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "9682316E3E2E92E0"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 556,
+      "decoded_size": 1420,
+      "sha256": "3eaaeff7714554c027f61c9321dc2a5af35701d1a0958b79b2366a5e23ada914",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00083_FDAB1EBA337337A4.bin",
+      "index": 83,
+      "depth": 0,
+      "full_path_hash": "FDAB1EBA337337A4",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "9656556E3E099521"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 7350,
+      "decoded_size": 13584,
+      "sha256": "f6f61ff5aa75f1c814d39eac081696e572e6cbd709458bedc5e5cf25088eb645",
+      "magic_hex": "0400000070CCFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00084_9A070E5278ECF8E9.bin",
+      "index": 84,
+      "depth": 0,
+      "full_path_hash": "9A070E5278ECF8E9",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "33CE497D8118285E"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 707,
+      "decoded_size": 1984,
+      "sha256": "05084bc36acb0d2e476eae223642225fbe36704760205dffcbff607b029fb506",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00085_9A0DE35278F2CE86.bin",
+      "index": 85,
+      "depth": 0,
+      "full_path_hash": "9A0DE35278F2CE86",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "33C7407D8111FA65"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 286,
+      "decoded_size": 380,
+      "sha256": "9cee725b86acfead3c7a28951e2ca825b36cd5b9f06d8fa40d3b0358f9722498",
+      "magic_hex": "04000000DAFEFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00086_99FCEA5278E46738.bin",
+      "index": 86,
+      "depth": 0,
+      "full_path_hash": "99FCEA5278E46738",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "33A2657D80F31D07"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 11682,
+      "decoded_size": 20116,
+      "sha256": "50d2c7e12a4e58ab970a89edfee0e2e8bf8221fab8588636e617dd99245bb27b",
+      "magic_hex": "0400000030B3FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00087_293F40EBC44CF140.bin",
+      "index": 87,
+      "depth": 0,
+      "full_path_hash": "293F40EBC44CF140",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "9C2F7E13C433EA2F"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 887,
+      "decoded_size": 2864,
+      "sha256": "9c5e994ccc71ec212c739980e55a8ce0c4bb6d3bbb6ca8b744edbc3da44f505a",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00088_292A6BEBC43ADE47.bin",
+      "index": 88,
+      "depth": 0,
+      "full_path_hash": "292A6BEBC43ADE47",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "9C446713C4461F24"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 270,
+      "decoded_size": 376,
+      "sha256": "478cabac67541d97563c2b163617185e228338dd586f9d7a03fe8f213042bf99",
+      "magic_hex": "04000000D6FEFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00089_291364EBC427F381.bin",
+      "index": 89,
+      "depth": 0,
+      "full_path_hash": "291364EBC427F381",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "9C258213C42B9C76"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 10484,
+      "decoded_size": 17036,
+      "sha256": "33084907e3556ca3b281b46b7ccec5dd10869e82d3b1ecf5c8123234d38f61d8",
+      "magic_hex": "04000000F4BEFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00090_7BFE1A41CCE1651F.bin",
+      "index": 90,
+      "depth": 0,
+      "full_path_hash": "7BFE1A41CCE1651F",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "20C96FBD94D31742"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 556,
+      "decoded_size": 1420,
+      "sha256": "3cf048fc96728c730e08b5cff2689d47fc450e83e749bab17bb3c4b3b3ef21a5",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00091_7BF31E41CCD76466.bin",
+      "index": 91,
+      "depth": 0,
+      "full_path_hash": "7BF31E41CCD76466",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "20B86BBD94C49D43"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 14052,
+      "decoded_size": 21452,
+      "sha256": "5e88db8d99c3aae1adb8b8a01c849a1e9557fd8463d47cb022392ce9dc33cc72",
+      "magic_hex": "040000005CAEFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00092_FF6EF5A791F16E13.bin",
+      "index": 92,
+      "depth": 0,
+      "full_path_hash": "FF6EF5A791F16E13",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "1DE926A226FFA8B8"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 730,
+      "decoded_size": 2144,
+      "sha256": "3206b3e1daedbf4e426e0b721599106e9d240e56826af6c8604f2a96de24e59d",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00093_FF7FF9A791FFE812.bin",
+      "index": 93,
+      "depth": 0,
+      "full_path_hash": "FF7FF9A791FFE812",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "1DF34AA227083A69"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 11944,
+      "decoded_size": 20108,
+      "sha256": "da31a1a0ab9ab4ac7225e7001b2d4cf8a7413f9a311223be046e9937fb12694e",
+      "magic_hex": "04000000D4B3FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00094_6F286F681C019951.bin",
+      "index": 94,
+      "depth": 0,
+      "full_path_hash": "6F286F681C019951",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "F9B739BE81072896"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 972,
+      "decoded_size": 3264,
+      "sha256": "f31962b423e568a5b2982dd8dc5433c0665d16f2693f44edb59f1d6dfb533dcc",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00095_6F2E74681C060D7E.bin",
+      "index": 95,
+      "depth": 0,
+      "full_path_hash": "6F2E74681C060D7E",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "F9B140BE8102C8CD"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 604,
+      "decoded_size": 1452,
+      "sha256": "8a1ebb0eea596d4e45d8013f86e67a703dbd09ee62cf92b2228b44ed6acb22ce",
+      "magic_hex": "04000000B2FAFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00096_6F548B681C2703D0.bin",
+      "index": 96,
+      "depth": 0,
+      "full_path_hash": "6F548B681C2703D0",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "F9C235BE8111294F"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 30244,
+      "decoded_size": 45348,
+      "sha256": "4b99f425683c4aea9f75fddba5fe33aac331014a563143167c58590be74b8e1c",
+      "magic_hex": "040000003852FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00097_F6E4834BA8CD35F0.bin",
+      "index": 97,
+      "depth": 0,
+      "full_path_hash": "F6E4834BA8CD35F0",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "6864ABA0FE04C769"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 556,
+      "decoded_size": 1420,
+      "sha256": "3cf048fc96728c730e08b5cff2689d47fc450e83e749bab17bb3c4b3b3ef21a5",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00098_F6B8674BA8A7CB71.bin",
+      "index": 98,
+      "depth": 0,
+      "full_path_hash": "F6B8674BA8A7CB71",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "685A87A0FDFC35B8"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 6599,
+      "decoded_size": 13368,
+      "sha256": "4a547cdf05a1b4d0502bd41164a3e5225845582353e5c21b1458338c0b567920",
+      "magic_hex": "0C00000008000E00",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00099_A5069217C311B06E.bin",
+      "index": 99,
+      "depth": 0,
+      "full_path_hash": "A5069217C311B06E",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "93627EFE1010374D"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 943,
+      "decoded_size": 3104,
+      "sha256": "2400c634188ac9f5ec4df63a40df02ec9ea0110c04a4a41a83cb735e31bb8c54",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00100_A4FF8917C30B8275.bin",
+      "index": 100,
+      "depth": 0,
+      "full_path_hash": "A4FF8917C30B8275",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "934D53FE0FFD9232"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 494,
+      "decoded_size": 1348,
+      "sha256": "02acc40dbdb75d3cd867acc9aafdc06693dfada05a07b9ecae17f49899a8b0dd",
+      "magic_hex": "0400000012FBFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00101_A4DA6E17C2EC3857.bin",
+      "index": 101,
+      "depth": 0,
+      "full_path_hash": "A4DA6E17C2EC3857",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "93737AFE101EA3B4"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 16958,
+      "decoded_size": 28156,
+      "sha256": "def30724f582841a281a688f6ac8f90602104e034971c39c2aa6d67966610846",
+      "magic_hex": "040000006494FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00102_0E3E60C6FF5EDB25.bin",
+      "index": 102,
+      "depth": 0,
+      "full_path_hash": "0E3E60C6FF5EDB25",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "8AA3202446319F0A"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 866,
+      "decoded_size": 2784,
+      "sha256": "31aa9076230f0ca07bb39cf4fcc5926e1e00c9169d73820589a0b7f7f19e2217",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00103_0E2985C6FF4CBDFA.bin",
+      "index": 103,
+      "depth": 0,
+      "full_path_hash": "0E2985C6FF4CBDFA",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "8AB7372446426F29"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 271,
+      "decoded_size": 376,
+      "sha256": "45ee34bc0c780d0316d8788df048a98a903d64749e2c2731d966c26ca8f728de",
+      "magic_hex": "04000000D6FEFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00104_0E187CC6FF3E3B7C.bin",
+      "index": 104,
+      "depth": 0,
+      "full_path_hash": "0E187CC6FF3E3B7C",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "8AC83C244650EADB"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 17414,
+      "decoded_size": 28592,
+      "sha256": "526250744b1fd08b5f56efd3566e691f085ca9d5b9af3584f1562f7de21dd17e",
+      "magic_hex": "04000000C892FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00105_3795383368A642EE.bin",
+      "index": 105,
+      "depth": 0,
+      "full_path_hash": "3795383368A642EE",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "D2DC578E2286A661"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 740,
+      "decoded_size": 2464,
+      "sha256": "9089addb8bda1df606599b6a379a0268098db2d840ee44f8512834df64332d34",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00106_378E2F3368A014F5.bin",
+      "index": 106,
+      "depth": 0,
+      "full_path_hash": "378E2F3368A014F5",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "D2E35C8E228CCD8E"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 272,
+      "decoded_size": 376,
+      "sha256": "6f6400f7f6274a797f86582e0a6df685777d9c373b3f7233effffcb73a0a7a7b",
+      "magic_hex": "04000000D6FEFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00107_376914336880CAD7.bin",
+      "index": 107,
+      "depth": 0,
+      "full_path_hash": "376914336880CAD7",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "D309338E22AD5720"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 15442,
+      "decoded_size": 26092,
+      "sha256": "8479ce32a7426b71ce3fc7aaeac7f0b8852292c09ba9d0787e5f7626c913b34f",
+      "magic_hex": "04000000009CFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00108_796D93653445CBA3.bin",
+      "index": 108,
+      "depth": 0,
+      "full_path_hash": "796D93653445CBA3",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "F47A926F4EEB70E8"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 747,
+      "decoded_size": 2064,
+      "sha256": "08d46564c8c5f7ad9641a792069aa2776f053692728b6872611d66cc188a8f44",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00109_79668C65343FA110.bin",
+      "index": 109,
+      "depth": 0,
+      "full_path_hash": "79668C65343FA110",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "F4656D6F4ED8D5FF"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 354,
+      "decoded_size": 696,
+      "sha256": "084617f2015a1c4d623c5844cfd9a3252b96c98fe0fed9263d5d62acf2f06c07",
+      "magic_hex": "040000009EFDFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00110_797E9765345445A2.bin",
+      "index": 110,
+      "depth": 0,
+      "full_path_hash": "797E9765345445A2",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "F484766F4EF395D9"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 4876,
+      "decoded_size": 10232,
+      "sha256": "abc176b13114b8cd26674318d7ddeb63a404a41a97bfeab24735e04fd69b23fd",
+      "magic_hex": "0400000074DBFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00111_A23F205813863432.bin",
+      "index": 111,
+      "depth": 0,
+      "full_path_hash": "A23F205813863432",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "95A6D02E238E9A1B"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 572,
+      "decoded_size": 1420,
+      "sha256": "dfe8c005b53d04222000fef7e263e1ae47a03e831ebe3116549d9c716a82b287",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00112_A22E1C581377BA33.bin",
+      "index": 112,
+      "depth": 0,
+      "full_path_hash": "A22E1C581377BA33",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "9580B42E236D9B4A"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 5877,
+      "decoded_size": 10600,
+      "sha256": "d86b908c9759525b07afe9925715d3c41cd7d9e5d9fdfc9823c070ff8bf565ad",
+      "magic_hex": "0400000054D8FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00113_3BE690A365E92300.bin",
+      "index": 113,
+      "depth": 0,
+      "full_path_hash": "3BE690A365E92300",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "32C9B76CD82453BF"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 692,
+      "decoded_size": 1824,
+      "sha256": "e9a4ba52140f09327516c093dbb5812027a1d0fe10d3abb6ac9caa8120a407bd",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00114_3BD2BBA365D8C307.bin",
+      "index": 114,
+      "depth": 0,
+      "full_path_hash": "3BD2BBA365D8C307",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "32DDE06CD8354274"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 272,
+      "decoded_size": 376,
+      "sha256": "5fb8df8b4dcc00ea4a58d5ac377e3530ad16ef57abd1ce25f4fb3f3abbba47e4",
+      "magic_hex": "04000000D6FEFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00115_3BBAB4A365C42541.bin",
+      "index": 115,
+      "depth": 0,
+      "full_path_hash": "3BBAB4A365C42541",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "32BFBB6CD81C0606"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 4770,
+      "decoded_size": 9792,
+      "sha256": "f7b7ad278f346144c2e20d916825955575e6f31da36ea34400a023c4e436d687",
+      "magic_hex": "04000000A8DCFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00116_F5EBBDD9108B54F3.bin",
+      "index": 116,
+      "depth": 0,
+      "full_path_hash": "F5EBBDD9108B54F3",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "C54C8BA9FA84E8CE"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 572,
+      "decoded_size": 1420,
+      "sha256": "4c34b3ad49b8259090f0d3a4f34bbf7c88d080635b6f754cf56ef3364a45b2a4",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00117_F5E4B6D910852A60.bin",
+      "index": 117,
+      "depth": 0,
+      "full_path_hash": "F5E4B6D910852A60",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "C54582A9FA7EBAD5"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 367,
+      "decoded_size": 712,
+      "sha256": "8ec1a6fc98f57ccabcf0790c658ac2030176e74bcae36c8f0a80ec7abe2bc108",
+      "magic_hex": "040000008EFDFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00118_F5FCC1D91099CEF2.bin",
+      "index": 118,
+      "depth": 0,
+      "full_path_hash": "F5FCC1D91099CEF2",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "C52067A9FA5F70B7"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 5713,
+      "decoded_size": 10000,
+      "sha256": "864fc59d8eb126ac13b38d22b1b74430d8b3389daf105e53e61add502c413435",
+      "magic_hex": "0400000038DFFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00119_43CF4B4D68235328.bin",
+      "index": 119,
+      "depth": 0,
+      "full_path_hash": "43CF4B4D68235328",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "D0ECC1F1110BB8DB"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 901,
+      "decoded_size": 2864,
+      "sha256": "9d8fc79e79afdc25d833ba1c60d7780fe4eda3055184b5104c793c467711b300",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00120_43BB264D68126B3F.bin",
+      "index": 120,
+      "depth": 0,
+      "full_path_hash": "43BB264D68126B3F",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "D0E5AAF111057318"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 371,
+      "decoded_size": 696,
+      "sha256": "25a51e1e8cff181c808db200e1e5ecbe6407c4e5bbd9d1cae6ed414dbf4e3c71",
+      "magic_hex": "040000009EFDFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00121_43D92F4D682B7819.bin",
+      "index": 121,
+      "depth": 0,
+      "full_path_hash": "43D92F4D682B7819",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "D0C7A5F110EC6D0A"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 5132,
+      "decoded_size": 9236,
+      "sha256": "837b05e1b482a7f3b71c7293a611ea260adfcd9f557fb69db9a901a1ac0e768d",
+      "magic_hex": "040000008CE1FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00122_95B56A47AF63B33F.bin",
+      "index": 122,
+      "depth": 0,
+      "full_path_hash": "95B56A47AF63B33F",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "AC3CBC3A2972E67E"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 564,
+      "decoded_size": 1420,
+      "sha256": "9e4fb2910500c40f154465bc213511994c58422587b42d3893c64f6c3e02f4f1",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00123_95AB6E47AF5B6586.bin",
+      "index": 123,
+      "depth": 0,
+      "full_path_hash": "95AB6E47AF5B6586",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "AC10D83A294DDB27"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 4970,
+      "decoded_size": 9452,
+      "sha256": "09890e904d3d6d8fc9d3a866a8d83078fc45cbb35a30db1893490b678ff4b028",
+      "magic_hex": "04000000A0DCFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00124_9138A58E6FB7DC0F.bin",
+      "index": 124,
+      "depth": 0,
+      "full_path_hash": "9138A58E6FB7DC0F",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "C3F21F962A9001E0"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 656,
+      "decoded_size": 1744,
+      "sha256": "26faf838d9a395787bd352cf96592851127fa8b12ec9b20504424d2dc57a46f8",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00125_914D8E8E6FCA1104.bin",
+      "index": 125,
+      "depth": 0,
+      "full_path_hash": "914D8E8E6FCA1104",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "C3DE4A962A7FA1E7"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 361,
+      "decoded_size": 696,
+      "sha256": "71fcc8d7635e63d61c2c1958a5a2b4d3f968ea20ba089a92be1a38195e0ccd27",
+      "magic_hex": "040000009EFDFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00126_912EA98E6FAF8E56.bin",
+      "index": 126,
+      "depth": 0,
+      "full_path_hash": "912EA98E6FAF8E56",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "C3C643962A6B0421"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 6339,
+      "decoded_size": 11196,
+      "sha256": "effee6a377acc37aa2f729740a2700cdbf970fd8e14a8ab608466ffd1c61d99d",
+      "magic_hex": "04000000C8D9FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00127_04BAE39D17D203F8.bin",
+      "index": 127,
+      "depth": 0,
+      "full_path_hash": "04BAE39D17D203F8",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "BC8108DAB67BA203"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 190,
+      "decoded_size": 288,
+      "sha256": "64303d66b51fbffa584bb3f9f92a7f8af519fdbd96dc3d8cd6942bbdf83da60a",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00128_04C5079D17DA95A9.bin",
+      "index": 128,
+      "depth": 0,
+      "full_path_hash": "04C5079D17DA95A9",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "BC920CDAB68A1C02"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 3910,
+      "decoded_size": 28560,
+      "sha256": "ac5c3045e29ec446c6a6547e8be2bb478a22b2127d58cc6a2cb84c6dd925144a",
+      "magic_hex": "0C00000008000E00",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00129_7BF062E13AF4B4F5.bin",
+      "index": 129,
+      "depth": 0,
+      "full_path_hash": "7BF062E13AF4B4F5",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "EBE16650AEE86C98"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 190,
+      "decoded_size": 288,
+      "sha256": "64303d66b51fbffa584bb3f9f92a7f8af519fdbd96dc3d8cd6942bbdf83da60a",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00130_7BCB3EE13AD55B8C.bin",
+      "index": 130,
+      "depth": 0,
+      "full_path_hash": "7BCB3EE13AD55B8C",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "EBEB8A50AEF0FE49"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 3781,
+      "decoded_size": 28408,
+      "sha256": "127984bf7e677d4e729b180f3e0fb71754c662c48f86b45994c9adc6aaf64096",
+      "magic_hex": "0C00000008000E00",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00131_40E47202CE1FC1D6.bin",
+      "index": 131,
+      "depth": 0,
+      "full_path_hash": "40E47202CE1FC1D6",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "6312DF5657D94373"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 553,
+      "decoded_size": 1424,
+      "sha256": "faa1ca43a48582121322cfd2400e6408139aa0bfe9d00529c216808d192082eb",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00132_40EE6E02CE280F8F.bin",
+      "index": 132,
+      "depth": 0,
+      "full_path_hash": "40EE6E02CE280F8F",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "6323E35657E7BD72"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 1708,
+      "decoded_size": 3188,
+      "sha256": "f22a62630ceef17aa61ea0cc7e3fd167bf76482c4eb77f39ce902712610ab4ec",
+      "magic_hex": "040000001CF5FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00133_6FEAAD3FE77D9289.bin",
+      "index": 133,
+      "depth": 0,
+      "full_path_hash": "6FEAAD3FE77D9289",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "9AF39B3CE56BF086"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 1575,
+      "decoded_size": 6384,
+      "sha256": "1b8e3e3747c694d0f29c444a9278e779f820b936b1cef4b64e53209bdcfc5dec",
+      "magic_hex": "1000000000000A00",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00134_6FE0893FE77500D8.bin",
+      "index": 134,
+      "depth": 0,
+      "full_path_hash": "6FE0893FE77500D8",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "9AFD973CE5743E3F"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 1836,
+      "decoded_size": 3412,
+      "sha256": "8268042ada84822a41663ac1f978c782d096ceb18a0304cbb7430998c82df4aa",
+      "magic_hex": "0C00000008000E00",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00135_920203ADC38A3DAF.bin",
+      "index": 135,
+      "depth": 0,
+      "full_path_hash": "920203ADC38A3DAF",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "DDD2F1CD3C637136"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 189,
+      "decoded_size": 284,
+      "sha256": "0a7d982d1f9bf844faaf29b260d0c387f00d01240e3ef898a7341834a2995113",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00136_91F807ADC381EFF6.bin",
+      "index": 136,
+      "depth": 0,
+      "full_path_hash": "91F807ADC381EFF6",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "DDDCEDCD3C6BBEEF"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 484,
+      "decoded_size": 868,
+      "sha256": "98ce9489dfaeeeac2954c9cc2b1c4397d6c1e8d71c2d0d666ea0a15de2ceb63d",
+      "magic_hex": "0C00000008000C00",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00137_74F25CFF110E1BC9.bin",
+      "index": 137,
+      "depth": 0,
+      "full_path_hash": "74F25CFF110E1BC9",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "E434E481DF89E2AA"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 1716,
+      "decoded_size": 6812,
+      "sha256": "11a95673eddfd14784009cf45c16656d9ea96301868d162ce2b50949a51348dc",
+      "magic_hex": "04000000E6E5FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00138_74F25AFF110E1863.bin",
+      "index": 138,
+      "depth": 0,
+      "full_path_hash": "74F25AFF110E1863",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "E434E281DF89DF44"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 212,
+      "decoded_size": 384,
+      "sha256": "4cbc8d8ea3f91f21bf62dec46d6bd0bd716d22888fd631e9cee5098e7a4118ba",
+      "magic_hex": "0C00000000000600",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00139_74F258FF110E14FD.bin",
+      "index": 139,
+      "depth": 0,
+      "full_path_hash": "74F258FF110E14FD",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "E434E881DF89E976"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 1107,
+      "decoded_size": 2796,
+      "sha256": "f06c15ff11d051432fb63299f9d3865036a485eccb9f715ba01889cb1d407eee",
+      "magic_hex": "0400000086FCFFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00140_74F256FF110E1197.bin",
+      "index": 140,
+      "depth": 0,
+      "full_path_hash": "74F256FF110E1197",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "E434E681DF89E610"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 2065,
+      "decoded_size": 10296,
+      "sha256": "ef4ee43e6291590b4a6a3ec61cc7dc0d6442697fed19b54c1f7fac21df74a206",
+      "magic_hex": "040000002AD8FFFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00141_74F255FF110E0FE4.bin",
+      "index": 141,
+      "depth": 0,
+      "full_path_hash": "74F255FF110E0FE4",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "E434E781DF89E7C3"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 18140,
+      "decoded_size": 166060,
+      "sha256": "01abcc3ef1f6807c7df52c84365daf428d290e6f041e4574ee844d1851b7fa53",
+      "magic_hex": "040000005279FDFF",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00142_75035DFF111C90AF.bin",
+      "index": 142,
+      "depth": 0,
+      "full_path_hash": "75035DFF111C90AF",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "E43EFF81DF926510"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 516,
+      "decoded_size": 960,
+      "sha256": "65630801f7e7ef77dd94e3946452876042f868a7b6d96fe512c99d699fc98363",
+      "magic_hex": "1400000010000C00",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00143_F01680FF57558CAC.bin",
+      "index": 143,
+      "depth": 0,
+      "full_path_hash": "F01680FF57558CAC",
+      "folder_mappings": [
+        {
+          "folder_hash": "A1B08FEA71B6A518",
+          "filename_hash": "48F8148187CE1C1B"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 94,
+      "decoded_size": 92,
+      "sha256": "7373e89b63563e1de7b99a44a1af66f4ba9828c2ba39948ea66eb14fff3ac517",
+      "magic_hex": "2000000000001A00",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00144_0F0DA96AB319C21C.bin",
+      "index": 144,
+      "depth": 0,
+      "full_path_hash": "0F0DA96AB319C21C",
+      "folder_mappings": [
+        {
+          "folder_hash": "4FB2A240419D8AE1",
+          "filename_hash": "97C5E467F35612B8"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 601,
+      "decoded_size": 1716,
+      "sha256": "df953b29765e81c5a74933ccfa36e8f43be087c144c03e380c7da29c790a683b",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00145_BBA05D36F40F77E3.bin",
+      "index": 145,
+      "depth": 0,
+      "full_path_hash": "BBA05D36F40F77E3",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "8E23447A873CA125"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 86148,
+      "decoded_size": 210812,
+      "sha256": "fb206c78a1abed7928bc533bb361ca7faa990745a76734f87f8204db9f468a0d",
+      "magic_hex": "0C00000008000800",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00146_BB9A6336F40B1667.bin",
+      "index": 146,
+      "depth": 0,
+      "full_path_hash": "BB9A6336F40B1667",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "8E2A4E7A8742D0D1"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 246,
+      "decoded_size": 372,
+      "sha256": "6c7187a15a50573b8d7b9b2b9da4dabacf1c56ef5fa6a23ce508c8a9c1ba2440",
+      "magic_hex": "1800000000001200",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00147_BB7B4D36F3F04076.bin",
+      "index": 147,
+      "depth": 0,
+      "full_path_hash": "BB7B4D36F3F04076",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "8E0B607A87283ED8"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 207,
+      "decoded_size": 452,
+      "sha256": "2755b4459acc829b822636fa0bcd94dcf4dcb2810c7fe19baff6b2f174bd1f33",
+      "magic_hex": "1000000000000A00",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00148_BBD36536F43ADF14.bin",
+      "index": 148,
+      "depth": 0,
+      "full_path_hash": "BBD36536F43ADF14",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "8DE9707A870B73A2"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 947,
+      "decoded_size": 2208,
+      "sha256": "f8141a0d519ca6b025ac0ad488519c9aa0419a3251e28e40e554de8232bf9982",
+      "magic_hex": "1000000000000A00",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00149_BBD04936F43879A9.bin",
+      "index": 149,
+      "depth": 0,
+      "full_path_hash": "BBD04936F43879A9",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "8DF3587A87139F5F"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 1956,
+      "decoded_size": 10888,
+      "sha256": "2966656cee1f797ce4af0bd78736184a76994128e136725ce405dc25f5149454",
+      "magic_hex": "0C00000008000800",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00150_6527AB36C3208406.bin",
+      "index": 150,
+      "depth": 0,
+      "full_path_hash": "6527AB36C3208406",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "6DB0727B0562B698"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 4797,
+      "decoded_size": 16164,
+      "sha256": "93ca115a0b630654bd7c5e14adbe93738b244b1ceb9c211d798c78c6d2ba3e4a",
+      "magic_hex": "100000000C001000",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00151_CE96253BE21E7C57.bin",
+      "index": 151,
+      "depth": 0,
+      "full_path_hash": "CE96253BE21E7C57",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "2E3EB90E42A4E5C5"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 3991,
+      "decoded_size": 356464,
+      "sha256": "29e6b0ee06710fa08b073c5a2e133f4d2d9bb12b93a921866fe56cdd22d92fb0",
+      "magic_hex": "424E545800000000",
+      "format_hint": "bntx",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00152_C2101ABE121EBF1C.bin",
+      "index": 152,
+      "depth": 0,
+      "full_path_hash": "C2101ABE121EBF1C",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "6DC18A2DEC5EDF06"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 96976,
+      "decoded_size": 708720,
+      "sha256": "4b16fa92a59b2ae6bca91328ca314168ff393f833e27789320565bdcd5787e6e",
+      "magic_hex": "424E545800000000",
+      "format_hint": "bntx",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00153_6C67F64E76667F0E.bin",
+      "index": 153,
+      "depth": 0,
+      "full_path_hash": "6C67F64E76667F0E",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "FE9DDB35C4F1B7F8"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 36383,
+      "decoded_size": 1405040,
+      "sha256": "5c36f2c468c2140914347fa09da7ab6717c26fbc35c814763996915784c930a9",
+      "magic_hex": "424E545800000000",
+      "format_hint": "bntx",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00154_3DA254A7AAA3E1BD.bin",
+      "index": 154,
+      "depth": 0,
+      "full_path_hash": "3DA254A7AAA3E1BD",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "78E0896CE72F419F"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 288,
+      "decoded_size": 8304,
+      "sha256": "a1e0f2aa25e1675a97aca218791b4c13ae2b7809e3f525c65f3d41f22977d067",
+      "magic_hex": "424E545800000000",
+      "format_hint": "bntx",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00155_DCF2DDF50E9A7F3D.bin",
+      "index": 155,
+      "depth": 0,
+      "full_path_hash": "DCF2DDF50E9A7F3D",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "7060A6899DD247F7"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 272869,
+      "decoded_size": 1405040,
+      "sha256": "400d15c680e0858349748e3ed2e764f6b0dfdebd9bc307770208845a19517db9",
+      "magic_hex": "424E545800000000",
+      "format_hint": "bntx",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00156_3D99C270905E3701.bin",
+      "index": 156,
+      "depth": 0,
+      "full_path_hash": "3D99C270905E3701",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "6B3B73BD9DF232FF"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 77033,
+      "decoded_size": 708720,
+      "sha256": "eda4bbd3968b148c5b804e3d501558965bd66792c8208624dce550d3f6e3b235",
+      "magic_hex": "424E545800000000",
+      "format_hint": "bntx",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00157_577F2B9F9DAF2E80.bin",
+      "index": 157,
+      "depth": 0,
+      "full_path_hash": "577F2B9F9DAF2E80",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "E0230458C38F7522"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 344,
+      "decoded_size": 8304,
+      "sha256": "6d82c36b8ffb76652bbbfa64825c5ab17122d83cbf2453f6c6d14db505724b71",
+      "magic_hex": "424E545800000000",
+      "format_hint": "bntx",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00158_5108BD35F7589F31.bin",
+      "index": 158,
+      "depth": 0,
+      "full_path_hash": "5108BD35F7589F31",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "48E40387679F6D3F"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 83633,
+      "decoded_size": 708720,
+      "sha256": "e4afb749ebd69e1df87f3b42d75c2ccccf7ee122914ef3795ee6540a4106fc2e",
+      "magic_hex": "424E545800000000",
+      "format_hint": "bntx",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00159_7095329A3D9D8909.bin",
+      "index": 159,
+      "depth": 0,
+      "full_path_hash": "7095329A3D9D8909",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "0428DCD2F857AC67"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 23399,
+      "decoded_size": 708720,
+      "sha256": "47e51d5c49a739341b6789587480eeb5e51070d278154848f0b517cfec78258d",
+      "magic_hex": "424E545800000000",
+      "format_hint": "bntx",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00160_8CB7C4406E8A5E2A.bin",
+      "index": 160,
+      "depth": 0,
+      "full_path_hash": "8CB7C4406E8A5E2A",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "CC40C285342FC958"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 288,
+      "decoded_size": 8304,
+      "sha256": "e938a0fb4a6751179cc18332425127850cf654376a4071b5371dd5d2d2317ca1",
+      "magic_hex": "424E545800000000",
+      "format_hint": "bntx",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00161_6D53BAC482158FB6.bin",
+      "index": 161,
+      "depth": 0,
+      "full_path_hash": "6D53BAC482158FB6",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "B6853C779DAF42AC"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 115969,
+      "decoded_size": 708720,
+      "sha256": "7a465adc8e4f603beca3a0d4a6c5da99d2eddab4c2d823c175391f171dbc6cfc",
+      "magic_hex": "424E545800000000",
+      "format_hint": "bntx",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00162_D579B023A3E4FF12.bin",
+      "index": 162,
+      "depth": 0,
+      "full_path_hash": "D579B023A3E4FF12",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "BE6013E392780C9C"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 33460,
+      "decoded_size": 356464,
+      "sha256": "2369243370fc3844b9d80cb0460b9ea34ac085074c62bb7db38853f70efd0c6d",
+      "magic_hex": "424E545800000000",
+      "format_hint": "bntx",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00163_D0024FB8A6D13F76.bin",
+      "index": 163,
+      "depth": 0,
+      "full_path_hash": "D0024FB8A6D13F76",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "048C489BC2C4DA34"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 336,
+      "decoded_size": 8304,
+      "sha256": "fc1dfac73bb4c5d5c3c03cecb636398bb2ad3df0d3ea6f86f2a86a56c592b44c",
+      "magic_hex": "424E545800000000",
+      "format_hint": "bntx",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00164_D3977DA33E017DB3.bin",
+      "index": 164,
+      "depth": 0,
+      "full_path_hash": "D3977DA33E017DB3",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "DC5DB4F9EF4B8DC5"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 875,
+      "decoded_size": 28784,
+      "sha256": "348b1188ebbb323e905d6bdab88f300be4b30835d39f67e1b08299a5babcb16b",
+      "magic_hex": "424E545800000000",
+      "format_hint": "bntx",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00165_40DEF65939CEE412.bin",
+      "index": 165,
+      "depth": 0,
+      "full_path_hash": "40DEF65939CEE412",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "692DA3F0C80D43CC"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 533,
+      "decoded_size": 20592,
+      "sha256": "b9585d46b94c351ba85c82cc701aef7c1404f23585de9fbbbc0ceb51b545ee69",
+      "magic_hex": "424E545800000000",
+      "format_hint": "bntx",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00166_9F858A1ED70EED88.bin",
+      "index": 166,
+      "depth": 0,
+      "full_path_hash": "9F858A1ED70EED88",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "8B95EAFC401484F2"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 3761,
+      "decoded_size": 28784,
+      "sha256": "0ee96abfa6c523413f4ef22ee16eaa48b1c28a86a3e2d817fe78b3a3e736f0a9",
+      "magic_hex": "424E545800000000",
+      "format_hint": "bntx",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00167_D7755D3F2BECEB9C.bin",
+      "index": 167,
+      "depth": 0,
+      "full_path_hash": "D7755D3F2BECEB9C",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "4301856E5887900A"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 19926,
+      "decoded_size": 50024,
+      "sha256": "55a3d041dd5c5cd4f667a8f491660df7dcaa4a65e11529d9a9bb58e854676a19",
+      "magic_hex": "0C00000008000800",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00168_D7AE693F2C1CC547.bin",
+      "index": 168,
+      "depth": 0,
+      "full_path_hash": "D7AE693F2C1CC547",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "42CE7D6E585C28D9"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 912,
+      "decoded_size": 2168,
+      "sha256": "bf7e0ac1fdd8995d0fc822b28be3f120dd285cf2364b681787644d5c90056fd0",
+      "magic_hex": "1000000000000A00",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00169_6F1EDB1F906883F1.bin",
+      "index": 169,
+      "depth": 0,
+      "full_path_hash": "6F1EDB1F906883F1",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "BF7623E172DD9783"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 15080,
+      "decoded_size": 38096,
+      "sha256": "0ea58f423e58236deb01e2ede9136c08ee21e99a5b269b827b5c8f0fefe50471",
+      "magic_hex": "0C00000008000800",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00170_6EE4CF1F9036F746.bin",
+      "index": 170,
+      "depth": 0,
+      "full_path_hash": "6EE4CF1F9036F746",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "BFA92BE17308FEB4"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 918,
+      "decoded_size": 2168,
+      "sha256": "0dca4ec27f8a3106f721f3dce37423ebb9b3e32dbcb9dea66ed3728d28126fcc",
+      "magic_hex": "1000000000000A00",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00171_F0A42EE2A5333034.bin",
+      "index": 171,
+      "depth": 0,
+      "full_path_hash": "F0A42EE2A5333034",
+      "folder_mappings": [
+        {
+          "folder_hash": "68EF99C6FD2D57FF",
+          "filename_hash": "C3B97B03863EE0E2"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 1969,
+      "decoded_size": 10888,
+      "sha256": "6b0665216824da4ae60ff4c893024e19ad4dc0d36ff15ad990cdb71e8389e8d0",
+      "magic_hex": "0C00000008000800",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    },
+    {
+      "path": "entry_00172_8D25504AF8906195.bin",
+      "index": 172,
+      "depth": 0,
+      "full_path_hash": "8D25504AF8906195",
+      "folder_mappings": [
+        {
+          "folder_hash": "A0F5DE4899409F0B",
+          "filename_hash": "3DADF0FE6D2EFC87"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 74,
+      "decoded_size": 72,
+      "sha256": "149022238e95fcbb1ce3206542542b135b9019ca77fb92b9886ae3d47071460e",
+      "magic_hex": "200000001C002800",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    }
+  ]
+}
