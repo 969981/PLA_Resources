@@ -182,3 +182,5 @@ jobs:
           path: .pla-work/v1.1.1/gfpak/coverage.json
           if-no-files-found: warn
           retention-days: 14
+
+# Full shard re-run: restored ha_area04.gfpak from checksummed seven-zip volumes.
