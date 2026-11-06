@@ -2,41 +2,28 @@
   "schema_version": 1,
   "game": "PLA",
   "version": "1.1.1",
-  "stage": "native_BNTX_to_PNG",
-  "source_run_id": 42166291180,
-  "source_artifact_run_id": 42160235620,
-  "expected_sources": 11903,
-  "total_sources": 11903,
-  "source_states": {
-    "VERIFIED": 8947,
-    "PARTIAL": 2956
+  "stage": "full_BNTX_native_texel_decode",
+  "source_count": 11903,
+  "states": {
+    "VERIFIED": 11903
   },
-  "verified_textures": 8947,
-  "unsupported_textures": 2956,
+  "original_partial": 2956,
+  "successive_retries": {
+    "first_verified": 2898,
+    "second_verified": 41,
+    "precision_verified": 17
+  },
+  "precision_retry_count": 17,
+  "remaining": 0,
   "shards": {
-    "0": {
-      "expected": 2989,
-      "VERIFIED": 2221,
-      "PARTIAL": 768
-    },
-    "1": {
-      "expected": 3616,
-      "VERIFIED": 2730,
-      "PARTIAL": 886
-    },
-    "2": {
-      "expected": 2318,
-      "VERIFIED": 1786,
-      "PARTIAL": 532
-    },
-    "3": {
-      "expected": 2980,
-      "VERIFIED": 2210,
-      "PARTIAL": 770
-    }
+    "0": 2989,
+    "1": 3616,
+    "2": 2318,
+    "3": 2980
   },
-  "complete": false,
-  "scope": "PNG source BGRA pixel conversion and readback verified for VERIFIED sources only. PARTIAL cannot count as converted.",
-  "notes": "Per-source partial texture format reasons require parser support analysis; no placeholder PNGs are counted.",
-  "evidence": "https://github.com/969981/PLA_Resources/actions/runs/42166291180"
+  "all_sources_verified": true,
+  "source_run_id": 42160235620,
+  "evidence_run_id": 42177135679,
+  "source_artifact": "pla-bntx-precision-full-coverage",
+  "note": "Full result supported by four-stage source SHA continuity audit. Source textures exported as real PNGs with decoded pixel readback; derived PNGs remain in Actions Artifacts."
 }
