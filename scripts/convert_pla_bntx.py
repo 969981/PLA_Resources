@@ -60,6 +60,18 @@ def work(args:tuple)->dict:
       raise RuntimeError('HDR float32 pixel payload missing or wrong size')
      if digest(hf)!=item['hdr_rgb32f_sha256']:
       raise RuntimeError('HDR float32 pixel SHA mismatch')
+    if 'layers' in item:
+     layers=item['layers']
+     if len(layers)!=int(item['array_layers']):raise RuntimeError('incomplete array layers')
+     for layer in layers:
+      for namekey,hashkey in (('png_file','png_sha256'),('native_decoded_file','native_decoded_sha256')):
+       fname=layer[namekey]
+       sf=staged/fname
+       if fname!=Path(fname).name or not sf.is_file() or digest(sf)!=layer[hashkey]:
+        raise RuntimeError('layer output SHA mismatch: '+str(fname))
+      raw=staged/layer['native_decoded_file']
+      if raw.stat().st_size!=int(layer['native_decoded_bytes']):
+       raise RuntimeError('layer high-precision raw byte count mismatch')
    if final.exists():shutil.rmtree(final)
    shutil.copytree(staged,final)
    record.update(state=status,textures=meta['texture_count'],
