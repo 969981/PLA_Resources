@@ -1,0 +1,84 @@
+name: PLA BNTX ASTC native smoke
+
+on:
+  push:
+    branches: [feat/pla-astc-trinity-batch]
+    paths:
+      - 'tools/PLA.Bntx.Export/**'
+      - 'scripts/convert_pla_bntx.py'
+      - '.github/workflows/pla-bntx-astc-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  native-astc-smoke:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-astc-smoke]')
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: PLA
+          sparse-checkout: |
+            tools/PLA.Bntx.Export/
+            scripts/convert_pla_bntx.py
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/SV_Resources
+          ref: 50307e4227e74d59d0f3f32e08f99125be80b34b
+          path: SV
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            tools/gftool/NxMiddleware/BnTxx/
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build BNTX decoder and native ASTC encoder
+        shell: pwsh
+        run: |
+          $root = Join-Path (Get-Location) "SV/tools/gftool/NxMiddleware/BnTxx"
+          dotnet build "PLA/tools/PLA.Bntx.Export/PLA.Bntx.Export.csproj" -c Release "-p:BnTxxRoot=$root"
+          $url = "https://github.com/ARM-software/astc-encoder/releases/download/5.7.0/astcenc-5.7.0-windows-x64.zip"
+          $dst = Join-Path $env:RUNNER_TEMP "astcenc-5.7.0.zip"
+          Invoke-WebRequest -Uri $url -OutFile $dst
+          $actual = (Get-FileHash $dst -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actual -ne "cbde7c78adcc90d0d90ecf10f32d03f3340fbe1720cb6d6c892147d625e74d2d") { throw "ASTCENC release checksum mismatch" }
+          Expand-Archive $dst (Join-Path $env:RUNNER_TEMP "astcenc") -Force
+          $decoder = Get-ChildItem (Join-Path $env:RUNNER_TEMP "astcenc") -Filter '*sse2.exe' -Recurse | Select-Object -First 1
+          if (-not $decoder) { throw "Pinned ASTCENC SSE2 binary absent" }
+          "PLA_ASTCENC=$($decoder.FullName)" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-bntx-report-shard-0
+          repository: 969981/PLA_Resources
+          run-id: 42166291180
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: PLA/.pla-work/previous
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-gfpak-extracted-shard-0
+          repository: 969981/PLA_Resources
+          run-id: 42160235620
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: PLA/.pla-work/extracted
+      - name: Decode first five real previously PARTIAL BNTX native sources
+        shell: pwsh
+        run: |
+          python PLA/scripts/convert_pla_bntx.py --root "PLA/.pla-work/extracted" --dest "PLA/.pla-work/astc-output" --cli "PLA/tools/PLA.Bntx.Export/bin/Release/net10.0-windows/PLA.Bntx.Export.dll" --only-previous-partial "PLA/.pla-work/previous/shard-0.jsonl" --expected-bntx 2989 --expected-selected 768 --limit 5 --astcenc "$env:PLA_ASTCENC" --jobs 2 --ledger "PLA/.pla-work/astc-smoke-results.jsonl" --strict
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-bntx-astc-smoke-5
+          path: |
+            PLA/.pla-work/astc-smoke-results.jsonl
+            PLA/.pla-work/astc-output/**/conversion.json
+            PLA/.pla-work/astc-output/**/texture_*.png
+          retention-days: 14
+          if-no-files-found: warn
