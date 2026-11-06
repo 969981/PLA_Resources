@@ -71,3 +71,5 @@ jobs:
             PLA/.pla-work/bc6hdr/**/texture_*.rgb32f
           retention-days: 14
           if-no-files-found: warn
+
+# Use original 2 GB shard, verify HDR raw RGB float + PNG preview for BC6H.
