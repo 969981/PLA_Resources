@@ -52,3 +52,5 @@ jobs:
           python scripts/scripts/persist_pla_native_shard.py --source payload --workdir .pla-work/shard-${{ matrix.shard }} --shard ${{ matrix.shard }} --batch-mib 256
 
 # Verify extracted bytes against each native member SHA256 before any push.
+
+# Verify and publish 4 independent data refs with a 256 MiB source-size batch ceiling.
