@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "source": "D:\\a\\PLA_Resources\\PLA_Resources\\v1.1.1\\b38cd4c18831237d85312886f3a377b5_NCA\\1\\bin\\archive\\chara\\data\\pc\\p2\\model\\face\\locators.gfpak",
+  "source_size": 352,
+  "source_sha256": "1d17c90b3db420df00528153d6740a16695c05c946cbc01c1f6d8da8d5a387f4",
+  "parser": "pkNX.Containers.GFPack",
+  "max_depth": 2,
+  "archive_count": 1,
+  "extracted_count": 1,
+  "members": [
+    {
+      "path": "entry_00000_AEAD7FCFE5F3E5FC.bin",
+      "index": 0,
+      "depth": 0,
+      "full_path_hash": "AEAD7FCFE5F3E5FC",
+      "folder_mappings": [
+        {
+          "folder_hash": "DF4C68AA8BC1B851",
+          "filename_hash": "DA4E2818008ADA80"
+        }
+      ],
+      "compression": "OodleKraken",
+      "compressed_size": 226,
+      "decoded_size": 436,
+      "sha256": "a0124db929ab13effaa5544c4dea22299db442816d3ad499dd3a1a3c46b52cec",
+      "magic_hex": "100000000C001400",
+      "format_hint": "unknown",
+      "nested_gfpak": false
+    }
+  ]
+}
