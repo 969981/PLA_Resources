@@ -1,0 +1,73 @@
+name: PLA Trinity native model glTF actual-resource gate
+on:
+  push:
+    branches: [feat/pla-astc-trinity-batch]
+    paths:
+      - 'scripts/materialize_pla_trinity.py'
+      - '.github/workflows/pla-trinity-gltf-real.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  pikachu-gltf:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-gltf-test]')
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: PLA
+          sparse-checkout: |
+            scripts/materialize_pla_trinity.py
+            scripts/recover_pla_model_hashes.py
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/SV_Resources
+          ref: 50307e4227e74d59d0f3f32e08f99125be80b34b
+          path: SV
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            tools/gftool/
+            tools/SV.R3.ModelExport/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-gfpak-real-samples
+          repository: 969981/PLA_Resources
+          run-id: 42160235620
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: PLA/.pla-work/native
+      - name: Recover FNV64-confirmed original Trinity member names
+        shell: pwsh
+        run: |
+          python PLA/scripts/materialize_pla_trinity.py --root PLA/.pla-work/native --out PLA/.pla-work/trinity --report PLA/.pla-work/trinity-report.json --min-models 1
+      - name: Build the pinned SV native Trinity model exporter
+        shell: pwsh
+        run: |
+          dotnet build SV/tools/SV.R3.ModelExport/SV.R3.ModelExport.csproj -c Release
+      - name: Export real Pikachu mesh/material/skin graph to glTF
+        shell: pwsh
+        run: |
+          $model = "PLA/.pla-work/trinity/bin/pokemon/pm0025/pm0025_00_00/mdl/pm0025_00_00.trmdl"
+          $out = "PLA/.pla-work/gltf/pikachu.gltf"
+          dotnet "SV/tools/SV.R3.ModelExport/bin/Release/net10.0-windows/SV.R3.ModelExport.dll" $model $out
+          $data = Get-Content $out -Raw | ConvertFrom-Json
+          if ($data.asset.version -ne '2.0' -or $data.meshes.Count -lt 1 -or $data.skins.Count -lt 1) {
+            throw "Real native glTF mesh/skin verification failed"
+          }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-trinity-pikachu-gltf-real
+          path: |
+            PLA/.pla-work/trinity-report.json
+            PLA/.pla-work/gltf/**
+          if-no-files-found: warn
+          retention-days: 14
