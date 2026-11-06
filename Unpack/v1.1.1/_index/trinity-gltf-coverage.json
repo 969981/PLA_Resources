@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "game": "PLA",
+  "version": "1.1.1",
+  "stage": "TRMDL_TO_GLTF_GEOMETRY_WITH_REAL_SKIN",
+  "expected_original_models": 356,
+  "baseline_native_glTF_success": 351,
+  "cross_form_fixed": 5,
+  "exported_verified": 356,
+  "not_exported": 0,
+  "base_run_id": 42171943186,
+  "special_form_run_id": 42195117367,
+  "special_forms": [
+    "pm0549_71_41",
+    "pm1002_71_00",
+    "pm0751_71_41",
+    "pm0059_71_41",
+    "pm0101_71_41"
+  ],
+  "cross_form_provenance": {
+    "source_files_sha256_checked": 50,
+    "donor_mesh_buffer_skeleton_references": 40,
+    "special_material_and_trmdl_files": 10
+  },
+  "validation": "True glTF 2.0 JSON has meshes and skins; every referenced external binary exists and byteLength exactly matches",
+  "scope_note": "Geometry export and skeleton/skin structure passed. This does not prove complete texture bindings, full material equivalence or keyframe/glTF animation playback.",
+  "complete": true
+}

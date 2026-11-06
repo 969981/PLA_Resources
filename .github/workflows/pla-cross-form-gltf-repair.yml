@@ -1,0 +1,105 @@
+name: PLA 5 cross-form models real mesh-skeleton glTF repair
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/pla-astc-trinity-batch]
+    paths:
+      - 'scripts/restore_pla_cross_form_models.py'
+      - '.github/workflows/pla-cross-form-gltf-repair.yml'
+permissions:
+  contents: read
+jobs:
+  repair-and-export:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-cross-form]')
+    runs-on: windows-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: Code
+          sparse-checkout: |
+            scripts/restore_pla_cross_form_models.py
+            scripts/recover_pla_model_hashes.py
+            scripts/batch_pla_trinity_gltf.py
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/PLA_Resources
+          ref: data/pla-v1.1.1-native-shard-0
+          path: Data0
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0549_71_41.gfpak/extracted/
+            Unpack/v1.1.1/romfs/bin/archive/pokemon/pm1002_71_00.gfpak/extracted/
+            Unpack/v1.1.1/romfs/bin/archive/pokemon/pm1002_00_00.gfpak/extracted/
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/PLA_Resources
+          ref: data/pla-v1.1.1-native-shard-1
+          path: Data1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0751_71_41.gfpak/extracted/
+            Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0059_00_41.gfpak/extracted/
+            Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0101_00_41.gfpak/extracted/
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/PLA_Resources
+          ref: data/pla-v1.1.1-native-shard-2
+          path: Data2
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0059_71_41.gfpak/extracted/
+            Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0101_71_41.gfpak/extracted/
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/PLA_Resources
+          ref: data/pla-v1.1.1-native-shard-3
+          path: Data3
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0549_00_41.gfpak/extracted/
+            Unpack/v1.1.1/romfs/bin/archive/pokemon/pm0751_00_41.gfpak/extracted/
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/SV_Resources
+          ref: 50307e4227e74d59d0f3f32e08f99125be80b34b
+          path: SV
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            tools/gftool/
+            tools/SV.R3.ModelExport/
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconstruct 5 special form models from their exact original geometry, buffers, bone, material source bytes
+        shell: pwsh
+        run: |
+          python Code/scripts/restore_pla_cross_form_models.py --shard-0 Data0 --shard-1 Data1 --shard-2 Data2 --shard-3 Data3 --dest Code/.pla-work/restored --report Code/.pla-work/cross-form-sources.json
+      - name: Build verified headless Trinity glTF exporter
+        shell: pwsh
+        run: |
+          dotnet build SV/tools/SV.R3.ModelExport/SV.R3.ModelExport.csproj -c Release
+      - name: Export all 5 recovered native special models and re-open glTF geometry
+        shell: pwsh
+        run: |
+          python Code/scripts/batch_pla_trinity_gltf.py --root "Code/.pla-work/restored" --out "Code/.pla-work/gltf" --exe "SV/tools/SV.R3.ModelExport/bin/Release/net10.0-windows/SV.R3.ModelExport.dll" --expected-models 5 --jobs 2 --strict --ledger "Code/.pla-work/cross-form-gltf.jsonl"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-cross-form-five-real-gltf
+          path: |
+            Code/.pla-work/cross-form-sources.json
+            Code/.pla-work/cross-form-gltf.jsonl
+            Code/.pla-work/gltf/**
+          if-no-files-found: warn
+          retention-days: 14
+
+# All 5 forms must have native donor mesh, buffer, skeleton and own special material to pass.

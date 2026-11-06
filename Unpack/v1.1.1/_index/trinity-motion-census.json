@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "game": "PLA",
+  "version": "1.1.1",
+  "stage": "tracr_native_motion_census",
+  "source_run_id": 42177067017,
+  "native_animation_indexes": 370,
+  "unique_motion_resources": 51830,
+  "total_table_references": 53090,
+  "duplicate_native_table_references": 1260,
+  "formats": {
+    ".tracm": 19446,
+    ".tranm": 19932,
+    ".traef": 12452
+  },
+  "source_path_evidence": "FNV1a64 matched against original GFPak member metadata, source member SHA-256 recorded",
+  "type_level": "HASH_VERIFIED_ONLY",
+  "typed_animation_sample": {
+    "run_id": 42177527681,
+    "frames": 61,
+    "fps": 60,
+    "animated_bones": 41,
+    "skeleton_matches": 41
+  },
+  "full_motion_type_parse": "IN_PROGRESS",
+  "state": "HASH_VERIFIED",
+  "complete": true
+}

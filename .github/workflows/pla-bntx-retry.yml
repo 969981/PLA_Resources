@@ -1,0 +1,132 @@
+name: PLA BNTX 2956 incomplete real pixel retry
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/pla-astc-trinity-batch]
+    paths:
+      - 'tools/PLA.Bntx.Export/**'
+      - 'scripts/convert_pla_bntx.py'
+      - 'scripts/audit_pla_bntx_retries.py'
+      - '.github/workflows/pla-bntx-retry.yml'
+permissions:
+  actions: read
+  contents: read
+jobs:
+  retry:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-bntx-retry]')
+    runs-on: windows-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {shard: 0, bntx: 2989, previous_partial: 768}
+          - {shard: 1, bntx: 3616, previous_partial: 886}
+          - {shard: 2, bntx: 2318, previous_partial: 532}
+          - {shard: 3, bntx: 2980, previous_partial: 770}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: PLA
+          sparse-checkout: |
+            tools/PLA.Bntx.Export/
+            scripts/convert_pla_bntx.py
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/SV_Resources
+          ref: 50307e4227e74d59d0f3f32e08f99125be80b34b
+          path: SV
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            tools/gftool/NxMiddleware/BnTxx/
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build pinned BnTxx and get verified ARM astcenc 5.7.0
+        shell: pwsh
+        run: |
+          $root = Join-Path (Get-Location) "SV/tools/gftool/NxMiddleware/BnTxx"
+          dotnet build "PLA/tools/PLA.Bntx.Export/PLA.Bntx.Export.csproj" -c Release "-p:BnTxxRoot=$root"
+          $url = "https://github.com/ARM-software/astc-encoder/releases/download/5.7.0/astcenc-5.7.0-windows-x64.zip"
+          $dst = Join-Path $env:RUNNER_TEMP "astcenc-5.7.0.zip"
+          Invoke-WebRequest -Uri $url -OutFile $dst
+          $actual = (Get-FileHash $dst -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actual -ne "cbde7c78adcc90d0d90ecf10f32d03f3340fbe1720cb6d6c892147d625e74d2d") { throw "Pinned ASTC binary checksum mismatch" }
+          Expand-Archive $dst (Join-Path $env:RUNNER_TEMP "astcenc") -Force
+          $exe = Get-ChildItem (Join-Path $env:RUNNER_TEMP "astcenc") -Filter '*sse2.exe' -Recurse | Select-Object -First 1
+          if (-not $exe) { throw "ASTC executable missing" }
+          "PLA_ASTCENC=$($exe.FullName)" | Out-File $env:GITHUB_ENV -Append -Encoding utf8
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-bntx-report-shard-${{ matrix.shard }}
+          repository: 969981/PLA_Resources
+          run-id: 42166291180
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: PLA/.pla-work/previous
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-gfpak-extracted-shard-${{ matrix.shard }}
+          repository: 969981/PLA_Resources
+          run-id: 42160235620
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: PLA/.pla-work/extracted
+      - name: Reconvert exactly the previous partials with corrected direct BGRA and ASTC
+        shell: pwsh
+        run: |
+          python PLA/scripts/convert_pla_bntx.py --root "PLA/.pla-work/extracted" --dest "PLA/.pla-work/retry-png" --cli "PLA/tools/PLA.Bntx.Export/bin/Release/net10.0-windows/PLA.Bntx.Export.dll" --only-previous-partial "PLA/.pla-work/previous/shard-${{ matrix.shard }}.jsonl" --expected-bntx ${{ matrix.bntx }} --expected-selected ${{ matrix.previous_partial }} --astcenc "$env:PLA_ASTCENC" --jobs 3 --strict --ledger "PLA/.pla-work/ledger/retry-shard-${{ matrix.shard }}.jsonl"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-bntx-retry-shard-${{ matrix.shard }}
+          path: PLA/.pla-work/ledger/retry-shard-${{ matrix.shard }}.jsonl
+          retention-days: 14
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-bntx-retry-png-shard-${{ matrix.shard }}
+          path: PLA/.pla-work/retry-png/**/converted/**
+          compression-level: 0
+          retention-days: 14
+          if-no-files-found: warn
+  aggregate:
+    if: always() && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-bntx-retry]'))
+    needs: retry
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts/audit_pla_bntx_retries.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pla-bntx-report-shard-*
+          repository: 969981/PLA_Resources
+          run-id: 42166291180
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: .pla-work/previous
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pla-bntx-retry-shard-*
+          path: .pla-work/retry
+      - name: Reconcile all 11903 originals, no skipped retries or false successes
+        run: |
+          python scripts/audit_pla_bntx_retries.py --previous .pla-work/previous --retry .pla-work/retry --out .pla-work/coverage/bntx-retry-coverage.json --strict
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-bntx-retry-coverage-full
+          path: .pla-work/coverage/bntx-retry-coverage.json
+          retention-days: 14
+          if-no-files-found: warn
+
+# Real previously PARTIAL retries from run 42166291180; no successful original is skipped in final reconciliation.

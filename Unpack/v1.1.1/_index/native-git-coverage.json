@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "game": "PLA",
+  "version": "1.1.1",
+  "stage": "remote_Git_tree_native_source_coverage",
+  "verification": "GitHub REST git/trees/{branch}?recursive=1, SHA-verified push manifest counts, no truncation",
+  "shards": [
+    {
+      "shard": 0,
+      "branch": "data/pla-v1.1.1-native-shard-0",
+      "containers": 159,
+      "members": 21110,
+      "bytes": 1789093988,
+      "max": 17969256,
+      "tree_entries": 21781
+    },
+    {
+      "shard": 1,
+      "branch": "data/pla-v1.1.1-native-shard-1",
+      "containers": 177,
+      "members": 26985,
+      "bytes": 2000771795,
+      "max": 46154168,
+      "tree_entries": 27732
+    },
+    {
+      "shard": 2,
+      "branch": "data/pla-v1.1.1-native-shard-2",
+      "containers": 170,
+      "members": 22124,
+      "bytes": 1557821192,
+      "max": 17969256,
+      "tree_entries": 22840
+    },
+    {
+      "shard": 3,
+      "branch": "data/pla-v1.1.1-native-shard-3",
+      "containers": 172,
+      "members": 32233,
+      "bytes": 1983382432,
+      "max": 28328420,
+      "tree_entries": 32959
+    }
+  ],
+  "totals": {
+    "containers": 678,
+    "decoded_members": 102452,
+    "decoded_bytes": 7331069407
+  },
+  "all_members_in_git": true,
+  "all_shard_trees_untruncated": true,
+  "main_branch_contains_raw_members": false,
+  "notes": "Original 102452 decoded member bytes are in four independent Git data branches, not in master or this code PR. Per-member source hashes were verified on ingestion; this second audit independently checks actual remote Git blob file count, lengths, and 678 manifests."
+}

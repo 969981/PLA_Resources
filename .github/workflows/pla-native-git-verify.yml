@@ -1,0 +1,44 @@
+name: PLA four remote native Git branches independent integrity audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/pla-astc-trinity-batch]
+    paths:
+      - 'scripts/audit_pla_native_git_branches.py'
+      - '.github/workflows/pla-native-git-verify.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-native-verify]')
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: scripts
+          sparse-checkout: |
+            scripts/audit_pla_native_git_branches.py
+          sparse-checkout-cone-mode: false
+      - name: Fetch remote Git tree without any large blob contents
+        run: |
+          git clone --depth=1 --filter=blob:none --no-checkout --single-branch --branch "data/pla-v1.1.1-native-shard-${{ matrix.shard }}" "https://github.com/969981/PLA_Resources.git" remote-native
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compare Git blob trees, counts and exact decoded bytes to original SHA receipts
+        run: |
+          python scripts/scripts/audit_pla_native_git_branches.py --repo remote-native --shard ${{ matrix.shard }} --out results/remote-native-shard-${{ matrix.shard }}.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-native-git-verified-shard-${{ matrix.shard }}
+          path: results/remote-native-shard-${{ matrix.shard }}.json
+          retention-days: 14
+          if-no-files-found: warn
+
+# No 7.33 GB re-download: verify final tree sizes directly from Git objects.

@@ -1,0 +1,137 @@
+name: PLA last 17 packed and float-array BNTX real pixels
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/pla-astc-trinity-batch]
+    paths:
+      - 'scripts/audit_pla_bntx_fourpass.py'
+      - '.github/workflows/pla-bntx-last17.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  convert:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-last17]')
+    runs-on: windows-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {shard: 0, bntx: 2989, missing: 2}
+          - {shard: 1, bntx: 3616, missing: 8}
+          - {shard: 2, bntx: 2318, missing: 2}
+          - {shard: 3, bntx: 2980, missing: 5}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: PLA
+          sparse-checkout: |
+            tools/PLA.Bntx.Export/
+            scripts/convert_pla_bntx.py
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/SV_Resources
+          ref: 50307e4227e74d59d0f3f32e08f99125be80b34b
+          path: SV
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            tools/gftool/NxMiddleware/BnTxx/
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build native BNTX high-precision GOB unpacker
+        shell: pwsh
+        run: |
+          $root = Join-Path (Get-Location) "SV/tools/gftool/NxMiddleware/BnTxx"
+          dotnet build "PLA/tools/PLA.Bntx.Export/PLA.Bntx.Export.csproj" -c Release "-p:BnTxxRoot=$root"
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-bntx-final-shard-${{ matrix.shard }}
+          repository: 969981/PLA_Resources
+          run-id: 42175711498
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: PLA/.pla-work/previous
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-gfpak-extracted-shard-${{ matrix.shard }}
+          repository: 969981/PLA_Resources
+          run-id: 42160235620
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: PLA/.pla-work/extracted
+      - name: Convert all native array layers for 0x0E01 0x1505 0x1905
+        shell: pwsh
+        run: |
+          python PLA/scripts/convert_pla_bntx.py --root PLA/.pla-work/extracted --dest PLA/.pla-work/precise-pixels --cli PLA/tools/PLA.Bntx.Export/bin/Release/net10.0-windows/PLA.Bntx.Export.dll --only-previous-partial PLA/.pla-work/previous/final-shard-${{ matrix.shard }}.jsonl --expected-bntx ${{ matrix.bntx }} --expected-selected ${{ matrix.missing }} --jobs 2 --strict --ledger PLA/.pla-work/ledger/precision-shard-${{ matrix.shard }}.jsonl
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-bntx-precision-shard-${{ matrix.shard }}
+          path: PLA/.pla-work/ledger/precision-shard-${{ matrix.shard }}.jsonl
+          if-no-files-found: warn
+          retention-days: 14
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-bntx-precision-pixels-shard-${{ matrix.shard }}
+          path: PLA/.pla-work/precise-pixels/**/converted/**
+          if-no-files-found: warn
+          retention-days: 14
+  coverage:
+    if: always() && (github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-last17]'))
+    needs: [convert]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            scripts/audit_pla_bntx_fourpass.py
+            scripts/audit_pla_bntx_final.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pla-bntx-report-shard-*
+          repository: 969981/PLA_Resources
+          run-id: 42166291180
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: .pla-work/original
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pla-bntx-retry-shard-*
+          repository: 969981/PLA_Resources
+          run-id: 42170751780
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: .pla-work/first
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pla-bntx-final-shard-*
+          repository: 969981/PLA_Resources
+          run-id: 42175711498
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: .pla-work/second
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: pla-bntx-precision-shard-*
+          path: .pla-work/third
+      - name: Strictly audit 11903 native sources across all four decode stages
+        run: |
+          python scripts/audit_pla_bntx_fourpass.py --original .pla-work/original --first .pla-work/first --second .pla-work/second --third .pla-work/third --out .pla-work/report/bntx-precise-full.json --strict
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-bntx-precision-full-coverage
+          path: .pla-work/report/bntx-precise-full.json
+          retention-days: 14
+          if-no-files-found: warn
+
+# Real native terminal formats: preserve raw 10/16/32-bit values and all array layers.
+
+# Recheck after fixing C# variable shadowing in packed RGB conversion.

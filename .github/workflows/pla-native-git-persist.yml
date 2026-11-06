@@ -1,0 +1,56 @@
+name: PLA 102452 raw GFPak members Git data branches
+on:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Push four verified native shards into independent data branches
+        type: boolean
+        required: true
+        default: false
+  push:
+    branches: [feat/pla-astc-trinity-batch]
+    paths:
+      - 'scripts/persist_pla_native_shard.py'
+      - '.github/workflows/pla-native-git-persist.yml'
+permissions:
+  actions: read
+  contents: write
+jobs:
+  data-branch:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-native-audit]') || contains(github.event.head_commit.message, '[pla-native-publish]')
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: scripts
+          sparse-checkout: |
+            scripts/persist_pla_native_shard.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-gfpak-extracted-shard-${{ matrix.shard }}
+          repository: 969981/PLA_Resources
+          run-id: 42160235620
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: payload
+      - name: Audit original source members before a commit
+        run: |
+          python scripts/scripts/persist_pla_native_shard.py --source payload --workdir .pla-work/shard-${{ matrix.shard }} --shard ${{ matrix.shard }} --batch-mib 256 --dry-run
+      - name: Publish SHA-verified original members in bounded Git commits
+        if: (github.event_name == 'workflow_dispatch' && inputs.publish) || contains(github.event.head_commit.message, '[pla-native-publish]')
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/scripts/persist_pla_native_shard.py --source payload --workdir .pla-work/shard-${{ matrix.shard }} --shard ${{ matrix.shard }} --batch-mib 256
+
+# Verify extracted bytes against each native member SHA256 before any push.
+
+# Verify and publish 4 independent data refs with a 256 MiB source-size batch ceiling.

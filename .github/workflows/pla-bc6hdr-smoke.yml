@@ -1,0 +1,75 @@
+name: PLA native BC6H HDR decode actual test
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/pla-astc-trinity-batch]
+    paths:
+      - 'tools/PLA.Bntx.Export/**'
+      - 'scripts/convert_pla_bntx.py'
+      - '.github/workflows/pla-bc6hdr-smoke.yml'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  bc6hdr:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-bc6-smoke]')
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: PLA
+          sparse-checkout: |
+            tools/PLA.Bntx.Export/
+            scripts/convert_pla_bntx.py
+      - uses: actions/checkout@v4
+        with:
+          repository: 969981/SV_Resources
+          ref: 50307e4227e74d59d0f3f32e08f99125be80b34b
+          path: SV
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            tools/gftool/NxMiddleware/BnTxx/
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build BnTxx and BCnEncoder.Net native HDR decoder
+        shell: pwsh
+        run: |
+          $root = Join-Path (Get-Location) "SV/tools/gftool/NxMiddleware/BnTxx"
+          dotnet build "PLA/tools/PLA.Bntx.Export/PLA.Bntx.Export.csproj" -c Release "-p:BnTxxRoot=$root"
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-bntx-retry-shard-1
+          repository: 969981/PLA_Resources
+          run-id: 42170751780
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: PLA/.pla-work/previous
+      - uses: actions/download-artifact@v4
+        with:
+          name: pla-gfpak-extracted-shard-1
+          repository: 969981/PLA_Resources
+          run-id: 42160235620
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: PLA/.pla-work/extracted
+      - name: Verify first five formerly unsupported BC6H members with float32 and PNG readback
+        shell: pwsh
+        run: |
+          python PLA/scripts/convert_pla_bntx.py --root PLA/.pla-work/extracted --dest PLA/.pla-work/bc6hdr --cli PLA/tools/PLA.Bntx.Export/bin/Release/net10.0-windows/PLA.Bntx.Export.dll --only-previous-partial PLA/.pla-work/previous/retry-shard-1.jsonl --expected-bntx 3616 --expected-selected 49 --limit 5 --jobs 2 --strict --ledger PLA/.pla-work/bc6hdr-ledger.jsonl
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-bc6hdr-5-native-verify
+          path: |
+            PLA/.pla-work/bc6hdr-ledger.jsonl
+            PLA/.pla-work/bc6hdr/**/conversion.json
+            PLA/.pla-work/bc6hdr/**/texture_*.png
+            PLA/.pla-work/bc6hdr/**/texture_*.rgb32f
+          retention-days: 14
+          if-no-files-found: warn
+
+# Use original 2 GB shard, verify HDR raw RGB float + PNG preview for BC6H.

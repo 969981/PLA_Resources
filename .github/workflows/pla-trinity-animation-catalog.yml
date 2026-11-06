@@ -1,0 +1,48 @@
+name: PLA original Pokemon model and animation resource catalog
+on:
+  push:
+    branches: [feat/pla-astc-trinity-batch]
+    paths:
+      - 'tools/PLA.Trinity.Catalog/**'
+      - '.github/workflows/pla-trinity-animation-catalog.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  parse-real-catalog:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[pla-animation-catalog]')
+    runs-on: windows-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            tools/PLA.Trinity.Catalog/
+            tools/upstream.json
+            scripts/sync_pla_tools.py
+            v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/pokemon/table/poke_resource_table.trpmcatalog
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Sync exact pinned PLA pkNX schemas
+        run: python scripts/sync_pla_tools.py --only pkNX
+      - name: Build and parse native game model and animation table
+        shell: pwsh
+        run: |
+          $root = Join-Path (Get-Location) ".pla-work/toolsrc/pkNX"
+          dotnet build tools/PLA.Trinity.Catalog/PLA.Trinity.Catalog.csproj -c Release "-p:PkNxRoot=$root"
+          dotnet tools/PLA.Trinity.Catalog/bin/Release/net10.0/PLA.Trinity.Catalog.dll "v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/pokemon/table/poke_resource_table.trpmcatalog" ".pla-work/trinity/pla-animation-path-catalog.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-trinity-animation-reference-catalog
+          path: .pla-work/trinity/pla-animation-path-catalog.json
+          retention-days: 14
+          if-no-files-found: warn
+
+# Extract animation names from game-authored FlatBuffer data, never guesses.
