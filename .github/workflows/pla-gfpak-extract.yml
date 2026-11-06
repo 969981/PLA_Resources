@@ -17,6 +17,7 @@ on:
       - "scripts/sync_pla_tools.py"
       - "tests/test_pla_gfpak_pipeline.py"
       - "scripts/audit_pla_gfpak_coverage.py"
+      - "scripts/restore_pla_gfpak_volumes.py"
       - ".github/workflows/pla-gfpak-extract.yml"
   pull_request:
     paths:
@@ -104,6 +105,7 @@ jobs:
             tools/upstream.json
             tools/deps/oo2core_8_win64.dll
             v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/archive/
+            PLA_1.1.1_files.csv
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "10.0.x"
@@ -117,6 +119,14 @@ jobs:
         run: |
           $root = Join-Path $env:GITHUB_WORKSPACE ".pla-work/toolsrc/pkNX"
           dotnet build tools/PLA.GFPak.Cli/PLA.GFPak.Cli.csproj -c Release "-p:PkNxRoot=$root"
+      - name: Restore 7z-split original GFPak and verify all 678 source paths
+        shell: pwsh
+        run: |
+          python scripts/restore_pla_gfpak_volumes.py `
+            --source-root "v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1" `
+            --inventory "PLA_1.1.1_files.csv" `
+            --expected-packs 678 `
+            --out ".pla-work/v1.1.1/gfpak/restore-${{ matrix.shard }}.json"
       - name: Extract and verify deterministic source shard
         shell: pwsh
         run: |
@@ -132,7 +142,9 @@ jobs:
         if: always()
         with:
           name: pla-gfpak-ledger-shard-${{ matrix.shard }}
-          path: .pla-work/v1.1.1/gfpak/shard-${{ matrix.shard }}.jsonl
+          path: |
+            .pla-work/v1.1.1/gfpak/shard-${{ matrix.shard }}.jsonl
+            .pla-work/v1.1.1/gfpak/restore-${{ matrix.shard }}.json
           if-no-files-found: warn
           retention-days: 14
       - uses: actions/upload-artifact@v4
