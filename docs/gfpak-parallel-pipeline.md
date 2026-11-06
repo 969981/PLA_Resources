@@ -93,3 +93,21 @@ Current statuses: **native extraction implemented and tested on 3 real packs**;
 ## Source volume restoration discovered by full run
 
 The first full attempt ([run #42159501834](https://github.com/969981/PLA_Resources/actions/runs/42159501834)) stopped correctly before conversion: 677 literal `.gfpak` files were present on checkout, versus 678 in the input CSV. GitHub's full tree contains the remaining source as the pair `bin/archive/field/model/pack/ha_area04.gfpak.7z.001` (90 MiB) and `.002` (2.6 MiB). The new `scripts/restore_pla_gfpak_volumes.py` uses 7z integrity tests, the original inventory byte size and a streaming SHA-256 receipt to reconstruct it in the ephemeral Actions worktree. This is **not** a missing original resource, and the full run must verify 678 literal inputs **after** restoration.
+
+## R3 native GFPak extraction COMPLETED — 2026-11-06
+
+Full [Actions run #42160235620](https://github.com/969981/PLA_Resources/actions/runs/42160235620) completed SUCCESS, including 4 Windows extraction shards and independent coverage audit.
+
+| Shard | Top-level GFPaks | Result |
+| --- | ---: | --- |
+| 0 | 159 | VERIFIED 159 |
+| 1 | 177 | VERIFIED 177 |
+| 2 | 170 | VERIFIED 170 |
+| 3 | 172 | VERIFIED 172 |
+| Total | **678** | **VERIFIED 678** |
+
+The 7z-split ha_area04.gfpak was reconstructed from both original tracked volumes, with 7z integrity validation, inventory size check (97,534,896 bytes) and an actual SHA-256 receipt. Final coverage output: complete=true, expected=678, recorded=678, states.VERIFIED=678, problems=[].
+
+Native extracted bytes are in 14-day Actions artifacts pla-gfpak-extracted-shard-{0,1,2,3}; coverage artifact ID 13477100671. No large game-derived outputs have been automatically added as Git blobs.
+
+**Evidence scope:** native entry extraction and file size/SHA-256 validation for 678 top-level GFPaks, including nested GFPak recursion up to configured depth 2 when detected. Does not prove semantic conversion of internal BNTX, Trinity, BLUA, PTCL, Wwise or message resources. The 19,101-original-file source reconciliation remains a separate task.
