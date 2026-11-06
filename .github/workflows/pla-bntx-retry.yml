@@ -128,3 +128,5 @@ jobs:
           path: .pla-work/coverage/bntx-retry-coverage.json
           retention-days: 14
           if-no-files-found: warn
+
+# Real previously PARTIAL retries from run 42166291180; no successful original is skipped in final reconciliation.
