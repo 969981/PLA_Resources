@@ -55,10 +55,10 @@ jobs:
         shell: pwsh
         run: |
           python PLA/scripts/convert_pla_bntx.py `
-            --root "PLA/.pla-work/extracted" \`
-            --dest "PLA/.pla-work/bntx-converted" \`
-            --cli "PLA/tools/PLA.Bntx.Export/bin/Release/net10.0-windows/PLA.Bntx.Export.dll" \`
-            --jobs 2 --limit 8 \`
+            --root "PLA/.pla-work/extracted" `
+            --dest "PLA/.pla-work/bntx-converted" `
+            --cli "PLA/tools/PLA.Bntx.Export/bin/Release/net10.0-windows/PLA.Bntx.Export.dll" `
+            --jobs 2 --limit 8 `
             --ledger "PLA/.pla-work/bntx-sample-results.jsonl"
       - uses: actions/upload-artifact@v4
         if: always()
