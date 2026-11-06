@@ -1,0 +1,43 @@
+name: Validate PLA R0 scaffolding
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/**'
+      - 'tests/**'
+      - 'docs/**'
+      - 'AGENTS.md'
+      - 'PLA_1.1.1_files.csv'
+      - '.github/workflows/validate-pla-r0.yml'
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - 'tests/**'
+      - 'PLA_1.1.1_files.csv'
+      - '.github/workflows/validate-pla-r0.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Synthetic tests
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Audit inventory CSV (not source byte verification)
+        run: python scripts/audit_pla_inventory.py PLA_1.1.1_files.csv --expected-nca 19101 --expected-exefs 6 --expected-romfs 19095
+      - name: Plan all NCA input tasks
+        run: python scripts/plan_pla_unpack.py PLA_1.1.1_files.csv --out .pla-work/v1.1.1/task-plan.csv
+      - name: Publish planner receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: pla-r0-task-plan
+          path: .pla-work/v1.1.1/task-plan.csv
+          retention-days: 14

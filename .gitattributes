@@ -1,0 +1,18 @@
+# Keep source and archive data as opaque bytes.
+*.gfpak binary
+*.bntx binary
+*.blua binary
+*.ptcl binary
+*.tranm binary
+*.trmdl binary
+*.trmsh binary
+*.trmtr binary
+*.trskl binary
+*.bnk binary
+*.pck binary
+*.7z.* binary
+*.ps1 text eol=crlf
+*.py text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.json text eol=lf

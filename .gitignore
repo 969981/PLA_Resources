@@ -1,0 +1,23 @@
+# Local scratch/restore/cache
+.pla-work/
+.pla-cache/
+.pla-restore/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+.vscode/
+.idea/
+*.tmp
+*.part
+*.log
+.DS_Store
+# Exclude work-in-progress inside unpack; validated outputs may be opted into Git.
+Unpack/**/_tmp/
+Unpack/**/_cache/
+Unpack/**/.work/
+# never commit locally supplied restricted dependencies
+**/prod.keys
+**/title.keys
+**/oo2core*.dll
