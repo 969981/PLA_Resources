@@ -60,3 +60,5 @@ jobs:
           path: PLA/.pla-work/tranm/pikachu-verified-motion.json
           if-no-files-found: warn
           retention-days: 14
+
+# Small exact native 13KB motion + 13KB TRSKL skeleton, no ZIP sample guesswork.
