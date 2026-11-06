@@ -1,0 +1,52 @@
+name: PLA Trinity native structure sample
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/pla-secondary-format-census]
+    paths:
+      - 'tools/PLA.Trinity.Inspect/**'
+      - '.github/workflows/pla-trinity-inspect.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  real-model:
+    runs-on: windows-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            tools/PLA.Trinity.Inspect/
+            tools/upstream.json
+            tools/deps/oo2core_8_win64.dll
+            scripts/sync_pla_tools.py
+            v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/archive/pokemon/pm0025_00_00.gfpak
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Fetch pinned pkNX with PLA Arceus FlatBuffers schemas
+        run: python scripts/sync_pla_tools.py --only pkNX
+      - name: Build .NET 10 typed PLA model inspector
+        shell: pwsh
+        run: |
+          $root = Join-Path (Get-Location) ".pla-work/toolsrc/pkNX"
+          dotnet build "tools/PLA.Trinity.Inspect/PLA.Trinity.Inspect.csproj" -c Release "-p:PkNxRoot=$root"
+      - name: Inspect real Pikachu model, mesh, material and skeleton graph
+        shell: pwsh
+        run: |
+          dotnet "tools/PLA.Trinity.Inspect/bin/Release/net10.0/PLA.Trinity.Inspect.dll" "v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/archive/pokemon/pm0025_00_00.gfpak" ".pla-work/v1.1.1/trinity/pikachu-structure.json" "tools/deps/oo2core_8_win64.dll"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pla-trinity-real-pikachu-model
+          path: .pla-work/v1.1.1/trinity/pikachu-structure.json
+          retention-days: 14
+          if-no-files-found: warn
