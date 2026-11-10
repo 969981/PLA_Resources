@@ -1,0 +1,106 @@
+name: PLA 1.1.1 Pokédex report update ELF trace
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/pla-pokedex-report-trace.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pla-v111-pokedex-report-trace
+  cancel-in-progress: false
+
+jobs:
+  trace:
+    if: github.repository == '969981/PLA_Resources'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Sparse checkout verified ELF, tracer and evidence directory
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          filter: blob:none
+          fetch-depth: 1
+          persist-credentials: true
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/trace_pla_pokedex_mutation.py
+            /Unpack/v1.1.1/exefs/main/main.elf
+            /Unpack/v1.1.1/exefs/main/main.elf.manifest.json
+            /docs/research/v1.1.1/semantic_inventory/
+            /.github/workflows/pla-pokedex-report-trace.yml
+
+      - name: Verify original ELF and prepare pinned disassembler
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum -c Unpack/v1.1.1/exefs/main/main.elf.sha256 2>/dev/null || \
+            echo 'Standalone sha256 file not in sparse checkout; checking manifest hash instead'
+          python3 -m py_compile scripts/trace_pla_pokedex_mutation.py
+          python3 -m pip install --disable-pip-version-check --no-cache-dir 'capstone==5.0.6'
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          root=pathlib.Path('Unpack/v1.1.1/exefs/main')
+          m=json.loads((root/'main.elf.manifest.json').read_text())
+          p=root/'main.elf'
+          digest=hashlib.sha256(p.read_bytes()).hexdigest()
+          assert digest==m['elf_sha256']=='260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794'
+          assert p.stat().st_size==69781384
+          print('ELF identity:',digest)
+          PY
+
+      - name: Trace registered report update labels and direct call references
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/trace_pla_pokedex_mutation.py \
+            --elf Unpack/v1.1.1/exefs/main/main.elf \
+            --out docs/research/v1.1.1/semantic_inventory/update_all_report_poke_elf_trace.md \
+            --json-out docs/research/v1.1.1/semantic_inventory/update_all_report_poke_elf_trace.json
+          python3 - <<'PY'
+          import json
+          p='docs/research/v1.1.1/semantic_inventory/update_all_report_poke_elf_trace.json'
+          r=json.load(open(p,encoding='utf8'))
+          assert r['status']=='STATIC_INSTRUCTION_EVIDENCE_ONLY',r
+          assert len(r['address_anchor_calls'])>=2,r['address_anchor_calls']
+          for key,va in [('UpdateAllReportPoke','0x0112f4f8'),
+                         ('UpdateAllReportPokeAndGetResult','0x0286bc90')]:
+              w=r['windows'][key]
+              assert w['target']==va
+              assert any(ins['va']==va for ins in w['instructions'])
+          print('Raw ELF targeted trace verified.')
+          PY
+
+      - name: Publish only independent analysis results
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            docs/research/v1.1.1/semantic_inventory/update_all_report_poke_elf_trace.md \
+            docs/research/v1.1.1/semantic_inventory/update_all_report_poke_elf_trace.json
+          if git diff --cached --quiet; then
+            echo 'Identical evidence already published; no duplicate commit.'
+          else
+            git commit -m 'research(pla): trace Pokedex report-update instructions from pinned ELF'
+            git fetch -q origin master
+            git rebase origin/master
+            git push origin HEAD:refs/heads/master
+          fi
+
+      - name: Preserve direct instruction evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PLA-1.1.1-Pokedex-Report-Update-ELF-Trace
+          retention-days: 30
+          if-no-files-found: warn
+          path: |
+            docs/research/v1.1.1/semantic_inventory/update_all_report_poke_elf_trace.md
+            docs/research/v1.1.1/semantic_inventory/update_all_report_poke_elf_trace.json
