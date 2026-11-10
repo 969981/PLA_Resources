@@ -1,0 +1,82 @@
+{
+  "evidence_scope": "STATIC_GHIDRA_SQLITE_PLUS_EXACT_FUNCTION_BODY_RANGES",
+  "semantic_status": "CANDIDATE_DISCOVERY_NOT_RUNTIME_PROOF",
+  "database": "pla.sqlite",
+  "function_body_export": {
+    "functions": 82760,
+    "ranges": 84082,
+    "program": "main.elf",
+    "image_base": "00100000",
+    "mode": "READ_ONLY_NO_ANALYSIS"
+  },
+  "functions": 82760,
+  "tables": {
+    "functions": 82760,
+    "instructions": 12933265,
+    "references_full": 5678736,
+    "symbols": 1796866,
+    "defined_data": 1544829,
+    "decompilation": 82760,
+    "memory_blocks": 30,
+    "metadata": 10
+  },
+  "decompilation_status": {
+    "FAILED": 29,
+    "OK": 82731
+  },
+  "function_body_ranges": {
+    "functions": 82760,
+    "ranges": 84082,
+    "program": "main.elf",
+    "image_base": "00100000",
+    "mode": "READ_ONLY_NO_ANALYSIS"
+  },
+  "exact_function_body_mapping": true,
+  "string_reference_mapping_counts": {
+    "EXACT_GHIDRA_FUNCTION_BODY": 7880,
+    "NOT_IN_GHIDRA_FUNCTION_BODY": 4535
+  },
+  "domain_string_counts": {
+    "battle": 2795,
+    "pokemon_data": 867,
+    "save_storage": 427,
+    "items_inventory": 666,
+    "wild_encounter": 225,
+    "pokedex_research": 72
+  },
+  "domain_candidate_function_counts": {
+    "pokemon_data": 922,
+    "save_storage": 1146,
+    "battle": 854,
+    "pokedex_research": 56,
+    "items_inventory": 259,
+    "wild_encounter": 98
+  },
+  "shortlist_counts": {
+    "pokemon_data": 20,
+    "save_storage": 20,
+    "battle": 20,
+    "pokedex_research": 20,
+    "items_inventory": 20,
+    "wild_encounter": 20
+  },
+  "selected_seed_functions_for_callgraph": 296,
+  "exact_call_references_scanned": 795533,
+  "selected_aggregated_call_edges": 4176,
+  "final_shortlist_call_edges": 2195,
+  "caller_mapping_failures": {
+    "NOT_IN_GHIDRA_FUNCTION_BODY": 248033
+  },
+  "unresolved_call_targets": 15,
+  "rtti_typeinfo_like_symbols": 20,
+  "final_shortlist_functions": 86,
+  "pseudocode_functions_in_review_bundle": 18,
+  "caveats": [
+    "String matching discovers candidates; it does not prove the function's business responsibility.",
+    "Caller ownership is accepted only when the callsite lies in exactly one exported Ghidra function body range.",
+    "Callee ownership is accepted only when the direct call target equals a known Ghidra function entry.",
+    "Indirect calls, virtual dispatch, tail calls not represented as call references and unresolved external targets require separate analysis.",
+    "No runtime behavior, game UI behavior or save-side effect is proven by this static report."
+  ],
+  "next_manual_step": "Review top_candidate_pseudocode.md, then trace the strongest candidate through exact callers/callees, data references, structure offsets and raw ARM64 instructions."
+}
