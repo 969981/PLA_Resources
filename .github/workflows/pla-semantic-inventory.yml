@@ -18,18 +18,21 @@ concurrency:
 jobs:
   inventory:
     if: github.repository == '969981/PLA_Resources'
-    name: Restore SQLite and build evidence-linked semantic candidates
+    name: Restore SQLite and Ghidra project; build exact-body semantic shortlist
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 150
     env:
       REPO: 969981/PLA_Resources
       ANALYSIS_RUN: '42774682950'
       PUBLISH_RUN: '42830950371'
       SOURCE: derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla
       OUTPUT: docs/research/v1.1.1/semantic_inventory
+      REVIEW_OUTPUT: docs/research/v1.1.1/semantic_inventory/review_v2
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GHIDRA_RELEASE_URL: https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.2_build/ghidra_12.2_PUBLIC_20261016.zip
+      GHIDRA_RELEASE_SHA256: 2c2cd776db3c1f6a097ba418922378ac3649cadd5e844a6f5f088ae628a7be67
     steps:
-      - name: Sparse checkout SQLite shards, manifests and research tools
+      - name: Sparse checkout verified SQLite shards, native project and research tools
         uses: actions/checkout@v4
         with:
           ref: master
@@ -41,10 +44,14 @@ jobs:
             /tools/ghidra/pla_restore_split.py
             /tools/ghidra/pla_embed_elf.py
             /tools/ghidra/pla_semantic_inventory.py
+            /tools/ghidra/pla_semantic_review.py
+            /tools/ghidra/PLAExportFunctionBodies.java
             /.github/workflows/pla-semantic-inventory.yml
             /docs/research/v1.1.1/
             /derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/parts_manifest.json
             /derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/database/
+            /derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/project/
+            /derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/project_parts/
 
       - name: Verify source analysis and idempotent publication succeeded
         shell: bash
@@ -52,7 +59,11 @@ jobs:
           set -euo pipefail
           test "$(gh api "repos/$REPO/actions/runs/$ANALYSIS_RUN" --jq '.conclusion')" = success
           test "$(gh api "repos/$REPO/actions/runs/$PUBLISH_RUN" --jq '.conclusion')" = success
-          python3 -m py_compile tools/ghidra/pla_restore_split.py tools/ghidra/pla_embed_elf.py tools/ghidra/pla_semantic_inventory.py
+          python3 -m py_compile \
+            tools/ghidra/pla_restore_split.py \
+            tools/ghidra/pla_embed_elf.py \
+            tools/ghidra/pla_semantic_inventory.py \
+            tools/ghidra/pla_semantic_review.py
           test -s "$SOURCE/parts_manifest.json"
 
       - name: Restore SQLite only and verify original database identity
@@ -74,7 +85,81 @@ jobs:
           print('SQLite-only restoration passed:',m)
           PY
 
-      - name: Build static string, RTTI, function and call-graph candidate inventory
+      - name: Restore native Ghidra project without modifying published source
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/ghidra/pla_restore_split.py \
+            --source "$SOURCE" \
+            --out "$RUNNER_TEMP/pla_project_restored" \
+            --project-only | tee "$RUNNER_TEMP/pla_project_restore_stdout.json"
+          python3 - "$RUNNER_TEMP/pla_project_restored/restore_report.json" <<'PY'
+          import json,sys
+          m=json.load(open(sys.argv[1]))
+          assert m['status']=='NATIVE_PROJECT_REASSEMBLED_AND_SHA256_VERIFIED',m
+          assert m['native_project'] is True,m
+          assert m['project_name']=='PLA111',m
+          assert m['project_split_files']==1,m
+          print('Native project restoration passed:',m)
+          PY
+          test -f "$RUNNER_TEMP/pla_project_restored/project/PLA111.gpr"
+          test -d "$RUNNER_TEMP/pla_project_restored/project/PLA111.rep"
+
+      - name: Install JDK 25 required by official Ghidra 12.2
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - name: Download and verify pinned official Ghidra 12.2
+        shell: bash
+        run: |
+          set -euo pipefail
+          archive="$RUNNER_TEMP/ghidra_12.2_PUBLIC_20261016.zip"
+          mkdir -p "$RUNNER_TEMP/ghidra_dist"
+          curl --fail --location --retry 4 --retry-delay 10 --output "$archive" "$GHIDRA_RELEASE_URL"
+          printf '%s  %s\n' "$GHIDRA_RELEASE_SHA256" "$archive" | sha256sum --check
+          unzip -q "$archive" -d "$RUNNER_TEMP/ghidra_dist"
+          analyzer="$(find "$RUNNER_TEMP/ghidra_dist" -type f -path '*/support/analyzeHeadless' -print -quit)"
+          test -n "$analyzer"
+          chmod +x "$analyzer"
+          echo "GHIDRA_HEADLESS=$analyzer" >> "$GITHUB_ENV"
+          rm -f "$archive"
+
+      - name: Export exact function body ranges from restored project, read-only and no analysis
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$GHIDRA_HEADLESS" "$RUNNER_TEMP/pla_project_restored/project" PLA111 \
+            -process main.elf -noanalysis -readOnly \
+            -scriptPath "$GITHUB_WORKSPACE/tools/ghidra" \
+            -postScript PLAExportFunctionBodies.java "$RUNNER_TEMP/pla_function_bodies.ndjson" \
+            -log "$RUNNER_TEMP/pla_function_bodies.log" \
+            -scriptlog "$RUNNER_TEMP/pla_function_bodies_script.log"
+          python3 - "$RUNNER_TEMP/pla_function_bodies.ndjson" <<'PY'
+          import json,sys
+          meta=None
+          summary=None
+          functions=0
+          ranges=0
+          with open(sys.argv[1],encoding='utf-8') as fp:
+              for line in fp:
+                  row=json.loads(line)
+                  if row.get('type')=='meta': meta=row
+                  elif row.get('type')=='function':
+                      functions+=1
+                      ranges+=len(row.get('ranges',[]))
+                  elif row.get('type')=='summary': summary=row
+          assert meta and meta['program']=='main.elf',meta
+          assert meta['image_base']=='00100000',meta
+          assert meta['mode']=='READ_ONLY_NO_ANALYSIS',meta
+          assert summary and summary['complete'],summary
+          assert functions==82760 and summary['functions']==82760,(functions,summary)
+          assert ranges==summary['ranges'] and ranges>0,(ranges,summary)
+          print('Exact function body ranges exported:',functions,'functions;',ranges,'ranges')
+          PY
+
+      - name: Build first-pass static semantic inventory
         shell: bash
         run: |
           set -euo pipefail
@@ -90,26 +175,59 @@ jobs:
           test -s "$OUTPUT/rtti_vtable_typeinfo_symbols.csv"
           test -s "$OUTPUT/decompilation_failures.csv"
 
-      - name: Commit reproducible semantic inventory to master
+      - name: Build exact-body candidate ranking and pseudocode review bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$REVIEW_OUTPUT"
+          python3 tools/ghidra/pla_semantic_review.py \
+            --db "$RUNNER_TEMP/pla_sqlite_restored/pla.sqlite" \
+            --function-bodies "$RUNNER_TEMP/pla_function_bodies.ndjson" \
+            --out "$REVIEW_OUTPUT" \
+            --top-per-domain 20 \
+            --seed-per-domain 60 \
+            --pseudocode-per-domain 3 \
+            --max-c-chars 12000 | tee "$RUNNER_TEMP/pla_semantic_review_stdout.json"
+          for file in README.md summary.json top_candidates.json semantic_shortlist.csv \
+                      semantic_string_xrefs.csv semantic_callgraph_edges.csv top_candidate_pseudocode.md; do
+            test -s "$REVIEW_OUTPUT/$file"
+          done
+          python3 - "$REVIEW_OUTPUT/summary.json" <<'PY'
+          import json,sys
+          m=json.load(open(sys.argv[1]))
+          assert m['exact_function_body_mapping'] is True,m
+          assert m['function_body_ranges']['functions']==82760,m
+          assert m['final_shortlist_functions']>0,m
+          assert m['pseudocode_functions_in_review_bundle']>0,m
+          assert m['semantic_status']=='CANDIDATE_DISCOVERY_NOT_RUNTIME_PROOF',m
+          print('Exact-body semantic review passed:',m['shortlist_counts'])
+          PY
+
+      - name: Commit reproducible semantic inventories to master
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- "$OUTPUT"
-          git commit -m "research(pla): add evidence-linked static semantic candidate inventory"
+          git add -- "$OUTPUT" "$REVIEW_OUTPUT"
+          git commit -m "research(pla): refine semantic shortlist with exact Ghidra function bodies"
           git fetch -q origin master
           git rebase origin/master
           git push origin HEAD:refs/heads/master
 
-      - name: Preserve semantic inventory as an Actions artifact
+      - name: Preserve exact-body export and semantic review evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: PLA-1.1.1-semantic-candidate-inventory
+          name: PLA-1.1.1-exact-body-semantic-review
           retention-days: 30
           if-no-files-found: warn
           path: |
             docs/research/v1.1.1/semantic_inventory/
+            ${{ runner.temp }}/pla_function_bodies.ndjson
+            ${{ runner.temp }}/pla_function_bodies.log
+            ${{ runner.temp }}/pla_function_bodies_script.log
             ${{ runner.temp }}/pla_sqlite_restored/restore_report.json
+            ${{ runner.temp }}/pla_project_restored/restore_report.json
             ${{ runner.temp }}/pla_semantic_inventory_stdout.json
+            ${{ runner.temp }}/pla_semantic_review_stdout.json
