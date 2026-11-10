@@ -88,13 +88,34 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if [ -e "$DEST" ]; then
-            echo "::error::This source run has already been published; refusing to overwrite"
+          if [ -f "$DEST/pla/parts_manifest.json" ]; then
+            # Idempotent recovery: reuse an already verified publication.
+            python3 - "$DEST/pla/parts_manifest.json" "$SOURCE_RUN" <<'PY'
+          import json,sys
+          m=json.load(open(sys.argv[1]))
+          assert m["status"]=="UNCOMPRESSED_SPLIT_VERIFIED",m
+          assert str(m["source_run_id"])==sys.argv[2],m
+          assert m["original_elf_sha256"]=="260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794",m
+          PY
+          elif [ -e "$DEST" ]; then
+            echo "::error::Destination exists without a verified manifest; refusing to overwrite"
             exit 1
+          else
+            python3 tools/ghidra/pla_publish_split.py \
+              --artifacts "$RUNNER_TEMP/artifacts" \
+              --out "$DEST" --run-id "$SOURCE_RUN"
           fi
-          python3 tools/ghidra/pla_publish_split.py \
-            --artifacts "$RUNNER_TEMP/artifacts" \
-            --out "$DEST" --run-id "$SOURCE_RUN"
+          # Publish the standalone ELF proof as well as embedding it in parts_manifest.
+          python3 - "$DEST/pla/parts_manifest.json" "$DEST/pla/elf_bytes_manifest.json" "$RUNNER_TEMP/artifacts/PLA-pla-sqlite/pla_elf_bytes_manifest.json" <<'PY'
+          import json,sys
+          m=json.load(open(sys.argv[1]))
+          expected=m["original_elf_chunks"]
+          artifact=json.load(open(sys.argv[3]))
+          assert expected==artifact,(expected,artifact)
+          with open(sys.argv[2],"w") as out:
+              json.dump(expected,out,indent=2)
+              out.write("\\n")
+          PY
           python3 - "$DEST/pla/parts_manifest.json" <<'PY'
           import json,sys
           m=json.load(open(sys.argv[1]))
@@ -140,6 +161,7 @@ jobs:
           for item in \
             "$DEST/README.md" "$DEST/pla/README.md" \
             "$DEST/pla/parts_manifest.json" \
+            "$DEST/pla/elf_bytes_manifest.json" \
             "$DEST/pla/sqlite_manifest.json" \
             "$DEST/pla/decompiled_manifest.json" \
             "$DEST/pla/decompiled_index.csv" \
@@ -156,8 +178,27 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          mapfile -d '' -t paths < <(find "$DEST/pla/c" -type f -name '*.c' -print0 | sort -z)
           expected="$(python3 -c 'import json,sys;print(json.load(open(sys.argv[1]))["c_success"])' "$DEST/pla/parts_manifest.json")"
+          tracked_count="$(git ls-tree -r --name-only HEAD -- "$DEST/pla/c" | awk '/\\.c$/ { n++ } END { print n+0 }')"
+          if (( tracked_count > expected )); then
+            echo "::error::More tracked C files than the verified export: $tracked_count > $expected"
+            exit 1
+          fi
+          if (( tracked_count == expected )); then
+            echo "All $expected per-function C files are already committed; checking cleanliness."
+            remaining="$(git status --porcelain -- "$DEST")"
+            if [ -n "$remaining" ]; then printf '%s\\n' "$remaining"; exit 1; fi
+            echo "Verified all $expected per-function C files already exist in Git." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          python3 - "$RUNNER_TEMP/artifacts/PLA-pla-c/pla_all_c.zip" "$DEST/pla/c" "$expected" <<'PY'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0,"tools/ghidra")
+          from pla_publish_split import unpack_code
+          print("Recovered C files:",unpack_code(Path(sys.argv[1]),Path(sys.argv[2]),int(sys.argv[3])))
+          PY
+          mapfile -d '' -t paths < <(find "$DEST/pla/c" -type f -name '*.c' -print0 | sort -z)
           test "${#paths[@]}" -eq "$expected"
           batch=0
           staged_count=0
@@ -187,8 +228,11 @@ jobs:
             staged_bytes=$((staged_bytes+size))
           done
           commit_batch
-          test -z "$(git status --porcelain -- "$DEST")"
-          echo "Published $expected actual per-function C files in $batch commits." >> "$GITHUB_STEP_SUMMARY"
+          tracked_count="$(git ls-tree -r --name-only HEAD -- "$DEST/pla/c" | awk '/\\.c$/ { n++ } END { print n+0 }')"
+          test "$tracked_count" -eq "$expected"
+          remaining="$(git status --porcelain -- "$DEST")"
+          if [ -n "$remaining" ]; then printf '%s\\n' "$remaining"; exit 1; fi
+          echo "Published and verified $tracked_count per-function C files in $batch new commits." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Preserve publication evidence for independent audit
         if: always()
