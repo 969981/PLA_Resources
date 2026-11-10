@@ -1,0 +1,408 @@
+{
+  "schema_version": 1,
+  "title": "PLA 1.1.1 first-pass Pokédex semantic annotations",
+  "source": {
+    "analysis_run": 42774682950,
+    "publication_run": 42830950371,
+    "elf_sha256": "260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794",
+    "ghidra_version": "12.2",
+    "image_base": "0x00100000",
+    "evidence_scope": "static Ghidra C pseudocode, strings and direct call evidence only"
+  },
+  "naming_policy": "Suggested names are annotations, not original symbols. Do not apply them as confirmed names until caller/callee, data layout and runtime side effects are closed.",
+  "functions": [
+    {
+      "address": "0x00D840E0",
+      "suggested_name": "ParentContext_Init_AttachPokedexManager",
+      "confidence": "high",
+      "status": "OBSERVED",
+      "evidence": [
+        "Initializes a large parent context object.",
+        "Stores the object returned by FUN_00D86F64 in param_1[0x39] (byte offset +0x1C8).",
+        "Calls FUN_013E2328 on that subordinate object."
+      ],
+      "relationships": {
+        "calls": [
+          "0x00D86F64",
+          "0x013E2328",
+          "0x00D3E3FC"
+        ]
+      },
+      "notes": "Parent object has other responsibilities; do not rename the entire object as a Pokédex-only object."
+    },
+    {
+      "address": "0x00D86F64",
+      "suggested_name": "PokedexManager_AllocateAndInitialize",
+      "confidence": "high",
+      "status": "OBSERVED",
+      "evidence": [
+        "Allocates a 0x78-byte object.",
+        "Calls FUN_013E20C8 to initialize it.",
+        "Returns the object later stored at parent offset +0x1C8."
+      ],
+      "relationships": {
+        "calls": [
+          "0x013E20C8"
+        ]
+      }
+    },
+    {
+      "address": "0x013E20C8",
+      "suggested_name": "PokedexManager_Constructor",
+      "confidence": "high",
+      "status": "OBSERVED",
+      "evidence": [
+        "Initializes the 0x78-byte manager object and its vtable.",
+        "Calls FUN_013E2210 to allocate a nested 0x68-byte container.",
+        "Stores that nested container at manager offset +0x58."
+      ],
+      "relationships": {
+        "calls": [
+          "0x013E2210"
+        ]
+      },
+      "object_layout": [
+        {
+          "offset": "0x58",
+          "type": "pointer",
+          "meaning": "nested 0x68-byte table container"
+        }
+      ]
+    },
+    {
+      "address": "0x013E2210",
+      "suggested_name": "PokedexTableContainer_Constructor",
+      "confidence": "high",
+      "status": "OBSERVED",
+      "evidence": [
+        "Allocates and initializes a 0x68-byte nested container.",
+        "Sets its vtable and clears child pointer fields."
+      ],
+      "object_layout": [
+        {
+          "offset": "0x08",
+          "type": "pointer",
+          "meaning": "research-task wrapper"
+        },
+        {
+          "offset": "0x28",
+          "type": "pointer",
+          "meaning": "rank-table wrapper"
+        },
+        {
+          "offset": "0x48",
+          "type": "pointer",
+          "meaning": "form-storage-index wrapper"
+        }
+      ]
+    },
+    {
+      "address": "0x013E2328",
+      "suggested_name": "PokedexResourceManager_InitTableGroup",
+      "confidence": "high",
+      "status": "OBSERVED",
+      "evidence": [
+        "Reads the nested container pointer at manager offset +0x58.",
+        "Creates three wrappers and stores them at nested offsets +0x08, +0x28 and +0x48.",
+        "Calls the research, rank and form-storage lazy loaders."
+      ],
+      "relationships": {
+        "calls": [
+          "0x013E2520",
+          "0x013F7098",
+          "0x013E2620",
+          "0x013F6B70",
+          "0x013E2740",
+          "0x013F6A80"
+        ]
+      }
+    },
+    {
+      "address": "0x013E2520",
+      "suggested_name": "ResearchTaskTableWrapper_Constructor",
+      "confidence": "high",
+      "status": "OBSERVED",
+      "evidence": [
+        "Allocates a 0x38E0-byte wrapper used by the research-task table loader."
+      ]
+    },
+    {
+      "address": "0x013E2620",
+      "suggested_name": "PokedexRankTableWrapper_Constructor",
+      "confidence": "high",
+      "status": "OBSERVED",
+      "evidence": [
+        "Allocates a 0x40-byte wrapper used by the rank-table loader."
+      ]
+    },
+    {
+      "address": "0x013E2740",
+      "suggested_name": "FormStorageIndexWrapper_Constructor",
+      "confidence": "high",
+      "status": "OBSERVED",
+      "evidence": [
+        "Allocates a 0x760-byte wrapper used by the form-storage-index loader."
+      ]
+    },
+    {
+      "address": "0x013F7098",
+      "suggested_name": "PokedexResearchTaskTable_Load",
+      "confidence": "high",
+      "status": "OBSERVED",
+      "evidence": [
+        "References bin/appli/pokedex/res_table/pokedex_research_task_table.bin.",
+        "Uses FUN_009F1B84 and FUN_00938764 with mode 0.",
+        "Calls FUN_013F6DF8 after the resource context is ready."
+      ],
+      "relationships": {
+        "calls": [
+          "0x009F1B84",
+          "0x00938764",
+          "0x013F6DF8"
+        ]
+      },
+      "resources": [
+        "bin/appli/pokedex/res_table/pokedex_research_task_table.bin"
+      ]
+    },
+    {
+      "address": "0x013F6DF8",
+      "suggested_name": "PokedexResearchTaskTable_DecodeRecords",
+      "confidence": "medium",
+      "status": "OBSERVED",
+      "evidence": [
+        "Writes output records at base +0x40 with a 0x10-byte stride.",
+        "Range-checks a parsed key against 0x389 (905).",
+        "Packs several 4-bit fields into a 64-bit value at record offset +0x02."
+      ],
+      "inferred_role": "Decodes compact research-task metadata into indexed records.",
+      "notes": "The exact semantics of each packed field and the key domain require consumer tracing and raw table inspection."
+    },
+    {
+      "address": "0x013F6B70",
+      "suggested_name": "PokedexRankTable_Load",
+      "confidence": "high",
+      "status": "OBSERVED",
+      "evidence": [
+        "References bin/appli/pokedex/res_table/pokedex_rank_table.bin.",
+        "Uses the shared path and resource load helpers with mode 0.",
+        "Publishes a data pointer/end marker after readiness."
+      ],
+      "relationships": {
+        "calls": [
+          "0x009F1B84",
+          "0x00938764"
+        ]
+      },
+      "resources": [
+        "bin/appli/pokedex/res_table/pokedex_rank_table.bin"
+      ],
+      "notes": "Rank record schema and consumers are not yet known."
+    },
+    {
+      "address": "0x013F6A80",
+      "suggested_name": "PokedexFormStorageIndexTable_Load",
+      "confidence": "high",
+      "status": "OBSERVED",
+      "evidence": [
+        "References bin/appli/pokedex/res_table/pokedex_form_storage_index_table.bin.",
+        "Uses the shared path and resource load helpers with mode 0.",
+        "Calls FUN_013F69B0 after the data context is ready."
+      ],
+      "relationships": {
+        "calls": [
+          "0x009F1B84",
+          "0x00938764",
+          "0x013F69B0"
+        ]
+      },
+      "resources": [
+        "bin/appli/pokedex/res_table/pokedex_form_storage_index_table.bin"
+      ]
+    },
+    {
+      "address": "0x013F69B0",
+      "suggested_name": "PokedexFormStorageIndexTable_Build906EntryMap",
+      "confidence": "medium",
+      "status": "OBSERVED",
+      "evidence": [
+        "Sets wrapper ready flag at +0x38.",
+        "Stores a 16-bit source count at +0x3A and source pointer at +0x40.",
+        "Clears 0x714 bytes at +0x48 and fills a 906-entry u16 lookup array from 3-u16 source records."
+      ],
+      "inferred_role": "Builds a form-to-storage or storage-to-form lookup map.",
+      "notes": "Mapping direction and treatment of slot 0/forms are unresolved."
+    },
+    {
+      "address": "0x013F5CD0",
+      "suggested_name": "PokedexDistributionTable_LoadSharedMode1",
+      "confidence": "medium",
+      "status": "OBSERVED",
+      "evidence": [
+        "References bin/appli/pokedex/res_table/pokedex_distribution_table.bin.",
+        "Calls FUN_00938764 with mode 1, selecting the helper's alternate non-wait request branch.",
+        "Performs atomic reference-count updates and shared-object cleanup."
+      ],
+      "inferred_role": "Distribution-table load through a separate nonblocking/shared-resource path.",
+      "resources": [
+        "bin/appli/pokedex/res_table/pokedex_distribution_table.bin"
+      ],
+      "notes": "No direct caller was found in the current pseudocode search; resolve vtable or indirect dispatch."
+    },
+    {
+      "address": "0x009F1B84",
+      "suggested_name": "ResourcePathDescriptor_Create",
+      "confidence": "high",
+      "status": "OBSERVED",
+      "evidence": [
+        "Builds a path descriptor from a resource path string.",
+        "Chooses a prefix-aware path builder or prepends the configured prefix.",
+        "Creates a descriptor object through FUN_02A8EB50."
+      ],
+      "relationships": {
+        "calls": [
+          "0x009F1CA0",
+          "0x009F1D00",
+          "0x02A8EB50"
+        ]
+      },
+      "notes": "The literal configured prefix is not yet recovered."
+    },
+    {
+      "address": "0x00938764",
+      "suggested_name": "ResourceManager_LoadOrWait",
+      "confidence": "high",
+      "status": "OBSERVED",
+      "evidence": [
+        "Uses the second argument low bit to select two resource-load paths.",
+        "Mode 0 waits on a condition variable while the ready byte at resource +0x1E1 is zero.",
+        "Mode 1 calls FUN_00939B4C and does not perform that explicit wait."
+      ],
+      "relationships": {
+        "calls": [
+          "0x009389E8",
+          "0x00939B4C"
+        ]
+      },
+      "notes": "The exact completion contract of mode 1 still requires tracing."
+    },
+    {
+      "address": "0x00939B4C",
+      "suggested_name": "ResourceManager_AlternateRequestPath",
+      "confidence": "medium",
+      "status": "INFERRED",
+      "evidence": [
+        "Called from the mode-1 branch of FUN_00938764.",
+        "Uses shared manager state and reference-counted objects; does not wait on the ready condition in this function."
+      ],
+      "notes": "Do not label as fully asynchronous until callback/worker completion and consumer behavior are verified."
+    },
+    {
+      "address": "0x00D3E3FC",
+      "suggested_name": "PokemonInfoList_Load",
+      "confidence": "high",
+      "status": "OBSERVED",
+      "evidence": [
+        "References bin/appli/res_pokemon/list/pokemon_info_list.bin.",
+        "Uses FUN_009F1B84 and FUN_00938764 with mode 0."
+      ],
+      "relationships": {
+        "calls": [
+          "0x009F1B84",
+          "0x00938764"
+        ]
+      },
+      "resources": [
+        "bin/appli/res_pokemon/list/pokemon_info_list.bin"
+      ]
+    },
+    {
+      "address": "0x013EF328",
+      "suggested_name": "PokedexView_InitializeCommonData",
+      "confidence": "high",
+      "status": "OBSERVED",
+      "evidence": [
+        "References View_Top and CommonOptionBar.",
+        "Loads common/pokedex.dat through FUN_00D37BB4.",
+        "Passes the loaded resource into FUN_013EE3FC and updates view state fields +0x68 through +0x80."
+      ],
+      "relationships": {
+        "calls": [
+          "0x013EF59C",
+          "0x013EF754",
+          "0x00D37BB4",
+          "0x013EE3FC"
+        ]
+      },
+      "resources": [
+        "common/pokedex.dat"
+      ]
+    },
+    {
+      "address": "0x013EE3FC",
+      "suggested_name": "PokedexView_BindCommonData",
+      "confidence": "medium",
+      "status": "OBSERVED",
+      "evidence": [
+        "Stores supplied data pointers in an object at offsets +0x08 through +0x30.",
+        "Obtains subordinate objects through FUN_00D48784.",
+        "Called by the PokedexView initialization path."
+      ],
+      "relationships": {
+        "calls": [
+          "0x00D48784",
+          "0x0280779C"
+        ]
+      },
+      "notes": "Exact meaning of the five subordinate objects is not recovered."
+    },
+    {
+      "address": "0x0146A850",
+      "suggested_name": "PokedexMenu_GateByZukanDisable",
+      "confidence": "high",
+      "status": "OBSERVED",
+      "evidence": [
+        "Looks up an object named PokedexView.",
+        "Reads FSYS_X_MENU_ZUKAN_DISABLE.",
+        "Calls FUN_01480448 when the disable flag is not set."
+      ],
+      "relationships": {
+        "calls": [
+          "0x01470C50",
+          "0x028501C4",
+          "0x01480448"
+        ]
+      }
+    },
+    {
+      "address": "0x01470C50",
+      "suggested_name": "ViewRegistry_LookupByNameHash",
+      "confidence": "medium",
+      "status": "INFERRED",
+      "evidence": [
+        "Resolves an object through the UI/view manager using a supplied name/hash descriptor.",
+        "Called with the literal PokedexView by FUN_0146A850."
+      ],
+      "notes": "Generic lookup helper; exact registry data structure still needs type recovery."
+    },
+    {
+      "address": "0x01480448",
+      "suggested_name": "PokedexView_ActivateOrRefresh",
+      "confidence": "medium",
+      "status": "INFERRED",
+      "evidence": [
+        "Called by the PokedexView menu gate when Zukan is not disabled.",
+        "Creates/updates a subordinate view object and calls FUN_0148054C."
+      ],
+      "notes": "The exact UI transition and lifecycle side effects remain to be recovered."
+    }
+  ],
+  "unresolved_links": [
+    "The exact pointer/registry edge joining the manager at parent offset +0x1C8 to the PokedexView object.",
+    "The raw on-disk header and complete field schema of pokedex_research_task_table.bin.",
+    "The direction and exact key/value meaning of the 906-entry form-storage lookup.",
+    "The consumer of the rank-table data pointer.",
+    "The caller and completion path of the distribution-table loader at 0x013F5CD0.",
+    "Any save-data writes or runtime Pokédex progress effects."
+  ]
+}
