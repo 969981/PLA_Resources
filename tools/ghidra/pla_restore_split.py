@@ -44,7 +44,30 @@ def combine(source: Path, spec: dict, dest: Path, relative_parts: bool = True) -
             tmp.unlink()
 
 
-def restore(source: Path, out: Path, no_project: bool = False) -> dict:
+def extract_elf(db_path: Path, out: Path, sha_expected: str) -> dict:
+    """Rebuild original unmodified ELF from byte-verified SQLite chunks."""
+    target = out / "main.elf"
+    if target.exists():
+        raise ValueError("ELF output already exists")
+    digest = hashlib.sha256()
+    size = 0
+    try:
+        with sqlite3.connect(db_path) as db, target.open("xb") as writer:
+            for (raw,) in db.execute(
+                    "SELECT raw_bytes FROM original_elf_chunks ORDER BY chunk_index"):
+                writer.write(raw)
+                digest.update(raw)
+                size += len(raw)
+        if digest.hexdigest() != sha_expected:
+            raise ValueError("Extracted original ELF SHA256 mismatch")
+        return {"filename": target.name, "size": size, "sha256": digest.hexdigest()}
+    except Exception:
+        if target.exists():
+            target.unlink()
+        raise
+
+
+def restore(source: Path, out: Path, no_project: bool = False, extract_original: bool = False) -> dict:
     info = json.loads((source / "parts_manifest.json").read_text(encoding="utf-8"))
     game = info["game"]
     if game != "pla" or info.get("status") != "UNCOMPRESSED_SPLIT_VERIFIED":
@@ -81,10 +104,11 @@ def restore(source: Path, out: Path, no_project: bool = False) -> dict:
         number_of_lines = sum(1 for _ in data)
     if number_of_lines != info["ndjson"]["lines"]:
         raise ValueError("Reassembled NDJSON record count mismatch")
+    original_elf_file = extract_elf(db_path, out, elf_proof["original_file_sha256"]) if extract_original else None
     result = {"game": game, "status": "REASSEMBLED_AND_SHA256_VERIFIED",
               "sqlite_sha256": checksum(db_path), "ndjson_sha256": checksum(json_path),
               "sqlite_integrity": integrity, "sqlite_counts": counts,
-              "ndjson_lines": number_of_lines, "native_project": not no_project, "original_elf_chunks": elf_proof}
+              "ndjson_lines": number_of_lines, "native_project": not no_project, "original_elf_chunks": elf_proof, "extracted_elf": original_elf_file}
     (out / "restore_report.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     return result
 
@@ -94,8 +118,9 @@ def main() -> None:
     p.add_argument("--source", type=Path, required=True, help="PLA publication subdirectory")
     p.add_argument("--out", type=Path, required=True)
     p.add_argument("--no-project", action="store_true")
+    p.add_argument("--extract-elf", action="store_true", help="Also reconstruct original main.elf from SQLite BLOBs")
     args = p.parse_args()
-    print(json.dumps(restore(args.source, args.out, args.no_project), indent=2))
+    print(json.dumps(restore(args.source, args.out, args.no_project, args.extract_elf), indent=2))
 
 
 if __name__ == "__main__":
