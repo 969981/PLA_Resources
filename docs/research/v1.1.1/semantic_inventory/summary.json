@@ -1,0 +1,42 @@
+{
+  "evidence_scope": "STATIC_GHIDRA_DATABASE_ONLY",
+  "semantic_status": "CANDIDATE_DISCOVERY_NOT_RUNTIME_PROOF",
+  "database": "pla.sqlite",
+  "functions": 82760,
+  "tables": {
+    "functions": 82760,
+    "instructions": 12933265,
+    "references_full": 5678736,
+    "symbols": 1796866,
+    "defined_data": 1544829,
+    "decompilation": 82760,
+    "memory_blocks": 30,
+    "metadata": 10
+  },
+  "decompilation_status": {
+    "FAILED": 29,
+    "OK": 82731
+  },
+  "domain_string_counts": {
+    "save_storage": 420,
+    "pokemon_data": 863,
+    "pokedex_research": 1442,
+    "wild_encounter": 1623,
+    "battle": 989,
+    "items_inventory": 663
+  },
+  "domain_candidate_function_counts": {
+    "pokemon_data": 923,
+    "save_storage": 1115,
+    "battle": 431,
+    "pokedex_research": 1939,
+    "items_inventory": 257,
+    "wild_encounter": 1334
+  },
+  "selected_candidate_functions_for_callgraph": 1222,
+  "selected_callgraph_edges": 65822,
+  "rtti_vtable_typeinfo_symbols": 20,
+  "decompilation_failures_or_empty": 29,
+  "address_mapping_caveat": "Function attribution uses exported min_addr/max_addr intervals and nearest preceding entry. It is a static candidate mapping, not proof of exact CFG ownership where function bodies are discontiguous or intervals overlap.",
+  "next_manual_step": "Inspect high-ranked function C pseudocode and raw instructions, then verify caller/callee paths, structure offsets, and data-flow before assigning business names."
+}
