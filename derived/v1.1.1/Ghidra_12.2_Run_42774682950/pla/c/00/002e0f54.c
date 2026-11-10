@@ -1,0 +1,46 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 002e0f54; name: FUN_002e0f54
+ */
+
+
+void FUN_002e0f54(long *param_1)
+
+{
+  undefined8 uVar1;
+  ulong uVar2;
+  ulong *puVar3;
+  long *plVar4;
+  undefined1 auStack_50 [48];
+  undefined1 auStack_18 [8];
+  
+  *param_1 = (long)(PTR_DAT_043737a0 + 0x10);
+  uVar2 = param_1[1];
+  puVar3 = (ulong *)(uVar2 & 0xfffffffffffffffe);
+  if ((uVar2 & 1) != 0) {
+    puVar3 = (ulong *)*puVar3;
+  }
+  if (puVar3 != (ulong *)0x0) {
+                    /* try { // try from 002e0f84 to 002e0f9b has its CatchHandler @ 002e1048 */
+    FUN_0030f640(auStack_50,3,
+                 "bazel-out/arm64-v8a-opt/bin/external/net_nintendo_npln_proto/proto/common/value.pb.cc"
+                 ,0x38a);
+                    /* try { // try from 002e0f9c to 002e0faf has its CatchHandler @ 002e102c */
+    uVar1 = FUN_0030f3ac(auStack_50,"CHECK failed: GetArena() == nullptr: ");
+                    /* try { // try from 002e0fb0 to 002e0fb7 has its CatchHandler @ 002e1028 */
+    FUN_0030f41c(auStack_18,uVar1);
+    FUN_0030f658(auStack_50);
+    uVar2 = param_1[1];
+  }
+  if ((((uVar2 & 1) != 0) && (plVar4 = (long *)(uVar2 & 0xfffffffffffffffe), *plVar4 == 0)) &&
+     (plVar4 != (long *)0x0)) {
+    if ((*(byte *)(plVar4 + 1) & 1) != 0) {
+      FUN_002e2ea0(PTR_LAB_04373088,plVar4[3]);
+    }
+    FUN_002e2ea0(PTR_LAB_04373088,plVar4);
+  }
+  FUN_00633b70(param_1 + 2);
+  return;
+}
+
+
