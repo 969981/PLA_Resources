@@ -1,0 +1,54 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 00602a74; name: FUN_00602a74
+ */
+
+
+void FUN_00602a74(long param_1,long param_2)
+
+{
+  undefined4 uVar1;
+  undefined8 *puVar2;
+  undefined8 *puVar3;
+  ulong uVar4;
+  undefined8 uVar5;
+  ulong uVar6;
+  ulong *puVar7;
+  
+  puVar7 = (ulong *)(param_1 + 8);
+  uVar4 = *puVar7;
+  uVar6 = *(ulong *)(param_2 + 8);
+  if ((((uint)uVar6 | (uint)uVar4) & 1) == 0) goto LAB_00602ae8;
+  if ((uVar6 & 1) == 0) {
+    puVar2 = (undefined8 *)FUN_0030c8c0();
+    uVar4 = *puVar7;
+    if ((uVar4 & 1) == 0) goto LAB_00602b28;
+LAB_00602ab0:
+    puVar3 = (undefined8 *)((uVar4 & 0xfffffffffffffffe) + 8);
+  }
+  else {
+    puVar2 = (undefined8 *)((uVar6 & 0xfffffffffffffffe) + 8);
+    if ((uVar4 & 1) != 0) goto LAB_00602ab0;
+LAB_00602b28:
+    puVar3 = (undefined8 *)FUN_0030c8c0(puVar7);
+  }
+  uVar5 = *puVar3;
+  *puVar3 = *puVar2;
+  *puVar2 = uVar5;
+  uVar5 = puVar3[1];
+  puVar3[1] = puVar2[1];
+  puVar2[1] = uVar5;
+  uVar5 = puVar3[2];
+  puVar3[2] = puVar2[2];
+  puVar2[2] = uVar5;
+LAB_00602ae8:
+  uVar5 = *(undefined8 *)(param_1 + 0x10);
+  *(undefined8 *)(param_1 + 0x10) = *(undefined8 *)(param_2 + 0x10);
+  *(undefined8 *)(param_2 + 0x10) = uVar5;
+  uVar1 = *(undefined4 *)(param_1 + 0x18);
+  *(undefined4 *)(param_1 + 0x18) = *(undefined4 *)(param_2 + 0x18);
+  *(undefined4 *)(param_2 + 0x18) = uVar1;
+  return;
+}
+
+
