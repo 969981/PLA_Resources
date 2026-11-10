@@ -1,0 +1,51 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 03379df0; name: _INIT_1878
+ */
+
+
+void _INIT_1878(void)
+
+{
+  DAT_04450778 = 0;
+  DAT_04450728 = &DAT_04450738;
+  DAT_04450730 = 0x8000000400000000;
+  DAT_0445077a = 1;
+  DAT_04450780 = "base.s11n";
+  DAT_04450788 = DAT_0444b318;
+  DAT_0444b318 = &DAT_04450728;
+  FUN_00100250(&LAB_03325ec8,&DAT_04450728,&PTR_LOOP_0411a000);
+  DAT_044507a0 = 0;
+  DAT_04450790 = "Binary Tagfile >=2015.1";
+  DAT_04450798 = &LAB_033785e0;
+  DAT_044507b8 = 0;
+  DAT_044507a8 = "Binary Tagfile pre 2015.1";
+  DAT_044507b0 = &LAB_03378620;
+  DAT_044507d0 = 0;
+  DAT_044507c0 = "Binary Tagfile NT6";
+  DAT_044507c8 = &LAB_03378660;
+  DAT_044507e8 = 0;
+  DAT_044507d8 = "Binary Tagfile <=2014.2";
+  DAT_044507e0 = &LAB_033786a0;
+  DAT_04450800 = 0;
+  DAT_044507f0 = "Binary Packfile <=2014.2";
+  DAT_044507f8 = &LAB_03378710;
+  DAT_04450818 = 0;
+  DAT_04450808 = "Xml Tagfile >=2015.1";
+  DAT_04450810 = &LAB_03378750;
+  DAT_04450830 = 0;
+  DAT_04450820 = "Xml Tagfile <=2014.2";
+  DAT_04450828 = &LAB_03378820;
+  DAT_04450848 = 0;
+  DAT_04450838 = "Xml Packfile <=2014.2";
+  DAT_04450840 = &LAB_033788f0;
+  DAT_04450860 = 0;
+  DAT_04450850 = "Yaml File";
+  DAT_04450858 = &LAB_03378960;
+  DAT_04450878 = 0;
+  DAT_04450868 = "Compressed Tagfile";
+  DAT_04450870 = &LAB_033789a0;
+  return;
+}
+
+

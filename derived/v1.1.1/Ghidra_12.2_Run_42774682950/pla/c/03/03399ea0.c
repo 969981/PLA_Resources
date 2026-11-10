@@ -1,0 +1,39 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 03399ea0; name: FUN_03399ea0
+ */
+
+
+void FUN_03399ea0(long *param_1)
+
+{
+  long lVar1;
+  long *plVar2;
+  long lVar3;
+  long lVar4;
+  
+  *param_1 = (long)&PTR_LAB_0436f240;
+  FUN_0339a690(param_1 + 3);
+  *param_1 = (long)(PTR_DAT_043723c0 + 0x10);
+  if (param_1 == (long *)0x0) {
+    return;
+  }
+  lVar4 = param_1[1];
+  lVar1 = tpidr_el0;
+  lVar3 = *(long *)(lVar1 + 0x38d490);
+  if (lVar3 == 0) {
+    lVar3 = FUN_0333d16c(0,1);
+    *(long *)(lVar1 + 0x38d490) = lVar3;
+  }
+  plVar2 = *(long **)(*(long *)(lVar3 + 8) + 0x58);
+  lVar1 = 0x68;
+  if (lVar4 != 0xffffffff) {
+    lVar1 = lVar4;
+  }
+                    /* WARNING: Could not recover jumptable at 0x03399f28. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+  (**(code **)(*plVar2 + 0x18))(plVar2,param_1,lVar1);
+  return;
+}
+
+
