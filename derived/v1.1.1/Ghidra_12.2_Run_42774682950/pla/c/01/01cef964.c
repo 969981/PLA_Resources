@@ -1,0 +1,58 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 01cef964; name: FUN_01cef964
+ */
+
+
+/* WARNING: Control flow encountered bad instruction data */
+
+undefined8 * FUN_01cef964(undefined8 param_1,long *param_2)
+
+{
+  undefined *puVar1;
+  int iVar2;
+  long lVar3;
+  undefined8 *__s;
+  
+  if (((*PTR_DAT_04379520 & 1) == 0) &&
+     (iVar2 = __cxa_guard_acquire(PTR_DAT_04379520), puVar1 = PTR_DAT_04379528, iVar2 != 0)) {
+    FUN_008a62a4(PTR_DAT_04379528);
+    FUN_00100250(PTR_LAB_04379530,puVar1,&PTR_LOOP_0411a000);
+    __cxa_guard_release(PTR_DAT_04379520);
+  }
+  lVar3 = nn::os::GetTlsValue(*(undefined4 *)PTR_DAT_04379528);
+  if (0xf < *(ulong *)(lVar3 + 0x80)) {
+                    /* WARNING: Subroutine does not return */
+    abort();
+  }
+  *(long **)(lVar3 + *(ulong *)(lVar3 + 0x80) * 8) = param_2;
+  *(long *)(lVar3 + 0x80) = *(long *)(lVar3 + 0x80) + 1;
+  __s = (undefined8 *)(**(code **)(*param_2 + 0x10))(param_2,0x360,0x10);
+  if (__s == (undefined8 *)0x0) {
+    (**(code **)(*param_2 + 0xb8))(param_2);
+    memset((void *)0x0,0,0x360);
+    FUN_02be93f8(0);
+                    /* WARNING: Bad instruction - Truncating control flow here */
+    halt_baddata();
+  }
+  memset(__s,0,0x360);
+  FUN_02be93f8(__s);
+  __s[0x65] = 0;
+  *__s = &PTR_LAB_042552e8;
+  __s[1] = param_2;
+  *(undefined4 *)(__s + 0x6a) = 0;
+  __s[99] = 0;
+  __s[0x60] = 0;
+  __s[0x61] = 0;
+  __s[0x62] = 0;
+  __s[9] = &PTR_LAB_042553e8;
+  __s[10] = &PTR_LAB_042554c8;
+  *(undefined8 *)((long)__s + 0x31e) = 0;
+  __s[4] = 0x10;
+  __s[2] = __s;
+  __s[3] = 0x360;
+  *(long *)(lVar3 + 0x80) = *(long *)(lVar3 + 0x80) + -1;
+  return __s;
+}
+
+
