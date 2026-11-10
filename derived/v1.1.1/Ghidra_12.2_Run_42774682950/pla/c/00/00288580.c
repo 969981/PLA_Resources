@@ -1,0 +1,251 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 00288580; name: FUN_00288580
+ */
+
+
+/* WARNING: Type propagation algorithm not settling */
+
+bool FUN_00288580(float *param_1,float *param_2,undefined8 param_3)
+
+{
+  bool bVar1;
+  bool bVar2;
+  float *pfVar3;
+  long lVar4;
+  int iVar5;
+  undefined8 uVar6;
+  undefined8 uVar7;
+  float *pfVar8;
+  long lVar9;
+  long lVar10;
+  long lVar11;
+  float *pfVar12;
+  float fVar13;
+  float fVar14;
+  float fVar15;
+  
+  switch((long)param_2 - (long)param_1 >> 3) {
+  case 0:
+  case 1:
+    return true;
+  case 2:
+    fVar14 = param_2[-2];
+    fVar15 = *param_1;
+    if ((0.0 <= fVar14) || (0.0 <= fVar15)) {
+      if (fVar15 <= fVar14) {
+        return true;
+      }
+    }
+    else if (fVar14 <= fVar15) {
+      return true;
+    }
+    uVar7 = *(undefined8 *)param_1;
+    break;
+  case 3:
+    fVar14 = param_1[2];
+    fVar15 = *param_1;
+    if ((0.0 <= fVar14) || (0.0 <= fVar15)) {
+      bVar2 = fVar14 < fVar15;
+      fVar15 = param_2[-2];
+      if (fVar14 < 0.0) goto LAB_002885f0;
+LAB_00288738:
+      bVar1 = fVar15 < fVar14;
+    }
+    else {
+      bVar2 = fVar15 < fVar14;
+      fVar15 = param_2[-2];
+      if (0.0 <= fVar14) goto LAB_00288738;
+LAB_002885f0:
+      if (0.0 <= fVar15) goto LAB_00288738;
+      bVar1 = fVar14 < fVar15;
+    }
+    if (!bVar2) {
+      if (!bVar1) {
+        return true;
+      }
+      uVar7 = *(undefined8 *)(param_1 + 2);
+      *(undefined8 *)(param_1 + 2) = *(undefined8 *)(param_2 + -2);
+      *(undefined8 *)(param_2 + -2) = uVar7;
+      fVar14 = param_1[2];
+      fVar15 = *param_1;
+      if ((0.0 <= fVar14) || (0.0 <= fVar15)) {
+        if (fVar15 <= fVar14) {
+          return true;
+        }
+      }
+      else if (fVar14 <= fVar15) {
+        return true;
+      }
+      uVar7 = *(undefined8 *)param_1;
+      *(undefined8 *)param_1 = *(undefined8 *)(param_1 + 2);
+      *(undefined8 *)(param_1 + 2) = uVar7;
+      return true;
+    }
+    uVar7 = *(undefined8 *)param_1;
+    if (!bVar1) {
+      *(undefined8 *)param_1 = *(undefined8 *)(param_1 + 2);
+      *(undefined8 *)(param_1 + 2) = uVar7;
+      fVar14 = (float)uVar7;
+      fVar15 = param_2[-2];
+      if ((0.0 <= fVar14) || (0.0 <= fVar15)) {
+        if (fVar14 <= fVar15) {
+          return true;
+        }
+      }
+      else if (fVar15 <= fVar14) {
+        return true;
+      }
+      *(undefined8 *)(param_1 + 2) = *(undefined8 *)(param_2 + -2);
+      goto LAB_002887d4;
+    }
+    break;
+  case 4:
+    FUN_00287fd0(param_1,param_1 + 2,param_1 + 4,param_2 + -2,param_3);
+    return true;
+  case 5:
+    FUN_002881f0(param_1,param_1 + 2,param_1 + 4,param_1 + 6,param_2 + -2);
+    return true;
+  default:
+    fVar15 = param_1[2];
+    fVar14 = *param_1;
+    pfVar3 = param_1 + 4;
+    if ((0.0 <= fVar15) || (0.0 <= fVar14)) {
+      bVar2 = fVar15 < fVar14;
+      fVar13 = *pfVar3;
+      if (fVar15 < 0.0) goto LAB_0028866c;
+LAB_0028878c:
+      bVar1 = fVar13 < fVar15;
+      if (bVar2) {
+LAB_00288798:
+        uVar7 = *(undefined8 *)param_1;
+        fVar14 = (float)uVar7;
+        if (bVar1) {
+          uVar6 = *(undefined8 *)(param_1 + 4);
+          *(undefined8 *)(param_1 + 4) = uVar7;
+          *(undefined8 *)param_1 = uVar6;
+          fVar13 = fVar14;
+        }
+        else {
+          *(undefined8 *)param_1 = *(undefined8 *)(param_1 + 2);
+          *(undefined8 *)(param_1 + 2) = uVar7;
+          if ((0.0 <= fVar13) || (0.0 <= fVar14)) {
+            if (fVar14 <= fVar13) goto joined_r0x002887b8;
+          }
+          else if (fVar13 <= fVar14) goto joined_r0x002887b8;
+          *(undefined8 *)(param_1 + 2) = *(undefined8 *)(param_1 + 4);
+          *(undefined8 *)(param_1 + 4) = uVar7;
+          fVar13 = fVar14;
+        }
+        goto joined_r0x002887b8;
+      }
+    }
+    else {
+      bVar2 = fVar14 < fVar15;
+      fVar13 = *pfVar3;
+      if (0.0 <= fVar15) goto LAB_0028878c;
+LAB_0028866c:
+      if (0.0 <= fVar13) goto LAB_0028878c;
+      bVar1 = fVar15 < fVar13;
+      if (bVar2) goto LAB_00288798;
+    }
+    if (bVar1) {
+      uVar7 = *(undefined8 *)(param_1 + 2);
+      uVar6 = *(undefined8 *)(param_1 + 4);
+      fVar15 = (float)uVar6;
+      fVar13 = (float)uVar7;
+      *(undefined8 *)(param_1 + 2) = uVar6;
+      *(undefined8 *)(param_1 + 4) = uVar7;
+      if ((0.0 <= fVar14) || (0.0 <= fVar15)) {
+        if (fVar14 <= fVar15) goto joined_r0x002887b8;
+      }
+      else if (fVar15 <= fVar14) goto joined_r0x002887b8;
+      uVar7 = *(undefined8 *)param_1;
+      *(undefined8 *)param_1 = uVar6;
+      *(undefined8 *)(param_1 + 2) = uVar7;
+    }
+joined_r0x002887b8:
+    if (param_1 + 6 == param_2) {
+      return true;
+    }
+    pfVar8 = param_1 + 6;
+    lVar4 = 0;
+    iVar5 = 0;
+    fVar14 = *pfVar8;
+    if (0.0 <= fVar14) goto LAB_002888b0;
+    do {
+      if (0.0 <= fVar13) goto LAB_002888b0;
+      if (fVar13 < fVar14) goto LAB_002888b8;
+      while( true ) {
+        pfVar3 = pfVar8;
+        pfVar8 = pfVar3 + 2;
+        if (pfVar8 == param_2) {
+          return true;
+        }
+        fVar13 = *pfVar3;
+        lVar4 = lVar4 + 8;
+        fVar14 = *pfVar8;
+        if (fVar14 < 0.0) break;
+LAB_002888b0:
+        if (fVar14 < fVar13) {
+LAB_002888b8:
+          fVar15 = pfVar8[1];
+          *(undefined8 *)pfVar8 = *(undefined8 *)pfVar3;
+          pfVar12 = param_1;
+          if (pfVar3 != param_1) {
+            lVar11 = lVar4;
+            if (0.0 <= fVar14) {
+              do {
+                if (*(float *)((long)param_1 + lVar11 + 8) <= fVar14) {
+                  pfVar12 = (float *)((long)param_1 + lVar11 + 0x10);
+                  break;
+                }
+                bVar2 = lVar11 != -8;
+                *(undefined8 *)((long)param_1 + lVar11 + 0x10) =
+                     *(undefined8 *)((long)param_1 + lVar11 + 8);
+                lVar11 = lVar11 + -8;
+              } while (bVar2);
+            }
+            else {
+              lVar11 = (long)param_1 + lVar4;
+              fVar13 = *(float *)(lVar11 + 8);
+              lVar10 = lVar4;
+              if (fVar13 < 0.0) goto LAB_00288920;
+              while (lVar9 = lVar10, fVar14 < fVar13) {
+                while( true ) {
+                  lVar10 = lVar9 + -8;
+                  pfVar3 = pfVar3 + -2;
+                  *(undefined8 *)(lVar11 + 0x10) = *(undefined8 *)(lVar11 + 8);
+                  if (lVar9 == -8) goto LAB_00288968;
+                  lVar11 = (long)param_1 + lVar10;
+                  fVar13 = *(float *)(lVar11 + 8);
+                  if (0.0 <= fVar13) break;
+LAB_00288920:
+                  lVar9 = lVar10;
+                  if (fVar14 <= fVar13) {
+                    pfVar12 = pfVar3;
+                    goto LAB_00288968;
+                  }
+                }
+              }
+              pfVar12 = (float *)(lVar11 + 0x10);
+            }
+          }
+LAB_00288968:
+          iVar5 = iVar5 + 1;
+          *pfVar12 = fVar14;
+          pfVar12[1] = fVar15;
+          if (iVar5 == 8) {
+            return pfVar8 + 2 == param_2;
+          }
+        }
+      }
+    } while( true );
+  }
+  *(undefined8 *)param_1 = *(undefined8 *)(param_2 + -2);
+LAB_002887d4:
+  *(undefined8 *)(param_2 + -2) = uVar7;
+  return true;
+}
+
+
