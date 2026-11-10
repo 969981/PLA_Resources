@@ -63,7 +63,7 @@ def restore(source: Path, out: Path, no_project: bool = False) -> dict:
             if rel.is_absolute() or ".." in rel.parts:
                 raise ValueError("Invalid native project path")
             combine(source / "project_parts", details, out / "project" / rel)
-        stem = "PLA_" + game
+        stem = "PLA111"
         if not (out / "project" / (stem + ".gpr")).is_file() or not (out / "project" / (stem + ".rep")).is_dir():
             raise ValueError("Invalid native Ghidra project reconstruction")
     with sqlite3.connect(db_path) as db:
