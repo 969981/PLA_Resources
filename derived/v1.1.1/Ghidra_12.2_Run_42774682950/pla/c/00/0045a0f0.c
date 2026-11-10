@@ -1,0 +1,21 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 0045a0f0; name: FUN_0045a0f0
+ */
+
+
+undefined8 FUN_0045a0f0(undefined8 param_1,undefined8 param_2)
+
+{
+  undefined8 uVar1;
+  int local_14;
+  
+  local_14 = 0;
+  uVar1 = FUN_0045a140(param_1,param_2,0,&local_14);
+  if (local_14 != 0) {
+    FUN_004014b0(0xd,0xb2,local_14,"external/openssl/crypto/asn1/asn1_gen.c",0x5e);
+  }
+  return uVar1;
+}
+
+
