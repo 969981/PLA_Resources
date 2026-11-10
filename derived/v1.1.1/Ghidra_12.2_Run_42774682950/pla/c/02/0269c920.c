@@ -1,0 +1,68 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 0269c920; name: _INIT_365
+ */
+
+
+void _INIT_365(void)
+
+{
+  undefined *puVar1;
+  
+  DAT_043e9c40 = nn::ldn::MakeIpv4Address('\x7f','\0','\0','\x01');
+  DAT_043e9c44 = nn::ldn::MakeIpv4Address(0xff,0xff,0xff,0xff);
+  DAT_043e9c48 = nn::ldn::MakeIpv4Address('\0','\0','\0','\0');
+  puVar1 = PTR_FUN_0437a0e0;
+  DAT_043e9c54 = 0;
+  DAT_043e9c50 = 0;
+  DAT_043e9c5c = 0xffff;
+  DAT_043e9c58 = 0xffffffff;
+  FUN_00100250(PTR_FUN_0437a0e0,&DAT_04267650,&PTR_LOOP_0411a000);
+  FUN_00100250(puVar1,&DAT_04267670,&PTR_LOOP_0411a000);
+  FUN_00100250(puVar1,&DAT_04267690,&PTR_LOOP_0411a000);
+  FUN_00100250(puVar1,&DAT_042676b0,&PTR_LOOP_0411a000);
+  FUN_00100250(puVar1,&DAT_042676d0,&PTR_LOOP_0411a000);
+  FUN_00100250(puVar1,&DAT_042676f0,&PTR_LOOP_0411a000);
+  FUN_00100250(puVar1,&DAT_04267710,&PTR_LOOP_0411a000);
+  FUN_00100250(puVar1,&DAT_04267730,&PTR_LOOP_0411a000);
+  FUN_00100250(puVar1,&DAT_04267750,&PTR_LOOP_0411a000);
+  FUN_00100250(puVar1,&DAT_04267770,&PTR_LOOP_0411a000);
+  FUN_00100250(puVar1,&DAT_04267790,&PTR_LOOP_0411a000);
+  FUN_00100250(&LAB_02692c44,&DAT_043e9c60,&PTR_LOOP_0411a000);
+  DAT_043e9c70 = 0;
+  DAT_043e9c78 = 0;
+  DAT_043e9c80 = 0;
+  DAT_043e9c88 = 0;
+  DAT_043e9cc0 = 0;
+  DAT_043e9d20 = 0;
+  DAT_043e9c90 = 0;
+  DAT_043e9c98 = 0;
+  DAT_043e9ca0 = 0;
+  DAT_043e9ca8 = 0;
+  DAT_043e9cb0 = 0;
+  DAT_043e9cb8 = 0;
+  DAT_043e9d18 = 0;
+  DAT_043e9cc8 = 0;
+  DAT_043e9cd0 = 0;
+  DAT_043e9cd8 = 0;
+  DAT_043e9ce0 = 0;
+  DAT_043e9ce8 = 0;
+  DAT_043e9cf0 = 0;
+  DAT_043e9cf8 = 0;
+  DAT_043e9d00 = 0;
+  DAT_043e9d08 = 0;
+  DAT_043e9d10 = 0;
+  DAT_043e9d68 = 0;
+  DAT_043e9d70 = 0;
+  DAT_043e9d58 = 0;
+  DAT_043e9d60 = 0;
+  DAT_043e9d48 = 0;
+  DAT_043e9d50 = 0;
+  DAT_043e9d38 = 0;
+  DAT_043e9d40 = 0;
+  DAT_043e9d28 = 0;
+  DAT_043e9d30 = 0;
+  return;
+}
+
+
