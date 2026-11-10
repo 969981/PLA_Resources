@@ -7,11 +7,11 @@ import hashlib
 import json
 import shutil
 import sqlite3
-
 import sys
+from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from pla_embed_elf import verify_chunks
-from pathlib import Path
 
 
 def checksum(path: Path) -> str:
