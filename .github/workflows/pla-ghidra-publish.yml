@@ -114,7 +114,7 @@ jobs:
           assert expected==artifact,(expected,artifact)
           with open(sys.argv[2],"w") as out:
               json.dump(expected,out,indent=2)
-              out.write("\\n")
+              out.write("\n")
           PY
           python3 - "$DEST/pla/parts_manifest.json" <<'PY'
           import json,sys
@@ -179,7 +179,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           expected="$(python3 -c 'import json,sys;print(json.load(open(sys.argv[1]))["c_success"])' "$DEST/pla/parts_manifest.json")"
-          tracked_count="$(git ls-tree -r --name-only HEAD -- "$DEST/pla/c" | awk '/\\.c$/ { n++ } END { print n+0 }')"
+          tracked_count="$(git ls-tree -r --name-only HEAD -- "$DEST/pla/c" | awk '/\.c$/ { n++ } END { print n+0 }')"
           if (( tracked_count > expected )); then
             echo "::error::More tracked C files than the verified export: $tracked_count > $expected"
             exit 1
@@ -187,7 +187,7 @@ jobs:
           if (( tracked_count == expected )); then
             echo "All $expected per-function C files are already committed; checking cleanliness."
             remaining="$(git status --porcelain -- "$DEST")"
-            if [ -n "$remaining" ]; then printf '%s\\n' "$remaining"; exit 1; fi
+            if [ -n "$remaining" ]; then printf '%s\n' "$remaining"; exit 1; fi
             echo "Verified all $expected per-function C files already exist in Git." >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
@@ -228,10 +228,10 @@ jobs:
             staged_bytes=$((staged_bytes+size))
           done
           commit_batch
-          tracked_count="$(git ls-tree -r --name-only HEAD -- "$DEST/pla/c" | awk '/\\.c$/ { n++ } END { print n+0 }')"
+          tracked_count="$(git ls-tree -r --name-only HEAD -- "$DEST/pla/c" | awk '/\.c$/ { n++ } END { print n+0 }')"
           test "$tracked_count" -eq "$expected"
           remaining="$(git status --porcelain -- "$DEST")"
-          if [ -n "$remaining" ]; then printf '%s\\n' "$remaining"; exit 1; fi
+          if [ -n "$remaining" ]; then printf '%s\n' "$remaining"; exit 1; fi
           echo "Published and verified $tracked_count per-function C files in $batch new commits." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Preserve publication evidence for independent audit
