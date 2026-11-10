@@ -7,6 +7,8 @@ import hashlib
 import json
 import shutil
 import sqlite3
+
+from pla_embed_elf import verify_chunks
 from pathlib import Path
 
 
@@ -72,6 +74,9 @@ def restore(source: Path, out: Path, no_project: bool = False) -> dict:
                   for table in ("functions", "instructions", "references_full", "decompilation")}
         if integrity != "ok" or counts != info["sqlite_counts"]:
             raise ValueError("Reassembled SQLite has invalid content")
+    elf_proof = verify_chunks(db_path)
+    if elf_proof["original_file_sha256"] != info["original_elf_sha256"]:
+        raise ValueError("Embedded original ELF identity differs from publication metadata")
     with json_path.open("rb") as data:
         number_of_lines = sum(1 for _ in data)
     if number_of_lines != info["ndjson"]["lines"]:
@@ -79,7 +84,7 @@ def restore(source: Path, out: Path, no_project: bool = False) -> dict:
     result = {"game": game, "status": "REASSEMBLED_AND_SHA256_VERIFIED",
               "sqlite_sha256": checksum(db_path), "ndjson_sha256": checksum(json_path),
               "sqlite_integrity": integrity, "sqlite_counts": counts,
-              "ndjson_lines": number_of_lines, "native_project": not no_project}
+              "ndjson_lines": number_of_lines, "native_project": not no_project, "original_elf_chunks": elf_proof}
     (out / "restore_report.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     return result
 
