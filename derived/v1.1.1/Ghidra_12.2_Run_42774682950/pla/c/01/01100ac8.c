@@ -1,0 +1,83 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 01100ac8; name: FUN_01100ac8
+ */
+
+
+void FUN_01100ac8(long param_1,long param_2)
+
+{
+  code *pcVar1;
+  int iVar2;
+  char *__s;
+  undefined8 uVar3;
+  undefined8 local_a0;
+  code *local_98;
+  undefined8 local_90;
+  undefined8 uStack_88;
+  undefined8 local_80;
+  undefined8 uStack_78;
+  undefined8 local_70;
+  undefined8 uStack_68;
+  undefined8 local_60;
+  undefined8 uStack_58;
+  undefined8 local_50;
+  undefined8 uStack_48;
+  undefined8 local_40;
+  undefined8 uStack_38;
+  undefined8 local_30;
+  undefined8 uStack_28;
+  
+  __s = (char *)(param_1 + 0x68);
+  __s[0] = '\0';
+  __s[1] = '\0';
+  __s[2] = '\0';
+  __s[3] = '\0';
+  __s[4] = '\0';
+  __s[5] = '\0';
+  __s[6] = '\0';
+  __s[7] = '\0';
+  *(undefined8 *)(param_1 + 0x98) = 0;
+  *(undefined8 *)(param_1 + 0xa0) = 0;
+  *(undefined8 *)(param_1 + 0x70) = 0;
+  *(undefined8 *)(param_1 + 0x88) = 0;
+  *(undefined8 *)(param_1 + 0x90) = 0;
+  *(undefined8 *)(param_1 + 0x78) = 0;
+  *(undefined8 *)(param_1 + 0x80) = 0;
+  snprintf(__s,0x40,"%s",*(undefined8 *)(param_2 + 8));
+  if (((*PTR_DAT_04379c28 & 1) == 0) && (iVar2 = __cxa_guard_acquire(PTR_DAT_04379c28), iVar2 != 0))
+  {
+    FUN_00100250(PTR_LAB_04379c60,PTR_DAT_04379c30,&PTR_LOOP_0411a000);
+    __cxa_guard_release(PTR_DAT_04379c28);
+  }
+  local_30 = 0;
+  uStack_28 = 0;
+  uVar3 = *(undefined8 *)PTR_DAT_04379c30;
+  local_40 = 0;
+  uStack_38 = 0;
+  *(undefined8 *)PTR_DAT_04379c38 = uVar3;
+  local_50 = 0;
+  uStack_48 = 0;
+  local_60 = 0;
+  uStack_58 = 0;
+  local_70 = 0;
+  uStack_68 = 0;
+  local_80 = 0;
+  uStack_78 = 0;
+  local_90 = 0;
+  uStack_88 = 0;
+  local_a0 = 0;
+  local_98 = (code *)0x0;
+  FUN_02913338(uVar3,param_2,&local_a0,0,0,0);
+  pcVar1 = local_98;
+  if (local_98 != (code *)0x0) {
+    local_90 = 0;
+    uStack_88 = 0;
+    local_a0 = 0;
+    local_98 = (code *)0x0;
+    (*pcVar1)(&local_80);
+  }
+  return;
+}
+
+
