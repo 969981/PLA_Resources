@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "game": "PLA",
+  "gameVersion": "1.1.1",
+  "reviewedOn": "2026-11-06",
+  "status": "PLAN_ONLY_NOT_IMPORTED",
+  "sourceBaseline": "969981/SV_Resources master tools/upstream.json (read 2026-11-06)",
+  "syncPolicy": "explicit review branch, pinned upstream/source tree verification, license preservation, PLA 1.1.1 sample tests before adoption",
+  "tools": [
+    {
+      "name": "pkNX",
+      "priority": "P0",
+      "origin": "https://github.com/kwsch/pkNX.git",
+      "sourceSnapshot": "969981/SV_Resources/tools/pkNX",
+      "upstreamRef": "d191cd0e5c05f2af81d9a41c1f1d82e6621b351a",
+      "svVendoredTreeSha": "002e3bc0deb752c9e0f075e3f499d3eaa4add7d9",
+      "role": "PLA GFPak extraction + PLA data tables; add headless CLI",
+      "status": "NOT_IMPORTED",
+      "plaSmokeTests": [
+        "3 real GFPaks including nested archive and large pack",
+        "entry path/size/count/hash checks",
+        "headless extraction without GUI"
+      ]
+    },
+    {
+      "name": "gftool",
+      "priority": "P0",
+      "origin": "https://github.com/pkZukan/gftool.git",
+      "sourceSnapshot": "969981/SV_Resources/tools/gftool",
+      "upstreamRef": "cac7a210fcbef5ecf1ee108c10d1a1bdddc4cd4c",
+      "svVendoredTreeSha": "d7ae6ac67ef705b924d61bf3ae6c94920ac47d95",
+      "upstreamTreeSha": "18447b923a4ab27205b245913bd3c25eba39d7ad",
+      "localPatches": [
+        ".NET 10",
+        ".slnx",
+        "System.Drawing.Common 10.0.14"
+      ],
+      "role": "Trinity formats and model parsing; verify PLA variants independently",
+      "status": "NOT_IMPORTED",
+      "plaSmokeTests": [
+        "compile GFTool.Core and nested NxMiddleware",
+        "decode PLA TRMDL/TRMSH/TRMTR/TRSKL/TRANM samples",
+        "verify geometry + material + animation relationships"
+      ]
+    },
+    {
+      "name": "Switch-Toolbox",
+      "priority": "P0",
+      "origin": "https://github.com/KillzXGaming/Switch-Toolbox.git",
+      "sourceSnapshot": "969981/SV_Resources/tools/Switch-Toolbox",
+      "upstreamRef": "3a3279140ca0fa54ce804a8d56d4653a491de613",
+      "svVendoredTreeSha": "ec1508a91f714c5a29e7b317146065b7e14f0273",
+      "role": "BNTX texture decoding and roundtrip verification",
+      "status": "NOT_IMPORTED",
+      "plaSmokeTests": [
+        "CLI feasibility check on genuine PLA BNTX",
+        "PNG pixels/mips/format metadata verified",
+        "record unsupported ASTC encodings"
+      ]
+    },
+    {
+      "name": "PokeDocs",
+      "priority": "P1",
+      "origin": "https://github.com/pkZukan/PokeDocs.git",
+      "sourceSnapshot": "969981/SV_Resources/tools/PokeDocs",
+      "upstreamRef": "242039cbcd9de3f5a424de5b68ae581f7bed2b23",
+      "svVendoredTreeSha": "96ea0ac5b5f7389e79578a7dcd783d6e48d8f66f",
+      "role": "PLA-specific schema and hash reference if proven; other games are not evidence",
+      "status": "NOT_IMPORTED",
+      "plaSmokeTests": [
+        "enumerate PLA-relevant source paths",
+        "verify candidate schema with PLA sample bytes"
+      ]
+    },
+    {
+      "name": "nx2elf",
+      "priority": "P1",
+      "origin": "https://github.com/shuffle2/nx2elf.git",
+      "sourceSnapshot": "969981/SV_Resources/tools/nx2elf",
+      "upstreamRef": "a1760ba54e2aefb41444933f53b90e6e8b05c399",
+      "svVendoredTreeSha": "9b59e627f272251f564af320daa2b7be66b319f5",
+      "role": "ExeFS NSO to AArch64 ELF analysis",
+      "status": "NOT_IMPORTED",
+      "plaSmokeTests": [
+        "build on target runner",
+        "check ELF headers/segments against PLA ExeFS"
+      ]
+    },
+    {
+      "name": "SCVI_Extract",
+      "priority": "P2",
+      "origin": "https://github.com/psthrn42/SCVI_Extract.git",
+      "sourceSnapshot": "969981/SV_Resources/tools/SCVI_Extract",
+      "upstreamRef": "0d4f817d0756257cd5ec1c8a680ae201e8b4eec5",
+      "svVendoredTreeSha": "33d0fd99e9a0787054b72b0593457161e2453bfa",
+      "role": "legacy Trinity comparison only",
+      "status": "NOT_IMPORTED",
+      "plaSmokeTests": [
+        "do not adopt as production parser without positive PLA format validation"
+      ]
+    }
+  ]
+}
