@@ -1,0 +1,261 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 02bf6354; name: FUN_02bf6354
+ */
+
+
+uint FUN_02bf6354(long param_1,undefined8 param_2,undefined1 (*param_3) [12],undefined8 *param_4,
+                 uint param_5,undefined8 param_6,undefined4 param_7)
+
+{
+  long *plVar1;
+  char cVar2;
+  bool bVar3;
+  undefined1 auVar4 [16];
+  undefined1 auVar5 [16];
+  undefined1 auVar6 [16];
+  float fVar7;
+  float fVar8;
+  float fVar9;
+  long *plVar10;
+  uint uVar11;
+  long lVar12;
+  ulong uVar13;
+  long lVar14;
+  undefined4 uVar15;
+  byte bVar16;
+  byte bVar17;
+  byte bVar18;
+  byte bVar19;
+  byte bVar20;
+  byte bVar21;
+  byte bVar22;
+  byte bVar23;
+  byte bVar24;
+  byte bVar25;
+  byte bVar26;
+  byte bVar27;
+  byte bVar28;
+  byte bVar29;
+  int iVar30;
+  int iVar34;
+  int iVar35;
+  undefined1 auVar31 [16];
+  int iVar36;
+  undefined1 auVar32 [16];
+  undefined1 auVar33 [16];
+  undefined1 auVar37 [16];
+  undefined1 auVar38 [16];
+  undefined1 auVar39 [16];
+  undefined8 local_350;
+  undefined ***local_348;
+  undefined2 local_340;
+  undefined4 local_33c;
+  undefined8 local_338;
+  undefined2 local_330;
+  undefined1 local_32e;
+  long *local_328;
+  undefined8 local_320;
+  ulong uStack_318;
+  undefined8 local_310;
+  undefined8 uStack_308;
+  undefined8 uStack_300;
+  undefined8 uStack_2f8;
+  undefined8 local_2f0;
+  undefined8 local_2e8;
+  undefined8 uStack_2e0;
+  undefined4 local_2d8;
+  undefined8 local_2d0;
+  undefined8 uStack_2c8;
+  undefined8 local_2c0;
+  undefined8 uStack_2b8;
+  long *local_2a8;
+  undefined **ppuStack_2a0;
+  ulong local_298 [2];
+  undefined1 local_288;
+  undefined4 local_280;
+  ulong local_278 [67];
+  
+  nn::os::LockMutex((MutexType *)(param_1 + 0x128));
+  local_280 = 0;
+  local_298[0] = 0xffffffff;
+  local_298[1] = 1;
+  memset(local_278,0xff,0x200);
+  local_2a8 = (long *)0x0;
+  ppuStack_2a0 = &PTR_LAB_04287208;
+  local_288 = 2;
+  FUN_02c05e04(param_2,&local_2a8);
+  plVar10 = local_2a8;
+  uVar15 = (undefined4)((ulong)*(undefined8 *)(*param_3 + 8) >> 0x20);
+  local_320 = *(undefined8 *)*param_3;
+  auVar31._12_4_ = uVar15;
+  auVar31._0_12_ = *param_3;
+  auVar39._12_4_ = uVar15;
+  auVar39._0_12_ = *param_3;
+  auVar31 = NEON_ext(auVar31,auVar39,8,1);
+  uStack_318 = (ulong)(uint)auVar31._0_4_;
+  auVar39 = ZEXT816(0x3f800000);
+  fVar7 = (float)*param_4 - (float)local_320;
+  fVar8 = (float)((ulong)*param_4 >> 0x20) - (float)((ulong)local_320 >> 0x20);
+  fVar9 = (float)param_4[1] - auVar31._0_4_;
+  local_350 = 0;
+  local_348 = (undefined ***)0x0;
+  local_340 = 0xffff;
+  local_2d0 = 0;
+  uStack_2c8 = 0;
+  local_2c0 = 0;
+  uStack_2b8 = 0;
+  local_32e = 0xfb;
+  local_2f0 = 0x3a83126f;
+  iVar30 = -(uint)(fVar7 == 0.0);
+  iVar34 = -(uint)(fVar8 == 0.0);
+  iVar35 = -(uint)(fVar9 == 0.0);
+  iVar36 = -(uint)(auVar39._0_4_ == 0.0);
+  bVar16 = SUB41(fVar7,0) & ~(byte)iVar30;
+  bVar17 = (byte)((uint)fVar7 >> 8) & ~(byte)((uint)iVar30 >> 8);
+  bVar18 = (byte)((uint)fVar7 >> 0x10) & ~(byte)((uint)iVar30 >> 0x10);
+  bVar19 = (byte)((uint)fVar7 >> 0x18) & ~(byte)((uint)iVar30 >> 0x18);
+  bVar20 = SUB41(fVar8,0) & ~(byte)iVar34;
+  bVar21 = (byte)((uint)fVar8 >> 8) & ~(byte)((uint)iVar34 >> 8);
+  bVar22 = (byte)((uint)fVar8 >> 0x10) & ~(byte)((uint)iVar34 >> 0x10);
+  bVar23 = (byte)((uint)fVar8 >> 0x18) & ~(byte)((uint)iVar34 >> 0x18);
+  bVar24 = SUB41(fVar9,0) & ~(byte)iVar35;
+  bVar25 = (byte)((uint)fVar9 >> 8) & ~(byte)((uint)iVar35 >> 8);
+  bVar26 = (byte)((uint)fVar9 >> 0x10) & ~(byte)((uint)iVar35 >> 0x10);
+  bVar27 = (byte)((uint)fVar9 >> 0x18) & ~(byte)((uint)iVar35 >> 0x18);
+  bVar28 = auVar39[2] & ~(byte)((uint)iVar36 >> 0x10);
+  bVar29 = auVar39[3] & ~(byte)((uint)iVar36 >> 0x18);
+  local_2e8 = 0x10000000000;
+  uStack_2e0 = 0;
+  local_2d8 = 0x7f7fffee;
+  auVar4[1] = bVar17;
+  auVar4[0] = bVar16;
+  auVar4[2] = bVar18;
+  auVar4[3] = bVar19;
+  auVar4[4] = bVar20;
+  auVar4[5] = bVar21;
+  auVar4[6] = bVar22;
+  auVar4[7] = bVar23;
+  auVar4[8] = bVar24;
+  auVar4[9] = bVar25;
+  auVar4[10] = bVar26;
+  auVar4[0xb] = bVar27;
+  auVar4._12_2_ = 0;
+  auVar4[0xe] = bVar28;
+  auVar4[0xf] = bVar29;
+  auVar31 = NEON_frecpe(auVar4,4);
+  local_33c = 0;
+  iVar30 = -(uint)((float)CONCAT13(bVar19,CONCAT12(bVar18,CONCAT11(bVar17,bVar16))) == 0.0);
+  iVar34 = -(uint)((float)CONCAT13(bVar23,CONCAT12(bVar22,CONCAT11(bVar21,bVar20))) == 0.0);
+  iVar35 = -(uint)((float)CONCAT13(bVar27,CONCAT12(bVar26,CONCAT11(bVar25,bVar24))) == 0.0);
+  iVar36 = -(uint)((float)((uint)CONCAT11(bVar29,bVar28) << 0x10) == 0.0);
+  auVar32[0] = ~(byte)iVar30;
+  auVar32[1] = ~(byte)((uint)iVar30 >> 8);
+  auVar32[2] = ~(byte)((uint)iVar30 >> 0x10);
+  auVar32[3] = ~(byte)((uint)iVar30 >> 0x18);
+  auVar32[4] = ~(byte)iVar34;
+  auVar32[5] = ~(byte)((uint)iVar34 >> 8);
+  auVar32[6] = ~(byte)((uint)iVar34 >> 0x10);
+  auVar32[7] = ~(byte)((uint)iVar34 >> 0x18);
+  auVar32[8] = ~(byte)iVar35;
+  auVar32[9] = ~(byte)((uint)iVar35 >> 8);
+  auVar32[10] = ~(byte)((uint)iVar35 >> 0x10);
+  auVar32[0xb] = ~(byte)((uint)iVar35 >> 0x18);
+  auVar32[0xc] = ~(byte)iVar36;
+  auVar32[0xd] = ~(byte)((uint)iVar36 >> 8);
+  auVar32[0xe] = ~(byte)((uint)iVar36 >> 0x10);
+  auVar32[0xf] = ~(byte)((uint)iVar36 >> 0x18);
+  auVar5[1] = bVar17;
+  auVar5[0] = bVar16;
+  auVar5[2] = bVar18;
+  auVar5[3] = bVar19;
+  auVar5[4] = bVar20;
+  auVar5[5] = bVar21;
+  auVar5[6] = bVar22;
+  auVar5[7] = bVar23;
+  auVar5[8] = bVar24;
+  auVar5[9] = bVar25;
+  auVar5[10] = bVar26;
+  auVar5[0xb] = bVar27;
+  auVar5._12_2_ = 0;
+  auVar5[0xe] = bVar28;
+  auVar5[0xf] = bVar29;
+  auVar39 = NEON_frecps(auVar5,auVar31,4);
+  local_338 = 0;
+  auVar37._0_4_ = auVar31._0_4_ * auVar39._0_4_;
+  auVar37._4_4_ = auVar31._4_4_ * auVar39._4_4_;
+  auVar37._8_4_ = auVar31._8_4_ * auVar39._8_4_;
+  auVar37._12_4_ = auVar31._12_4_ * auVar39._12_4_;
+  local_330 = 1;
+  auVar6[1] = bVar17;
+  auVar6[0] = bVar16;
+  auVar6[2] = bVar18;
+  auVar6[3] = bVar19;
+  auVar6[4] = bVar20;
+  auVar6[5] = bVar21;
+  auVar6[6] = bVar22;
+  auVar6[7] = bVar23;
+  auVar6[8] = bVar24;
+  auVar6[9] = bVar25;
+  auVar6[10] = bVar26;
+  auVar6[0xb] = bVar27;
+  auVar6._12_2_ = 0;
+  auVar6[0xe] = bVar28;
+  auVar6[0xf] = bVar29;
+  auVar31 = NEON_frecps(auVar6,auVar37,4);
+  local_328 = local_2a8;
+  auVar38._0_4_ = auVar37._0_4_ * auVar31._0_4_;
+  auVar38._4_4_ = auVar37._4_4_ * auVar31._4_4_;
+  auVar38._8_4_ = auVar37._8_4_ * auVar31._8_4_;
+  auVar38._12_4_ = auVar37._12_4_ * auVar31._12_4_;
+  auVar33._8_4_ = 0x7f7fffee;
+  auVar33._0_8_ = 0x7f7fffee7f7fffee;
+  auVar33._12_4_ = 0x7f7fffee;
+  auVar33 = auVar33 ^ (auVar33 ^ auVar38) & auVar32;
+  uStack_308 = CONCAT17(bVar29,CONCAT16(bVar28,(uint6)CONCAT13(bVar27,CONCAT12(bVar26,CONCAT11(
+                                                  bVar25,bVar24)))));
+  local_310 = CONCAT17(bVar23,CONCAT16(bVar22,CONCAT15(bVar21,CONCAT14(bVar20,CONCAT13(bVar19,
+                                                  CONCAT12(bVar18,CONCAT11(bVar17,bVar16)))))));
+  uStack_2f8 = auVar33._8_8_;
+  uStack_300 = auVar33._0_8_;
+  local_350 = (**(code **)(**(long **)(param_1 + 8) + 0x68))();
+  lVar14 = 0x28;
+  while (lVar12 = lVar14, lVar14 = lVar12 + 8, lVar14 != 0x228) {
+    if (lVar14 != 0x28) {
+      *(ulong *)((long)local_298 + lVar12) = *(ulong *)((long)local_298 + lVar12) & 1;
+    }
+  }
+  uVar13 = 0;
+  do {
+    if (uVar13 == 1) {
+      local_278[1] = local_278[1] | param_5;
+    }
+    if ((1L << (uVar13 & 0x3f) & (ulong)param_5) != 0) {
+      local_278[uVar13] = local_278[uVar13] | 2;
+    }
+    uVar13 = uVar13 + 1;
+  } while (uVar13 != 0x40);
+  local_348 = &ppuStack_2a0;
+  local_350 = (**(code **)(**(long **)(param_1 + 8) + 0x68))();
+  local_33c = 1;
+  uVar11 = FUN_02bf4ac4(param_1,&local_350,param_6,param_7);
+  if ((plVar10 != (long *)0x0) && (plVar10[1] != 0)) {
+    plVar1 = plVar10 + 2;
+    do {
+      lVar14 = *plVar1;
+      cVar2 = '\x01';
+      bVar3 = (bool)ExclusiveMonitorPass(plVar1,0x10);
+      if (bVar3) {
+        *plVar1 = lVar14 + -1;
+        cVar2 = ExclusiveMonitorsStatus();
+      }
+    } while (cVar2 != '\0');
+    if (lVar14 + -1 == 0) {
+      (**(code **)(*plVar10 + 0x18))(plVar10);
+    }
+  }
+  nn::os::UnlockMutex((MutexType *)(param_1 + 0x128));
+  return uVar11 & 1;
+}
+
+
