@@ -1,0 +1,63 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 02f1a3f0; name: FUN_02f1a3f0
+ */
+
+
+void FUN_02f1a3f0(void)
+
+{
+  DAT_0440aed0 = &LAB_02f1b3d0;
+  DAT_0440aed8 = &LAB_02f1a950;
+  DAT_0440aee0 = &LAB_02f1b320;
+  DAT_0440aee8 = &LAB_02f1a950;
+  DAT_0440af20 = &LAB_02f1b210;
+  DAT_0440af28 = &LAB_02f1a950;
+  DAT_0440ae70 = &LAB_02f1ad00;
+  DAT_0440ae78 = &LAB_02f1a950;
+  DAT_0440ae80 = &LAB_02f1ad00;
+  DAT_0440ae88 = &LAB_02f1a950;
+  DAT_0440ae90 = &LAB_02f1ad00;
+  DAT_0440ae98 = &LAB_02f1a950;
+  DAT_0440aea0 = &LAB_02f1ad00;
+  DAT_0440aea8 = &LAB_02f1a950;
+  DAT_0440aeb0 = &LAB_02f1ad00;
+  DAT_0440aeb8 = &LAB_02f1a950;
+  DAT_0440aef0 = &LAB_02f1ad00;
+  DAT_0440aef8 = &LAB_02f1a950;
+  DAT_0440af00 = &LAB_02f1ad00;
+  DAT_0440af08 = &LAB_02f1a950;
+  DAT_0440af10 = &LAB_02f1ad00;
+  DAT_0440af18 = &LAB_02f1a950;
+  DAT_0440af30 = &LAB_02f1b480;
+  DAT_0440af38 = &LAB_02f1a950;
+  DAT_0440af40 = &LAB_02f1ad00;
+  DAT_0440af48 = &LAB_02f1a950;
+  DAT_0440af50 = &LAB_02f1ad00;
+  DAT_0440af58 = &LAB_02f1a950;
+  DAT_0440af60 = &LAB_02f1ad00;
+  DAT_0440af68 = &LAB_02f1a950;
+  DAT_0440af70 = &LAB_02f1ad00;
+  DAT_0440af78 = &LAB_02f1a950;
+  DAT_0440af80 = &LAB_02f1b5a0;
+  DAT_0440af88 = &LAB_02f1a950;
+  DAT_0440af90 = &LAB_02f1ad00;
+  DAT_0440af98 = &LAB_02f1a950;
+  DAT_0440afa0 = &LAB_02f1ad00;
+  DAT_0440afa8 = &LAB_02f1a950;
+  DAT_0440afb0 = &LAB_02f1ad00;
+  DAT_0440afb8 = &LAB_02f1a950;
+  DAT_0440afc0 = &LAB_02f1ad00;
+  DAT_0440afc8 = &LAB_02f1a950;
+  DAT_0440afd0 = &LAB_02f1ad00;
+  DAT_0440afd8 = &LAB_02f1a950;
+  DAT_0440afe0 = &LAB_02f1ad00;
+  DAT_0440afe8 = &LAB_02f1a950;
+  DAT_0440ae60 = &LAB_02f1b040;
+  DAT_0440ae68 = FUN_02f1b700;
+  DAT_0440aec0 = &LAB_02f1b180;
+  DAT_0440aec8 = &LAB_02f1b0d0;
+  return;
+}
+
+
