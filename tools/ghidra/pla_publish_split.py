@@ -99,7 +99,7 @@ def chunk_ndjson(source_gz: Path, target: Path) -> dict:
 
 
 def unpack_project(archive: Path, game: str, dest: Path, part_dir: Path) -> dict:
-    stem = "PLA_" + game
+    stem = "PLA111"
     dest.mkdir(parents=True, exist_ok=True)
     files = 0
     splits = {}
@@ -255,7 +255,7 @@ def publish_game(artifacts: Path, dest: Path, run_id: int, game: str) -> dict:
     (dest / "README.md").write_text(
         f"# {game.title()} 1.1.1 — Ghidra 12.2 full static export\n\n"
         f"Source: [Actions #{run_id}](https://github.com/969981/PLA_Resources/actions/runs/{run_id}).\n\n"
-        f"- \`project/PLA_{game}.gpr\` and \`.rep/\`: editable native Ghidra program; restore project_parts first if present.\n"
+        f"- \`project/PLA111.gpr\` and \`.rep/\`: editable native Ghidra program; restore project_parts first if present.\n"
         f"- \`database/\`: losslessly split **raw SQLite bytes** (not ZIP or gzip).\n"
         f"- \`ndjson/\`: **plain** JSON-lines parts, each part ends on a whole JSON record.\n"
         f"- \`c/\`: {c_files} individual C pseudocode files; {expected_failures} failures or empty results are recorded in \`decompiled_index.csv\`.\n"
