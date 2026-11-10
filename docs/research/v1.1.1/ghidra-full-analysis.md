@@ -43,6 +43,6 @@ C source files already exist individually at `c/`; they are Ghidra-generated **p
 
 ## Pipeline validation and failure handling
 
-Run the direct analysis via Actions / `workflow_dispatch`. The **full analysis run must finish successfully** before the publisher starts. If original analysis fails, diagnostics are still uploaded but no incomplete data is published. The publisher refuses pre-existing run directories, validates original ELF identity, manifest consistency, per-function success/failure coverage, SQLite integrity, NDJSON record boundaries and reassembled hashes. A Git push failure remains a failed publication; it must never be described as fully submitted.
+Run the direct analysis via Actions / `workflow_dispatch`. The **full analysis run must finish successfully** before the publisher starts. If original analysis fails, diagnostics are still uploaded but no incomplete data is published. The publisher refuses existing destinations without a matching verified manifest. If the same source run already has a verified manifest, it reuses that publication idempotently and verifies artifact identity, per-function coverage, tracked C-file count, SQLite integrity, NDJSON record boundaries and reassembled hashes. A Git push failure remains a failed publication; it must never be described as fully submitted.
 
 Generated derived data is static Ghidra output. It does not prove dynamic call behavior, game-version equivalence or the accuracy of inferred types.
