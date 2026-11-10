@@ -265,12 +265,12 @@ def publish_game(artifacts: Path, dest: Path, run_id: int, game: str) -> dict:
     (dest / "README.md").write_text(
         f"# {game.title()} 1.1.1 — Ghidra 12.2 full static export\n\n"
         f"Source: [Actions #{run_id}](https://github.com/969981/PLA_Resources/actions/runs/{run_id}).\n\n"
-        f"- \`project/PLA111.gpr\` and \`.rep/\`: editable native Ghidra program; restore project_parts first if present.\n"
-        f"- \`database/\`: losslessly split **raw SQLite bytes** (not ZIP or gzip).\n"
-        f"- \`ndjson/\`: **plain** JSON-lines parts, each part ends on a whole JSON record.\n"
-        f"- \`c/\`: {c_files} individual C pseudocode files; {expected_failures} failures or empty results are recorded in \`decompiled_index.csv\`.\n"
-        f"- \`parts_manifest.json\`: original and each-shard SHA-256 and counts.\n\n"
-        "Restore using \`python3 tools/ghidra/pla_restore_split.py --source <this-directory> --out <empty-directory>\`.\n"
+        f"- `project/PLA111.gpr` and `.rep/`: editable native Ghidra program; restore project_parts first if present.\n"
+        f"- `database/`: losslessly split **raw SQLite bytes** (not ZIP or gzip).\n"
+        f"- `ndjson/`: **plain** JSON-lines parts, each part ends on a whole JSON record.\n"
+        f"- `c/`: {c_files} individual C pseudocode files; {expected_failures} failures or empty results are recorded in `decompiled_index.csv`.\n"
+        f"- `parts_manifest.json`: original and each-shard SHA-256 and counts.\n\n"
+        "Restore using `python3 tools/ghidra/pla_restore_split.py --source <this-directory> --out <empty-directory>`.\n"
         "These files are Ghidra-derived static analysis, not Nintendo's original source code.\n",
         encoding="utf-8")
     for path in dest.rglob("*"):
