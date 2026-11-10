@@ -1,0 +1,409 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 00f8ea00; name: FUN_00f8ea00
+ */
+
+
+/* WARNING: Removing unreachable block (ram,0x00f8f114) */
+/* WARNING: Removing unreachable block (ram,0x00f8f1b8) */
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_00f8ea00(void)
+
+{
+  size_t sVar1;
+  byte bVar2;
+  long lVar3;
+  long lVar4;
+  long *plVar5;
+  bool bVar6;
+  int iVar7;
+  undefined1 *puVar8;
+  ulong uVar9;
+  ulong uVar10;
+  byte *pbVar11;
+  long *plVar12;
+  ulong uVar13;
+  byte *pbVar14;
+  long lVar15;
+  long lVar16;
+  byte *pbVar17;
+  uint uVar18;
+  uint uVar19;
+  byte *pbVar20;
+  ulong local_78;
+  ulong uStack_70;
+  byte *local_68;
+  
+  if (((DAT_043b6348 & 1) == 0) && (iVar7 = __cxa_guard_acquire(&DAT_043b6348), iVar7 != 0)) {
+    DAT_043b6318 = 0x16;
+    DAT_043b6328 = (byte *)0x0;
+    _DAT_043b6324 = 0;
+    DAT_043b6319._0_7_ = s__anonymous__0388d6f5._0_7_;
+    ram0x043b6320 = CONCAT31(0x7d7375,s__anonymous__0388d6f5[7]);
+    DAT_043b6330 = 0x2a;
+    DAT_043b6340._7_1_ = 0;
+    DAT_043b6340._1_1_ = s__anonymous_namespace__039071f8[0x10];
+    DAT_043b6340._2_1_ = s__anonymous_namespace__039071f8[0x11];
+    DAT_043b6340._3_1_ = s__anonymous_namespace__039071f8[0x12];
+    DAT_043b6340._4_1_ = s__anonymous_namespace__039071f8[0x13];
+    DAT_043b6340._5_1_ = s__anonymous_namespace__039071f8[0x14];
+    DAT_043b6339 = s__anonymous_namespace__039071f8[8];
+    DAT_043b6339_1._0_1_ = s__anonymous_namespace__039071f8[9];
+    DAT_043b6339_1._1_1_ = s__anonymous_namespace__039071f8[10];
+    DAT_043b6339_1._2_1_ = s__anonymous_namespace__039071f8[0xb];
+    DAT_043b6339_1._3_1_ = s__anonymous_namespace__039071f8[0xc];
+    _DAT_043b633e = s__anonymous_namespace__039071f8._13_2_;
+    DAT_043b6340._0_1_ = s__anonymous_namespace__039071f8[0xf];
+    DAT_043b6331._0_7_ = s__anonymous_namespace__039071f8._0_7_;
+    DAT_043b6331._7_1_ = s__anonymous_namespace__039071f8[7];
+    DAT_043b6340._6_1_ = 0;
+    FUN_00100250(PTR_FUN_04379930,&DAT_043b6318,&PTR_LOOP_0411a000);
+    __cxa_guard_release(&DAT_043b6348);
+  }
+  plVar5 = DAT_043f1798;
+  lVar15 = tpidr_el0;
+  plVar12 = *(long **)(lVar15 + 0x20);
+  if (*(long **)(lVar15 + 0x20) == (long *)0x0) {
+    *(long **)(lVar15 + 0x20) = DAT_043f1798;
+    plVar12 = plVar5;
+  }
+  puVar8 = (undefined1 *)(**(code **)(*plVar12 + 0x10))(plVar12,0xe40,8);
+  DAT_043b62f8 = 0xe41;
+  DAT_043b6300 = 0xe3a;
+  DAT_043b6308 = puVar8;
+  memcpy(puVar8,
+         "std::string sol::detail::ctti_get_type_name() [T = sol::usertype_metatable<gfl::anm2::ParameterList, std::__1::integer_sequence<unsigned long, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21>, char const (&)[12], (lambda at C:/jenkins/workspace/hayabusa/rom/localrombuild/program/prog/common/lua/source/gfl_bind/lua_gfl_bind_anim_functions.cpp:72:20), char const (&)[14], (lambda at C:/jenkins/workspace/hayabusa/rom/localrombuild/program/prog/common/lua/source/gfl_bind/lua_gfl_bind_anim_functions.cpp:75:22), char const (&)[13], (lambda at C:/jenkins/workspace/hayabusa/rom/localrombuild/program/prog/common/lua/source/gfl_bind/lua_gfl_bind_anim_functions.cpp:78:21), char const (&)[16], (lambda at C:/jenkins/workspace/hayabusa/rom/localrombuild/program/prog/common/lua/source/gfl_bind/lua_gfl_bind_anim_functions.cpp:81:24), char const (&)[12], (lambda at C:/jenkins/workspace/hayabusa/rom/localrombuild/program/prog/common/lua/source/gfl_bind/lua_gfl_bind_anim_functions.cpp:84:20), char const (&)[14], (lambda at C:/jenkins/workspace/hayabusa/rom/localrombuild/program/prog/common/lua/source/gfl_bind/lua_gfl_bind_anim_functions.cpp:85:22), char const (&)[13], (lambda at C:/jenkins/workspace/hayabusa/rom/localrombuild/program/prog/common/lua/source/gfl_bind/lua_gfl_bind_anim_functions.cpp:86:21), char const (&)[16], (lambda at C:/jenkins/workspace/hayabusa/rom/localrombuild/program/prog/common/lua/source/gfl_bind/lua_gfl_bind_anim_functions.cpp:87:24), char const (&)[12], (lambda at C:/jenkins/workspace/hayabusa/rom/localrombuild/program/prog/common/lua/source/gfl_bind/lua_gfl_bind_anim_functions.cpp:88:20), char const (&)[14], (lambda at C:/jenkins/workspace/hayabusa/rom/localrombuild/program/prog/common/lua/source/gfl_bind/lua_gfl_bind_anim_functions.cpp:89:22), char const (&)[13], (lambda at C:/jenkins/workspace/hayabusa/rom/localrombuild/program/prog/common/lua/source/gfl_bind/lua_gfl_bind_anim_functions.cpp:90:21), char const (&)[16], (lambda at C:/jenkins/workspace/hayabusa/rom/localrombuil..." /* TRUNCATED STRING LITERAL */
+         ,0xe3a);
+  puVar8[0xe3a] = 0;
+  std::string::find(-8,0x5b);
+  uVar9 = std::string::find(-8,0x3d);
+  uVar10 = std::string::rfind(-8,0x5d);
+  if (uVar10 == 0xffffffffffffffff) {
+    if ((DAT_043b62f8 & 1) == 0) {
+      uVar10 = (ulong)((byte)DAT_043b62f8 >> 1);
+    }
+    else {
+      uVar10 = DAT_043b6300;
+    }
+    uVar13 = 0;
+    if (uVar9 != 0xffffffffffffffff) {
+      uVar13 = uVar9;
+    }
+    uVar9 = uVar10;
+  }
+  else {
+    uVar13 = 0;
+    if (uVar9 != 0xffffffffffffffff) {
+      uVar13 = uVar9;
+    }
+    if ((DAT_043b62f8 & 1) == 0) {
+      uVar9 = (ulong)((byte)DAT_043b62f8 >> 1);
+    }
+    else {
+      uVar9 = DAT_043b6300;
+    }
+  }
+  if (uVar13 < uVar9 - 1) {
+    uVar13 = uVar13 + 1;
+  }
+  std::string::string((string *)&local_78,(string *)&DAT_043b62f8,uVar13,uVar10 - uVar13,
+                      (allocator *)&DAT_043b62f8);
+  if ((DAT_043b62f8 & 1) != 0) {
+    *DAT_043b6308 = 0;
+    plVar5 = DAT_043f1798;
+    puVar8 = DAT_043b6308;
+    DAT_043b6300 = 0;
+    if (((DAT_043b62f8 & 1) != 0) && (DAT_043b6308 != (undefined1 *)0x0)) {
+      plVar12 = *(long **)(lVar15 + 0x20);
+      if (*(long **)(lVar15 + 0x20) == (long *)0x0) {
+        *(long **)(lVar15 + 0x20) = DAT_043f1798;
+        plVar12 = plVar5;
+      }
+      uVar10 = (**(code **)(*plVar12 + 0xc0))(plVar12);
+      if ((uVar10 & 1) != 0) {
+        if (*(char *)(lVar15 + 0x38d488) == '\0') {
+          *(undefined1 *)(lVar15 + 0x38d488) = 1;
+          *(undefined8 *)(lVar15 + 0x38d478) = 0;
+          *(undefined8 *)(lVar15 + 0x38d480) = 0;
+          __cxa_thread_atexit(&LAB_02bcbe54,lVar15 + 0x80078,&PTR_LOOP_0411a000);
+        }
+        if (0 < *(int *)(lVar15 + 0x38d480)) {
+          FUN_02bcc824(plVar12,puVar8,0,8);
+          goto LAB_00f8ec10;
+        }
+      }
+      (**(code **)(*plVar12 + 0x18))(plVar12,puVar8,0,8);
+    }
+  }
+LAB_00f8ec10:
+  uVar10 = local_78 >> 1 & 0x7f;
+  uVar18 = (uint)local_78 & 0xff;
+  DAT_043b62f8 = local_78;
+  DAT_043b6300 = uStack_70;
+  uVar19 = (uint)local_78 & 1;
+  if ((local_78 & 1) == 0) {
+    uStack_70 = uVar10;
+    pbVar20 = (byte *)((long)&DAT_043b62f8 + 1);
+  }
+  else {
+    pbVar20 = local_68;
+  }
+  DAT_043b6308 = local_68;
+  if (0xd < (long)uStack_70) {
+    pbVar14 = pbVar20 + uStack_70;
+    lVar15 = 1;
+    while (uStack_70 != 0xd) {
+      uStack_70 = uStack_70 - 1;
+      if (pbVar20[uStack_70] == 0x6b) {
+        lVar16 = 0;
+        do {
+          if (lVar16 == -0xd) {
+            if ((lVar15 != -0xd) &&
+               (pbVar14 + (~(ulong)pbVar20 - 0xd) != (byte *)0xffffffffffffffff)) {
+              std::string::erase(0x43b62f8,(ulong)(pbVar14 + (~(ulong)pbVar20 - 0xd) + -2));
+              uVar18 = (uint)(byte)DAT_043b62f8;
+              uVar19 = (byte)DAT_043b62f8 & 1;
+              uVar10 = (ulong)((byte)DAT_043b62f8 >> 1);
+            }
+            goto LAB_00f8ece4;
+          }
+          lVar3 = lVar16 + -2;
+          lVar4 = lVar16 + 0xc;
+          lVar16 = lVar16 + -1;
+        } while (pbVar14[lVar3] == "seperator_mark"[lVar4]);
+      }
+      pbVar14 = pbVar14 + -1;
+      lVar15 = lVar15 + 1;
+    }
+  }
+LAB_00f8ece4:
+  uVar9 = DAT_043b6300;
+  uVar13 = uVar10;
+  if (uVar19 != 0) {
+    uVar13 = DAT_043b6300;
+  }
+  if (uVar13 != 0) {
+    pbVar20 = (byte *)((long)&DAT_043b62f8 + 1);
+    if (uVar19 != 0) {
+      pbVar20 = DAT_043b6308;
+    }
+    iVar7 = isblank((uint)*pbVar20);
+    if (iVar7 == 0) {
+      uVar19 = uVar18 & 1;
+      uVar10 = (ulong)(uVar18 >> 1);
+    }
+    else {
+      do {
+        std::string::erase(0x43b62f8,0);
+        uVar9 = DAT_043b6300;
+        uVar18 = (uint)(byte)DAT_043b62f8;
+        uVar10 = (ulong)((byte)DAT_043b62f8 >> 1);
+        uVar19 = (byte)DAT_043b62f8 & 1;
+        uVar13 = uVar10;
+        if ((DAT_043b62f8 & 1) != 0) {
+          uVar13 = DAT_043b6300;
+        }
+        if (uVar13 == 0) break;
+        pbVar20 = (byte *)((long)&DAT_043b62f8 + 1);
+        if ((DAT_043b62f8 & 1) != 0) {
+          pbVar20 = DAT_043b6308;
+        }
+        iVar7 = isblank((uint)*pbVar20);
+      } while (iVar7 != 0);
+    }
+  }
+  bVar6 = uVar19 == 0;
+  uVar13 = uVar9;
+  if (uVar19 == 0) {
+    uVar13 = uVar10;
+  }
+  if (uVar13 != 0) {
+    do {
+      while( true ) {
+        uVar10 = (ulong)(uVar18 >> 1);
+        uVar13 = uVar10;
+        pbVar20 = (byte *)((long)&DAT_043b62f8 + 1);
+        if (!bVar6) {
+          uVar13 = uVar9;
+          pbVar20 = DAT_043b6308;
+        }
+        iVar7 = isblank((uint)pbVar20[uVar13 - 1]);
+        if (iVar7 == 0) goto LAB_00f8edcc;
+        FUN_00f69b60(&DAT_043b62f8);
+        uVar18 = (uint)(byte)DAT_043b62f8;
+        bVar6 = (DAT_043b62f8 & 1) == 0;
+        uVar10 = (ulong)((byte)DAT_043b62f8 >> 1);
+        uVar9 = DAT_043b6300;
+        if ((DAT_043b62f8 & 1) != 0) break;
+        if (uVar10 == 0) goto LAB_00f8edcc;
+      }
+    } while (DAT_043b6300 != 0);
+LAB_00f8edcc:
+    uVar19 = uVar18 & 1;
+  }
+  if (uVar19 != 0) {
+    uVar10 = uVar9;
+  }
+  pbVar20 = (byte *)((long)&DAT_043b62f8 + 1);
+  if (uVar19 != 0) {
+    pbVar20 = DAT_043b6308;
+  }
+  sVar1 = CONCAT44(_DAT_043b6324,ram0x043b6320);
+  if ((DAT_043b6318 & 1) == 0) {
+    sVar1 = (ulong)(DAT_043b6318 >> 1);
+    pbVar14 = (byte *)&DAT_043b6319;
+  }
+  else {
+    pbVar14 = DAT_043b6328;
+  }
+  if (sVar1 == 0) {
+    uVar9 = 0;
+LAB_00f8ef44:
+    do {
+      while( true ) {
+        std::string::erase(0x43b62f8,uVar9);
+        sVar1 = CONCAT44(_DAT_043b6324,ram0x043b6320);
+        if ((DAT_043b62f8 & 1) == 0) {
+          uVar10 = DAT_043b62f8 >> 1 & 0x7f;
+          pbVar20 = (byte *)((long)&DAT_043b62f8 + 1);
+        }
+        else {
+          uVar10 = DAT_043b6300;
+          pbVar20 = DAT_043b6308;
+        }
+        if ((DAT_043b6318 & 1) == 0) {
+          sVar1 = (ulong)(DAT_043b6318 >> 1);
+          pbVar14 = (byte *)&DAT_043b6319;
+        }
+        else {
+          pbVar14 = DAT_043b6328;
+        }
+        if (sVar1 != 0) break;
+        uVar9 = 0;
+      }
+      if ((long)uVar10 < (long)sVar1) goto LAB_00f8ee2c;
+      bVar2 = *pbVar14;
+      pbVar11 = pbVar20;
+      uVar9 = uVar10;
+      while( true ) {
+        if ((0xfffffffffffffffe < uVar9 - sVar1) ||
+           (pbVar11 = memchr(pbVar11,(uint)bVar2,(uVar9 - sVar1) + 1), pbVar11 == (byte *)0x0))
+        goto LAB_00f8ee2c;
+        iVar7 = memcmp(pbVar11,pbVar14,sVar1);
+        if (iVar7 == 0) break;
+        pbVar11 = pbVar11 + 1;
+        uVar9 = (long)(pbVar20 + uVar10) - (long)pbVar11;
+        if ((long)uVar9 < (long)sVar1) goto LAB_00f8ee2c;
+      }
+      if ((pbVar11 == pbVar20 + uVar10) ||
+         (uVar9 = (long)pbVar11 - (long)pbVar20, uVar9 == 0xffffffffffffffff)) goto LAB_00f8ee2c;
+    } while( true );
+  }
+  if ((long)sVar1 <= (long)uVar10) {
+    bVar2 = *pbVar14;
+    pbVar11 = pbVar20;
+    uVar9 = uVar10;
+    do {
+      if ((0xfffffffffffffffe < uVar9 - sVar1) ||
+         (pbVar11 = memchr(pbVar11,(uint)bVar2,(uVar9 - sVar1) + 1), pbVar11 == (byte *)0x0)) break;
+      iVar7 = memcmp(pbVar11,pbVar14,sVar1);
+      if (iVar7 == 0) {
+        if ((pbVar11 != pbVar20 + uVar10) &&
+           (uVar9 = (long)pbVar11 - (long)pbVar20, uVar9 != 0xffffffffffffffff)) goto LAB_00f8ef44;
+        break;
+      }
+      pbVar11 = pbVar11 + 1;
+      uVar9 = (long)(pbVar20 + uVar10) - (long)pbVar11;
+    } while ((long)sVar1 <= (long)uVar9);
+  }
+LAB_00f8ee2c:
+  sVar1 = CONCAT26(_DAT_043b633e,CONCAT51(_DAT_043b6339,DAT_043b6331._7_1_));
+  pbVar14 = (byte *)CONCAT17(DAT_043b6340._7_1_,
+                             CONCAT16(DAT_043b6340._6_1_,
+                                      CONCAT51(DAT_043b6340._1_5_,(char)DAT_043b6340)));
+  if ((DAT_043b6330 & 1) == 0) {
+    pbVar14 = (byte *)&DAT_043b6331;
+    sVar1 = (ulong)(DAT_043b6330 >> 1);
+  }
+  if (sVar1 == 0) {
+    uVar10 = 0;
+    goto LAB_00f8eff0;
+  }
+  if ((long)sVar1 <= (long)uVar10) {
+    bVar2 = *pbVar14;
+    pbVar17 = pbVar20 + uVar10;
+    pbVar11 = pbVar20;
+    do {
+      if (0xfffffffffffffffe < uVar10 - sVar1) {
+        return;
+      }
+      pbVar11 = memchr(pbVar11,(uint)bVar2,(uVar10 - sVar1) + 1);
+      if (pbVar11 == (byte *)0x0) {
+        return;
+      }
+      iVar7 = memcmp(pbVar11,pbVar14,sVar1);
+      if (iVar7 == 0) {
+        do {
+          if (pbVar11 == pbVar17) {
+            return;
+          }
+          uVar10 = (long)pbVar11 - (long)pbVar20;
+          if (uVar10 == 0xffffffffffffffff) {
+            return;
+          }
+LAB_00f8eff0:
+          while( true ) {
+            std::string::erase(0x43b62f8,uVar10);
+            bVar6 = (DAT_043b62f8 & 1) != 0;
+            uVar10 = DAT_043b62f8 >> 1 & 0x7f;
+            if (bVar6) {
+              uVar10 = DAT_043b6300;
+            }
+            sVar1 = CONCAT26(_DAT_043b633e,CONCAT51(_DAT_043b6339,DAT_043b6331._7_1_));
+            pbVar14 = (byte *)CONCAT17(DAT_043b6340._7_1_,
+                                       CONCAT16(DAT_043b6340._6_1_,
+                                                CONCAT51(DAT_043b6340._1_5_,(char)DAT_043b6340)));
+            pbVar20 = DAT_043b6308;
+            if (!bVar6) {
+              pbVar20 = (byte *)((long)&DAT_043b62f8 + 1);
+            }
+            if ((DAT_043b6330 & 1) == 0) {
+              pbVar14 = (byte *)&DAT_043b6331;
+              sVar1 = (ulong)(DAT_043b6330 >> 1);
+            }
+            if (sVar1 != 0) break;
+            uVar10 = 0;
+          }
+          if ((long)uVar10 < (long)sVar1) {
+            return;
+          }
+          bVar2 = *pbVar14;
+          pbVar17 = pbVar20 + uVar10;
+          pbVar11 = pbVar20;
+          while( true ) {
+            if (0xfffffffffffffffe < uVar10 - sVar1) {
+              return;
+            }
+            pbVar11 = memchr(pbVar11,(uint)bVar2,(uVar10 - sVar1) + 1);
+            if (pbVar11 == (byte *)0x0) {
+              return;
+            }
+            iVar7 = memcmp(pbVar11,pbVar14,sVar1);
+            if (iVar7 == 0) break;
+            pbVar11 = pbVar11 + 1;
+            uVar10 = (long)pbVar17 - (long)pbVar11;
+            if ((long)uVar10 < (long)sVar1) {
+              return;
+            }
+          }
+        } while( true );
+      }
+      pbVar11 = pbVar11 + 1;
+      uVar10 = (long)pbVar17 - (long)pbVar11;
+    } while ((long)sVar1 <= (long)uVar10);
+  }
+  return;
+}
+
+
