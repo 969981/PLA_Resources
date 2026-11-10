@@ -1,0 +1,21 @@
+{
+  "status": "COMPLETE",
+  "elf_sha256": "260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794",
+  "source": "/home/runner/work/_temp/pla_ghidra_out/pla_events.ndjson.gz",
+  "database": "/home/runner/work/_temp/pla_ghidra_out/pla.sqlite",
+  "counts": {
+    "meta": 1,
+    "memory": 30,
+    "function": 82760,
+    "decompile": 82760,
+    "instruction": 12933265,
+    "data": 1544829,
+    "reference": 5678736,
+    "symbol": 1796866,
+    "summary": 1
+  },
+  "decompile_requested": true,
+  "decompiled_ok": 82731,
+  "decompiled_failed": 29,
+  "evidence": "STATIC_GHIDRA_ONLY_NO_RUNTIME_UI_PROOF"
+}
