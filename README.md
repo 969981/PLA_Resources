@@ -26,3 +26,9 @@ The planner **only plans tasks**. It cannot extract `gfpak` or other game format
 4. Use parallel incremental processing, auditable per-source statuses and versioned manifests.
 
 No ROM data, secret, key or proprietary dependency should be copied into tools/tests as a fixture.
+
+## PLA v1.1.1 main ELF and Ghidra 12.2
+
+- [Verified original NSO main to AArch64 ELF](docs/research/v1.1.1/main-elf-conversion.md): `Unpack/v1.1.1/exefs/main/main.elf`, SHA-256 `260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794`.
+- [Full Ghidra 12.2 analysis and lossless publication](docs/research/v1.1.1/ghidra-full-analysis.md): editable native `.gpr/.rep`, indexed SQLite with byte-exact original ELF BLOB chunks, whole-line NDJSON shards, per-function C pseudocode and complete coverage/error index.
+- [Run full analysis](.github/workflows/pla-ghidra-full.yml) and [publish validated shards](.github/workflows/pla-ghidra-publish.yml). Publication is conditional on actual successful Ghidra analysis and validates SQLite/NDJSON reconstruction before Git commits. Static decompiled C is not original game source code.
