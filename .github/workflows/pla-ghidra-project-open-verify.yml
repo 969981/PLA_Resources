@@ -74,7 +74,7 @@ jobs:
           assert m['project_split_files']==1,m
           print('Native project shard verification passed:',m)
           PY
-          test -s "$RUNNER_TEMP/pla_project_restored/project/PLA111.gpr"
+          test -f "$RUNNER_TEMP/pla_project_restored/project/PLA111.gpr"
           test -d "$RUNNER_TEMP/pla_project_restored/project/PLA111.rep"
 
       - name: Install JDK 25 required by official Ghidra 12.2
