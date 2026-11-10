@@ -1,0 +1,138 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 02854920; name: _INIT_394
+ */
+
+
+void _INIT_394(void)
+
+{
+  DAT_043eb810 = 0;
+  DAT_043eb830 = 0;
+  DAT_043eb850 = 0;
+  DAT_043eb870 = 0;
+  DAT_043eb5f8 = 0x1d5f4eb3207b78e3;
+  DAT_043eb600 = "_T_info_heading_00";
+  DAT_043eb608 = 0x12;
+  DAT_043eb610 = 0;
+  DAT_043eb618 = 0xb5ac3824dd5fcb20;
+  DAT_043eb620 = "_T_info_text_00";
+  DAT_043eb638 = 0x4c9d7993c76e888f;
+  DAT_043eb640 = "_T_num_in_storage_01";
+  DAT_043eb658 = 0x4c9d7893c76e86dc;
+  DAT_043eb660 = "_T_num_in_storage_00";
+  DAT_043eb890 = 0;
+  DAT_043eb678 = 0xa13a59183f52c69d;
+  DAT_043eb680 = "_N_in_storage_00";
+  DAT_043eb688 = 0x10;
+  DAT_043eb690 = 0;
+  DAT_043eb8b0 = 0;
+  DAT_043eb698 = 0x3ab593af777019fb;
+  DAT_043eb6a0 = "_A_alignment_add_01";
+  DAT_043eb8d0 = 0;
+  DAT_043eb8f0 = 0;
+  DAT_043eb6b8 = 0x2578838ff4a5fea5;
+  DAT_043eb6c0 = "_T_unit_add_01";
+  DAT_043eb6d8 = 0x2ffe417d7702867e;
+  DAT_043eb6e0 = "_T_param_add_01";
+  DAT_043eb910 = 0;
+  DAT_043eb6f8 = 0x3ab592af77701848;
+  DAT_043eb700 = "_A_alignment_add_00";
+  DAT_043eb930 = 0;
+  DAT_043eb718 = 0x2578828ff4a5fcf2;
+  DAT_043eb720 = "_T_unit_add_00";
+  DAT_043eb950 = 0;
+  DAT_043eb738 = 0x2ffe427d77028831;
+  DAT_043eb740 = "_T_param_add_00";
+  DAT_043eb970 = 0;
+  DAT_043eb758 = 0x6e67e24e4ed3ade8;
+  DAT_043eb760 = "_A_alignment_sub_01";
+  DAT_043eb990 = 0;
+  DAT_043eb778 = 0xbc6bc8d8a1e15c92;
+  DAT_043eb780 = "_T_unit_sub_01";
+  DAT_043eb9b0 = 0;
+  DAT_043eb798 = 0xb2018ceb27ae8459;
+  DAT_043eb7a0 = "_T_param_sub_01";
+  DAT_043eb6a8 = 0x13;
+  DAT_043eb6b0 = 0;
+  DAT_043eb708 = 0x13;
+  DAT_043eb710 = 0;
+  DAT_043eb768 = 0x13;
+  DAT_043eb770 = 0;
+  DAT_043eb828 = 0xe;
+  DAT_043eb848 = 0xe;
+  DAT_043eb8a8 = 0x14;
+  DAT_043eb8e8 = 0x14;
+  DAT_043eb928 = 0x14;
+  DAT_043eb968 = 0x14;
+  DAT_043eb808 = 0xf;
+  DAT_043eb868 = 0xf;
+  DAT_043eb9a8 = 0xf;
+  DAT_043eb7c8 = 0x13;
+  DAT_043eb7d0 = 0;
+  DAT_043eb7b8 = 0x6e67e34e4ed3af9b;
+  DAT_043eb7c0 = "_A_alignment_sub_00";
+  DAT_043eb7d8 = 0xbc6bc9d8a1e15e45;
+  DAT_043eb7e0 = "_T_unit_sub_00";
+  DAT_043eb7f8 = 0xb2018beb27ae82a6;
+  DAT_043eb800 = "_T_param_sub_00";
+  DAT_043eb818 = 0x3a1668a5028cebf6;
+  DAT_043eb820 = "_N_anim_add_01";
+  DAT_043eb838 = 0x3a1669a5028ceda9;
+  DAT_043eb898 = 0x37367d48c3b30bec;
+  DAT_043eb8a0 = "_storage_add_01_wake";
+  DAT_043eb8b8 = 0x90246e9a946bab40;
+  DAT_043eb8c0 = "_storage_add_01_close";
+  DAT_043eb8d8 = 0x626302544333a64d;
+  DAT_043eb8f8 = 0x2a9a19cc679c0e63;
+  DAT_043eb900 = "_storage_add_00_close";
+  DAT_043eb918 = 0x350d38770455fa2d;
+  DAT_043eb920 = "_storage_sub_01_wake";
+  DAT_043eb938 = 0x4ce22e84621798c3;
+  DAT_043eb840 = "_N_anim_add_00";
+  DAT_043eb8e0 = "_storage_add_00_wake";
+  DAT_043eb958 = 0x60518097ffae6bcc;
+  DAT_043eb940 = "_storage_sub_01_close";
+  DAT_043eb960 = "_storage_sub_00_wake";
+  DAT_043eb6c8 = 0xe;
+  DAT_043eb6d0 = 0;
+  DAT_043eb728 = 0xe;
+  DAT_043eb730 = 0;
+  DAT_043eb788 = 0xe;
+  DAT_043eb790 = 0;
+  DAT_043eb7e8 = 0xe;
+  DAT_043eb7f0 = 0;
+  DAT_043eb858 = 0xea254628b4184eba;
+  DAT_043eb860 = "_P_icon_favo_00";
+  DAT_043eb878 = 0x96d359644304a6d;
+  DAT_043eb880 = "_Pi_icon_use_field_00";
+  DAT_043eb888 = 0x15;
+  DAT_043eb8c8 = 0x15;
+  DAT_043eb908 = 0x15;
+  DAT_043eb948 = 0x15;
+  DAT_043eb988 = 0x15;
+  DAT_043eb9a0 = "_storage_01_max";
+  DAT_043eb648 = 0x14;
+  DAT_043eb650 = 0;
+  DAT_043eb668 = 0x14;
+  DAT_043eb670 = 0;
+  DAT_043eb978 = 0x67d12e3d83732aa0;
+  DAT_043eb980 = "_storage_sub_00_close";
+  DAT_043eb998 = 0x1f930e1ea322548e;
+  DAT_043eb628 = 0xf;
+  DAT_043eb630 = 0;
+  DAT_043eb6e8 = 0xf;
+  DAT_043eb6f0 = 0;
+  DAT_043eb748 = 0xf;
+  DAT_043eb750 = 0;
+  DAT_043eb7a8 = 0xf;
+  DAT_043eb7b0 = 0;
+  DAT_043eb9b8 = 0x5fbb7a31d2ca499d;
+  DAT_043eb9c0 = "_storage_00_max";
+  DAT_043eb9c8 = 0xf;
+  DAT_043eb9d0 = 0;
+  FUN_00100250(PTR_FUN_04387e80,&DAT_043eb5f8,&PTR_LOOP_0411a000);
+  return;
+}
+
+
