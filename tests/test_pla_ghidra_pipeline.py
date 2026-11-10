@@ -98,6 +98,12 @@ class GhidraPipelineTests(unittest.TestCase):
         self.assertEqual(proof["original_file_sha256"], digest)
         self.assertGreater(proof["chunk_count"], 1)
         self.assertEqual(embed.verify_chunks(db_file)["original_file_size"], elf.stat().st_size)
+        restore = load("pla_restore_split")
+        out = self.root / "elf-recovery"
+        out.mkdir()
+        result = restore.extract_elf(db_file, out, digest)
+        self.assertEqual(result["sha256"], digest)
+        self.assertEqual((out / "main.elf").read_bytes(), elf.read_bytes())
         with sqlite3.connect(db_file) as db:
             db.execute("UPDATE original_elf_chunks SET raw_bytes=? WHERE chunk_index=0",
                        (b"corrupted",))
