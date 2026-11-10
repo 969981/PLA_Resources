@@ -1,0 +1,43 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 0043c3f0; name: FUN_0043c3f0
+ */
+
+
+undefined8 FUN_0043c3f0(undefined8 *param_1,undefined8 *param_2)
+
+{
+  undefined8 uVar1;
+  undefined8 uVar2;
+  byte *pbVar3;
+  
+  pbVar3 = (byte *)*param_1;
+  if ((*(code **)(pbVar3 + 0xa0) == (code *)0x0) && ((*pbVar3 & 1) == 0)) {
+    uVar1 = 0x42;
+    uVar2 = 0x4c;
+  }
+  else {
+    if ((pbVar3 == (byte *)*param_2) &&
+       (((*(int *)(param_1 + 4) == 0 || (*(int *)(param_2 + 1) == 0)) ||
+        (*(int *)(param_1 + 4) == *(int *)(param_2 + 1))))) {
+      if ((*pbVar3 & 1) == 0) {
+                    /* WARNING: Could not recover jumptable at 0x0043c478. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+        uVar1 = (**(code **)(pbVar3 + 0xa0))();
+        return uVar1;
+      }
+      if (*(int *)(pbVar3 + 4) == 0x196) {
+        uVar1 = FUN_0043d450();
+        return uVar1;
+      }
+      uVar1 = FUN_0043c880();
+      return uVar1;
+    }
+    uVar1 = 0x65;
+    uVar2 = 0x50;
+  }
+  FUN_004014b0(0x10,0x7b,uVar1,"external/openssl/crypto/ec/ec_oct.c",uVar2);
+  return 0;
+}
+
+
