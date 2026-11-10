@@ -83,6 +83,27 @@ class GhidraPipelineTests(unittest.TestCase):
                 "SELECT value FROM metadata WHERE key='original_elf_sha256'"
             ).fetchone()[0], digest)
 
+    def test_sqlite_contains_reconstructable_original_elf_bytes(self):
+        builder = load("pla_build_sqlite")
+        embed = load("pla_embed_elf")
+        elf = self.root / "synthetic-input"
+        elf.write_bytes(bytes(range(256)) * 15)
+        digest = hashlib.sha256(elf.read_bytes()).hexdigest()
+        builder.EXPECTED_ELF_SHA256["pla"] = digest
+        embed.EXPECTED_SHA = digest
+        db_file = self.root / "with-elf.sqlite"
+        builder.build(elf, self.events, db_file, "pla")
+        proof = embed.add_chunks(db_file, elf, 512)
+        self.assertEqual(proof["status"], "BYTE_EXACT_ELF_RECOVERABLE")
+        self.assertEqual(proof["original_file_sha256"], digest)
+        self.assertGreater(proof["chunk_count"], 1)
+        self.assertEqual(embed.verify_chunks(db_file)["original_file_size"], elf.stat().st_size)
+        with sqlite3.connect(db_file) as db:
+            db.execute("UPDATE original_elf_chunks SET raw_bytes=? WHERE chunk_index=0",
+                       (b"corrupted",))
+        with self.assertRaises(ValueError):
+            embed.verify_chunks(db_file)
+
     def test_lossless_byte_shards_and_whole_ndjson_rows(self):
         pub = load("pla_publish_split")
         restore = load("pla_restore_split")
