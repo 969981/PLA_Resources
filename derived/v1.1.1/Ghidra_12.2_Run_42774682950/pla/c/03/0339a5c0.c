@@ -1,0 +1,19 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 0339a5c0; name: FUN_0339a5c0
+ */
+
+
+void FUN_0339a5c0(long param_1)
+
+{
+  FUN_0339a8dc(param_1 + 0x18);
+  if ((*(byte *)(param_1 + 0x60) & 1) == 0) {
+    FUN_0339a458(param_1);
+    return;
+  }
+  FUN_0339a2c4(param_1);
+  return;
+}
+
+
