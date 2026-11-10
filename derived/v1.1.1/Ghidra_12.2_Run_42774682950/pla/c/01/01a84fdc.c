@@ -1,0 +1,313 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 01a84fdc; name: FUN_01a84fdc
+ */
+
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_01a84fdc(long *param_1)
+
+{
+  int *piVar1;
+  int iVar2;
+  char cVar3;
+  bool bVar4;
+  undefined1 auVar5 [16];
+  undefined1 auVar6 [16];
+  undefined1 auVar7 [16];
+  undefined1 auVar8 [16];
+  undefined2 uVar9;
+  undefined1 auVar10 [16];
+  undefined1 auVar11 [16];
+  undefined1 auVar12 [16];
+  undefined1 auVar13 [16];
+  undefined1 auVar14 [16];
+  undefined1 auVar15 [16];
+  long lVar16;
+  byte bVar17;
+  byte bVar18;
+  byte bVar19;
+  byte bVar20;
+  byte bVar21;
+  undefined1 uVar22;
+  byte bVar23;
+  undefined1 uVar24;
+  byte bVar25;
+  undefined1 uVar26;
+  byte bVar27;
+  undefined1 uVar28;
+  byte bVar29;
+  byte bVar30;
+  byte bVar31;
+  byte bVar32;
+  byte bVar33;
+  byte bVar34;
+  byte bVar35;
+  byte bVar36;
+  float fVar37;
+  float fVar38;
+  undefined8 uVar39;
+  float fVar43;
+  undefined8 uVar40;
+  float fVar44;
+  float fVar45;
+  float fVar46;
+  undefined1 auVar41 [16];
+  undefined1 auVar42 [16];
+  float fVar47;
+  float fVar48;
+  float fVar49;
+  float fVar50;
+  float fVar51;
+  undefined8 uVar52;
+  float fVar57;
+  undefined1 auVar53 [16];
+  undefined1 auVar54 [16];
+  undefined1 auVar55 [16];
+  undefined1 auVar56 [16];
+  undefined8 uVar58;
+  float fVar59;
+  float fVar60;
+  float fVar61;
+  float fVar62;
+  long lVar63;
+  long lVar64;
+  long *local_18;
+  
+  FUN_009c69bc(&local_18);
+  lVar64 = local_18[0x19];
+  lVar63 = local_18[0x18];
+  if (local_18 != (long *)0x0) {
+    lVar16 = local_18[0xb];
+    piVar1 = (int *)(lVar16 + 0xc);
+    do {
+      iVar2 = *piVar1;
+      cVar3 = '\x01';
+      bVar4 = (bool)ExclusiveMonitorPass(piVar1,0x10);
+      if (bVar4) {
+        *piVar1 = iVar2 + -1;
+        cVar3 = ExclusiveMonitorsStatus();
+      }
+    } while (cVar3 != '\0');
+    if (iVar2 + -1 == 0) {
+      *(undefined8 *)(lVar16 + 0x18) = 0;
+      (**(code **)(*local_18 + 0x20))();
+    }
+  }
+  bVar17 = (byte)lVar63 & (byte)_DAT_038897c0;
+  bVar18 = (byte)((ulong)lVar63 >> 8) & (byte)((ulong)_DAT_038897c0 >> 8);
+  bVar19 = (byte)((ulong)lVar63 >> 0x10) & (byte)((ulong)_DAT_038897c0 >> 0x10);
+  bVar20 = (byte)((ulong)lVar63 >> 0x18) & (byte)((ulong)_DAT_038897c0 >> 0x18);
+  bVar21 = (byte)((ulong)lVar63 >> 0x20) & (byte)((ulong)_DAT_038897c0 >> 0x20);
+  bVar23 = (byte)((ulong)lVar63 >> 0x28) & (byte)((ulong)_DAT_038897c0 >> 0x28);
+  bVar25 = (byte)((ulong)lVar63 >> 0x30) & (byte)((ulong)_DAT_038897c0 >> 0x30);
+  bVar27 = (byte)((ulong)lVar63 >> 0x38) & (byte)((ulong)_DAT_038897c0 >> 0x38);
+  bVar29 = (byte)lVar64 & (byte)_UNK_038897c8;
+  bVar30 = (byte)((ulong)lVar64 >> 8) & (byte)((ulong)_UNK_038897c8 >> 8);
+  bVar31 = (byte)((ulong)lVar64 >> 0x10) & (byte)((ulong)_UNK_038897c8 >> 0x10);
+  bVar32 = (byte)((ulong)lVar64 >> 0x18) & (byte)((ulong)_UNK_038897c8 >> 0x18);
+  bVar33 = (byte)((ulong)lVar64 >> 0x20) & (byte)((ulong)_UNK_038897c8 >> 0x20);
+  bVar34 = (byte)((ulong)lVar64 >> 0x28) & (byte)((ulong)_UNK_038897c8 >> 0x28);
+  bVar35 = (byte)((ulong)lVar64 >> 0x30) & (byte)((ulong)_UNK_038897c8 >> 0x30);
+  bVar36 = (byte)((ulong)lVar64 >> 0x38) & (byte)((ulong)_UNK_038897c8 >> 0x38);
+  uVar39 = NEON_ext(CONCAT17(bVar27,CONCAT16(bVar25,CONCAT15(bVar23,CONCAT14(bVar21,CONCAT13(bVar20,
+                                                  CONCAT12(bVar19,CONCAT11(bVar18,bVar17))))))),
+                    CONCAT17(bVar27,CONCAT16(bVar25,CONCAT15(bVar23,CONCAT14(bVar21,CONCAT13(bVar20,
+                                                  CONCAT12(bVar19,CONCAT11(bVar18,bVar17))))))),4,1)
+  ;
+  auVar41[1] = bVar18;
+  auVar41[0] = bVar17;
+  auVar41[2] = bVar19;
+  auVar41[3] = bVar20;
+  auVar41[4] = bVar21;
+  auVar41[5] = bVar23;
+  auVar41[6] = bVar25;
+  auVar41[7] = bVar27;
+  auVar41[8] = bVar29;
+  auVar41[9] = bVar30;
+  auVar41[10] = bVar31;
+  auVar41[0xb] = bVar32;
+  auVar41[0xc] = bVar33;
+  auVar41[0xd] = bVar34;
+  auVar41[0xe] = bVar35;
+  auVar41[0xf] = bVar36;
+  uVar40 = a64_TBL(ZEXT816(0),auVar41,DAT_0388a6f0);
+  auVar55[1] = bVar18;
+  auVar55[0] = bVar17;
+  auVar55[2] = bVar19;
+  auVar55[3] = bVar20;
+  auVar55[4] = bVar21;
+  auVar55[5] = bVar23;
+  auVar55[6] = bVar25;
+  auVar55[7] = bVar27;
+  auVar55[8] = bVar29;
+  auVar55[9] = bVar30;
+  auVar55[10] = bVar31;
+  auVar55[0xb] = bVar32;
+  auVar55[0xc] = bVar33;
+  auVar55[0xd] = bVar34;
+  auVar55[0xe] = bVar35;
+  auVar55[0xf] = bVar36;
+  uVar52 = a64_TBL(ZEXT816(0),auVar55,DAT_0388a5e0);
+  auVar5[1] = bVar18;
+  auVar5[0] = bVar17;
+  auVar5[2] = bVar19;
+  auVar5[3] = bVar20;
+  auVar5[4] = bVar21;
+  auVar5[5] = bVar23;
+  auVar5[6] = bVar25;
+  auVar5[7] = bVar27;
+  auVar5[8] = bVar29;
+  auVar5[9] = bVar30;
+  auVar5[10] = bVar31;
+  auVar5[0xb] = bVar32;
+  auVar5[0xc] = bVar33;
+  auVar5[0xd] = bVar34;
+  auVar5[0xe] = bVar35;
+  auVar5[0xf] = bVar36;
+  uVar58 = a64_TBL(ZEXT816(0),auVar5,DAT_0388a6d8);
+  fVar37 = (float)uVar39 * (float)uVar39;
+  fVar43 = (float)((ulong)uVar39 >> 0x20);
+  fVar43 = fVar43 * fVar43;
+  fVar45 = (float)uVar40;
+  fVar46 = (float)((ulong)uVar40 >> 0x20);
+  fVar51 = (float)uVar52 * (float)uVar52;
+  fVar57 = (float)((ulong)uVar52 >> 0x20);
+  fVar57 = fVar57 * fVar57;
+  fVar47 = (float)uVar58;
+  fVar48 = (float)((ulong)uVar58 >> 0x20);
+  fVar59 = (float)_DAT_03888fc0 - (fVar37 + fVar37 + fVar51 + fVar51);
+  fVar60 = (float)((ulong)_DAT_03888fc0 >> 0x20) - (fVar43 + fVar43 + fVar57 + fVar57);
+  fVar61 = (float)_UNK_03888fc8 -
+           (fVar45 * fVar45 + fVar45 * fVar45 + fVar47 * fVar47 + fVar47 * fVar47);
+  fVar62 = (float)((ulong)_UNK_03888fc8 >> 0x20) -
+           (fVar46 * fVar46 + fVar46 * fVar46 + fVar48 * fVar48 + fVar48 * fVar48);
+  auVar6[1] = bVar18;
+  auVar6[0] = bVar17;
+  auVar6[2] = bVar19;
+  auVar6[3] = bVar20;
+  auVar6[4] = bVar21;
+  auVar6[5] = bVar23;
+  auVar6[6] = bVar25;
+  auVar6[7] = bVar27;
+  auVar6[8] = bVar29;
+  auVar6[9] = bVar30;
+  auVar6[10] = bVar31;
+  auVar6[0xb] = bVar32;
+  auVar6[0xc] = bVar33;
+  auVar6[0xd] = bVar34;
+  auVar6[0xe] = bVar35;
+  auVar6[0xf] = bVar36;
+  uVar40 = a64_TBL(ZEXT816(0),auVar6,DAT_0388a880);
+  fVar38 = (float)uVar40 * (float)CONCAT13(bVar20,CONCAT12(bVar19,CONCAT11(bVar18,bVar17)));
+  fVar44 = (float)((ulong)uVar40 >> 0x20) *
+           (float)CONCAT13(bVar27,CONCAT12(bVar25,CONCAT11(bVar23,bVar21)));
+  fVar45 = fVar45 * (float)CONCAT13(bVar32,CONCAT12(bVar31,CONCAT11(bVar30,bVar29)));
+  fVar46 = fVar46 * (float)CONCAT13(bVar36,CONCAT12(bVar35,CONCAT11(bVar34,bVar33)));
+  auVar7[1] = bVar18;
+  auVar7[0] = bVar17;
+  auVar7[2] = bVar19;
+  auVar7[3] = bVar20;
+  auVar7[4] = bVar21;
+  auVar7[5] = bVar23;
+  auVar7[6] = bVar25;
+  auVar7[7] = bVar27;
+  auVar7[8] = bVar29;
+  auVar7[9] = bVar30;
+  auVar7[10] = bVar31;
+  auVar7[0xb] = bVar32;
+  auVar7[0xc] = bVar33;
+  auVar7[0xd] = bVar34;
+  auVar7[0xe] = bVar35;
+  auVar7[0xf] = bVar36;
+  uVar40 = a64_TBL(ZEXT816(0),auVar7,DAT_0388a680);
+  fVar38 = fVar38 + fVar38;
+  fVar44 = fVar44 + fVar44;
+  fVar45 = fVar45 + fVar45;
+  fVar46 = fVar46 + fVar46;
+  fVar57 = (float)((ulong)lVar64 >> 0x20);
+  fVar37 = (float)uVar40 * fVar57;
+  fVar43 = (float)((ulong)uVar40 >> 0x20) * fVar57;
+  fVar37 = fVar37 + fVar37;
+  fVar43 = fVar43 + fVar43;
+  fVar51 = fVar47 * fVar57 + fVar47 * fVar57;
+  fVar57 = fVar48 * fVar57 + fVar48 * fVar57;
+  fVar47 = fVar38 + fVar37;
+  fVar48 = fVar44 + fVar43;
+  fVar49 = fVar45 + fVar51;
+  fVar50 = fVar46 + fVar57;
+  auVar53._0_4_ = fVar38 - fVar37;
+  auVar53._4_4_ = fVar44 - fVar43;
+  auVar53._8_4_ = fVar45 - fVar51;
+  auVar53._12_4_ = fVar46 - fVar57;
+  auVar10._4_4_ = fVar48;
+  auVar10._0_4_ = fVar47;
+  auVar10._8_4_ = fVar49;
+  auVar10._12_4_ = fVar50;
+  uVar52 = a64_TBL(ZEXT816(0),auVar10,auVar53,DAT_0388a758);
+  auVar11._4_4_ = fVar48;
+  auVar11._0_4_ = fVar47;
+  auVar11._8_4_ = fVar49;
+  auVar11._12_4_ = fVar50;
+  uVar40 = a64_TBL(ZEXT816(0),auVar11,auVar53,DAT_0388a720);
+  auVar12._4_4_ = fVar60;
+  auVar12._0_4_ = fVar59;
+  auVar12._8_4_ = fVar61;
+  auVar12._12_4_ = fVar62;
+  auVar14._8_8_ = uVar40;
+  auVar14._0_8_ = uVar52;
+  uVar39 = a64_TBL(ZEXT816(0),auVar12,auVar14,DAT_0388a668);
+  auVar13._4_4_ = fVar60;
+  auVar13._0_4_ = fVar59;
+  auVar13._8_4_ = fVar61;
+  auVar13._12_4_ = fVar62;
+  auVar15._8_8_ = uVar40;
+  auVar15._0_8_ = uVar52;
+  uVar40 = a64_TBL(ZEXT816(0),auVar13,auVar15,DAT_0388a5a8);
+  fVar57 = (float)uVar39;
+  fVar37 = (float)((ulong)uVar39 >> 0x20);
+  fVar51 = (float)((ulong)uVar40 >> 0x20);
+  fVar43 = (float)uVar40 * (float)uVar40 + fVar57 * fVar57;
+  fVar37 = fVar51 * fVar51 + fVar37 * fVar37;
+  fVar51 = fVar43 + fVar37;
+  fVar43 = fVar43 + fVar37;
+  uVar22 = SUB41(fVar43,0);
+  uVar24 = (undefined1)((uint)fVar43 >> 8);
+  uVar26 = (undefined1)((uint)fVar43 >> 0x10);
+  uVar28 = (undefined1)((uint)fVar43 >> 0x18);
+  auVar8[4] = uVar22;
+  auVar8._0_4_ = fVar51;
+  auVar8[5] = uVar24;
+  auVar8[6] = uVar26;
+  auVar8[7] = uVar28;
+  auVar8[8] = SUB41(fVar51,0);
+  auVar8[9] = (char)((uint)fVar51 >> 8);
+  auVar8[10] = (char)((uint)fVar51 >> 0x10);
+  auVar8[0xb] = (char)((uint)fVar51 >> 0x18);
+  auVar8[0xc] = uVar22;
+  auVar8[0xd] = uVar24;
+  auVar8[0xe] = uVar26;
+  auVar8[0xf] = uVar28;
+  auVar41 = NEON_frsqrte(auVar8,4);
+  auVar54._0_4_ = auVar41._0_4_ * fVar51;
+  auVar54._4_4_ = auVar41._4_4_ * fVar43;
+  auVar54._8_4_ = auVar41._8_4_ * fVar51;
+  uVar9 = (undefined2)(CONCAT15(uVar24,CONCAT14(uVar22,fVar51)) >> 0x20);
+  auVar54._12_4_ = auVar41._12_4_ * (float)CONCAT13(uVar28,CONCAT12(uVar26,uVar9));
+  auVar55 = NEON_frsqrts(auVar41,auVar54,4);
+  auVar42._0_4_ = auVar41._0_4_ * auVar55._0_4_;
+  auVar42._4_4_ = auVar41._4_4_ * auVar55._4_4_;
+  auVar42._8_4_ = auVar41._8_4_ * auVar55._8_4_;
+  auVar42._12_4_ = auVar41._12_4_ * auVar55._12_4_;
+  auVar56._0_4_ = fVar51 * auVar42._0_4_;
+  auVar56._4_4_ = fVar43 * auVar42._4_4_;
+  auVar56._8_4_ = fVar51 * auVar42._8_4_;
+  auVar56._12_4_ = (float)CONCAT13(uVar28,CONCAT12(uVar26,uVar9)) * auVar42._12_4_;
+  auVar41 = NEON_frsqrts(auVar42,auVar56,4);
+  (**(code **)(*param_1 + 0x108))
+            (SUB41(fVar57 * auVar42._0_4_ * auVar41._0_4_,0) & ~-(fVar51 == 0.0),param_1);
+  return;
+}
+
+
