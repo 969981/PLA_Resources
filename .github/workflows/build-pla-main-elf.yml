@@ -1,0 +1,88 @@
+name: Build PLA 1.1.1 main ELF
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/build-pla-main-elf.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pla-v111-main-elf-master
+  cancel-in-progress: false
+
+jobs:
+  convert-main:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 40
+    steps:
+      - name: Checkout PLA source (sparse, immutable)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            .github/workflows
+            scripts
+            v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/0
+            Unpack/v1.1.1/exefs
+
+      - name: Checkout pinned nx2elf source (no submodule)
+        uses: actions/checkout@v4
+        with:
+          repository: 969981/SV_Resources
+          ref: be3a50098a7126ec8bc72fc1c921be54a1d06071
+          path: .pla-work/nx2elf-source
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout: |
+            tools/nx2elf
+          persist-credentials: false
+
+      - name: Build nx2elf from pinned source
+        shell: bash
+        run: |
+          set -euo pipefail
+          cmake -S .pla-work/nx2elf-source/tools/nx2elf -B "$RUNNER_TEMP/nx2elf-build" -DCMAKE_BUILD_TYPE=Release
+          cmake --build "$RUNNER_TEMP/nx2elf-build" --config Release -j 2
+
+      - name: Convert main and validate ELF/provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/build_pla_main_elf.py \
+            --converter "$RUNNER_TEMP/nx2elf-build/nx2elf" \
+            --tool-revision be3a50098a7126ec8bc72fc1c921be54a1d06071 \
+            --artifact-path "$RUNNER_TEMP/pla-main-elf-artifact/main.elf"
+          readelf -h "$RUNNER_TEMP/pla-main-elf-artifact/main.elf"
+          readelf -l "$RUNNER_TEMP/pla-main-elf-artifact/main.elf" > "$RUNNER_TEMP/elf-program-headers.txt"
+          readelf -S "$RUNNER_TEMP/pla-main-elf-artifact/main.elf" > "$RUNNER_TEMP/elf-section-headers.txt"
+          sha256sum "$RUNNER_TEMP/pla-main-elf-artifact/main.elf"
+          cat Unpack/v1.1.1/exefs/main/main.elf.manifest.json
+
+      - name: Publish complete ELF artifact (14 days)
+        uses: actions/upload-artifact@v4
+        with:
+          name: pla-v1.1.1-main-elf
+          path: |
+            ${{ runner.temp }}/pla-main-elf-artifact/main.elf
+            Unpack/v1.1.1/exefs/main/main.elf.manifest.json
+            Unpack/v1.1.1/exefs/main/main.elf.sha256
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Commit only validated derived ELF files to master
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- Unpack/v1.1.1/exefs/main/
+          if git diff --cached --quiet; then
+            echo "Validated output is unchanged; no commit needed."
+          else
+            git commit -m "build(pla): add SHA256-verified v1.1.1 main ELF via nx2elf"
+            git push origin HEAD:master
+          fi
