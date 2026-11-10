@@ -220,3 +220,17 @@ The u64 at +0x02 is unaligned relative to the 16-byte record base. The parser up
 **Strong inference:** this is a per-dex-index research-task summary array. The u16 field at +0x00 appears to store the first source-row ordinal for that index, and the low nibble appears to store the number of grouped task rows. Those field meanings are still hypotheses until compared with the original BIN records and their runtime consumers.
 
 This makes the fixed-array interpretation stronger than the earlier size-only inference. The exact meanings of the packed nibbles, the +0x0A field and the +0x0C field remain unresolved.
+
+
+## Addendum — form-storage map direction
+
+The loop in FUN_013F69B0 provides more detail than the earlier size calculation:
+
+- The source pointer at wrapper +0x40 is advanced in 3-u16 records (6 bytes per record).
+- The first u16 in each source record is compared against the current destination index, which iterates from 0 through 905.
+- For each destination index, the routine scans all consecutive source rows whose first u16 equals that index.
+- It stores the first matching source-row ordinal in the destination u16 at +0x48 + index * 2.
+
+Therefore the observed algorithm is a 906-entry index from a 0..905 key to the first matching row ordinal in the source form-storage table. The resource filename makes a species/dex index the strongest interpretation of the key, but that key meaning remains an inference.
+
+The source rows contain three u16 fields; this builder uses only the first field. The other two fields are preserved through the source pointer at +0x40 and need to be traced in the consumers. A zero map value may mean no matching row or a first row at ordinal zero; the table's sentinel convention must be checked before assigning that meaning.
