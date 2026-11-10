@@ -1,6 +1,10 @@
 name: PLA 1.1.1 publish verified Ghidra split database and C
 
 on:
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/pla-ghidra-publish.yml'
   workflow_run:
     workflows:
       - PLA 1.1.1 Ghidra 12.2 full analysis
@@ -28,7 +32,7 @@ jobs:
     timeout-minutes: 350
     env:
       REPO: 969981/PLA_Resources
-      SOURCE_RUN: ${{ github.event.workflow_run.id || inputs.source_run_id }}
+      SOURCE_RUN: ${{ github.event.workflow_run.id || inputs.source_run_id || '42774682950' }}
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Sparse checkout PLA publisher sources
