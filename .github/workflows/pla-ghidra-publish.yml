@@ -42,6 +42,8 @@ jobs:
           sparse-checkout: |
             /tools/ghidra/pla_publish_split.py
             /tools/ghidra/pla_restore_split.py
+            /tools/ghidra/pla_embed_elf.py
+            /Unpack/v1.1.1/exefs/main/main.elf
             /.github/workflows/pla-ghidra-publish.yml
             /derived/v1.1.1/
 
@@ -53,7 +55,7 @@ jobs:
           test "$(gh api "repos/$REPO/actions/runs/$SOURCE_RUN" --jq '.conclusion')" = success
           test "$(gh api "repos/$REPO/actions/runs/$SOURCE_RUN" --jq '.name')" = "PLA 1.1.1 Ghidra 12.2 full analysis"
           test "$(gh api "repos/$REPO/actions/runs/$SOURCE_RUN" --jq '.head_branch')" = master
-          python3 -m py_compile tools/ghidra/pla_publish_split.py tools/ghidra/pla_restore_split.py
+          python3 -m py_compile tools/ghidra/pla_publish_split.py tools/ghidra/pla_restore_split.py tools/ghidra/pla_embed_elf.py
           if ! command -v zstd >/dev/null 2>&1; then
             sudo apt-get update -qq
             sudo apt-get install -y -qq zstd
@@ -72,6 +74,15 @@ jobs:
             test -n "$(find "$RUNNER_TEMP/artifacts/$name" -type f -print -quit)"
             du -sh "$RUNNER_TEMP/artifacts/$name"
           done
+
+      - name: Embed and verify complete original ELF bytes inside SQLite
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/ghidra/pla_embed_elf.py \\
+            --elf Unpack/v1.1.1/exefs/main/main.elf \\
+            --db "$RUNNER_TEMP/artifacts/PLA-pla-sqlite/pla.sqlite" \\
+            --report "$RUNNER_TEMP/artifacts/PLA-pla-sqlite/pla_elf_bytes_manifest.json"
 
       - name: Validate and create lossless SQLite/NDJSON shards, C and Ghidra project
         shell: bash
