@@ -1,0 +1,57 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 0135c4b4; name: FUN_0135c4b4
+ */
+
+
+/* WARNING: Control flow encountered bad instruction data */
+
+undefined8 * FUN_0135c4b4(undefined8 param_1,long *param_2)
+
+{
+  undefined *puVar1;
+  int iVar2;
+  long lVar3;
+  undefined8 *puVar4;
+  
+  if (((*PTR_DAT_04379520 & 1) == 0) &&
+     (iVar2 = __cxa_guard_acquire(PTR_DAT_04379520), puVar1 = PTR_DAT_04379528, iVar2 != 0)) {
+    FUN_008a62a4(PTR_DAT_04379528);
+    FUN_00100250(PTR_LAB_04379530,puVar1,&PTR_LOOP_0411a000);
+    __cxa_guard_release(PTR_DAT_04379520);
+  }
+  lVar3 = nn::os::GetTlsValue(*(undefined4 *)PTR_DAT_04379528);
+  if (0xf < *(ulong *)(lVar3 + 0x80)) {
+                    /* WARNING: Subroutine does not return */
+    abort();
+  }
+  *(long **)(lVar3 + *(ulong *)(lVar3 + 0x80) * 8) = param_2;
+  *(long *)(lVar3 + 0x80) = *(long *)(lVar3 + 0x80) + 1;
+  puVar4 = (undefined8 *)(**(code **)(*param_2 + 0x10))(param_2,0x250,0x10);
+  if (puVar4 == (undefined8 *)0x0) {
+    (**(code **)(*param_2 + 0xb8))(param_2);
+    FUN_01bdae70(0);
+                    /* WARNING: Bad instruction - Truncating control flow here */
+    halt_baddata();
+  }
+  FUN_01bdae70();
+  puVar4[0x42] = 0;
+  *puVar4 = &PTR_LAB_04245c70;
+  puVar4[1] = param_2;
+  puVar4[9] = &PTR_LAB_04245d78;
+  puVar4[10] = &PTR_LAB_04245e58;
+  *(undefined4 *)((long)puVar4 + 0x217) = 0;
+  *(undefined4 *)((long)puVar4 + 0x22c) = 0x3f800000;
+  *(undefined8 *)((long)puVar4 + 0x21c) = 0;
+  *(undefined8 *)((long)puVar4 + 0x224) = 0x3f80000000000000;
+  *(undefined1 *)(puVar4 + 0x46) = 1;
+  puVar4[0x47] = 0;
+  puVar4[0x48] = 0;
+  puVar4[4] = 0x10;
+  puVar4[2] = puVar4;
+  puVar4[3] = 0x250;
+  *(long *)(lVar3 + 0x80) = *(long *)(lVar3 + 0x80) + -1;
+  return puVar4;
+}
+
+

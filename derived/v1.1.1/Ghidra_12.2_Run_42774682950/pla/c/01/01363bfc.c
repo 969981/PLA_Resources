@@ -1,0 +1,138 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 01363bfc; name: FUN_01363bfc
+ */
+
+
+void FUN_01363bfc(long param_1)
+
+{
+  FUN_01355720();
+  *(undefined1 *)(param_1 + 0x4d0) = 0;
+  *(undefined1 **)(param_1 + 0x4b8) = &DAT_4955b49339758aca;
+  *(char **)(param_1 + 0x4c0) = "battle_wait_switch";
+  *(char **)(param_1 + 0x4e8) = "one_emotion_trigger";
+  *(undefined1 *)(param_1 + 0x4d8) = 0;
+  *(undefined1 *)(param_1 + 0x510) = 0;
+  *(undefined8 *)(param_1 + 0x4e0) = 0x28659ba5f229f146;
+  *(undefined8 *)(param_1 + 0x520) = 0x4d98b1b60e771d7e;
+  *(char **)(param_1 + 0x540) = "loop_emotion_int";
+  *(undefined8 *)(param_1 + 0x4f0) = 0x13;
+  *(char **)(param_1 + 0x528) = "loop_emotion_bool";
+  *(undefined8 *)(param_1 + 0x530) = 0x11;
+  *(undefined1 *)(param_1 + 0x518) = 0;
+  *(undefined8 *)(param_1 + 0x550) = 0xe77eb938f9378de9;
+  *(undefined8 *)(param_1 + 0x4f8) = 0x9f0c382cded0726f;
+  *(undefined1 *)(param_1 + 0x568) = 0;
+  *(char **)(param_1 + 0x558) = "quick_bool";
+  *(char **)(param_1 + 0x500) = "one_emotion_int";
+  *(undefined8 *)(param_1 + 0x538) = 0x8db9ec55f4fcec4b;
+  *(undefined8 *)(param_1 + 0x560) = 10;
+  *(undefined8 *)(param_1 + 0x4c8) = 0x12;
+  *(undefined8 *)(param_1 + 0x508) = 0xf;
+  *(undefined8 *)(param_1 + 0x548) = 0x10;
+  *(undefined1 *)(param_1 + 0x570) = 0;
+  *(undefined1 *)(param_1 + 0x578) = 0;
+  *(undefined1 *)(param_1 + 0x580) = 0;
+  *(undefined4 *)(param_1 + 0x584) = 1;
+  *(undefined8 *)(param_1 + 0x5b0) = 0x10;
+  *(undefined8 *)(param_1 + 0x660) = 0x10;
+  *(undefined8 *)(param_1 + 0x708) = 0x10;
+  *(undefined8 *)(param_1 + 0x728) = 0xa7916296350e6bd6;
+  *(char **)(param_1 + 0x630) = "rush_int";
+  *(char **)(param_1 + 0x730) = "stepout_bool";
+  *(char **)(param_1 + 0x658) = "damage01_trigger";
+  *(char **)(param_1 + 0x670) = "damage01_bool";
+  *(undefined8 *)(param_1 + 0x748) = 0x9c83dbda0e16e7af;
+  *(char **)(param_1 + 0x750) = "stun01_bool";
+  *(char **)(param_1 + 0x5d8) = "loop_attack_int";
+  *(undefined8 *)(param_1 + 0x688) = 0x7b62f71e98d07c33;
+  *(undefined8 *)(param_1 + 0x758) = 0xb;
+  *(undefined8 *)(param_1 + 0x778) = 0xb;
+  *(char **)(param_1 + 0x690) = "spattack_bool";
+  *(undefined8 *)(param_1 + 0x628) = 0xb556b63985d6063d;
+  *(undefined8 *)(param_1 + 0x588) = 0xe92d3c2df35e21af;
+  *(undefined8 *)(param_1 + 0x788) = 0x3d9d524e1a5168;
+  *(undefined8 *)(param_1 + 0x638) = 8;
+  *(undefined8 *)(param_1 + 0x6c8) = 0xeda3ab9f13a89bda;
+  *(char **)(param_1 + 0x790) = "rest_bool";
+  *(char **)(param_1 + 0x590) = "one_attack_trigger";
+  *(char **)(param_1 + 0x6d0) = "idle_emotion_trigger";
+  *(undefined8 *)(param_1 + 0x598) = 0x12;
+  *(undefined8 *)(param_1 + 0x650) = 0x9cd20cf8407c60e8;
+  *(undefined8 *)(param_1 + 0x5e0) = 0xf;
+  *(undefined8 *)(param_1 + 0x7a8) = 0xeeda88d94b45c267;
+  *(undefined8 *)(param_1 + 0x7f8) = 0xf;
+  *(undefined8 *)(param_1 + 0x5d0) = 0x23949d6a48583a1e;
+  *(undefined1 *)(param_1 + 0x5e8) = 0;
+  *(undefined8 *)(param_1 + 0x6e0) = 0xd18888d2238d56a9;
+  *(undefined1 *)(param_1 + 0x5f0) = 0;
+  *(undefined8 *)(param_1 + 0x5a0) = 0xa54af86f3a0b011d;
+  *(undefined1 *)(param_1 + 0x5f8) = 0;
+  *(undefined8 *)(param_1 + 0x668) = 0xc105a63520c1719c;
+  *(undefined1 *)(param_1 + 0x600) = 0;
+  *(undefined8 *)(param_1 + 0x7c8) = 0xde09aff7f94b0e5b;
+  *(char **)(param_1 + 0x5a8) = "loop_attack_bool";
+  *(undefined8 *)(param_1 + 0x610) = 0xbc45c983018206dc;
+  *(undefined8 *)(param_1 + 0x678) = 0xd;
+  *(undefined8 *)(param_1 + 0x698) = 0xd;
+  *(undefined8 *)(param_1 + 0x6f8) = 0x457f94c5aa9627c3;
+  *(char **)(param_1 + 2000) = "aerial";
+  *(undefined1 *)(param_1 + 0x608) = 0;
+  *(char **)(param_1 + 0x618) = "rush_bool";
+  *(undefined1 *)(param_1 + 0x640) = 0;
+  *(char **)(param_1 + 0x700) = "idle_emotion_int";
+  *(undefined8 *)(param_1 + 0x7d8) = 6;
+  *(undefined8 *)(param_1 + 0x5b8) = 0x45f25028e429d0da;
+  *(undefined8 *)(param_1 + 0x620) = 9;
+  *(undefined8 *)(param_1 + 0x6a0) = 0x78b8733827721188;
+  *(undefined8 *)(param_1 + 0x798) = 9;
+  *(char **)(param_1 + 0x5c0) = "one_attack_int";
+  *(char **)(param_1 + 0x6a8) = "spattack_int";
+  *(undefined8 *)(param_1 + 0x768) = 0xae3bab96c8ff490b;
+  *(char **)(param_1 + 0x7b0) = "fatigue_bool";
+  *(undefined8 *)(param_1 + 0x7e8) = 0x56db9ab5ea2016bb;
+  *(undefined1 *)(param_1 + 0x648) = 0;
+  *(undefined8 *)(param_1 + 0x5c8) = 0xe;
+  *(undefined1 *)(param_1 + 0x680) = 0;
+  *(undefined8 *)(param_1 + 0x6b0) = 0xc;
+  *(undefined1 *)(param_1 + 0x6b8) = 0;
+  *(undefined1 *)(param_1 + 0x6c0) = 0;
+  *(undefined8 *)(param_1 + 0x6d8) = 0x14;
+  *(char **)(param_1 + 0x6e8) = "idle_emotion_stop_trigger";
+  *(undefined8 *)(param_1 + 0x6f0) = 0x19;
+  *(undefined1 *)(param_1 + 0x710) = 0;
+  *(undefined1 *)(param_1 + 0x718) = 0;
+  *(undefined1 *)(param_1 + 0x720) = 0;
+  *(undefined8 *)(param_1 + 0x738) = 0xc;
+  *(undefined1 *)(param_1 + 0x740) = 0;
+  *(undefined1 *)(param_1 + 0x760) = 0;
+  *(char **)(param_1 + 0x770) = "down01_bool";
+  *(undefined1 *)(param_1 + 0x780) = 0;
+  *(undefined1 *)(param_1 + 0x7a0) = 0;
+  *(undefined8 *)(param_1 + 0x7b8) = 0xc;
+  *(undefined1 *)(param_1 + 0x7c0) = 0;
+  *(undefined1 *)(param_1 + 0x7e0) = 0;
+  *(char **)(param_1 + 0x7f0) = "poke_state_bool";
+  *(undefined8 *)(param_1 + 0x800) = 0xbc071098b7443d50;
+  *(char **)(param_1 + 0x808) = "poke_state_int";
+  *(undefined8 *)(param_1 + 0x810) = 0xe;
+  *(undefined1 *)(param_1 + 0x818) = 0;
+  *(undefined1 *)(param_1 + 0x820) = 0;
+  FUN_01bfe3c8(param_1 + 0x828);
+  *(undefined8 *)(param_1 + 0xb38) = 0x14;
+  *(undefined8 *)(param_1 + 0xb28) = 0xca0680ec8f5f542f;
+  *(char **)(param_1 + 0xb30) = "hit_reaction_trigger";
+  *(undefined8 *)(param_1 + 0xb50) = 0x19;
+  *(undefined8 *)(param_1 + 0xb40) = 0x143db540f519b292;
+  *(char **)(param_1 + 0xb48) = "hit_reaction_stop_trigger";
+  *(undefined8 *)(param_1 + 0xb58) = 0x143db540f519b292;
+  *(char **)(param_1 + 0xb60) = "hit_reaction_stop_trigger";
+  *(undefined8 *)(param_1 + 0xb68) = 0x19;
+  *(undefined1 *)(param_1 + 0xb70) = 0;
+  *(undefined1 *)(param_1 + 0xb78) = 0;
+  *(undefined1 *)(param_1 + 0xb80) = 0;
+  return;
+}
+
+
