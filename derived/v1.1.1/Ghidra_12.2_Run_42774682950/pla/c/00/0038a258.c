@@ -1,0 +1,79 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 0038a258; name: FUN_0038a258
+ */
+
+
+void FUN_0038a258(undefined8 param_1,long *param_2,long param_3,long param_4)
+
+{
+  uint uVar1;
+  undefined4 uVar2;
+  undefined *puVar3;
+  ulong *puVar4;
+  undefined8 uVar5;
+  undefined8 local_78;
+  long local_70;
+  undefined *puStack_68;
+  undefined **local_60;
+  long *plStack_58;
+  undefined ***local_28;
+  
+  local_78 = param_1;
+  if (*(long *)(param_4 + 0x50) != *param_2) {
+    FUN_00386850(*param_2,param_4,"AddDouble","Field does not match message type.");
+  }
+  if (*(int *)(param_4 + 0x3c) != 3) {
+    FUN_00386850(*param_2,param_4,"AddDouble",
+                 "Field is singular; the method requires a repeated field.");
+  }
+  puVar3 = PTR_LAB_04373a98;
+  puVar4 = *(ulong **)(param_4 + 0x30);
+  if (puVar4 != (ulong *)0x0) {
+    puStack_68 = PTR_LAB_04373a98;
+    local_70 = param_4;
+    if (*puVar4 != 0xffffffffffffffff) {
+      local_60 = &puStack_68;
+      plStack_58 = &local_70;
+      local_28 = &local_60;
+      std::__call_once(puVar4,&local_28,(_func_void_void_ptr *)PTR_LAB_04373aa0);
+    }
+  }
+  if (*(int *)(PTR_DAT_04373ab0 + (ulong)*(uint *)(param_4 + 0x38) * 4) != 5) {
+    FUN_003871e0(*param_2,param_4,"AddDouble",5);
+  }
+  if (*(char *)(param_4 + 0x43) == '\0') {
+    FUN_0038a438(param_2,param_3,param_4,&local_78);
+  }
+  else {
+    uVar1 = *(uint *)(param_2 + 5);
+    if (uVar1 == 0xffffffff) {
+      FUN_0030f640(&local_60,3,
+                   "external/com_google_grpc_base/third_party/protobuf/src\\google/protobuf/generated_message_reflection.h"
+                   ,0xc4);
+                    /* try { // try from 0038a368 to 0038a37b has its CatchHandler @ 0038a424 */
+      uVar5 = FUN_0030f3ac(&local_60,"CHECK failed: HasExtensionSet(): ");
+                    /* try { // try from 0038a37c to 0038a383 has its CatchHandler @ 0038a420 */
+      FUN_0030f41c(&local_28,uVar5);
+      FUN_0030f658(&local_60);
+      uVar1 = *(uint *)(param_2 + 5);
+    }
+    uVar2 = *(undefined4 *)(param_4 + 0x44);
+    puVar4 = *(ulong **)(param_4 + 0x30);
+    if (puVar4 != (ulong *)0x0) {
+      puStack_68 = puVar3;
+      local_70 = param_4;
+      if (*puVar4 != 0xffffffffffffffff) {
+        local_60 = &puStack_68;
+        plStack_58 = &local_70;
+        local_28 = &local_60;
+        std::__call_once(puVar4,&local_28,(_func_void_void_ptr *)PTR_LAB_04373aa0);
+      }
+    }
+    FUN_00331b54(local_78,param_3 + (ulong)uVar1,uVar2,*(undefined4 *)(param_4 + 0x38),
+                 *(undefined1 *)(*(long *)(param_4 + 0x78) + 0x4c),param_4);
+  }
+  return;
+}
+
+
