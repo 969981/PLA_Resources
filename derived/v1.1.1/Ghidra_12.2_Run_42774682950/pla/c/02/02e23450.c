@@ -1,0 +1,28 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 02e23450; name: _INIT_453
+ */
+
+
+void _INIT_453(void)
+
+{
+  DAT_04409500 = DAT_0440a450;
+  DAT_04409568 = 0;
+  DAT_04409518 = &LAB_02e234a0;
+  DAT_04409520 = &LAB_02e24820;
+  DAT_04409510 = 0x88;
+  DAT_0440a450 = &DAT_04409500;
+  DAT_04409528 = 0;
+  DAT_04409530 = 0;
+  DAT_04409508 = 3;
+  DAT_04409538 = 0;
+  DAT_04409540 = 0;
+  DAT_04409548 = 0;
+  DAT_04409550 = 0;
+  DAT_04409558 = 0;
+  DAT_04409560 = 0;
+  return;
+}
+
+
