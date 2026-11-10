@@ -1,0 +1,336 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 0314347c; name: FUN_0314347c
+ */
+
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+undefined8
+FUN_0314347c(long *param_1,undefined8 *param_2,undefined8 *param_3,undefined8 *param_4,
+            undefined4 param_5)
+
+{
+  undefined1 auVar1 [16];
+  float fVar2;
+  float fVar3;
+  undefined8 uVar4;
+  undefined4 uVar5;
+  undefined8 uVar6;
+  byte bVar7;
+  byte bVar8;
+  byte bVar9;
+  byte bVar10;
+  byte bVar11;
+  undefined1 uVar12;
+  byte bVar13;
+  undefined1 uVar14;
+  byte bVar15;
+  undefined1 uVar16;
+  byte bVar17;
+  undefined1 uVar18;
+  byte bVar19;
+  byte bVar20;
+  byte bVar21;
+  byte bVar22;
+  byte bVar23;
+  byte bVar24;
+  int iVar25;
+  float fVar26;
+  undefined8 uVar27;
+  int iVar30;
+  float fVar31;
+  int iVar32;
+  int iVar33;
+  undefined1 auVar28 [16];
+  undefined1 auVar29 [16];
+  undefined1 auVar34 [16];
+  undefined1 auVar35 [16];
+  undefined1 auVar36 [16];
+  undefined1 auVar37 [16];
+  undefined8 local_270;
+  undefined8 uStack_268;
+  undefined8 local_260;
+  undefined8 uStack_258;
+  undefined8 uStack_250;
+  undefined8 uStack_248;
+  undefined **local_240;
+  undefined1 local_238;
+  int local_234;
+  undefined8 local_230;
+  undefined1 local_228;
+  undefined8 local_220;
+  undefined8 uStack_218;
+  undefined8 local_210;
+  undefined8 uStack_208;
+  float local_200;
+  undefined8 local_1f8;
+  undefined4 local_1f0;
+  undefined4 local_1e8;
+  undefined1 local_1e4;
+  undefined2 local_1e0;
+  undefined4 local_1dc;
+  undefined8 local_1d8;
+  undefined8 local_1d0;
+  undefined4 local_1c8;
+  undefined4 local_1c0;
+  undefined1 local_1bc;
+  undefined2 local_1b8;
+  undefined4 local_1b4;
+  undefined8 local_1b0;
+  undefined8 uStack_1a8;
+  undefined8 local_1a0;
+  undefined8 local_198;
+  undefined2 local_190;
+  undefined4 local_18c;
+  undefined8 local_188;
+  undefined2 local_180;
+  byte local_17e;
+  undefined8 local_178;
+  undefined8 local_170;
+  undefined8 uStack_168;
+  undefined8 local_160;
+  undefined8 uStack_158;
+  undefined8 uStack_150;
+  undefined8 uStack_148;
+  undefined8 local_140;
+  undefined8 local_138;
+  undefined8 uStack_130;
+  undefined4 local_128;
+  undefined8 local_120;
+  undefined8 uStack_118;
+  undefined8 local_110;
+  undefined8 uStack_108;
+  undefined *local_100;
+  long *local_f8;
+  undefined1 *puStack_f0;
+  undefined4 local_e8;
+  undefined1 auStack_e0 [144];
+  
+  local_e8 = 0x90;
+  puStack_f0 = auStack_e0;
+  local_f8 = (long *)0x0;
+  local_1a0 = 0;
+  local_198 = 0;
+  local_100 = PTR_DAT_043887d0 + 0x10;
+  local_178 = FUN_02fd8ea4(&local_100,&local_1a0);
+  local_180 = 1;
+  local_1a0 = 0;
+  local_198 = 0;
+  auVar34 = ZEXT816(0x3f800000);
+  local_17e = 0xfb;
+  local_140 = 0x3a83126f;
+  local_190 = 0xffff;
+  local_18c = 0;
+  local_188 = 0;
+  local_128 = 0x7f7fffee;
+  local_138 = 0x10000000000;
+  uStack_130 = 0;
+  local_120 = 0;
+  uStack_118 = 0;
+  local_110 = 0;
+  uStack_108 = 0;
+  uStack_168 = param_2[1];
+  local_170 = *param_2;
+  fVar26 = (float)*param_3 - (float)local_170;
+  fVar31 = (float)((ulong)*param_3 >> 0x20) - (float)((ulong)local_170 >> 0x20);
+  fVar2 = (float)param_3[1] - (float)uStack_168;
+  iVar25 = -(uint)(fVar26 == 0.0);
+  iVar30 = -(uint)(fVar31 == 0.0);
+  iVar32 = -(uint)(fVar2 == 0.0);
+  iVar33 = -(uint)(auVar34._0_4_ == 0.0);
+  bVar7 = SUB41(fVar26,0) & ~(byte)iVar25;
+  bVar8 = (byte)((uint)fVar26 >> 8) & ~(byte)((uint)iVar25 >> 8);
+  bVar9 = (byte)((uint)fVar26 >> 0x10) & ~(byte)((uint)iVar25 >> 0x10);
+  bVar10 = (byte)((uint)fVar26 >> 0x18) & ~(byte)((uint)iVar25 >> 0x18);
+  bVar11 = SUB41(fVar31,0) & ~(byte)iVar30;
+  bVar13 = (byte)((uint)fVar31 >> 8) & ~(byte)((uint)iVar30 >> 8);
+  bVar15 = (byte)((uint)fVar31 >> 0x10) & ~(byte)((uint)iVar30 >> 0x10);
+  bVar17 = (byte)((uint)fVar31 >> 0x18) & ~(byte)((uint)iVar30 >> 0x18);
+  bVar19 = SUB41(fVar2,0) & ~(byte)iVar32;
+  bVar20 = (byte)((uint)fVar2 >> 8) & ~(byte)((uint)iVar32 >> 8);
+  bVar21 = (byte)((uint)fVar2 >> 0x10) & ~(byte)((uint)iVar32 >> 0x10);
+  bVar22 = (byte)((uint)fVar2 >> 0x18) & ~(byte)((uint)iVar32 >> 0x18);
+  bVar23 = auVar34[2] & ~(byte)((uint)iVar33 >> 0x10);
+  bVar24 = auVar34[3] & ~(byte)((uint)iVar33 >> 0x18);
+  auVar34[1] = bVar8;
+  auVar34[0] = bVar7;
+  auVar34[2] = bVar9;
+  auVar34[3] = bVar10;
+  auVar34[4] = bVar11;
+  auVar34[5] = bVar13;
+  auVar34[6] = bVar15;
+  auVar34[7] = bVar17;
+  auVar34[8] = bVar19;
+  auVar34[9] = bVar20;
+  auVar34[10] = bVar21;
+  auVar34[0xb] = bVar22;
+  auVar34._12_2_ = 0;
+  auVar34[0xe] = bVar23;
+  auVar34[0xf] = bVar24;
+  auVar34 = NEON_frecpe(auVar34,4);
+  iVar25 = -(uint)((float)CONCAT13(bVar10,CONCAT12(bVar9,CONCAT11(bVar8,bVar7))) == 0.0);
+  iVar30 = -(uint)((float)CONCAT13(bVar17,CONCAT12(bVar15,CONCAT11(bVar13,bVar11))) == 0.0);
+  iVar32 = -(uint)((float)CONCAT13(bVar22,CONCAT12(bVar21,CONCAT11(bVar20,bVar19))) == 0.0);
+  iVar33 = -(uint)((float)((uint)CONCAT11(bVar24,bVar23) << 0x10) == 0.0);
+  auVar28[0] = ~(byte)iVar25;
+  auVar28[1] = ~(byte)((uint)iVar25 >> 8);
+  auVar28[2] = ~(byte)((uint)iVar25 >> 0x10);
+  auVar28[3] = ~(byte)((uint)iVar25 >> 0x18);
+  auVar28[4] = ~(byte)iVar30;
+  auVar28[5] = ~(byte)((uint)iVar30 >> 8);
+  auVar28[6] = ~(byte)((uint)iVar30 >> 0x10);
+  auVar28[7] = ~(byte)((uint)iVar30 >> 0x18);
+  auVar28[8] = ~(byte)iVar32;
+  auVar28[9] = ~(byte)((uint)iVar32 >> 8);
+  auVar28[10] = ~(byte)((uint)iVar32 >> 0x10);
+  auVar28[0xb] = ~(byte)((uint)iVar32 >> 0x18);
+  auVar28[0xc] = ~(byte)iVar33;
+  auVar28[0xd] = ~(byte)((uint)iVar33 >> 8);
+  auVar28[0xe] = ~(byte)((uint)iVar33 >> 0x10);
+  auVar28[0xf] = ~(byte)((uint)iVar33 >> 0x18);
+  auVar37[1] = bVar8;
+  auVar37[0] = bVar7;
+  auVar37[2] = bVar9;
+  auVar37[3] = bVar10;
+  auVar37[4] = bVar11;
+  auVar37[5] = bVar13;
+  auVar37[6] = bVar15;
+  auVar37[7] = bVar17;
+  auVar37[8] = bVar19;
+  auVar37[9] = bVar20;
+  auVar37[10] = bVar21;
+  auVar37[0xb] = bVar22;
+  auVar37._12_2_ = 0;
+  auVar37[0xe] = bVar23;
+  auVar37[0xf] = bVar24;
+  auVar37 = NEON_frecps(auVar37,auVar34,4);
+  auVar35._0_4_ = auVar34._0_4_ * auVar37._0_4_;
+  auVar35._4_4_ = auVar34._4_4_ * auVar37._4_4_;
+  auVar35._8_4_ = auVar34._8_4_ * auVar37._8_4_;
+  auVar35._12_4_ = auVar34._12_4_ * auVar37._12_4_;
+  auVar1[1] = bVar8;
+  auVar1[0] = bVar7;
+  auVar1[2] = bVar9;
+  auVar1[3] = bVar10;
+  auVar1[4] = bVar11;
+  auVar1[5] = bVar13;
+  auVar1[6] = bVar15;
+  auVar1[7] = bVar17;
+  auVar1[8] = bVar19;
+  auVar1[9] = bVar20;
+  auVar1[10] = bVar21;
+  auVar1[0xb] = bVar22;
+  auVar1._12_2_ = 0;
+  auVar1[0xe] = bVar23;
+  auVar1[0xf] = bVar24;
+  auVar34 = NEON_frecps(auVar1,auVar35,4);
+  auVar36._0_4_ = auVar35._0_4_ * auVar34._0_4_;
+  auVar36._4_4_ = auVar35._4_4_ * auVar34._4_4_;
+  auVar36._8_4_ = auVar35._8_4_ * auVar34._8_4_;
+  auVar36._12_4_ = auVar35._12_4_ * auVar34._12_4_;
+  auVar29._8_4_ = 0x7f7fffee;
+  auVar29._0_8_ = 0x7f7fffee7f7fffee;
+  auVar29._12_4_ = 0x7f7fffee;
+  auVar29 = auVar29 ^ (auVar29 ^ auVar36) & auVar28;
+  uStack_158 = CONCAT17(bVar24,CONCAT16(bVar23,(uint6)CONCAT13(bVar22,CONCAT12(bVar21,CONCAT11(
+                                                  bVar20,bVar19)))));
+  local_160 = CONCAT17(bVar17,CONCAT16(bVar15,CONCAT15(bVar13,CONCAT14(bVar11,CONCAT13(bVar10,
+                                                  CONCAT12(bVar9,CONCAT11(bVar8,bVar7)))))));
+  uStack_148 = auVar29._8_8_;
+  uStack_150 = auVar29._0_8_;
+  local_198 = (**(code **)(*param_1 + 0x58))(param_1);
+  local_1a0 = (**(code **)(*param_1 + 0x68))(param_1);
+  local_228 = 0;
+  local_240 = &PTR_LAB_042aff48;
+  local_17e = local_17e & 0xf7;
+  local_220 = 0;
+  uStack_218 = 0;
+  local_1f0 = 0xffffff;
+  local_1c8 = 0xffffff;
+  local_180 = CONCAT11(8,(undefined1)local_180);
+  local_238 = 0;
+  local_234 = 0;
+  local_230 = 0x5f7ffff05f7ffff0;
+  local_200 = 3.40282e+38;
+  local_1f8 = 0xffffffffffffffff;
+  local_1e8 = 0xffffffff;
+  local_1e4 = 0xf;
+  local_1e0 = 0xffff;
+  local_1dc = 0;
+  local_1c0 = 0xffffffff;
+  local_1bc = 0xf;
+  local_1b8 = 0xffff;
+  local_1b4 = 0;
+  local_210 = 0;
+  uStack_208 = 0;
+  local_1d8 = 0;
+  local_1d0 = 0xffffffffffffffff;
+  local_1b0 = 0;
+  uStack_1a8 = 0;
+  local_18c = param_5;
+  (*(code *)PTR_FUN_042aff60)(&local_240);
+  uStack_268 = _UNK_03889a88;
+  local_270 = _DAT_03889a80;
+  uStack_258 = DAT_0388a148;
+  local_260 = DAT_0388a140;
+  uStack_248 = _UNK_03888d18;
+  uStack_250 = _DAT_03888d10;
+  (**(code **)(*param_1 + 0x3d0))(param_1,&local_1a0,&local_270,&local_240,0);
+  if (local_234 == 0) {
+    param_4[5] = 0xffffffffffffffff;
+    uVar4 = param_3[1];
+    uVar27 = *param_3;
+    uVar5 = 0xffffffff;
+    uVar6 = 0x80040200;
+    param_4[2] = 0;
+    param_4[3] = 0;
+    param_4[1] = uVar4;
+    *param_4 = uVar27;
+  }
+  else {
+    uVar6 = 0;
+    param_4[1] = uStack_218;
+    *param_4 = local_220;
+    fVar31 = (float)local_160 * (float)local_160;
+    fVar26 = (float)((ulong)local_160 >> 0x20);
+    fVar26 = fVar26 * fVar26;
+    fVar3 = (float)uStack_158 * (float)uStack_158;
+    fVar2 = fVar31 + fVar26 + fVar3;
+    fVar3 = fVar31 + fVar26 + fVar3;
+    uVar12 = SUB41(fVar3,0);
+    uVar14 = (undefined1)((uint)fVar3 >> 8);
+    uVar16 = (undefined1)((uint)fVar3 >> 0x10);
+    uVar18 = (undefined1)((uint)fVar3 >> 0x18);
+    uVar27 = NEON_frsqrte(CONCAT17(uVar18,CONCAT16(uVar16,CONCAT15(uVar14,CONCAT14(uVar12,fVar2)))),
+                          4);
+    fVar26 = (float)uVar27;
+    fVar31 = (float)((ulong)uVar27 >> 0x20);
+    uVar27 = NEON_frsqrts(CONCAT17(uVar18,CONCAT16(uVar16,CONCAT15(uVar14,CONCAT14(uVar12,fVar2)))),
+                          CONCAT44(fVar31 * fVar31,fVar26 * fVar26),4);
+    fVar26 = fVar26 * (float)uVar27;
+    fVar31 = fVar31 * (float)((ulong)uVar27 >> 0x20);
+    uVar27 = NEON_frsqrts(CONCAT17(uVar18,CONCAT16(uVar16,CONCAT15(uVar14,CONCAT14(uVar12,fVar2)))),
+                          CONCAT44(fVar31 * fVar31,fVar26 * fVar26),4);
+    iVar25 = -(uint)(fVar2 <= 0.0);
+    fVar2 = fVar2 * (float)uVar27 * fVar26;
+    fVar26 = local_200 *
+             (float)CONCAT13((byte)((uint)fVar2 >> 0x18) & ~(byte)((uint)iVar25 >> 0x18),
+                             CONCAT12((byte)((uint)fVar2 >> 0x10) & ~(byte)((uint)iVar25 >> 0x10),
+                                      CONCAT11((byte)((uint)fVar2 >> 8) & ~(byte)((uint)iVar25 >> 8)
+                                               ,SUB41(fVar2,0) & ~(byte)iVar25)));
+    *(float *)((long)param_4 + 0x1c) = fVar26;
+    param_4[3] = CONCAT44(fVar26,(int)uStack_208);
+    param_4[2] = local_210;
+    param_4[5] = local_1d0;
+    uVar5 = local_1c0;
+  }
+  *(undefined4 *)(param_4 + 4) = uVar5;
+  local_100 = PTR_DAT_043724f0 + 0x10;
+  if (local_f8 != (long *)0x0) {
+    (**(code **)(*local_f8 + 8))();
+  }
+  return uVar6;
+}
+
+
