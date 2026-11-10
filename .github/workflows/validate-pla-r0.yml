@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - 'scripts/**'
+      - 'tools/ghidra/**'
       - 'tests/**'
       - 'docs/**'
       - 'AGENTS.md'
@@ -13,6 +14,7 @@ on:
   pull_request:
     paths:
       - 'scripts/**'
+      - 'tools/ghidra/**'
       - 'tests/**'
       - 'PLA_1.1.1_files.csv'
       - '.github/workflows/validate-pla-r0.yml'
