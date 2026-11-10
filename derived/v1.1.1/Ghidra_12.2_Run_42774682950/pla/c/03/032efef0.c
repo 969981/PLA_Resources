@@ -1,0 +1,39 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 032efef0; name: _INIT_1617
+ */
+
+
+void _INIT_1617(void)
+
+{
+  DAT_0444a980 = 0;
+  DAT_0444a930 = &DAT_0444a940;
+  DAT_0444a938 = 0x8000000400000000;
+  DAT_0444a982 = 1;
+  DAT_0444a988 = "base.reflect.impl";
+  DAT_0444a990 = DAT_0444b318;
+  DAT_0444b318 = &DAT_0444a930;
+  FUN_00100250(&LAB_03325ec8,&DAT_0444a930,&PTR_LOOP_0411a000);
+  DAT_0444a9a0 = 1;
+  DAT_0444a998 = &PTR_LAB_0434cc48;
+  DAT_0444a9a8 = 0;
+  DAT_0444a9b0 = &PTR_LAB_0434c920;
+  DAT_0444a9c0 = 1;
+  DAT_0444a9b8 = &PTR_LAB_0434c960;
+  DAT_0444a9d0 = 1;
+  DAT_0444a9c8 = &PTR_LAB_0434c9c8;
+  DAT_0444a9e8 = 1;
+  DAT_0444a9e0 = &PTR_LAB_0434ca20;
+  DAT_0444a9f8 = 1;
+  DAT_0444a9f0 = &PTR_LAB_0434caa0;
+  DAT_0444aa08 = 1;
+  DAT_0444aa00 = &PTR_LAB_0434cb28;
+  DAT_0444aa10 = 0;
+  DAT_0444aa20 = 1;
+  DAT_0444aa28 = 0;
+  DAT_0444aa18 = &PTR_LAB_0434cbb8;
+  return;
+}
+
+
