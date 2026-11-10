@@ -188,6 +188,7 @@ def unpack_code(archive: Path, target: Path, expected: int) -> int:
 def publish_game(artifacts: Path, dest: Path, run_id: int, game: str) -> dict:
     dest.mkdir(parents=True)
     raw_db = find_artifact(artifacts, game, "sqlite", game + ".sqlite")
+    elf_bytes_report = find_artifact(artifacts, game, "sqlite", game + "_elf_bytes_manifest.json")
     db_report = find_artifact(artifacts, game, "sqlite", game + "_sqlite_manifest.json")
     zip_c = find_artifact(artifacts, game, "c", game + "_all_c.zip")
     c_report = find_artifact(artifacts, game, "c", game + "_decompiled_manifest.json")
@@ -198,6 +199,10 @@ def publish_game(artifacts: Path, dest: Path, run_id: int, game: str) -> dict:
     db_meta = json.loads(db_report.read_text(encoding="utf-8"))
     c_meta = json.loads(c_report.read_text(encoding="utf-8"))
     elf_sha = EXPECTED_SHA[game]
+    raw_proof = json.loads(elf_bytes_report.read_text(encoding="utf-8"))
+    if (raw_proof.get("status") != "BYTE_EXACT_ELF_RECOVERABLE" or
+            raw_proof.get("original_file_sha256") != elf_sha):
+        raise ValueError(game + ": missing or mismatched byte-exact original ELF proof")
     if db_meta.get("status") != "COMPLETE" or db_meta.get("elf_sha256") != elf_sha:
         raise ValueError(game + ": incomplete or mismatched SQLite provenance")
     if c_meta.get("original_elf_sha256_expected") != elf_sha:
@@ -216,6 +221,9 @@ def publish_game(artifacts: Path, dest: Path, run_id: int, game: str) -> dict:
                   for table in TABLES}
         c_ok = db.execute("SELECT COUNT(*) FROM decompilation WHERE status='OK'").fetchone()[0]
         found_source = db.execute("SELECT value FROM metadata WHERE key='source_ndjson_sha256'").fetchone()
+        raw_table = db.execute("SELECT original_file_size, original_file_sha256, chunk_count FROM original_elf_manifest WHERE id=1").fetchone()
+    if not raw_table or raw_table[1] != elf_sha or raw_table[2] < 1 or raw_table[0] != raw_proof["original_file_size"]:
+        raise ValueError(game + ": SQLite does not contain original ELF byte chunks")
     if not found_source or found_source[0] != sha256(raw_events):
         raise ValueError(game + ": database/NDJSON mismatch")
     for table, event in (("functions", "function"), ("instructions", "instruction"),
@@ -233,6 +241,7 @@ def publish_game(artifacts: Path, dest: Path, run_id: int, game: str) -> dict:
     events_parts = chunk_ndjson(raw_events, dest / "ndjson")
     c_files = unpack_code(zip_c, dest / "c", expected_success)
     shutil.copy2(db_report, dest / "sqlite_manifest.json")
+    shutil.copy2(elf_bytes_report, dest / "elf_bytes_manifest.json")
     shutil.copy2(c_report, dest / "decompiled_manifest.json")
     shutil.copy2(c_index, dest / "decompiled_index.csv")
     manifest = {
@@ -241,6 +250,7 @@ def publish_game(artifacts: Path, dest: Path, run_id: int, game: str) -> dict:
         "game": game,
         "game_version": "1.1.1",
         "original_elf_sha256": elf_sha,
+        "original_elf_chunks": raw_proof,
         "chunk_limit_bytes": LIMIT,
         "sqlite": sqlite_parts,
         "ndjson": events_parts,
