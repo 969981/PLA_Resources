@@ -1,0 +1,29 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 014ddcb4; name: FUN_014ddcb4
+ */
+
+
+void FUN_014ddcb4(long param_1,long *param_2)
+
+{
+  undefined4 uVar1;
+  
+  if (*(int *)(param_1 + 0x5bc) != 0) {
+    return;
+  }
+  if (*param_2 == 0x4e037850425419da) {
+    uVar1 = 2;
+  }
+  else {
+    if (*param_2 != 0x4e03795042541b8d) {
+                    /* WARNING: Subroutine does not return */
+      nn::diag::detail::AbortImpl("","","",0);
+    }
+    uVar1 = 3;
+  }
+  *(undefined4 *)(param_1 + 0x5bc) = uVar1;
+  return;
+}
+
+
