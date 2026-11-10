@@ -1,0 +1,112 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 01779c50; name: FUN_01779c50
+ */
+
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+undefined8 * FUN_01779c50(long *param_1)
+
+{
+  undefined *puVar1;
+  int iVar2;
+  long lVar3;
+  undefined8 *puVar4;
+  
+  if (((*PTR_DAT_04379520 & 1) == 0) &&
+     (iVar2 = __cxa_guard_acquire(PTR_DAT_04379520), puVar1 = PTR_DAT_04379528, iVar2 != 0)) {
+    FUN_008a62a4(PTR_DAT_04379528);
+    FUN_00100250(PTR_LAB_04379530,puVar1,&PTR_LOOP_0411a000);
+    __cxa_guard_release(PTR_DAT_04379520);
+  }
+  lVar3 = nn::os::GetTlsValue(*(undefined4 *)PTR_DAT_04379528);
+  if (0xf < *(ulong *)(lVar3 + 0x80)) {
+                    /* WARNING: Subroutine does not return */
+    abort();
+  }
+  *(long **)(lVar3 + *(ulong *)(lVar3 + 0x80) * 8) = param_1;
+  *(long *)(lVar3 + 0x80) = *(long *)(lVar3 + 0x80) + 1;
+  puVar4 = (undefined8 *)(**(code **)(*param_1 + 0x10))(param_1,0xf8,8);
+  if (puVar4 == (undefined8 *)0x0) {
+    (**(code **)(*param_1 + 0xb8))(param_1);
+    _DAT_000000f0 = 0;
+    _DAT_000000e8 = 0;
+    _DAT_000000e0 = 0;
+    _DAT_000000d8 = 0;
+    _DAT_000000d0 = 0;
+    _DAT_000000c8 = 0;
+    _DAT_000000c0 = 0;
+    _DAT_000000b8 = 0;
+    _DAT_000000b0 = 0;
+    _DAT_000000a8 = 0;
+    _DAT_000000a0 = 0;
+    _DAT_00000098 = 0;
+    _DAT_00000090 = 0;
+    _DAT_00000088 = 0;
+    _DAT_00000080 = 0;
+    _DAT_00000078 = 0;
+    _DAT_00000070 = 0;
+    _DAT_00000068 = 0;
+    _DAT_00000060 = 0;
+    _DAT_00000058 = 0;
+    _DAT_00000050 = 0;
+    _DAT_00000048 = 0;
+    _DAT_00000040 = 0;
+    _DAT_00000038 = 0;
+    _DAT_00000030 = 0;
+    _DAT_00000020 = 0;
+    _DAT_00000018 = 0;
+    _DAT_00000010 = 0;
+    uRam0000000000000000 = 0;
+    _DAT_00000028 = 0;
+    _DAT_00000008 = (long *)0x0;
+    FUN_017588e8(0);
+    _DAT_00000018 = 0xf8;
+    _DAT_00000020 = 8;
+    _DAT_00000010 = 0;
+    _DAT_00000008 = param_1;
+  }
+  else {
+    puVar4[0x1d] = 0;
+    puVar4[0x1e] = 0;
+    *puVar4 = 0;
+    puVar4[0x1b] = 0;
+    puVar4[0x1c] = 0;
+    puVar4[0x19] = 0;
+    puVar4[0x1a] = 0;
+    puVar4[0x17] = 0;
+    puVar4[0x18] = 0;
+    puVar4[0x15] = 0;
+    puVar4[0x16] = 0;
+    puVar4[0x13] = 0;
+    puVar4[0x14] = 0;
+    puVar4[0x11] = 0;
+    puVar4[0x12] = 0;
+    puVar4[0xf] = 0;
+    puVar4[0x10] = 0;
+    puVar4[0xd] = 0;
+    puVar4[0xe] = 0;
+    puVar4[0xb] = 0;
+    puVar4[0xc] = 0;
+    puVar4[9] = 0;
+    puVar4[10] = 0;
+    puVar4[7] = 0;
+    puVar4[8] = 0;
+    puVar4[5] = 0;
+    puVar4[6] = 0;
+    puVar4[3] = 0;
+    puVar4[4] = 0;
+    puVar4[1] = 0;
+    puVar4[2] = 0;
+    FUN_017588e8(puVar4);
+    puVar4[1] = param_1;
+    puVar4[2] = puVar4;
+    puVar4[3] = 0xf8;
+    puVar4[4] = 8;
+  }
+  *(long *)(lVar3 + 0x80) = *(long *)(lVar3 + 0x80) + -1;
+  return puVar4;
+}
+
+
