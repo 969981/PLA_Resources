@@ -1,0 +1,20 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 031c3980; name: FUN_031c3980
+ */
+
+
+void FUN_031c3980(long param_1,long param_2)
+
+{
+  MutexType *pMVar1;
+  
+  pMVar1 = *(MutexType **)(param_1 + 0x28);
+  nn::os::LockMutex(pMVar1);
+  FUN_031c2b38(*(undefined8 *)(*(long *)(param_1 + 0x18) + (ulong)*(byte *)(param_2 + 0x18) * 8),
+               param_2);
+  nn::os::UnlockMutex(pMVar1);
+  return;
+}
+
+
