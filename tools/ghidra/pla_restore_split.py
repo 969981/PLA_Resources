@@ -70,13 +70,15 @@ def extract_elf(db_path: Path, out: Path, sha_expected: str) -> dict:
 
 
 def restore(source: Path, out: Path, no_project: bool = False, extract_original: bool = False,
-            project_only: bool = False) -> dict:
+            project_only: bool = False, sqlite_only: bool = False) -> dict:
     info = json.loads((source / "parts_manifest.json").read_text(encoding="utf-8"))
     game = info["game"]
     if game != "pla" or info.get("status") != "UNCOMPRESSED_SPLIT_VERIFIED":
         raise ValueError("Not a verified PLA Ghidra split publication")
-    if project_only and (no_project or extract_original):
-        raise ValueError("--project-only cannot be combined with --no-project or --extract-elf")
+    if project_only and (no_project or extract_original or sqlite_only):
+        raise ValueError("--project-only cannot be combined with --no-project, --extract-elf or --sqlite-only")
+    if sqlite_only and (no_project or extract_original):
+        raise ValueError("--sqlite-only cannot be combined with --no-project or --extract-elf")
     if source.resolve() == out.resolve() or source.resolve() in out.resolve().parents:
         raise ValueError("Restore outside original tracked tree")
     if out.exists() and any(out.iterdir()):
@@ -87,9 +89,10 @@ def restore(source: Path, out: Path, no_project: bool = False, extract_original:
     json_path = out / (game + "_events.ndjson")
     if not project_only:
         combine(source / "database", info["sqlite"], db_path)
-        combine(source / "ndjson", info["ndjson"], json_path)
+        if not sqlite_only:
+            combine(source / "ndjson", info["ndjson"], json_path)
 
-    if not no_project:
+    if not no_project and not sqlite_only:
         project_info = info["project"]
         shutil.copytree(source / "project", out / "project")
         for path, details in project_info["split_files"].items():
@@ -114,6 +117,24 @@ def restore(source: Path, out: Path, no_project: bool = False, extract_original:
                 path: details["sha256"]
                 for path, details in project_info["split_files"].items()
             },
+        }
+    elif sqlite_only:
+        with sqlite3.connect(db_path) as db:
+            integrity = db.execute("PRAGMA integrity_check").fetchone()[0]
+            counts = {table: db.execute("SELECT COUNT(*) FROM " + table).fetchone()[0]
+                      for table in ("functions", "instructions", "references_full", "decompilation")}
+            if integrity != "ok" or counts != info["sqlite_counts"]:
+                raise ValueError("Reassembled SQLite has invalid content")
+        elf_proof = verify_chunks(db_path)
+        if elf_proof["original_file_sha256"] != info["original_elf_sha256"]:
+            raise ValueError("Embedded original ELF identity differs from publication metadata")
+        result = {
+            "game": game,
+            "status": "SQLITE_REASSEMBLED_AND_SHA256_VERIFIED",
+            "sqlite_sha256": checksum(db_path),
+            "sqlite_integrity": integrity,
+            "sqlite_counts": counts,
+            "original_elf_chunks": elf_proof,
         }
     else:
         with sqlite3.connect(db_path) as db:
@@ -145,10 +166,13 @@ def main() -> None:
     p.add_argument("--no-project", action="store_true")
     p.add_argument("--extract-elf", action="store_true", help="Also reconstruct original main.elf from SQLite BLOBs")
     p.add_argument("--project-only", action="store_true", help="Restore only the native Ghidra project; skip SQLite and NDJSON")
+    p.add_argument("--sqlite-only", action="store_true", help="Restore only SQLite shards; skip NDJSON and native project")
     args = p.parse_args()
-    if args.project_only and (args.no_project or args.extract_elf):
-        p.error("--project-only cannot be combined with --no-project or --extract-elf")
-    print(json.dumps(restore(args.source, args.out, args.no_project, args.extract_elf, args.project_only), indent=2))
+    if args.project_only and (args.no_project or args.extract_elf or args.sqlite_only):
+        p.error("--project-only cannot be combined with --no-project, --extract-elf or --sqlite-only")
+    if args.sqlite_only and (args.no_project or args.extract_elf):
+        p.error("--sqlite-only cannot be combined with --no-project or --extract-elf")
+    print(json.dumps(restore(args.source, args.out, args.no_project, args.extract_elf, args.project_only, args.sqlite_only), indent=2))
 
 
 if __name__ == "__main__":
