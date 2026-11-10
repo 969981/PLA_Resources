@@ -1,0 +1,98 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 032afac0; name: FUN_032afac0
+ */
+
+
+undefined8 FUN_032afac0(undefined4 param_1)
+
+{
+  switch(param_1) {
+  case 10:
+    return 0x74;
+  case 0xb:
+  case 0xc:
+  case 0xd:
+  case 0xe:
+  case 0xf:
+  case 0x10:
+  case 0x11:
+  case 0x12:
+  case 0x13:
+  case 0x14:
+  case 0x15:
+  case 0x16:
+  case 0x17:
+  case 0x18:
+  case 0x19:
+  case 0x1a:
+  case 0x1b:
+  case 0x1c:
+  case 0x1d:
+  case 0x1f:
+  case 0x20:
+  case 0x21:
+  case 0x22:
+  case 0x23:
+  case 0x24:
+  case 0x25:
+  case 0x26:
+  case 0x27:
+  case 0x29:
+  case 0x2a:
+  case 0x2b:
+  case 0x2c:
+  case 0x2d:
+  case 0x2e:
+  case 0x2f:
+  case 0x30:
+  case 0x31:
+  case 0x33:
+  case 0x34:
+  case 0x36:
+  case 0x37:
+  case 0x38:
+  case 0x39:
+  case 0x3a:
+  case 0x3b:
+  case 0x3d:
+  case 0x3e:
+  case 0x3f:
+  case 0x40:
+  case 0x41:
+  case 0x42:
+  case 0x43:
+  case 0x44:
+  case 0x45:
+    goto switchD_032afb14_caseD_78;
+  case 0x1e:
+    return 0x73;
+  case 0x28:
+    return 0x72;
+  case 0x32:
+    return 0x71;
+  case 0x35:
+    return 0x24;
+  case 0x3c:
+    return 0x70;
+  case 0x46:
+    return 0x6f;
+  default:
+    switch(param_1) {
+    case 0x78:
+      return 0x31545844;
+    case 0x82:
+      return 0x33545844;
+    case 0x8c:
+      return 0x35545844;
+    case 0x96:
+      return 0x31495441;
+    case 0xa0:
+      return 0x32495441;
+    }
+switchD_032afb14_caseD_78:
+    return 0;
+  }
+}
+
+
