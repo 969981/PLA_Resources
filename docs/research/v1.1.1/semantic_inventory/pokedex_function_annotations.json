@@ -123,8 +123,14 @@
       "confidence": "high",
       "status": "OBSERVED",
       "evidence": [
-        "Allocates a 0x38E0-byte wrapper used by the research-task table loader."
-      ]
+        "Allocates a 0x38E0-byte wrapper used by the research-task table loader.",
+        "Calls FUN_013F6D50 to initialize the 906-slot record area after allocating 0x38E0 bytes."
+      ],
+      "relationships": {
+        "calls": [
+          "0x013F6D50"
+        ]
+      }
     },
     {
       "address": "0x013E2620",
@@ -173,9 +179,10 @@
       "evidence": [
         "Writes output records at base +0x40 with a 0x10-byte stride.",
         "Range-checks a parsed key against 0x389 (905).",
-        "Packs several 4-bit fields into a 64-bit value at record offset +0x02."
+        "Packs several 4-bit fields into a 64-bit value at record offset +0x02.",
+        "Writes records into a 906-entry array initialized by FUN_013F6D50."
       ],
-      "inferred_role": "Decodes compact research-task metadata into indexed records.",
+      "inferred_role": "Decodes source research-task rows into a fixed 906-entry index array, apparently grouped by dex/species key.",
       "notes": "The exact semantics of each packed field and the key domain require consumer tracing and raw table inspection."
     },
     {
@@ -395,6 +402,57 @@
         "Creates/updates a subordinate view object and calls FUN_0148054C."
       ],
       "notes": "The exact UI transition and lifecycle side effects remain to be recovered."
+    },
+    {
+      "address": "0x013F6D50",
+      "suggested_name": "PokedexResearchTaskTable_Initialize906Records",
+      "confidence": "high",
+      "status": "OBSERVED",
+      "evidence": [
+        "Called by the 0x38E0-byte wrapper constructor at 0x013E2520.",
+        "Initializes the wrapper data area from +0x40 to the end of the 0x38E0-byte object.",
+        "Initializes 906 records at 0x10-byte stride, grouped three records per loop iteration.",
+        "Initializes each record's u16 at +0x00, u16 at +0x0A and u32 at +0x0C to zero, and sets the u64 at +0x02 to a sentinel bit pattern."
+      ],
+      "relationships": {
+        "called_by": [
+          "0x013E2520"
+        ],
+        "called_before": [
+          "0x013F6DF8"
+        ]
+      },
+      "inferred_role": "Initializes a fixed 906-entry research-task summary array indexed by a 0..905 key.",
+      "object_layout": [
+        {
+          "offset": "+0x40",
+          "type": "array",
+          "count": 906,
+          "stride": "0x10",
+          "element": "ResearchTaskIndexRecord (provisional)"
+        },
+        {
+          "offset": "record+0x00",
+          "type": "u16",
+          "meaning": "source-row ordinal when parser begins a group (inferred)"
+        },
+        {
+          "offset": "record+0x02",
+          "type": "u64",
+          "meaning": "packed task metadata nibbles; initialized to sentinel"
+        },
+        {
+          "offset": "record+0x0A",
+          "type": "u16",
+          "meaning": "zero-initialized; unresolved"
+        },
+        {
+          "offset": "record+0x0C",
+          "type": "u32",
+          "meaning": "zero-initialized; unresolved"
+        }
+      ],
+      "notes": "906 slots and 0..905 parser key strongly suggest a species/dex-indexed table, but the exact ID mapping and field meanings still require raw BIN comparison and consumer tracing."
     }
   ],
   "unresolved_links": [
