@@ -1,0 +1,65 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 0068f324; name: FUN_0068f324
+ */
+
+
+void FUN_0068f324(long param_1)
+
+{
+  int iVar1;
+  undefined8 uVar2;
+  ulong *puVar3;
+  byte *pbVar4;
+  long lVar5;
+  undefined1 auStack_50 [48];
+  undefined1 auStack_18 [8];
+  
+  puVar3 = (ulong *)(*(ulong *)(param_1 + 8) & 0xfffffffffffffffe);
+  if ((*(ulong *)(param_1 + 8) & 1) != 0) {
+    puVar3 = (ulong *)*puVar3;
+  }
+  if (puVar3 != (ulong *)0x0) {
+    FUN_0030f640(auStack_50,3,
+                 "bazel-out/arm64-v8a-opt/bin/external/net_nintendo_npln_proto/proto/gamesync/v1/resources.pb.cc"
+                 ,0x576);
+                    /* try { // try from 0068f35c to 0068f36f has its CatchHandler @ 0068f460 */
+    uVar2 = FUN_0030f3ac(auStack_50,"CHECK failed: GetArena() == nullptr: ");
+                    /* try { // try from 0068f370 to 0068f377 has its CatchHandler @ 0068f45c */
+    FUN_0030f41c(auStack_18,uVar2);
+    FUN_0030f658(auStack_50);
+  }
+  pbVar4 = *(byte **)(param_1 + 0x10);
+  if ((pbVar4 != PTR_DAT_043730c0) && (pbVar4 != (byte *)0x0)) {
+    if ((*pbVar4 & 1) != 0) {
+      FUN_002e2ea0(PTR_LAB_04373088,*(undefined8 *)(pbVar4 + 0x10));
+    }
+    FUN_002e2ea0(PTR_LAB_04373088,pbVar4);
+  }
+  iVar1 = *(int *)(param_1 + 0x24);
+  if (iVar1 != 0) {
+    if (iVar1 == 3) {
+      puVar3 = (ulong *)(*(ulong *)(param_1 + 8) & 0xfffffffffffffffe);
+      if ((*(ulong *)(param_1 + 8) & 1) != 0) {
+        puVar3 = (ulong *)*puVar3;
+      }
+      if (puVar3 == (ulong *)0x0) {
+        FUN_0069dce8(*(undefined8 *)(param_1 + 0x18));
+      }
+    }
+    else if (iVar1 == 2) {
+      puVar3 = (ulong *)(*(ulong *)(param_1 + 8) & 0xfffffffffffffffe);
+      if ((*(ulong *)(param_1 + 8) & 1) != 0) {
+        puVar3 = (ulong *)*puVar3;
+      }
+      if ((puVar3 == (ulong *)0x0) && (lVar5 = *(long *)(param_1 + 0x18), lVar5 != 0)) {
+        FUN_006993c4(lVar5);
+        FUN_002e2ea0(PTR_LAB_04373088,lVar5);
+      }
+    }
+    *(undefined4 *)(param_1 + 0x24) = 0;
+  }
+  return;
+}
+
+
