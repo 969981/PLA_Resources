@@ -194,3 +194,29 @@ The two Pokédex paths are strongly related by resource names and UI strings, bu
 6. Only after those links are closed, assign stable semantic names and import comments into a separate annotated Ghidra project. Keep the original restored project immutable.
 
 No full Ghidra analysis, ELF re-import, or C regeneration is required for these steps.
+
+
+## Addendum — fixed 906-slot research record array
+
+A deeper look at the wrapper constructor closes an important part of the research-table layout:
+
+- FUN_013E2520 allocates exactly 0x38E0 bytes and calls FUN_013F6D50.
+- FUN_013F6D50 initializes the data area from wrapper offset +0x40 to the end of the object.
+- It advances in groups of 0x30 bytes, initializing three 0x10-byte records per iteration.
+- The data area is 0x38A0 bytes; 0x38A0 / 0x10 = 906 records.
+- FUN_013F6DF8 later writes each decoded record at +0x40 + index * 0x10, with the index validated to 0..905.
+
+The resulting record layout is supported by the constructor's stores:
+
+| Record offset | Width | Observed initialization / parser use |
+|---|---:|---|
+| +0x00 | u16 | Zero-initialized; parser writes the source-row ordinal when starting a species group |
+| +0x02 | u64 | Initialized to a sentinel bit pattern; parser updates selected 4-bit fields |
+| +0x0A | u16 | Zero-initialized; no meaning assigned yet |
+| +0x0C | u32 | Zero-initialized; no meaning assigned yet |
+
+The u64 at +0x02 is unaligned relative to the 16-byte record base. The parser updates nibble fields at bit positions corresponding to task categories 1, 2 and 6–10. When it closes a group, it writes the grouped-row count into the low nibble.
+
+**Strong inference:** this is a per-dex-index research-task summary array. The u16 field at +0x00 appears to store the first source-row ordinal for that index, and the low nibble appears to store the number of grouped task rows. Those field meanings are still hypotheses until compared with the original BIN records and their runtime consumers.
+
+This makes the fixed-array interpretation stronger than the earlier size-only inference. The exact meanings of the packed nibbles, the +0x0A field and the +0x0C field remain unresolved.
