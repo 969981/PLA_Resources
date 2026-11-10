@@ -1,0 +1,48 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 00226038; name: FUN_00226038
+ */
+
+
+undefined1  [16] FUN_00226038(undefined8 *param_1)
+
+{
+  undefined1 auVar1 [16];
+  undefined8 uVar2;
+  undefined8 local_88;
+  undefined8 local_80;
+  undefined8 uStack_78;
+  undefined8 local_70;
+  undefined8 uStack_68;
+  undefined8 local_60;
+  undefined8 uStack_58;
+  undefined8 local_50;
+  undefined8 uStack_48;
+  undefined8 local_40;
+  undefined8 uStack_38;
+  undefined8 local_30;
+  undefined8 uStack_28;
+  
+  local_88 = *param_1;
+  local_80 = param_1[1];
+  uStack_78 = param_1[2];
+  local_70 = param_1[3];
+  uStack_68 = param_1[4];
+  local_60 = param_1[5];
+  uStack_58 = param_1[6];
+  local_50 = param_1[7];
+  uStack_48 = param_1[8];
+  local_40 = param_1[9];
+  uStack_38 = param_1[10];
+  local_30 = param_1[0xb];
+  uStack_28 = param_1[0xc];
+  auVar1 = FUN_002260bc(&local_88);
+  uVar2 = auVar1._8_8_;
+  *(undefined4 *)((long)param_1 + 0x14) = uStack_78._4_4_;
+  *(undefined4 *)(param_1 + 3) = (undefined4)local_70;
+  FUN_0021bc4c(&local_88);
+  auVar1._8_8_ = uVar2;
+  return auVar1;
+}
+
+
