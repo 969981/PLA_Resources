@@ -14,17 +14,17 @@
 1. [PLA full Ghidra analysis](../../../.github/workflows/pla-ghidra-full.yml): `analyzeHeadless` imports the published ELF, performs Ghidra native analysis and calls `tools/ghidra/PLAExport.java` to record **every Ghidra-discovered** memory block, function, instruction, defined data, symbol, reference and an individual decompiler attempt/status per function. Export is gzip-compressed NDJSON. In parallel to the event stream the editable `PLA111.gpr` + `PLA111.rep/` is retained.
 2. `pla_build_sqlite.py` streams original NDJSON into an indexed SQLite containing `functions`, `instructions`, `references_full`, `symbols`, `defined_data`, `memory_blocks`, `decompilation`, `metadata` and `report_counts`. It requires a final complete summary, reconciles counts and checks SQLite integrity. Includes original ELF hash and original events hash.
 3. `pla_extract_c.py` collects **actual Ghidra C pseudocode only**. Failure, empty and timeout statuses remain inspectable in `pla_decompiled_index.csv`. Success count + failure count must equal attempted functions; no placeholder C code.
-4. [PLA GitHub publisher](../../../.github/workflows/pla-ghidra-publish.yml): on successful completion, downloads the exact source run's four artifacts, validates hash and row coverage, expands the native project and every successfully decompiled function into separate `.c` files, splits SQLite into byte-identical shards and decompressed NDJSON at whole-line boundaries, verifies a full reassembly before uploading to `master` in batches. No original asset is touched.
+4. [PLA GitHub publisher](../../../.github/workflows/pla-ghidra-publish.yml): on successful completion, downloads the exact source run's four artifacts, validates hash and row coverage, expands the native project and every successfully decompiled function into separate `.c` files, adds byte-exact original ELF data as SHA-256-checked 4 MiB BLOB chunks in SQLite, splits SQLite into byte-identical shards and decompressed NDJSON at whole-line boundaries, verifies full reassembly before uploading to `master` in batches. No original asset is touched.
 
 ### GitHub paths
 
 - Analysis outputs: Actions run artifacts named `PLA-pla-project`, `PLA-pla-sqlite`, `PLA-pla-c`, `PLA-pla-ndjson` and diagnostics (30-day retention).
 - Published output (for each successful run): `derived/v1.1.1/Ghidra_12.2_Run_<run_id>/pla/`:
   - `project/PLA111.gpr`, `project/PLA111.rep/`; `project_parts/` when individual Ghidra native DB internals need splitting.
-  - `database/`: **raw SQLite binary parts**, ordered and SHA-256-verified.
+  - `database/`: **raw SQLite binary parts**, ordered and SHA-256-verified. The database contains `original_elf_chunks` and `original_elf_manifest` tables for lossless reconstruction of the unmodified source ELF.
   - `ndjson/`: **plain uncompressed NDJSON parts**, each part contains complete JSON lines.
   - `c/<address-prefix>/<function-entry>.c`: one file per successful Ghidra C decompilation.
-  - `sqlite_manifest.json`, `decompiled_manifest.json`, `decompiled_index.csv`, `parts_manifest.json`: complete counts, errors, file hashes and restore instructions.
+  - `sqlite_manifest.json`, `elf_bytes_manifest.json`, `decompiled_manifest.json`, `decompiled_index.csv`, `parts_manifest.json`: complete counts, errors, original byte chunk hashes, file hashes and restore instructions.
 - All Git blobs are limited to 45 MiB in the publication stage. Original Ghidra project internal files can themselves be split.
 
 ### Restore
@@ -37,7 +37,7 @@ python3 tools/ghidra/pla_restore_split.py \
   --out /tmp/pla-ghidra-restored
 ```
 
-This verifies every shard's SHA-256, recombines the raw SQLite/NDJSON and any oversized Ghidra native project internal files, checks SQLite `PRAGMA integrity_check` and row counts, and reports record counts. For database-only use, append `--no-project`.
+This verifies every shard's SHA-256, recombines the raw SQLite/NDJSON and any oversized Ghidra native project internal files, checks SQLite `PRAGMA integrity_check` and row counts, and reports record counts. For database-only use, append `--no-project`. Append `--extract-elf` to reconstruct the byte-identical original `main.elf` from SQLite BLOBs as well.
 
 C source files already exist individually at `c/`; they are Ghidra-generated **pseudocode**, not original game C++ source. Function signatures/names and business meaning are Ghidra analysis hypotheses unless independently validated. A full Ghidra analysis/export counts recovered Ghidra functions, not all true native function entry points. Compare recovered coverage with native unwind FDE and machine-code evidence before making absolute completeness claims.
 
