@@ -1,0 +1,103 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 01eefd2c; name: FUN_01eefd2c
+ */
+
+
+void FUN_01eefd2c(undefined8 *param_1,long param_2)
+
+{
+  int *piVar1;
+  int iVar2;
+  char cVar3;
+  bool bVar4;
+  int iVar5;
+  ulong uVar6;
+  long lVar7;
+  long *plVar8;
+  long lVar9;
+  undefined8 *local_50 [2];
+  undefined8 local_38;
+  
+  lVar9 = *(long *)(param_2 + 0x10);
+  if ((lVar9 != 0) && (*(int *)(lVar9 + 0xc) != 0)) {
+    piVar1 = (int *)(lVar9 + 0xc);
+    iVar5 = *(int *)(lVar9 + 0xc);
+    do {
+      uVar6 = FUN_009b4090(*(undefined8 *)(lVar9 + 0x10));
+      if ((uVar6 & 1) == 0) break;
+      iVar2 = *piVar1;
+      if (iVar2 == iVar5) {
+        cVar3 = '\x01';
+        bVar4 = (bool)ExclusiveMonitorPass(piVar1,0x10);
+        if (bVar4) {
+          *piVar1 = iVar5 + 1;
+          cVar3 = ExclusiveMonitorsStatus();
+        }
+        if (cVar3 == '\0') {
+          lVar9 = *(long *)(lVar9 + 0x18);
+          if (lVar9 != 0) {
+            plVar8 = (long *)(lVar9 + -0x50);
+            FUN_01a73640(local_50,plVar8);
+            if (local_50[0] == (undefined8 *)0x0) {
+              *param_1 = 0;
+            }
+            else {
+              FUN_00bd915c(param_1);
+              if (local_50[0] != (undefined8 *)0x0) {
+                piVar1 = (int *)(local_50[0] + 1);
+                do {
+                  iVar5 = *piVar1;
+                  cVar3 = '\x01';
+                  bVar4 = (bool)ExclusiveMonitorPass(piVar1,0x10);
+                  if (bVar4) {
+                    *piVar1 = iVar5 + -1;
+                    cVar3 = ExclusiveMonitorsStatus();
+                  }
+                } while (cVar3 != '\0');
+                if (iVar5 + -1 == 0) {
+                  local_50[0][2] = 0;
+                  if (((*PTR_DAT_04379498 & 1) == 0) &&
+                     (iVar5 = __cxa_guard_acquire(PTR_DAT_04379498), iVar5 != 0)) {
+                    FUN_00100250(PTR_LAB_04379590,PTR_DAT_043794a0,&PTR_LOOP_0411a000);
+                    __cxa_guard_release(PTR_DAT_04379498);
+                  }
+                  lVar7 = *(long *)PTR_DAT_043794a0;
+                  *(long *)PTR_DAT_043794a8 = lVar7;
+                  local_38 = *local_50[0];
+                  FUN_02a44274(lVar7 + 0xd8,&local_38);
+                }
+              }
+            }
+            lVar9 = *(long *)(lVar9 + 8);
+            piVar1 = (int *)(lVar9 + 0xc);
+            do {
+              iVar5 = *piVar1;
+              cVar3 = '\x01';
+              bVar4 = (bool)ExclusiveMonitorPass(piVar1,0x10);
+              if (bVar4) {
+                *piVar1 = iVar5 + -1;
+                cVar3 = ExclusiveMonitorsStatus();
+              }
+            } while (cVar3 != '\0');
+            if (iVar5 + -1 == 0) {
+              *(undefined8 *)(lVar9 + 0x18) = 0;
+              (**(code **)(*plVar8 + 0x20))(plVar8);
+              return;
+            }
+            return;
+          }
+          break;
+        }
+      }
+      else {
+        ClearExclusiveLocal();
+      }
+      iVar5 = iVar2;
+    } while (iVar2 != 0);
+  }
+  *param_1 = 0;
+  return;
+}
+
+
