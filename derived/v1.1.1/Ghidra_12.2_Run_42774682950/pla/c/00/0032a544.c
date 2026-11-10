@@ -1,0 +1,38 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 0032a544; name: FUN_0032a544
+ */
+
+
+void FUN_0032a544(int *param_1,int *param_2)
+
+{
+  int iVar1;
+  undefined8 uVar2;
+  void *__dest;
+  void *__src;
+  undefined1 auStack_58 [8];
+  undefined1 auStack_50 [48];
+  
+  if (param_2 == param_1) {
+    FUN_0030f640(auStack_50,3,
+                 "external/com_google_grpc_base/third_party/protobuf/src\\google/protobuf/repeated_field.h"
+                 ,0x57b);
+                    /* try { // try from 0032a578 to 0032a58b has its CatchHandler @ 0032a604 */
+    uVar2 = FUN_0030f3ac(auStack_50,"CHECK failed: (&other) != (this): ");
+                    /* try { // try from 0032a58c to 0032a593 has its CatchHandler @ 0032a600 */
+    FUN_0030f41c(auStack_58,uVar2);
+    FUN_0030f658(auStack_50);
+  }
+  if (*param_2 != 0) {
+    iVar1 = *param_1;
+    FUN_00329be4(param_1,iVar1 + *param_2);
+    FUN_00329ed8(param_1,*param_2);
+    __dest = (void *)FUN_00329f90(param_1,iVar1);
+    __src = (void *)FUN_0032a0d0(param_2,0);
+    memcpy(__dest,__src,(long)*param_2 << 2);
+  }
+  return;
+}
+
+
