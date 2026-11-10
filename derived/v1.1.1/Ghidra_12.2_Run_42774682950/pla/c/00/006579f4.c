@@ -1,0 +1,126 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 006579f4; name: FUN_006579f4
+ */
+
+
+void FUN_006579f4(long *param_1)
+
+{
+  long *plVar1;
+  char cVar2;
+  bool bVar3;
+  long *plVar4;
+  code *pcVar5;
+  long lVar6;
+  
+  *param_1 = (long)&PTR_LAB_04194c90;
+  FUN_00782da0();
+  (**(code **)(*(long *)param_1[0x26] + 0x18))
+            ((long *)param_1[0x26],param_1[0x12],param_1[0x27],0x10);
+  if (*(char *)((long)param_1 + 0x151) != '\0') {
+    plVar4 = (long *)param_1[0x24];
+    if (plVar4 != (long *)0x0) {
+      if (plVar4 == param_1 + 0x20) {
+        pcVar5 = *(code **)(*plVar4 + 0x10);
+      }
+      else {
+        pcVar5 = *(code **)(*plVar4 + 0x18);
+      }
+      (*pcVar5)();
+    }
+    plVar4 = (long *)param_1[0x1f];
+    if (plVar4 != (long *)0x0) {
+      plVar1 = plVar4 + 1;
+      do {
+        lVar6 = *plVar1;
+        cVar2 = '\x01';
+        bVar3 = (bool)ExclusiveMonitorPass(plVar1,0x10);
+        if (bVar3) {
+          *plVar1 = lVar6 + -1;
+          cVar2 = ExclusiveMonitorsStatus();
+        }
+      } while (cVar2 != '\0');
+      if (lVar6 == 0) {
+        (**(code **)(*plVar4 + 0x10))(plVar4);
+        std::__shared_weak_count::__release_weak();
+      }
+    }
+    plVar4 = (long *)param_1[0x1d];
+    if (plVar4 != (long *)0x0) {
+      plVar1 = plVar4 + 1;
+      do {
+        lVar6 = *plVar1;
+        cVar2 = '\x01';
+        bVar3 = (bool)ExclusiveMonitorPass(plVar1,0x10);
+        if (bVar3) {
+          *plVar1 = lVar6 + -1;
+          cVar2 = ExclusiveMonitorsStatus();
+        }
+      } while (cVar2 != '\0');
+      if (lVar6 == 0) {
+        (**(code **)(*plVar4 + 0x10))(plVar4);
+        std::__shared_weak_count::__release_weak();
+      }
+    }
+    plVar4 = (long *)param_1[0x1b];
+    if (plVar4 != (long *)0x0) {
+      plVar1 = plVar4 + 1;
+      do {
+        lVar6 = *plVar1;
+        cVar2 = '\x01';
+        bVar3 = (bool)ExclusiveMonitorPass(plVar1,0x10);
+        if (bVar3) {
+          *plVar1 = lVar6 + -1;
+          cVar2 = ExclusiveMonitorsStatus();
+        }
+      } while (cVar2 != '\0');
+      if (lVar6 == 0) {
+        (**(code **)(*plVar4 + 0x10))(plVar4);
+        std::__shared_weak_count::__release_weak();
+      }
+    }
+    *(undefined1 *)((long)param_1 + 0x151) = 0;
+  }
+  plVar4 = (long *)param_1[0x29];
+  if (plVar4 != (long *)0x0) {
+    plVar1 = plVar4 + 1;
+    do {
+      lVar6 = *plVar1;
+      cVar2 = '\x01';
+      bVar3 = (bool)ExclusiveMonitorPass(plVar1,0x10);
+      if (bVar3) {
+        *plVar1 = lVar6 + -1;
+        cVar2 = ExclusiveMonitorsStatus();
+      }
+    } while (cVar2 != '\0');
+    if (lVar6 == 0) {
+      (**(code **)(*plVar4 + 0x10))(plVar4);
+      std::__shared_weak_count::__release_weak();
+    }
+  }
+  plVar4 = (long *)param_1[0x16];
+  *param_1 = (long)(PTR_DAT_04373130 + 0x10);
+  if (plVar4 != (long *)0x0) {
+    plVar1 = plVar4 + 1;
+    do {
+      lVar6 = *plVar1;
+      cVar2 = '\x01';
+      bVar3 = (bool)ExclusiveMonitorPass(plVar1,0x10);
+      if (bVar3) {
+        *plVar1 = lVar6 + -1;
+        cVar2 = ExclusiveMonitorsStatus();
+      }
+    } while (cVar2 != '\0');
+    if (lVar6 == 0) {
+      (**(code **)(*plVar4 + 0x10))(plVar4);
+      std::__shared_weak_count::__release_weak();
+      FUN_00784118(param_1);
+      return;
+    }
+  }
+  FUN_00784118(param_1);
+  return;
+}
+
+

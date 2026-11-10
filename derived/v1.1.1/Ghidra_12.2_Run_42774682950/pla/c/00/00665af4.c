@@ -1,0 +1,25 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 00665af4; name: FUN_00665af4
+ */
+
+
+void FUN_00665af4(__shared_weak_count *param_1)
+
+{
+  undefined *puVar1;
+  
+  puVar1 = PTR_DAT_043759a0;
+  *(undefined **)param_1 = PTR_DAT_04375990 + 0x10;
+  *(undefined **)(param_1 + 0x20) = puVar1 + 0x10;
+  if (param_1[0xa0] != (__shared_weak_count)0x0) {
+    FUN_00689be4(param_1 + 0x80);
+  }
+  nn::os::FinalizeMutex((MutexType *)(param_1 + 0x58));
+  *(undefined **)(param_1 + 0x20) = PTR_DAT_04375998 + 0x10;
+  nn::os::FinalizeEvent((EventType *)(param_1 + 0x30));
+  std::__shared_weak_count::~__shared_weak_count(param_1);
+  return;
+}
+
+

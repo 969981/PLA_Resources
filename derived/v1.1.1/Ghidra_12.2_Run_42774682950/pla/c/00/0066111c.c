@@ -1,0 +1,173 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 0066111c; name: FUN_0066111c
+ */
+
+
+void FUN_0066111c(undefined8 param_1,long param_2)
+
+{
+  undefined *puVar1;
+  undefined *puVar2;
+  char *pcVar3;
+  long *plVar4;
+  ulong uVar5;
+  code *pcVar6;
+  undefined8 ***pppuVar7;
+  long lVar8;
+  int local_1b0;
+  undefined4 uStack_1ac;
+  ulong uStack_1a8;
+  undefined8 local_1a0;
+  undefined1 *local_198;
+  ulong local_190;
+  undefined8 uStack_188;
+  undefined1 *local_180;
+  int local_178 [2];
+  ulong local_170;
+  undefined8 uStack_168;
+  undefined1 *local_160;
+  ulong local_158;
+  undefined8 uStack_150;
+  undefined1 *puStack_148;
+  undefined1 auStack_140 [112];
+  undefined *local_d0;
+  undefined *puStack_c8;
+  undefined8 ****local_c0;
+  undefined8 ****ppppuStack_b8;
+  undefined **local_b0;
+  undefined1 auStack_a8 [24];
+  undefined8 local_90;
+  undefined **local_68;
+  undefined8 uStack_60;
+  
+  FUN_0060fb2c(auStack_140,param_2);
+  pppuVar7 = *(undefined8 ****)(param_2 + 0x58);
+  puStack_c8 = (undefined *)FUN_00612290();
+  local_d0 = PTR_DAT_04375958 + 0x10;
+  local_b0 = &local_d0;
+                    /* try { // try from 0066116c to 00661177 has its CatchHandler @ 006614c8 */
+  local_c0 = (undefined8 ****)pppuVar7;
+  FUN_0060fd20(auStack_140,&local_d0);
+  if (local_b0 != (undefined **)0x0) {
+    if (local_b0 == &local_d0) {
+      pcVar6 = *(code **)(*local_b0 + 0x10);
+    }
+    else {
+      pcVar6 = *(code **)(*local_b0 + 0x18);
+    }
+    (*pcVar6)();
+  }
+  local_68 = (undefined **)0x0;
+  uStack_60 = 0;
+  puVar1 = PTR_DAT_04373168 + 0x10;
+  puVar2 = PTR_DAT_04373170 + 0x10;
+  local_d0 = puVar1;
+  puStack_c8 = puVar2;
+  local_c0 = &local_c0;
+  ppppuStack_b8 = &local_c0;
+  (**(code **)(**(long **)(param_2 + 0x68) + 0x10))(*(long **)(param_2 + 0x68),auStack_a8);
+  local_68 = &puStack_c8;
+  thunk_FUN_00783af0(&local_d0);
+  local_d0 = puVar1;
+  FUN_00782f18(&puStack_c8);
+  pcVar3 = (char *)(**(code **)(**(long **)(param_2 + 0x68) + 0x38))();
+  if (*pcVar3 == '\0') {
+    plVar4 = *(long **)(*(long *)(*(long *)(param_2 + 0x58) + 0x2c8) + 0x20);
+                    /* try { // try from 0066122c to 00661233 has its CatchHandler @ 006614c4 */
+    (**(code **)(*plVar4 + 0x38))(plVar4,0);
+  }
+  local_68 = (undefined **)0x0;
+  uStack_60 = 0;
+  local_d0 = puVar1;
+  puStack_c8 = puVar2;
+  local_c0 = &local_c0;
+  ppppuStack_b8 = &local_c0;
+  (**(code **)(**(long **)(param_2 + 0x78) + 0x10))(*(long **)(param_2 + 0x78),auStack_a8);
+  local_68 = &puStack_c8;
+  thunk_FUN_00783af0(&local_d0);
+  local_d0 = puVar1;
+  FUN_00782f18(&puStack_c8);
+  FUN_002937d4(*(long *)(param_2 + 0x58) + 0x238);
+  FUN_002937d4(*(long *)(param_2 + 0x58) + 0x288);
+  FUN_002934f8(&local_d0,param_2 + 0x48);
+  puVar1 = PTR_DAT_04373140;
+  local_178[0] = 0;
+  uStack_168 = 0;
+  local_170 = 0;
+  local_158 = 0;
+  local_160 = (undefined1 *)0x0;
+  puStack_148 = (undefined1 *)0x0;
+  uStack_150 = 0;
+  lVar8 = *(long *)(param_2 + 0x88);
+  if (*(char *)(lVar8 + 0x50) != '\x01') {
+    (**(code **)(**(long **)PTR_DAT_04373140 + 0x10))
+              (*(long **)PTR_DAT_04373140,"started_",
+               "external/com_google_grpc_base/include\\grpcpp/impl/codegen/async_stream_impl.h",
+               0x250);
+  }
+  pcVar3 = *(char **)(lVar8 + 0x18);
+  *(undefined8 *)(lVar8 + 0x5e0) = local_90;
+  if (*pcVar3 == '\0') {
+    *pcVar3 = '\x01';
+    *(char **)(lVar8 + 0x580) = pcVar3 + 0xb0;
+  }
+  *(char **)(lVar8 + 0x590) = pcVar3;
+  *(char **)(lVar8 + 0x598) = pcVar3 + 0xe8;
+  *(int **)(lVar8 + 0x5a0) = local_178;
+                    /* try { // try from 006612fc to 006614bf has its CatchHandler @ 006614dc */
+  (**(code **)(**(long **)puVar1 + 0x138))(&local_1b0);
+  *(ulong *)(lVar8 + 0x5c0) = uStack_1a8;
+  *(ulong *)(lVar8 + 0x5b8) = CONCAT44(uStack_1ac,local_1b0);
+  *(undefined1 **)(lVar8 + 0x5d0) = local_198;
+  *(undefined8 *)(lVar8 + 0x5c8) = local_1a0;
+  plVar4 = *(long **)(lVar8 + 0x20);
+  (**(code **)(*plVar4 + 0x10))(plVar4,lVar8 + 0x570,(undefined8 *)(lVar8 + 0x20));
+  FUN_002937d4(&local_d0);
+  if (((*(long *)(param_2 + 0xa8) != 0) && (uVar5 = FUN_00619a40(), (uVar5 & 1) != 0)) &&
+     (local_178[0] == 1)) {
+    FUN_006dddf0(&local_1b0);
+    local_178[0] = local_1b0;
+    if ((local_170 & 1) != 0) {
+      *local_160 = 0;
+      uStack_168 = 0;
+      if ((local_170 & 1) != 0) {
+        FUN_002e2ea0(PTR_LAB_04373088,local_160);
+      }
+    }
+    local_170 = uStack_1a8;
+    uStack_1a8 = 0;
+    uStack_168 = local_1a0;
+    local_160 = local_198;
+    local_1a0 = 0;
+    local_198 = (undefined1 *)0x0;
+    if ((local_158 & 1) != 0) {
+      *puStack_148 = 0;
+      uStack_150 = 0;
+      if ((local_158 & 1) != 0) {
+        FUN_002e2ea0(PTR_LAB_04373088,puStack_148);
+      }
+    }
+    uStack_150 = uStack_188;
+    local_158 = local_190;
+    puStack_148 = local_180;
+    uStack_188 = 0;
+    local_180 = (undefined1 *)0x0;
+    local_190 = 0;
+    if ((uStack_1a8 & 1) != 0) {
+      FUN_002e2ea0(PTR_LAB_04373088,local_198);
+    }
+  }
+  FUN_0064c67c(param_1,local_178);
+  if ((local_158 & 1) != 0) {
+    FUN_002e2ea0(PTR_LAB_04373088,puStack_148);
+  }
+  if ((local_170 & 1) != 0) {
+    FUN_002e2ea0(PTR_LAB_04373088,local_160);
+  }
+  FUN_00293ad8(&local_d0);
+  FUN_0060fb78(auStack_140);
+  return;
+}
+
+
