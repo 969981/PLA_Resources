@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "game": "Pokemon Legends Arceus",
+  "version": "1.1.1",
+  "stage": "convert",
+  "state": "VERIFIED",
+  "source_relative_path": "v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/0/main",
+  "source_size_bytes": 31882976,
+  "source_sha256": "89fa2d715e13a1c311a47ee02b3cc858ccf72a2086ab9704a08a2ddc1b90f7d9",
+  "source_magic": "NSO0",
+  "tool": "nx2elf",
+  "tool_repository": "969981/SV_Resources:tools/nx2elf",
+  "tool_revision": "be3a50098a7126ec8bc72fc1c921be54a1d06071",
+  "conversion_options": [
+    "--export-elf"
+  ],
+  "elf_size_bytes": 69781384,
+  "elf_sha256": "260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794",
+  "elf_header": {
+    "elf_class": "ELF64",
+    "endianness": "little",
+    "machine": "AArch64",
+    "program_headers": 5,
+    "section_headers": 27
+  },
+  "output_relative_directory": "Unpack/v1.1.1/exefs/main",
+  "distribution": "single_git_blob",
+  "files": [
+    {
+      "name": "main.elf",
+      "size_bytes": 69781384,
+      "sha256": "260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794"
+    }
+  ],
+  "validation": [
+    "NSO0 magic",
+    "ELF64 little-endian AArch64",
+    "ELF header table bounds",
+    "SHA256 of input and output",
+    "copy/split SHA256 equality"
+  ]
+}
