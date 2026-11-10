@@ -1,0 +1,82 @@
+/* Recovered by Ghidra 12.2, not original Nintendo source.
+ * PLA v1.1.1 original ELF SHA256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794
+ * Ghidra function entry: 02b7511c; name: FUN_02b7511c
+ */
+
+
+void FUN_02b7511c(undefined8 *param_1)
+
+{
+  long lVar1;
+  long lVar2;
+  ulong uVar3;
+  long lVar4;
+  long *plVar5;
+  long *plVar6;
+  long *plVar7;
+  
+  *param_1 = &PTR_FUN_04285b48;
+  param_1[9] = &PTR_LAB_04285b80;
+  if ((long *)param_1[0x11] != (long *)0x0) {
+    lVar4 = tpidr_el0;
+    plVar5 = (long *)param_1[0x11];
+    do {
+      while( true ) {
+        plVar7 = (long *)*plVar5;
+        if ((long *)plVar5[0xd] != (long *)0x0) {
+          (**(code **)(*(long *)plVar5[0xd] + 0x20))();
+        }
+        if ((long *)plVar5[9] != (long *)0x0) {
+          (**(code **)(*(long *)plVar5[9] + 0x20))();
+        }
+        if ((long *)plVar5[5] != (long *)0x0) {
+          (**(code **)(*(long *)plVar5[5] + 0x20))();
+        }
+        plVar6 = (long *)param_1[0x12];
+        uVar3 = (**(code **)(*plVar6 + 0xc0))(plVar6);
+        if ((uVar3 & 1) != 0) break;
+LAB_02b75210:
+        (**(code **)(*plVar6 + 0x18))(plVar6,plVar5,0x70,8);
+        plVar5 = plVar7;
+        if (plVar7 == (long *)0x0) goto LAB_02b75298;
+      }
+      if (*(char *)(lVar4 + 0x38d488) == '\0') {
+        *(undefined1 *)(lVar4 + 0x38d488) = 1;
+        *(undefined8 *)(lVar4 + 0x38d478) = 0;
+        *(undefined8 *)(lVar4 + 0x38d480) = 0;
+        __cxa_thread_atexit(&LAB_02bcbe54,lVar4 + 0x80078,&PTR_LOOP_0411a000);
+      }
+      if (*(int *)(lVar4 + 0x38d480) < 1) goto LAB_02b75210;
+      FUN_02bcc824(plVar6,plVar5,0x70,8);
+      plVar5 = plVar7;
+    } while (plVar7 != (long *)0x0);
+  }
+LAB_02b75298:
+  lVar4 = param_1[0xb];
+  param_1[0xb] = 0;
+  if (lVar4 == 0) {
+    return;
+  }
+  lVar1 = param_1[0xc];
+  plVar5 = (long *)param_1[0xd];
+  uVar3 = (**(code **)(*plVar5 + 0xc0))(plVar5);
+  if ((uVar3 & 1) != 0) {
+    lVar2 = tpidr_el0;
+    if (*(char *)(lVar2 + 0x38d488) == '\0') {
+      *(undefined1 *)(lVar2 + 0x38d488) = 1;
+      *(undefined8 *)(lVar2 + 0x38d478) = 0;
+      *(undefined8 *)(lVar2 + 0x38d480) = 0;
+      __cxa_thread_atexit(&LAB_02bcbe54,lVar2 + 0x80078,&PTR_LOOP_0411a000);
+    }
+    if (0 < *(int *)(lVar2 + 0x38d480)) {
+      FUN_02bcc824(plVar5,lVar4,lVar1 << 3,8);
+      return;
+    }
+  }
+                    /* WARNING: Could not recover jumptable at 0x02b75334. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+  (**(code **)(*plVar5 + 0x18))(plVar5,lVar4,lVar1 << 3,8);
+  return;
+}
+
+
