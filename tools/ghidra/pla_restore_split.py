@@ -8,6 +8,8 @@ import json
 import shutil
 import sqlite3
 
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from pla_embed_elf import verify_chunks
 from pathlib import Path
 
