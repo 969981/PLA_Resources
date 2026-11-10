@@ -79,9 +79,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 tools/ghidra/pla_embed_elf.py \\
-            --elf Unpack/v1.1.1/exefs/main/main.elf \\
-            --db "$RUNNER_TEMP/artifacts/PLA-pla-sqlite/pla.sqlite" \\
+          python3 tools/ghidra/pla_embed_elf.py \
+            --elf Unpack/v1.1.1/exefs/main/main.elf \
+            --db "$RUNNER_TEMP/artifacts/PLA-pla-sqlite/pla.sqlite" \
             --report "$RUNNER_TEMP/artifacts/PLA-pla-sqlite/pla_elf_bytes_manifest.json"
 
       - name: Validate and create lossless SQLite/NDJSON shards, C and Ghidra project
