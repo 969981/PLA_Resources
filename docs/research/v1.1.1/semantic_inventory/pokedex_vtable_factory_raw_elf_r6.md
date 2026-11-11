@@ -615,6 +615,116 @@ Static: none
     0x01148F94 str x19, [sp, #-0x20]!
     0x01148F98 stp x29, x30, [sp, #0x10]
 
+## Disassembly primary_vtable_get_registered_ref
+
+    0x008A782C add x1, x0, #0x58
+    0x008A7830 mov x0, x8
+    0x008A7834 stp xzr, xzr, [x8]
+    0x008A7838 b #0x7802f0
+    0x008A783C sub sp, sp, #0x30
+    0x008A7840 stp xzr, x19, [sp, #8]
+    0x008A7844 stp x29, x30, [sp, #0x20]
+    0x008A7848 add x29, sp, #0x20
+    0x008A784C add x1, x0, #0x58
+    0x008A7850 mov x0, sp
+    0x008A7854 str xzr, [sp]
+    0x008A7858 mov x19, x8
+    0x008A785C bl #0x7802f0
+    0x008A7860 mov x1, sp
+    0x008A7864 mov x0, x19
+    0x008A7868 stp xzr, xzr, [x19]
+    0x008A786C bl #0x780560
+    0x008A7870 ldr x19, [sp]
+    0x008A7874 cbz x19, #0x7a78d0
+    0x008A7878 add x8, x19, #8
+    0x008A787C ldaxr w9, [x8]
+    0x008A7880 subs w9, w9, #1
+    0x008A7884 stlxr w10, w9, [x8]
+    0x008A7888 cbnz w10, #0x7a787c
+    0x008A788C b.ne #0x7a78d0
+    0x008A7890 str xzr, [x19, #0x10]
+    0x008A7894 adrp x8, #0x4279000
+    0x008A7898 ldr x8, [x8, #0x498]
+    0x008A789C ldarb w8, [x8]
+    0x008A78A0 tbz w8, #0, #0x7a78e0
+    0x008A78A4 adrp x8, #0x4279000
+    0x008A78A8 ldr x8, [x8, #0x4a0]
+    0x008A78AC adrp x9, #0x4279000
+    0x008A78B0 ldr x8, [x8]
+    0x008A78B4 ldr x9, [x9, #0x4a8]
+    0x008A78B8 str x8, [x9]
+    0x008A78BC ldr x9, [x19]
+    0x008A78C0 add x0, x8, #0xd8
+    0x008A78C4 sub x1, x29, #8
+    0x008A78C8 stur x9, [x29, #-8]
+    0x008A78CC bl #0x2944274
+    0x008A78D0 ldp x29, x30, [sp, #0x20]
+    0x008A78D4 ldr x19, [sp, #0x10]
+    0x008A78D8 add sp, sp, #0x30
+    0x008A78DC ret 
+    0x008A78E0 adrp x0, #0x4279000
+    0x008A78E4 ldr x0, [x0, #0x498]
+    0x008A78E8 bl #0x32a2e00
+    0x008A78EC cbz w0, #0x7a78a4
+    0x008A78F0 adrp x0, #0x4279000
+    0x008A78F4 adrp x1, #0x4279000
+    0x008A78F8 ldr x0, [x0, #0x590]
+    0x008A78FC ldr x1, [x1, #0x4a0]
+    0x008A7900 adrp x2, #0x401a000
+    0x008A7904 add x2, x2, #0
+    0x008A7908 bl #0x250
+    0x008A790C adrp x0, #0x4279000
+    0x008A7910 ldr x0, [x0, #0x498]
+    0x008A7914 bl #0x32a2e10
+    0x008A7918 b #0x7a78a4
+
+## Disassembly secondary_vtable_get_registered_ref
+
+    0x008A7C1C str x19, [sp, #-0x20]!
+    0x008A7C20 stp x29, x30, [sp, #0x10]
+    0x008A7C24 add x29, sp, #0x10
+    0x008A7C28 ldr x19, [x0, #0x10]
+    0x008A7C2C ldr x0, [x19, #0x18]
+    0x008A7C30 cbz x0, #0x7a7c6c
+    0x008A7C34 ldr x8, [x19, #0x10]
+    0x008A7C38 cbnz x8, #0x7a7c4c
+    0x008A7C3C ldr x8, [x0]
+    0x008A7C40 ldr x8, [x8]
+    0x008A7C44 blr x8
+    0x008A7C48 str x0, [x19, #0x10]
+    0x008A7C4C add x8, x19, #0xc
+    0x008A7C50 ldaxr w9, [x8]
+    0x008A7C54 add w9, w9, #1
+    0x008A7C58 stlxr w10, w9, [x8]
+    0x008A7C5C cbnz w10, #0x7a7c50
+    0x008A7C60 ldp x29, x30, [sp, #0x10]
+    0x008A7C64 ldr x19, [sp], #0x20
+    0x008A7C68 ret 
+    0x008A7C6C adrp x0, #0x3896000
+    0x008A7C70 add x0, x0, #0x322
+    0x008A7C74 mov x1, x0
+    0x008A7C78 mov x2, x0
+    0x008A7C7C mov w3, wzr
+    0x008A7C80 bl #0x32a3260
+    0x008A7C84 mov x8, x0
+    0x008A7C88 sub x0, x0, #0x48
+    0x008A7C8C ldr x8, [x8, #0x10]
+    0x008A7C90 add x9, x8, #0xc
+    0x008A7C94 ldaxr w10, [x9]
+    0x008A7C98 subs w10, w10, #1
+    0x008A7C9C stlxr w11, w10, [x9]
+    0x008A7CA0 cbnz w11, #0x7a7c94
+    0x008A7CA4 b.eq #0x7a7cac
+    0x008A7CA8 ret 
+    0x008A7CAC str xzr, [x8, #0x18]
+    0x008A7CB0 ldr x8, [x0]
+    0x008A7CB4 ldr x1, [x8, #0x20]
+    0x008A7CB8 br x1
+    0x008A7CBC add x1, x0, #0x10
+    0x008A7CC0 mov x0, x8
+    0x008A7CC4 stp xzr, xzr, [x8]
+    0x008A7CC8 b #0x7802f0
+
 ## Disassembly primary_vtable_callback40
 
     0x0112E3D0 str x19, [sp, #-0x20]!
