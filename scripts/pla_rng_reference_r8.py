@@ -179,11 +179,11 @@ def r8_test():
     r=Xoroshiro128Plus(0x5A62B550AA55AA55)
     assert [r.next() & 0xffffffff for _ in range(3)] == [
         0xCCF314B0, 0x359D276C, 0x43157D53]
-    # Published PKHeX.Core.Tests TestForward: 98 transitions from [1,1].
+    # PKHeX TestForward reports zero-based frame index 98, i.e. 99 Next calls.
     x=Xoroshiro128Plus(1,1)
-    for _ in range(98):x.next()
+    for _ in range(99):x.next()
     assert (x.s0,x.s1)==(0x339C61939607D435,0xF4DD6E2E9698D1B0)
-    for _ in range(98):x.prev()
+    for _ in range(99):x.prev()
     assert (x.s0,x.s1)==(1,1)
     # Published PermuteMMO.Tests.UtilTests.Garchomp expected EntitySeed.
     seed=12880307074085126207
