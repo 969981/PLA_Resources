@@ -1,0 +1,1740 @@
+{
+  "status": "STATIC_C_TRIAGE_NOT_NATIVE_GAME_PARITY",
+  "sha256": "260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794",
+  "c_files": 82731,
+  "counts": {
+    "some_typed_memory_reads": 6154,
+    "both_metadata_fields": 48,
+    "entry_layout": 28,
+    "same_spawner_and_status": 7
+  },
+  "candidate_count": 25,
+  "candidates": [
+    {
+      "function": "FUN_01b56418",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01b56418.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 125,
+      "offsets": [
+        "0x143",
+        "0x1c3",
+        "0x20",
+        "0x243",
+        "0x2c3",
+        "0x300",
+        "0x304",
+        "0x343",
+        "0x3c3",
+        "0x400",
+        "0x408",
+        "0x418",
+        "0x42",
+        "0x43",
+        "0x4c8",
+        "0x58",
+        "0x80",
+        "0xc3"
+      ],
+      "same_spawner": true,
+      "eight_flag_count": 7,
+      "entry_layout": true,
+      "group_count_metadata": true,
+      "potential_memory_reads": [
+        "0x408"
+      ],
+      "calls": [
+        "01bacefc",
+        "01bad050"
+      ],
+      "focus_calls": [
+        "01bacefc",
+        "01bad050"
+      ],
+      "excerpts": [
+        {
+          "body_line": 19,
+          "line": "if (*(long *)(param_1 + 0x4c8) != 0) {"
+        },
+        {
+          "body_line": 36,
+          "line": "lVar9 = 0x20;"
+        },
+        {
+          "body_line": 68,
+          "line": "*(int *)(*(long *)(param_1 + 0x4c8) + 0x418) = iVar3;"
+        },
+        {
+          "body_line": 69,
+          "line": "lVar9 = *(long *)(param_1 + 0x4c8);"
+        },
+        {
+          "body_line": 70,
+          "line": "iVar3 = (*(byte *)(lVar9 + 0xc3) ^ 1) + (*(byte *)(lVar9 + 0x43) ^ 1) +"
+        },
+        {
+          "body_line": 71,
+          "line": "(*(byte *)(lVar9 + 0x143) ^ 1) + (*(byte *)(lVar9 + 0x1c3) ^ 1) +"
+        },
+        {
+          "body_line": 72,
+          "line": "(*(byte *)(lVar9 + 0x243) ^ 1) + (*(byte *)(lVar9 + 0x2c3) ^ 1) +"
+        },
+        {
+          "body_line": 75,
+          "line": "uVar8 = *(ulong *)(lVar9 + 0x408);"
+        },
+        {
+          "body_line": 78,
+          "line": "if (*(byte *)(lVar9 + 0x43) == 0) goto LAB_01b565e8;"
+        },
+        {
+          "body_line": 84,
+          "line": "*(ulong *)(lVar9 + lVar4 + 0x20) = uVar8 + uVar6;"
+        },
+        {
+          "body_line": 88,
+          "line": "*(ulong *)(*(long *)(param_1 + 0x4c8) + lVar4 + 0x58) = uVar10 + uVar11;"
+        },
+        {
+          "body_line": 89,
+          "line": "*(undefined1 *)(*(long *)(param_1 + 0x4c8) + lVar4 + 0x43) = 0;"
+        },
+        {
+          "body_line": 90,
+          "line": "*(undefined1 *)(*(long *)(param_1 + 0x4c8) + lVar4 + 0x42) = 0;"
+        }
+      ]
+    },
+    {
+      "function": "FUN_01bfe800",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01bfe800.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 109,
+      "offsets": [
+        "0x140",
+        "0x143",
+        "0x20",
+        "0x300",
+        "0x400",
+        "0x408",
+        "0x418",
+        "0x42",
+        "0x43",
+        "0x480",
+        "0x4b",
+        "0x4c8",
+        "0x58",
+        "0x6f0",
+        "0x80",
+        "0xc3"
+      ],
+      "same_spawner": true,
+      "eight_flag_count": 2,
+      "entry_layout": true,
+      "group_count_metadata": true,
+      "potential_memory_reads": [
+        "0x20",
+        "0x400",
+        "0x408",
+        "0x58"
+      ],
+      "calls": [
+        "00cf98c8",
+        "01435a5c"
+      ],
+      "focus_calls": [],
+      "excerpts": [
+        {
+          "body_line": 28,
+          "line": "lVar9 = *(long *)(param_2 + 0x20);"
+        },
+        {
+          "body_line": 38,
+          "line": "param_1[0xb] = *(long *)(param_2 + 0x58);"
+        },
+        {
+          "body_line": 59,
+          "line": "param_1[0x20] = *(long *)(param_2 + 0x100);"
+        },
+        {
+          "body_line": 71,
+          "line": "lVar7 = *(long *)(param_2 + 0x140);"
+        },
+        {
+          "body_line": 119,
+          "line": "param_1[0x43] = lVar9;"
+        },
+        {
+          "body_line": 146,
+          "line": "param_1[0x58] = *(long *)(param_2 + 0x2c0);"
+        },
+        {
+          "body_line": 196,
+          "line": "param_1[0x80] = *(long *)(param_2 + 0x400);"
+        },
+        {
+          "body_line": 197,
+          "line": "param_1[0x81] = *(long *)(param_2 + 0x408);"
+        },
+        {
+          "body_line": 199,
+          "line": "param_1[0x83] = *(long *)(param_2 + 0x418);"
+        },
+        {
+          "body_line": 224,
+          "line": "param_1[0x99] = *(long *)(param_2 + 0x4c8);"
+        },
+        {
+          "body_line": 274,
+          "line": "param_1[0xc3] = *(long *)(param_2 + 0x618);"
+        },
+        {
+          "body_line": 303,
+          "line": "param_1[0xde] = *(long *)(param_2 + 0x6f0);"
+        },
+        {
+          "body_line": 404,
+          "line": "param_1[0x140] = *(long *)(param_2 + 0xa00);"
+        }
+      ]
+    },
+    {
+      "function": "FUN_007e9304",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/00/007e9304.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 69,
+      "offsets": [
+        "0x140",
+        "0x143",
+        "0x1c3",
+        "0x20",
+        "0x2c3",
+        "0x300",
+        "0x304",
+        "0x400",
+        "0x408",
+        "0x418",
+        "0x42",
+        "0x43",
+        "0x4b",
+        "0x58",
+        "0x80",
+        "0xc3"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 4,
+      "entry_layout": true,
+      "group_count_metadata": true,
+      "potential_memory_reads": [],
+      "calls": [
+        "007eb2a8",
+        "007eb3bc",
+        "007ed360",
+        "007ed380",
+        "007ed3a0",
+        "007ed3c0",
+        "007ee578"
+      ],
+      "focus_calls": [],
+      "excerpts": [
+        {
+          "body_line": 22,
+          "line": "FUN_007ed380(lVar1 + 0x10,*(undefined4 *)(param_2 + 0x20));"
+        },
+        {
+          "body_line": 35,
+          "line": "FUN_007ed3c0(lVar1 + 0x20,*(undefined1 *)(param_2 + 0x30));"
+        },
+        {
+          "body_line": 54,
+          "line": "FUN_007ed3c0(lVar1 + 0x33,*(undefined1 *)(param_2 + 0x43));"
+        },
+        {
+          "body_line": 70,
+          "line": "FUN_007ed3c0(lVar1 + 0x43,*(undefined1 *)(param_2 + 0x53));"
+        },
+        {
+          "body_line": 75,
+          "line": "FUN_007ed3c0(lVar1 + 0x48,*(undefined1 *)(param_2 + 0x58));"
+        },
+        {
+          "body_line": 91,
+          "line": "FUN_007ed3c0(lVar1 + 0x58,*(undefined1 *)(param_2 + 0x68));"
+        },
+        {
+          "body_line": 168,
+          "line": "FUN_007ed3c0(lVar1 + 0xb2,*(undefined1 *)(param_2 + 0xc3));"
+        },
+        {
+          "body_line": 185,
+          "line": "FUN_007ed3c0(lVar1 + 0xc3,*(undefined1 *)(param_2 + 0xd4));"
+        },
+        {
+          "body_line": 293,
+          "line": "FUN_007ed3c0(lVar1 + 0x12f,*(undefined1 *)(param_2 + 0x140));"
+        },
+        {
+          "body_line": 296,
+          "line": "FUN_007ed3c0(lVar1 + 0x132,*(undefined1 *)(param_2 + 0x143));"
+        },
+        {
+          "body_line": 310,
+          "line": "FUN_007ed3c0(lVar1 + 0x140,*(undefined1 *)(param_2 + 0x151));"
+        },
+        {
+          "body_line": 313,
+          "line": "FUN_007ed3c0(lVar1 + 0x143,*(undefined1 *)(param_2 + 0x154));"
+        },
+        {
+          "body_line": 655,
+          "line": "FUN_007ed380(lVar1 + 0x3d4,*(undefined4 *)(param_2 + 0x400));"
+        }
+      ]
+    },
+    {
+      "function": "FUN_01bab8f4",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01bab8f4.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 60,
+      "offsets": [
+        "0x143",
+        "0x1c3",
+        "0x20",
+        "0x243",
+        "0x2c3",
+        "0x300",
+        "0x343",
+        "0x3c3",
+        "0x42",
+        "0x43",
+        "0x4c8",
+        "0x58",
+        "0xc3"
+      ],
+      "same_spawner": true,
+      "eight_flag_count": 7,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [
+        "00100250",
+        "0087f8f0",
+        "008802f0",
+        "00ca524c",
+        "0110293c",
+        "01102e78",
+        "01103cb8",
+        "01103ea4",
+        "0166d550",
+        "0168485c",
+        "0168493c",
+        "01685098",
+        "0192d1e0",
+        "01930d68",
+        "01933b30",
+        "01baddd0",
+        "01badf14",
+        "01bae058",
+        "02a44274"
+      ],
+      "focus_calls": [],
+      "excerpts": [
+        {
+          "body_line": 99,
+          "line": "(**(code **)(*plVar23 + 0x20))(plVar23);"
+        },
+        {
+          "body_line": 112,
+          "line": "lVar17 = *(long *)(lVar17 + 0x4c8);"
+        },
+        {
+          "body_line": 113,
+          "line": "if (*(char *)(lVar17 + 0x43) == '\\0' && *(char *)(lVar17 + 0x42) == '\\0') {"
+        },
+        {
+          "body_line": 116,
+          "line": "if (*(char *)(lVar17 + 0xc3) == '\\0' && *(char *)(lVar17 + 0xc2) == '\\0') {"
+        },
+        {
+          "body_line": 119,
+          "line": "if (*(char *)(lVar17 + 0x143) == '\\0' && *(char *)(lVar17 + 0x142) == '\\0') {"
+        },
+        {
+          "body_line": 125,
+          "line": "if (*(char *)(lVar17 + 0x243) == '\\0' && *(char *)(lVar17 + 0x242) == '\\0') {"
+        },
+        {
+          "body_line": 181,
+          "line": "FUN_008802f0(&local_138,*(long *)(lVar17 + 0x58) + 0x58);"
+        },
+        {
+          "body_line": 338,
+          "line": "(**(code **)(*plVar26 + 0x20))(plVar26);"
+        },
+        {
+          "body_line": 355,
+          "line": "(**(code **)(*plVar21 + 0x20))(plVar21);"
+        },
+        {
+          "body_line": 372,
+          "line": "(**(code **)(*plVar23 + 0x20))(plVar23);"
+        },
+        {
+          "body_line": 636,
+          "line": "(**(code **)(*(long *)(lVar17 + -0x50) + 0x20))((long *)(lVar17 + -0x50));"
+        },
+        {
+          "body_line": 755,
+          "line": "plVar21 = *(long **)(*(long *)(lVar17 + 0x58) + uVar20 * 8);"
+        },
+        {
+          "body_line": 826,
+          "line": "plVar22 = *(long **)(plVar21[0x20] + uVar20 * 8);"
+        }
+      ]
+    },
+    {
+      "function": "FUN_0295a8cc",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/02/0295a8cc.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 55,
+      "offsets": [
+        "0x20",
+        "0x300",
+        "0x42",
+        "0x43",
+        "0x4c8",
+        "0x58",
+        "0x80"
+      ],
+      "same_spawner": true,
+      "eight_flag_count": 0,
+      "entry_layout": true,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [
+        "00100250",
+        "008a62a4",
+        "02941260",
+        "0294ca04",
+        "0294d91c",
+        "02953584",
+        "029608f8",
+        "02961bdc",
+        "02961e1c",
+        "0296326c",
+        "029645bc",
+        "02bcbe58",
+        "02bcc320",
+        "02bcc824"
+      ],
+      "focus_calls": [],
+      "excerpts": [
+        {
+          "body_line": 165,
+          "line": "puVar10[0x20] = 0;"
+        },
+        {
+          "body_line": 272,
+          "line": "puVar10 = (undefined8 *)(**(code **)(*plVar19 + 0x10))(plVar19,0x4c8,8);"
+        },
+        {
+          "body_line": 294,
+          "line": "uVar21 = 0x4c8;"
+        },
+        {
+          "body_line": 449,
+          "line": "*(undefined8 *)(lVar12 + 0x58) = 0;"
+        },
+        {
+          "body_line": 454,
+          "line": "*(undefined8 *)(lVar12 + 0x20) = 0;"
+        },
+        {
+          "body_line": 463,
+          "line": "lVar18 = lVar18 + 0x20;"
+        },
+        {
+          "body_line": 745,
+          "line": "uVar24 = param_1[0x20];"
+        },
+        {
+          "body_line": 782,
+          "line": "param_1[0x20] = uVar17;"
+        },
+        {
+          "body_line": 1322,
+          "line": "puVar10 = (undefined8 *)(**(code **)(*plVar19 + 0x10))(plVar19,0x20,4);"
+        },
+        {
+          "body_line": 1349,
+          "line": "uVar21 = 0x20;"
+        },
+        {
+          "body_line": 1409,
+          "line": "*(undefined8 *)(lVar8 + 0x58) = 0;"
+        },
+        {
+          "body_line": 1414,
+          "line": "*(undefined8 *)(lVar8 + 0x20) = 0;"
+        },
+        {
+          "body_line": 1493,
+          "line": "*(undefined8 *)(lVar23 + 0x20) = 0;"
+        }
+      ]
+    },
+    {
+      "function": "FUN_01bab534",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01bab534.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 48,
+      "offsets": [
+        "0x20",
+        "0x418",
+        "0x43",
+        "0x4c8",
+        "0x80"
+      ],
+      "same_spawner": true,
+      "eight_flag_count": 0,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [
+        "01b54e58",
+        "01bad44c",
+        "01baddd0"
+      ],
+      "focus_calls": [
+        "01b54e58"
+      ],
+      "excerpts": [
+        {
+          "body_line": 89,
+          "line": "(**(code **)(*plVar13 + 0x20))(plVar13);"
+        },
+        {
+          "body_line": 132,
+          "line": "lVar16 = (char)plVar13[0x20] + lVar16 + -1;"
+        },
+        {
+          "body_line": 146,
+          "line": "(**(code **)(*plVar13 + 0x20))(plVar13);"
+        },
+        {
+          "body_line": 158,
+          "line": "if (*(long *)(lVar9 + 0x4c8) != 0) {"
+        },
+        {
+          "body_line": 159,
+          "line": "*(int *)(*(long *)(lVar9 + 0x4c8) + 0x418) = iVar2;"
+        },
+        {
+          "body_line": 166,
+          "line": "lVar9 = *(long *)(lVar16 + 0x4c8) + lVar17 * 0x80;"
+        },
+        {
+          "body_line": 167,
+          "line": "pcVar18 = (char *)(lVar9 + 0x43);"
+        },
+        {
+          "body_line": 204,
+          "line": "(**(code **)(*plVar13 + 0x20))(plVar13);"
+        }
+      ]
+    },
+    {
+      "function": "FUN_003dba34",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/00/003dba34.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 45,
+      "offsets": [
+        "0x140",
+        "0x143",
+        "0x1c3",
+        "0x20",
+        "0x243",
+        "0x2c3",
+        "0x343",
+        "0x3c3",
+        "0x42",
+        "0x43",
+        "0x480",
+        "0x484",
+        "0x4b",
+        "0x58",
+        "0x6f0",
+        "0x80",
+        "0xc3"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 7,
+      "entry_layout": true,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [],
+      "focus_calls": [],
+      "excerpts": [
+        {
+          "body_line": 55,
+          "line": "*(undefined4 *)(param_1 + 0x20) = 0;"
+        },
+        {
+          "body_line": 391,
+          "line": "param_1[0x43] = 0;"
+        },
+        {
+          "body_line": 459,
+          "line": "*(undefined4 *)(param_1 + 0x216) = 0x58;"
+        },
+        {
+          "body_line": 504,
+          "line": "param_1[0xc3] = puVar3;"
+        },
+        {
+          "body_line": 568,
+          "line": "param_1[0x243] = puVar3;"
+        },
+        {
+          "body_line": 633,
+          "line": "param_1[0x2b5] = param_1 + 0x43;"
+        },
+        {
+          "body_line": 674,
+          "line": "*(undefined4 *)(param_1 + 0xc6) = 0x20;"
+        },
+        {
+          "body_line": 837,
+          "line": "param_1[0x582] = 0x20;"
+        },
+        {
+          "body_line": 934,
+          "line": "param_1[0x58] = 0;"
+        },
+        {
+          "body_line": 939,
+          "line": "*(undefined4 *)(param_1 + 0x198) = 0x43;"
+        },
+        {
+          "body_line": 1358,
+          "line": "param_1[0x6e0] = 0x43;"
+        },
+        {
+          "body_line": 1702,
+          "line": "param_1[0x143] = 0;"
+        },
+        {
+          "body_line": 1713,
+          "line": "*(undefined4 *)(param_1 + 0x140) = 0;"
+        }
+      ]
+    },
+    {
+      "function": "FUN_01bd2fd0",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01bd2fd0.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 45,
+      "offsets": [
+        "0x20",
+        "0x42",
+        "0x43",
+        "0x58",
+        "0x80"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 0,
+      "entry_layout": true,
+      "group_count_metadata": false,
+      "potential_memory_reads": [
+        "0x20",
+        "0x58"
+      ],
+      "calls": [
+        "00100250",
+        "008a62a4",
+        "0095aa3c",
+        "009ad580",
+        "00b645bc",
+        "00d0dbb4",
+        "0135c050",
+        "0152f590",
+        "01800100",
+        "01a0372c",
+        "01a0408c",
+        "01bda36c",
+        "01bdae70",
+        "01c342d8",
+        "01f38820",
+        "02a44274",
+        "02a4dad4",
+        "02bcc824"
+      ],
+      "focus_calls": [],
+      "excerpts": [
+        {
+          "body_line": 46,
+          "line": "FUN_01a0372c(&local_88,param_2 + 0x20);"
+        },
+        {
+          "body_line": 130,
+          "line": "param_1[0x58] = puVar7 + 0x10;"
+        },
+        {
+          "body_line": 148,
+          "line": "(lVar12 = *(long *)(lVar17 + 0x20), *(long *)(lVar17 + 0x20) == 0)) {"
+        },
+        {
+          "body_line": 149,
+          "line": "*(long *)(lVar17 + 0x20) = DAT_043f1798;"
+        },
+        {
+          "body_line": 164,
+          "line": "param_1[0x58] = &PTR_LAB_04245be8;"
+        },
+        {
+          "body_line": 203,
+          "line": "(lVar12 = *(long *)(lVar17 + 0x20), *(long *)(lVar17 + 0x20) == 0)) {"
+        },
+        {
+          "body_line": 204,
+          "line": "*(long *)(lVar17 + 0x20) = DAT_043f1798;"
+        },
+        {
+          "body_line": 226,
+          "line": "lVar18 = *(long *)(lVar18 + 0x58);"
+        },
+        {
+          "body_line": 253,
+          "line": "param_1[0x73] = *(undefined8 *)(param_2 + 0x58);"
+        },
+        {
+          "body_line": 261,
+          "line": "(**(code **)(*plVar15 + 0x20))();"
+        },
+        {
+          "body_line": 290,
+          "line": "*(undefined1 *)(plVar20 + 0x43) = uVar4;"
+        },
+        {
+          "body_line": 372,
+          "line": "(**(code **)(*local_78 + 0x20))();"
+        },
+        {
+          "body_line": 408,
+          "line": "(**(code **)(*plVar15 + 0x20))();"
+        }
+      ]
+    },
+    {
+      "function": "FUN_0299e034",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/02/0299e034.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 45,
+      "offsets": [
+        "0x140",
+        "0x143",
+        "0x1c3",
+        "0x20",
+        "0x243",
+        "0x2c3",
+        "0x300",
+        "0x304",
+        "0x343",
+        "0x42",
+        "0x43",
+        "0x4b",
+        "0x58",
+        "0x80",
+        "0xc3"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 6,
+      "entry_layout": true,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [
+        "00100250",
+        "008a62a4",
+        "029ce9d4",
+        "02bcbe58",
+        "02bcc320",
+        "02bcc824"
+      ],
+      "focus_calls": [],
+      "excerpts": [
+        {
+          "body_line": 609,
+          "line": "puVar8 = (undefined8 *)param_1[0x20];"
+        },
+        {
+          "body_line": 610,
+          "line": "param_1[0x20] = puVar3;"
+        },
+        {
+          "body_line": 1176,
+          "line": "uVar9 = param_1[0x43];"
+        },
+        {
+          "body_line": 1214,
+          "line": "param_1[0x43] = uVar13;"
+        },
+        {
+          "body_line": 1589,
+          "line": "puVar8 = (undefined8 *)param_1[0x58];"
+        },
+        {
+          "body_line": 1590,
+          "line": "param_1[0x58] = puVar3;"
+        },
+        {
+          "body_line": 3416,
+          "line": "uVar9 = param_1[0xc3];"
+        },
+        {
+          "body_line": 3454,
+          "line": "param_1[0xc3] = uVar13;"
+        },
+        {
+          "body_line": 5649,
+          "line": "puVar8 = (undefined8 *)param_1[0x140];"
+        },
+        {
+          "body_line": 5650,
+          "line": "param_1[0x140] = puVar3;"
+        },
+        {
+          "body_line": 5656,
+          "line": "uVar9 = param_1[0x143];"
+        },
+        {
+          "body_line": 5694,
+          "line": "param_1[0x143] = uVar13;"
+        },
+        {
+          "body_line": 10136,
+          "line": "uVar9 = param_1[0x243];"
+        }
+      ]
+    },
+    {
+      "function": "FUN_01c521e4",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01c521e4.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 34,
+      "offsets": [
+        "0x20",
+        "0x300",
+        "0x304",
+        "0x480",
+        "0x484",
+        "0x6f0",
+        "0x80"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 0,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [
+        "00100250",
+        "0098fad4",
+        "009b9264",
+        "00b9318c",
+        "00ce562c",
+        "01094470",
+        "0185b304",
+        "018e4ba0",
+        "0192c870",
+        "01934508",
+        "01b56688",
+        "01b56acc",
+        "01b56e3c",
+        "01b631b0",
+        "01c520b0",
+        "01c530b4",
+        "02a44274",
+        "02bcc824"
+      ],
+      "focus_calls": [
+        "01094470",
+        "01b56688",
+        "01b56acc"
+      ],
+      "excerpts": [
+        {
+          "body_line": 308,
+          "line": "FUN_01094470(local_108,lVar28,uVar39,uVar40,uVar33,uVar37,uVar38,uVar35,auStack_110,0,0,"
+        },
+        {
+          "body_line": 309,
+          "line": "param_1 + 0x6f0,0);"
+        },
+        {
+          "body_line": 325,
+          "line": "(**(code **)(*local_390 + 0x20))();"
+        },
+        {
+          "body_line": 559,
+          "line": "(**(code **)(*plVar32 + 0x20))();"
+        },
+        {
+          "body_line": 584,
+          "line": "(**(code **)(*local_3a0 + 0x20))();"
+        },
+        {
+          "body_line": 610,
+          "line": "(**(code **)(*local_80[0] + 0x20))();"
+        },
+        {
+          "body_line": 614,
+          "line": "(**(code **)(*local_268 + 0x20))();"
+        },
+        {
+          "body_line": 617,
+          "line": "(**(code **)(*local_2a8 + 0x20))();"
+        },
+        {
+          "body_line": 656,
+          "line": "(**(code **)(*(long *)*plVar32 + 0x20))();"
+        },
+        {
+          "body_line": 683,
+          "line": "(**(code **)(*local_358 + 0x20))();"
+        },
+        {
+          "body_line": 694,
+          "line": "(**(code **)(*(long *)*plVar32 + 0x20))();"
+        },
+        {
+          "body_line": 739,
+          "line": "(**(code **)(*plVar19 + 0x20))();"
+        }
+      ]
+    },
+    {
+      "function": "FUN_01bb3778",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01bb3778.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 32,
+      "offsets": [
+        "0x20",
+        "0x480",
+        "0x484",
+        "0x4c8",
+        "0x58",
+        "0x80"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 0,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [
+        "00100250",
+        "0087f8f0",
+        "008802f0",
+        "00ca524c",
+        "00ca554c",
+        "00d78f50",
+        "01094470",
+        "018c2c08",
+        "018c2ce0",
+        "0192c870",
+        "01934508",
+        "0199c708",
+        "0199d048",
+        "0199d058",
+        "01bc0980",
+        "01e1013c",
+        "01e101b0",
+        "01e10270",
+        "01e1030c",
+        "01e1039c",
+        "025993f4",
+        "025acbdc",
+        "02a44274",
+        "02bcc824"
+      ],
+      "focus_calls": [
+        "01094470"
+      ],
+      "excerpts": [
+        {
+          "body_line": 121,
+          "line": "FUN_008802f0(&local_108,*(long *)(lVar33 + 0x58) + 0x58);"
+        },
+        {
+          "body_line": 230,
+          "line": "FUN_01094470(&local_108,local_140,(ulong)puVar35 & 0xffffffff,uVar14,local_154,uVar30,"
+        },
+        {
+          "body_line": 247,
+          "line": "(**(code **)(*local_120 + 0x20))();"
+        },
+        {
+          "body_line": 292,
+          "line": "(**(code **)(*local_110 + 0x20))();"
+        },
+        {
+          "body_line": 413,
+          "line": "*(undefined2 *)(param_1 + 0x4c8) = 0x1ff;"
+        },
+        {
+          "body_line": 577,
+          "line": "(**(code **)(*plVar32 + 0x20))(plVar32);"
+        },
+        {
+          "body_line": 699,
+          "line": "plVar32 = *(long **)(*(long *)(lVar34 + 0x58) + uVar19 * 8);"
+        },
+        {
+          "body_line": 756,
+          "line": "(**(code **)(*local_f0 + 0x20))();"
+        },
+        {
+          "body_line": 854,
+          "line": "(**(code **)(*local_78 + 0x20))();"
+        },
+        {
+          "body_line": 871,
+          "line": "(**(code **)(*plVar18 + 0x20))();"
+        }
+      ]
+    },
+    {
+      "function": "FUN_0192d274",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/0192d274.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 25,
+      "offsets": [
+        "0x20",
+        "0x58"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 0,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [
+        "00100250",
+        "00b835e0",
+        "00bb993c",
+        "01102c4c",
+        "018b51ac",
+        "018c2ce0",
+        "0192cab8",
+        "0192ce14",
+        "01930360",
+        "0193053c",
+        "01930680",
+        "01930c88",
+        "01931614",
+        "01931870",
+        "01931a60",
+        "01931c40",
+        "02bcc824"
+      ],
+      "focus_calls": [
+        "01930680",
+        "01931c40"
+      ],
+      "excerpts": [
+        {
+          "body_line": 159,
+          "line": "if (*(char *)(param_1 + 0x58) == '\\0') {"
+        },
+        {
+          "body_line": 259,
+          "line": "(**(code **)(*plVar44 + 0x20))(plVar44);"
+        },
+        {
+          "body_line": 302,
+          "line": "(**(code **)(*plVar44 + 0x20))(plVar44);"
+        },
+        {
+          "body_line": 466,
+          "line": "(**(code **)(*plVar12 + 0x20))(plVar12);"
+        },
+        {
+          "body_line": 566,
+          "line": "(**(code **)(*plVar14 + 0x20))(plVar14);"
+        },
+        {
+          "body_line": 583,
+          "line": "(**(code **)(*plVar38 + 0x20))(plVar38);"
+        },
+        {
+          "body_line": 600,
+          "line": "(**(code **)(*plVar12 + 0x20))(plVar12);"
+        },
+        {
+          "body_line": 617,
+          "line": "(**(code **)(*plVar44 + 0x20))(plVar44);"
+        },
+        {
+          "body_line": 643,
+          "line": "(**(code **)(*local_d70 + 0x20))();"
+        },
+        {
+          "body_line": 660,
+          "line": "(**(code **)(*local_d78 + 0x20))();"
+        },
+        {
+          "body_line": 677,
+          "line": "(**(code **)(*local_d80 + 0x20))();"
+        },
+        {
+          "body_line": 694,
+          "line": "(**(code **)(*local_d88 + 0x20))();"
+        },
+        {
+          "body_line": 711,
+          "line": "(**(code **)(*local_d90 + 0x20))();"
+        }
+      ]
+    },
+    {
+      "function": "FUN_01bbe470",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01bbe470.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 21,
+      "offsets": [
+        "0x20",
+        "0x58"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 0,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [
+        "00100250",
+        "0095a420",
+        "00ad3750",
+        "00b08e00",
+        "010fae78",
+        "010fb1b4",
+        "016c24d0",
+        "01839500",
+        "01bb3778",
+        "01bb5868",
+        "01bbf418",
+        "01bdbf3c",
+        "028a0124",
+        "02a44274",
+        "02bcc824",
+        "02c90d40"
+      ],
+      "focus_calls": [
+        "01bb3778"
+      ],
+      "excerpts": [
+        {
+          "body_line": 156,
+          "line": "(**(code **)(*plVar18 + 0x20))(plVar18);"
+        },
+        {
+          "body_line": 320,
+          "line": "(**(code **)(*plVar18 + 0x20))(plVar18);"
+        },
+        {
+          "body_line": 367,
+          "line": "(**(code **)(*(long *)CONCAT44(uStack_20c,local_210) + 0x20))();"
+        },
+        {
+          "body_line": 375,
+          "line": "for (plVar19 = (long *)local_58[0x58]; PTR_DAT_0437a6d8 = pbVar7,"
+        },
+        {
+          "body_line": 429,
+          "line": "(**(code **)(*plVar18 + 0x20))(plVar18);"
+        },
+        {
+          "body_line": 485,
+          "line": "(**(code **)(*local_58 + 0x20))();"
+        },
+        {
+          "body_line": 503,
+          "line": "(**(code **)(*local_230 + 0x20))();"
+        }
+      ]
+    },
+    {
+      "function": "FUN_01b54e58",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01b54e58.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 18,
+      "offsets": [
+        "0x140",
+        "0x480",
+        "0x484",
+        "0x4b"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 0,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [
+        "01096640",
+        "01b56418",
+        "01b570cc"
+      ],
+      "focus_calls": [
+        "01b56418",
+        "01b570cc"
+      ],
+      "excerpts": [
+        {
+          "body_line": 30,
+          "line": "lVar3 = *(long *)(lVar3 + 0x140);"
+        }
+      ]
+    },
+    {
+      "function": "FUN_01094470",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01094470.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 14,
+      "offsets": [
+        "0x20",
+        "0x42",
+        "0x43",
+        "0x58"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 0,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [
+        "00100250",
+        "01095da0",
+        "010aa6c0",
+        "010dac08",
+        "0111d778",
+        "011357f8",
+        "02c4fb44",
+        "02c4fc60"
+      ],
+      "focus_calls": [],
+      "excerpts": [
+        {
+          "body_line": 6,
+          "line": "void FUN_01094470(undefined1 *param_1,undefined8 param_2,int param_3,undefined8 param_4,int param_5,"
+        },
+        {
+          "body_line": 169,
+          "line": "if ((ulong)puVar21[0x20] != 0) {"
+        },
+        {
+          "body_line": 170,
+          "line": "iVar22 = *(int *)((long)piVar16 + (ulong)puVar21[0x20]);"
+        },
+        {
+          "body_line": 172,
+          "line": "if ((uVar4 < 0x43) || ((ulong)puVar21[0x21] == 0)) goto LAB_010945dc;"
+        },
+        {
+          "body_line": 197,
+          "line": "lVar36 = 0x20;"
+        },
+        {
+          "body_line": 748,
+          "line": "(**(code **)(*plVar51 + 0x20))(plVar51);"
+        },
+        {
+          "body_line": 793,
+          "line": "(**(code **)(*plVar51 + 0x20))(plVar51);"
+        },
+        {
+          "body_line": 825,
+          "line": "plVar51 = *(long **)(*(long *)(lVar36 + 0x58) + uVar41 * 8);"
+        },
+        {
+          "body_line": 1006,
+          "line": "if ((99 < *(ushort *)((long)plVar51 + uVar48 * 0x58 + 0xe4)) &&"
+        },
+        {
+          "body_line": 1033,
+          "line": "plVar26 = *(long **)(*(long *)(lVar36 + 0x58) + uVar41 * 8);"
+        },
+        {
+          "body_line": 1168,
+          "line": "if ((*(byte *)((long)plVar51 + uVar48 * 0x58 + 0xdc) >> 2 & 1) != 0) {"
+        },
+        {
+          "body_line": 1198,
+          "line": "plVar26 = *(long **)(*(long *)(lVar36 + 0x58) + uVar41 * 8);"
+        },
+        {
+          "body_line": 1342,
+          "line": "(**(code **)(*plVar51 + 0x20))(plVar51);"
+        }
+      ]
+    },
+    {
+      "function": "FUN_01930680",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01930680.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 14,
+      "offsets": [
+        "0x20"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 0,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [
+        "01102b54",
+        "011323a4",
+        "018b51ac",
+        "018b54c4",
+        "01931a60",
+        "01933a2c",
+        "02c53064"
+      ],
+      "focus_calls": [],
+      "excerpts": [
+        {
+          "body_line": 184,
+          "line": "(**(code **)(*param_4 + 0x20))(param_4);"
+        },
+        {
+          "body_line": 275,
+          "line": "lVar9 = 0x20;"
+        }
+      ]
+    },
+    {
+      "function": "FUN_01b55130",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01b55130.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 10,
+      "offsets": [
+        "0x140",
+        "0x20",
+        "0x43"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 0,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [
+        "00b911c4",
+        "01b9ee74",
+        "01ba08ec"
+      ],
+      "focus_calls": [],
+      "excerpts": [
+        {
+          "body_line": 37,
+          "line": "(**(code **)(*local_18 + 0x20))(local_18);"
+        },
+        {
+          "body_line": 38,
+          "line": "puVar8 = *(undefined8 **)(param_1 + 0x140);"
+        },
+        {
+          "body_line": 43,
+          "line": "puVar8 = *(undefined8 **)(param_1 + 0x140);"
+        },
+        {
+          "body_line": 52,
+          "line": "*(undefined1 *)((long)puVar8 + 0x43) = 1;"
+        }
+      ]
+    },
+    {
+      "function": "FUN_01b56688",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01b56688.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 10,
+      "offsets": [
+        "0x20"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 0,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [
+        "01b57c1c"
+      ],
+      "focus_calls": [],
+      "excerpts": [
+        {
+          "body_line": 242,
+          "line": "(**(code **)(*local_c8 + 0x20))();"
+        }
+      ]
+    },
+    {
+      "function": "FUN_01b56acc",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01b56acc.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 10,
+      "offsets": [
+        "0x20",
+        "0x80"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 0,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [
+        "00100250"
+      ],
+      "focus_calls": [],
+      "excerpts": [
+        {
+          "body_line": 113,
+          "line": "uVar3 = (undefined2)(CONCAT15(uVar21,CONCAT14(uVar20,fVar16)) >> 0x20);"
+        },
+        {
+          "body_line": 168,
+          "line": "(float)((ulong)uVar30 >> 0x20) +"
+        },
+        {
+          "body_line": 172,
+          "line": "CONCAT14(SUB41(fVar17,0) & ~(byte)iVar4,fVar27)))) >> 0x20"
+        },
+        {
+          "body_line": 176,
+          "line": "(float)((ulong)uVar31 >> 0x20) +"
+        },
+        {
+          "body_line": 180,
+          "line": "CONCAT14(SUB41(fVar16,0) & ~(byte)iVar6,fVar24)))) >> 0x20"
+        }
+      ]
+    },
+    {
+      "function": "FUN_01b570cc",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01b570cc.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 10,
+      "offsets": [
+        "0x140",
+        "0x20",
+        "0x43"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 0,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [
+        "00b911c4",
+        "01b55228",
+        "01b62b0c",
+        "01ba08ec"
+      ],
+      "focus_calls": [],
+      "excerpts": [
+        {
+          "body_line": 44,
+          "line": "(**(code **)(*local_38 + 0x20))(local_38);"
+        },
+        {
+          "body_line": 45,
+          "line": "puVar10 = *(undefined8 **)(lVar13 + 0x140);"
+        },
+        {
+          "body_line": 50,
+          "line": "puVar10 = *(undefined8 **)(lVar13 + 0x140);"
+        },
+        {
+          "body_line": 59,
+          "line": "*(undefined1 *)((long)puVar10 + 0x43) = 1;"
+        },
+        {
+          "body_line": 98,
+          "line": "(**(code **)(*plVar8 + 0x20))();"
+        },
+        {
+          "body_line": 128,
+          "line": "(**(code **)(*plVar9 + 0x20))();"
+        }
+      ]
+    },
+    {
+      "function": "FUN_01bacefc",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01bacefc.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 10,
+      "offsets": [
+        "0x20",
+        "0x300"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 0,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [
+        "00100250",
+        "01103060",
+        "011030d4"
+      ],
+      "focus_calls": [],
+      "excerpts": [
+        {
+          "body_line": 64,
+          "line": "(**(code **)(*plVar7 + 0x20))(plVar7);"
+        }
+      ]
+    },
+    {
+      "function": "FUN_01bad050",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01bad050.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 10,
+      "offsets": [
+        "0x20",
+        "0x300"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 0,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [
+        "00100250",
+        "011032bc",
+        "01103330"
+      ],
+      "focus_calls": [],
+      "excerpts": [
+        {
+          "body_line": 64,
+          "line": "(**(code **)(*plVar7 + 0x20))(plVar7);"
+        }
+      ]
+    },
+    {
+      "function": "FUN_01931c40",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01931c40.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 5,
+      "offsets": [
+        "0x20",
+        "0x58",
+        "0x80"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 0,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [
+        "0x58"
+      ],
+      "calls": [
+        "00100250",
+        "008a62a4",
+        "0165ff30",
+        "018b54c4",
+        "0192ce14",
+        "01935b14",
+        "02bcc824",
+        "02c53064"
+      ],
+      "focus_calls": [],
+      "excerpts": [
+        {
+          "body_line": 308,
+          "line": "(**(code **)(*plVar36 + 0x20))();"
+        },
+        {
+          "body_line": 353,
+          "line": "(**(code **)(*plVar36 + 0x20))();"
+        },
+        {
+          "body_line": 398,
+          "line": "(**(code **)(*plVar36 + 0x20))();"
+        },
+        {
+          "body_line": 443,
+          "line": "(**(code **)(*plVar32 + 0x20))();"
+        },
+        {
+          "body_line": 489,
+          "line": "(**(code **)(*plVar34 + 0x20))();"
+        },
+        {
+          "body_line": 495,
+          "line": "(**(code **)(*local_70 + 0x20))();"
+        },
+        {
+          "body_line": 498,
+          "line": "(**(code **)(*local_90 + 0x20))();"
+        },
+        {
+          "body_line": 501,
+          "line": "(**(code **)(*local_b0 + 0x20))();"
+        },
+        {
+          "body_line": 504,
+          "line": "(**(code **)(*local_d0 + 0x20))();"
+        },
+        {
+          "body_line": 507,
+          "line": "(**(code **)(*local_f0 + 0x20))();"
+        },
+        {
+          "body_line": 534,
+          "line": "local_110 = CONCAT44((int)((ulong)local_110 >> 0x20),uVar44);"
+        },
+        {
+          "body_line": 672,
+          "line": "lVar23 = 0x20;"
+        },
+        {
+          "body_line": 866,
+          "line": "*(undefined2 *)(param_2 + 0x20) = 0;"
+        }
+      ]
+    },
+    {
+      "function": "FUN_009273d4",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/00/009273d4.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 0,
+      "offsets": [
+        "0x20"
+      ],
+      "same_spawner": false,
+      "eight_flag_count": 0,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [],
+      "focus_calls": [],
+      "excerpts": [
+        {
+          "body_line": 20,
+          "line": "lVar1 = 0x20;"
+        }
+      ]
+    },
+    {
+      "function": "FUN_00db854c",
+      "source": "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/00/00db854c.c",
+      "status": "STATIC_C_TRIAGE_NOT_TYPED_DATAFLOW",
+      "score": 0,
+      "offsets": [],
+      "same_spawner": false,
+      "eight_flag_count": 0,
+      "entry_layout": false,
+      "group_count_metadata": false,
+      "potential_memory_reads": [],
+      "calls": [],
+      "focus_calls": [],
+      "excerpts": []
+    }
+  ],
+  "omitted": 0,
+  "focus_callers": {
+    "FUN_009273d4": [
+      "FUN_0088103c",
+      "FUN_008c9178",
+      "FUN_008d3234",
+      "FUN_0091c398"
+    ],
+    "FUN_00db854c": [
+      "FUN_00be70f0",
+      "FUN_00bff090",
+      "FUN_00c36160",
+      "FUN_00c36450",
+      "FUN_00c37080",
+      "FUN_00c46e60",
+      "FUN_00c481b0",
+      "FUN_00c4c550",
+      "FUN_019e2920",
+      "FUN_01e8a110",
+      "FUN_01ebf320",
+      "FUN_01f0eab0",
+      "FUN_025ff490"
+    ],
+    "FUN_01094470": [
+      "FUN_01bb3778",
+      "FUN_01c521e4"
+    ],
+    "FUN_0192d274": [],
+    "FUN_01930680": [
+      "FUN_0192d274"
+    ],
+    "FUN_01931c40": [
+      "FUN_0192d274"
+    ],
+    "FUN_01b54e58": [
+      "FUN_01b54e4c",
+      "FUN_01bab534"
+    ],
+    "FUN_01b55130": [
+      "FUN_01b54fa0"
+    ],
+    "FUN_01b56418": [
+      "FUN_01b54e58"
+    ],
+    "FUN_01b56688": [
+      "FUN_01c521e4"
+    ],
+    "FUN_01b56acc": [
+      "FUN_01c521e4"
+    ],
+    "FUN_01b570cc": [
+      "FUN_01b54e58"
+    ],
+    "FUN_01bab534": [],
+    "FUN_01bab8f4": [],
+    "FUN_01bacefc": [
+      "FUN_01b56418"
+    ],
+    "FUN_01bad050": [
+      "FUN_01b56418"
+    ],
+    "FUN_01bb3778": [
+      "FUN_01bbe470"
+    ],
+    "FUN_01bbe470": [],
+    "FUN_01c521e4": []
+  },
+  "edges": [
+    [
+      "FUN_01b56418",
+      "SpawnerEntry.GenerateSeed(+0x20)",
+      "CONFIRMED_PRODUCER"
+    ],
+    [
+      "SpawnerEntry.GenerateSeed(+0x20)",
+      "true typed read consumer",
+      "UNRESOLVED"
+    ],
+    [
+      "FUN_01c521e4",
+      "FUN_01094470",
+      "CONFIRMED_DIRECT_CALL"
+    ],
+    [
+      "FUN_01c521e4:param_1+0x6f0",
+      "SpawnerEntry.GenerateSeed(+0x20)",
+      "UNPROVEN_ALIAS"
+    ],
+    [
+      "FUN_01094470",
+      "native EC/PID/IV writer",
+      "UNPROVEN_CALL_DATAFLOW"
+    ]
+  ],
+  "limits": [
+    "Numeric offsets may belong to unrelated structures.",
+    "Virtual calls and compiler-inlined RNG may obscure source consumers.",
+    "An original C code scan cannot replace Ghidra typed pointer propagation or guest observations.",
+    "The original ELF, Ghidra database and original C remain unchanged."
+  ]
+}
