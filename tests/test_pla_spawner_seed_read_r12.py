@@ -83,7 +83,7 @@ def run():
         mem.put64(entry+0x20,seed)
         module_spec.loader.exec_module(module)
         probe=module._pla_r12
-        assert probe.bp.spec=="*0x%x"%(base+0x01A565A4-0x100000)
+        assert probe.bp.spec=="*0x%x"%(base+0x01B565A4-0x100000)
         assert probe.bp.temporary is True
         assert probe.bp.stop() is True
         assert probe.last["seed_matches_register"]
