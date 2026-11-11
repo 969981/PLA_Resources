@@ -59,7 +59,7 @@ jobs:
           assert j['scanned_c_functions']==82731 and j['unreadable']==0
           assert j['owner_offset_298']['syntactic_writer_occurrences']>0
           assert j['original_elf_sha256']=='260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794'
-          assert 'NOT proof' in (root/'pokedex_owner_and_serializer_scan_r3.md').read_text() or 'NOT a proven' in (root/'pokedex_owner_and_serializer_scan_r3.md').read_text()
+          assert 'STATIC_SOURCE_CANDIDATES_NOT_DATAFLOW_PROOF' in (root/'pokedex_owner_and_serializer_scan_r3.md').read_text()
           print('Coverage and proof-boundary gates passed.')
           PY
 
