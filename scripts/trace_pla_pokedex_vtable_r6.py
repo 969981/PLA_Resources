@@ -87,7 +87,18 @@ def main():
                 first=max(seg["va"]+DELTA,addr-0x60)
                 last=min(seg["va"]+seg["size"]+DELTA,addr+0x60)
                 windows["origin_"+name+"_"+str(j)]=disasm(first,last)
-    result={"status":"STATIC_RAW_ELF_NOT_DYNAMIC_VTABLE_PROOF",
+    vtables={}
+    for label,base in {"primary_vtable":0x040F23C8,"secondary_vtable_A":0x040F2438,"secondary_vtable_B":0x040F2480}.items():
+        try:
+            start=resolve(segs,base-DELTA)
+            vtables[label]={"ghidra_va":f"0x{base:08X}","words":[
+                {"slot":f"+0x{i:03X}","word":f"0x{struct.unpack_from('<Q',raw,start+i)[0]:016X}",
+                 "elf_va":f"0x{struct.unpack_from('<Q',raw,start+i)[0]:08X}",
+                 "maybe_function_ghidra_va":f"0x{struct.unpack_from('<Q',raw,start+i)[0]+DELTA:08X}"}
+                for i in range(0,0xF0,8)]}
+        except ValueError as e:
+            vtables[label]={"ghidra_va":f"0x{base:08X}","error":str(e)}
+    result={"vtable_raw_words":vtables,"status":"STATIC_RAW_ELF_NOT_DYNAMIC_VTABLE_PROOF",
             "sha256":sha,"anchor":"0x0112F518 BL 0x0112F528",
             "targets":refs,"windows":windows,
             "limitations":[
@@ -106,6 +117,12 @@ def main():
     for name,ref in refs.items():
         lines.extend(["","## "+name,"","BL: "+(", ".join(ref["direct_BL"]) or "none"),
                       "Static: "+(str(ref["aligned_data_ptrs"][:10]) if ref["aligned_data_ptrs"] else "none")])
+    for name,v in vtables.items():
+        lines.extend(["","## Raw static vtable region "+name,""])
+        if "words" in v:
+            lines.extend("- "+x["slot"]+": "+x["word"] for x in v["words"])
+        else:
+            lines.append(v["error"])
     for name,insns in windows.items():
         lines.extend(["","## Disassembly "+name,""])
         lines.extend("    "+x["va"]+" "+x["mnemonic"]+" "+x["operands"] for x in insns)
