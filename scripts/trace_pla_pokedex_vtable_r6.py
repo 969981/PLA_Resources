@@ -88,7 +88,7 @@ def main():
                 last=min(seg["va"]+seg["size"]+DELTA,addr+0x60)
                 windows["origin_"+name+"_"+str(j)]=disasm(first,last)
     vtables={}
-    for label,base in {"primary_vtable":0x040F23C8,"secondary_vtable_A":0x040F2438,"secondary_vtable_B":0x040F2480}.items():
+    for label,base in {"primary_vtable":0x041F23C8,"secondary_vtable_A":0x041F2438,"secondary_vtable_B":0x041F2480}.items():
         try:
             start=resolve(segs,base-DELTA)
             vtables[label]={"ghidra_va":f"0x{base:08X}","words":[
