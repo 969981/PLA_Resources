@@ -29,13 +29,13 @@ def analyze(body,name):
             use_sites=[]
             for k in range(i+1,min(i+141,len(rows))):
                 v=rows[k]
-                pattern=r"\\b"+re.escape(var)+r"\\s*(?:\\[\\s*4\\s*\\]|\\+\\s*0x20\\b)"
+                pattern=r"\b"+re.escape(var)+r"\s*(?:\[\s*4\s*\]|\+\s*0x20\b)"
                 if not re.search(pattern,v):continue
                 # Control object may reset the entry field, which is not a seed consumer.
-                writing=bool(re.search(r"\\b"+re.escape(var)+r"\\s*\\[\\s*4\\s*\\]\\s*=",v))
-                writing=writing or bool(re.search(r"\\*\\s*\\(\\s*(?:u?long|undefined8)\\s*\\*\\s*\\)\\s*\\(\\s*"+re.escape(var)+r"\\s*\\+\\s*0x20\\s*\\)\\s*=",v))
-                reading=(not writing) and (bool(re.search(r"=\\s*"+re.escape(var)+r"\\s*\\[\\s*4\\s*\\]",v)) or
-                         bool(re.search(r"=\\s*\\*\\s*\\(\\s*(?:u?long|undefined8)\\s*\\*\\s*\\)\\s*\\(\\s*"+re.escape(var)+r"\\s*\\+\\s*0x20\\s*\\)",v)))
+                writing=bool(re.search(r"\b"+re.escape(var)+r"\s*\[\s*4\s*\]\s*=",v))
+                writing=writing or bool(re.search(r"\*\s*\(\s*(?:u?long|undefined8)\s*\*\s*\)\s*\(\s*"+re.escape(var)+r"\s*\+\s*0x20\s*\)\s*=",v))
+                reading=(not writing) and (bool(re.search(r"=\s*"+re.escape(var)+r"\s*\[\s*4\s*\]",v)) or
+                         bool(re.search(r"=\s*\*\s*\(\s*(?:u?long|undefined8)\s*\*\s*\)\s*\(\s*"+re.escape(var)+r"\s*\+\s*0x20\s*\)",v)))
                 use_sites.append({"line":k+1,"mode":"WRITE_OR_CLEAR" if writing else "READ_CANDIDATE" if reading else "ADDRESS_OR_UNKNOWN","source":v.strip()[:300]})
             loads.append({"line":i+1,"var":var,"base":x.group("base"),"source":line.strip()[:300],
                           "uses":uses,"use_sites":use_sites[:25],"near_calls":calls[:5]})
@@ -111,7 +111,7 @@ def main():
     k=analyze(s,"01b55130")
     assert len(k["loads"])==1 and len(k["stores"])==1 and len(k["candidates"])==1
     assert "add_0x20" in k["candidates"][0]["uses"]
-    assert len(analyze("puVar8 = *(undefined8 **)(param_1 + 0x140);\\npuVar8[4] = 0;","01b55130")["loads"])==1
+    assert len(analyze("puVar8 = *(undefined8 **)(param_1 + 0x140);\npuVar8[4] = 0;","01b55130")["loads"])==1
     assert not analyze("(**(code **)(*param_1 + 0x140))(param_1);","01b55130")["loads"]
     print("R10 synthetic lexical source tests PASS")
     if v.self_test:return
