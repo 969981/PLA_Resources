@@ -1,0 +1,83 @@
+name: PLA v1.1.1 R8 native RNG and spawner candidate audit
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - .github/workflows/pla-native-rng-spawn-r8.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pla-r8-rng-c-only
+  cancel-in-progress: false
+
+jobs:
+  scan-original-c:
+    if: github.repository == '969981/PLA_Resources'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout immutable original C and only new script
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/scan_pla_rng_spawner_r8.py
+            /derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/
+            /.github/workflows/pla-native-rng-spawn-r8.yml
+            /docs/research/v1.1.1/semantic_inventory/pla_native_rng_candidates_r8.md
+            /docs/research/v1.1.1/semantic_inventory/pla_native_rng_candidates_r8.json
+      - name: Verify full 82731 C provenance and extract candidate evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile scripts/scan_pla_rng_spawner_r8.py
+          python3 scripts/scan_pla_rng_spawner_r8.py --self-test
+          python3 scripts/scan_pla_rng_spawner_r8.py \
+            --c-root derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c \
+            --out-json docs/research/v1.1.1/semantic_inventory/pla_native_rng_candidates_r8.json \
+            --out-md docs/research/v1.1.1/semantic_inventory/pla_native_rng_candidates_r8.md
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("docs/research/v1.1.1/semantic_inventory/pla_native_rng_candidates_r8.json")
+          j=json.loads(p.read_text())
+          assert j["status"]=="STATIC_CODE_CANDIDATES_NOT_PROVEN_SPAWNS"
+          assert j["pinned_original_elf_sha256"]=="260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794"
+          assert j["c_files_checked"]==82731
+          assert j["counts"]["seed_const"]>=1
+          print("Pinned 82,731-function C source audit complete; no guest-generation claims.")
+          PY
+      - name: Publish only bounded new outputs (idempotently)
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            docs/research/v1.1.1/semantic_inventory/pla_native_rng_candidates_r8.md \
+            docs/research/v1.1.1/semantic_inventory/pla_native_rng_candidates_r8.json
+          if git diff --cached --quiet; then
+            echo "Same result, no commit"
+          else
+            git commit -m 'research(pla): publish immutable R8 RNG and spawner C candidate audit'
+            git fetch -q origin master
+            git rebase origin/master
+            git push origin HEAD:refs/heads/master
+          fi
+      - name: Preserve R8 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PLA-R8-Native-RNG-Candidates
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            docs/research/v1.1.1/semantic_inventory/pla_native_rng_candidates_r8.md
+            docs/research/v1.1.1/semantic_inventory/pla_native_rng_candidates_r8.json
