@@ -12,6 +12,14 @@ import hashlib
 import json
 import struct
 from pathlib import Path
+from capstone import Cs, CS_ARCH_ARM64, CS_MODE_LITTLE_ENDIAN
+
+WINDOWS = {
+    "HashdbWriterRawCaller": (0x01150668, 0x011506D8),
+    "HashdbWriterPrologue": (0x010CE274, 0x010CE2D0),
+    "HashdbCopyFlagClear": (0x010CE5DC, 0x010CE718),
+    "SaveJobStatusReader": (0x01150638, 0x01150660),
+}
 
 HASH = "260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794"
 DELTA = 0x100000
@@ -122,7 +130,20 @@ def run(path):
                     "segment_flags": seg["flags"],
                     "nearby": nearby_words(raw, seg, pos),
                 })
+    engine = Cs(CS_ARCH_ARM64, CS_MODE_LITTLE_ENDIAN)
+    window_instructions = {}
+    for label, (start, end) in WINDOWS.items():
+        src = resolve(segs, start - DELTA)
+        code = raw[src:src + end - start]
+        window_instructions[label] = [
+            {"va": f"0x{instruction.address + DELTA:08X}",
+             "mnemonic": instruction.mnemonic,
+             "operands": instruction.op_str,
+             "bytes": instruction.bytes.hex()}
+            for instruction in engine.disasm(code, start - DELTA)
+        ]
     return {
+        "instruction_windows": window_instructions,
         "status": "RAW_ELF_DIRECT_BL_AND_EXACT_DATA_POINTERS_ONLY",
         "source_sha256": sha,
         "elf_bytes": len(raw),
@@ -170,6 +191,11 @@ def md(result):
         for hit in target["exact_nonexecutable_pointers"]:
             lines.append(f"- Pointer at {hit['ghidra_va']}: value {hit['raw_word']}; segment {hit['segment_index']}")
             lines.extend(f"    {row['ghidra_va']}: {row['u64']}" for row in hit["nearby"])
+    lines += ["", "## Narrow ARM64 disassembly windows", ""]
+    for name, instructions in result["instruction_windows"].items():
+        lines += ["", f"### {name}", "", "```asm"]
+        lines.extend(f"{i['va']} {i['mnemonic']:<8} {i['operands']}" for i in instructions)
+        lines += ["```", ""]
     lines += [
         "", "## Strict interpretation", "",
         "- A function pointer may appear in a static data table or be generated at runtime.",
