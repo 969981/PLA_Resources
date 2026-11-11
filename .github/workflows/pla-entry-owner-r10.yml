@@ -1,0 +1,78 @@
+name: PLA R10 entry owner pointer consumer audit
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - .github/workflows/pla-entry-owner-r10.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pla-entry-owner-r10
+  cancel-in-progress: false
+
+jobs:
+  immutable-r10-audit:
+    if: github.repository == '969981/PLA_Resources'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout original pinned Ghidra C, never regenerate
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/trace_pla_entry_owner_reads_r10.py
+            /derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/
+            /.github/workflows/pla-entry-owner-r10.yml
+            /docs/research/v1.1.1/semantic_inventory/pla_entry_owner_reads_r10.json
+            /docs/research/v1.1.1/semantic_inventory/pla_entry_owner_reads_r10.md
+      - name: Static source alias scan and provenance check
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile scripts/trace_pla_entry_owner_reads_r10.py
+          python3 scripts/trace_pla_entry_owner_reads_r10.py --self-test
+          python3 scripts/trace_pla_entry_owner_reads_r10.py \
+            --c-root derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c \
+            --out-json docs/research/v1.1.1/semantic_inventory/pla_entry_owner_reads_r10.json \
+            --out-md docs/research/v1.1.1/semantic_inventory/pla_entry_owner_reads_r10.md
+          python3 - <<'PY'
+          import json
+          j=json.load(open('docs/research/v1.1.1/semantic_inventory/pla_entry_owner_reads_r10.json'))
+          assert j['source_count']==82731
+          assert j['original_sha256']=='260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794'
+          assert j['stats']['literal_140']>500
+          print('Immutable source provenance and R10 scan complete.')
+          PY
+      - name: Commit report only, never original C
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            docs/research/v1.1.1/semantic_inventory/pla_entry_owner_reads_r10.json \
+            docs/research/v1.1.1/semantic_inventory/pla_entry_owner_reads_r10.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'research(pla): publish R10 owner entry pointer read audit'
+            git fetch -q origin master
+            git rebase origin/master
+            git push origin HEAD:refs/heads/master
+          fi
+      - name: Preserve run artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PLA-R10-owner-entry-pointer-audit
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            docs/research/v1.1.1/semantic_inventory/pla_entry_owner_reads_r10.json
+            docs/research/v1.1.1/semantic_inventory/pla_entry_owner_reads_r10.md
