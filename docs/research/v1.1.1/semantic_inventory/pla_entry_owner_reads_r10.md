@@ -7,10 +7,11 @@ Source C count: 82731
 
 ## Counts
 
-- candidates_functions: 4
+- candidates_functions: 14
 - literal_140: 928
-- loads_functions: 158
-- stores_functions: 139
+- loads_functions: 192
+- probable_reads_functions: 1
+- stores_functions: 144
 
 ## Candidate same-variable reads
 
@@ -21,8 +22,100 @@ derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/00/00195d4c.c
 Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
 - line 1081: lVar27 = *(long *)(param_1 + 0x140);
   - Subsequent same-variable accesses: add_0x20
+  - ADDRESS_OR_UNKNOWN at 1184: local_21c = *(undefined1 *)(lVar27 + 0x20);
 - line 1116: lVar27 = *(long *)(param_1 + 0x140);
   - Subsequent same-variable accesses: add_0x20
+  - ADDRESS_OR_UNKNOWN at 1184: local_21c = *(undefined1 *)(lVar27 + 0x20);
+
+### FUN_01b2aa30
+
+derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01b2aa30.c
+
+Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
+- line 267: plVar6 = *(long **)(param_1 + 0x140);
+  - Subsequent same-variable accesses: add_0x20
+  - ADDRESS_OR_UNKNOWN at 323: (**(code **)(*plVar6 + 0x20))();
+  - ADDRESS_OR_UNKNOWN at 332: (**(code **)(*plVar6 + 0x20))();
+  - ADDRESS_OR_UNKNOWN at 343: (**(code **)(*plVar6 + 0x20))();
+  - ADDRESS_OR_UNKNOWN at 406: (**(code **)(*plVar6 + 0x20))();
+
+### FUN_01b55130
+
+derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01b55130.c
+
+Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
+- line 38: puVar8 = *(undefined8 **)(param_1 + 0x140);
+  - Subsequent same-variable accesses: add_0x43, subscript_4
+  - WRITE_OR_CLEAR at 57: puVar8[4] = 0;
+- line 43: puVar8 = *(undefined8 **)(param_1 + 0x140);
+  - Subsequent same-variable accesses: add_0x43, subscript_4
+  - WRITE_OR_CLEAR at 57: puVar8[4] = 0;
+
+### FUN_01b570cc
+
+derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01b570cc.c
+
+Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
+- line 45: puVar10 = *(undefined8 **)(lVar13 + 0x140);
+  - Subsequent same-variable accesses: add_0x43, subscript_4
+  - WRITE_OR_CLEAR at 64: puVar10[4] = 0;
+- line 50: puVar10 = *(undefined8 **)(lVar13 + 0x140);
+  - Subsequent same-variable accesses: add_0x43, subscript_4
+  - WRITE_OR_CLEAR at 64: puVar10[4] = 0;
+
+### FUN_00b83b40
+
+derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/00/00b83b40.c
+
+Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
+- line 190: plVar12 = *(long **)(param_1 + 0x140);
+  - Subsequent same-variable accesses: add_0x20
+  - ADDRESS_OR_UNKNOWN at 206: (**(code **)(*plVar12 + 0x20))();
+  - call at 228: FUN_02bcc824(plVar12,puVar10,uVar2,uVar13);
+
+### FUN_01443720
+
+derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01443720.c
+
+Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
+- line 147: plVar7 = *(long **)(param_1 + 0x140);
+  - Subsequent same-variable accesses: add_0x20, subscript_4
+  - ADDRESS_OR_UNKNOWN at 153: (**(code **)(*plVar7 + 0x20))();
+  - ADDRESS_OR_UNKNOWN at 184: (**(code **)(*plVar7 + 0x20))();
+  - ADDRESS_OR_UNKNOWN at 212: (**(code **)(*plVar7 + 0x20))(plVar7);
+  - READ_CANDIDATE at 254: *(long *)(param_1 + 0x170) = plVar7[4];
+- line 194: plVar7 = *(long **)(param_1 + 0x140);
+  - Subsequent same-variable accesses: add_0x20, subscript_4
+  - ADDRESS_OR_UNKNOWN at 212: (**(code **)(*plVar7 + 0x20))(plVar7);
+  - READ_CANDIDATE at 254: *(long *)(param_1 + 0x170) = plVar7[4];
+  - READ_CANDIDATE at 295: *(long *)(param_1 + 0x178) = plVar7[4];
+
+### FUN_027f89f4
+
+derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/02/027f89f4.c
+
+Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
+- line 48: plVar6 = *(long **)(param_1 + 0x140);
+  - Subsequent same-variable accesses: add_0x20
+  - ADDRESS_OR_UNKNOWN at 64: (**(code **)(*plVar6 + 0x20))();
+  - ADDRESS_OR_UNKNOWN at 83: (**(code **)(*plVar6 + 0x20))();
+  - ADDRESS_OR_UNKNOWN at 133: (**(code **)(*plVar6 + 0x20))();
+  - ADDRESS_OR_UNKNOWN at 161: (**(code **)(*plVar6 + 0x20))();
+  - ADDRESS_OR_UNKNOWN at 188: (**(code **)(*plVar6 + 0x20))();
+- line 145: plVar6 = *(long **)(param_1 + 0x140);
+  - Subsequent same-variable accesses: add_0x20
+  - ADDRESS_OR_UNKNOWN at 161: (**(code **)(*plVar6 + 0x20))();
+  - ADDRESS_OR_UNKNOWN at 188: (**(code **)(*plVar6 + 0x20))();
+
+### FUN_005179b8
+
+derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/00/005179b8.c
+
+Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
+- line 36: plVar10 = *(long **)(param_2 + 0x140);
+  - Subsequent same-variable accesses: subscript_4
+  - ADDRESS_OR_UNKNOWN at 72: FUN_005b6c6c(&local_e0,plVar10[4]);
+  - call at 72: FUN_005b6c6c(&local_e0,plVar10[4]);
 
 ### FUN_00838bc0
 
@@ -31,10 +124,31 @@ derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/00/00838bc0.c
 Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
 - line 27: lVar13 = *(long *)(param_1 + 0x140);
   - Subsequent same-variable accesses: add_0x20, add_0x42
+  - ADDRESS_OR_UNKNOWN at 35: FUN_0083eb68(lVar6,lVar13 + 0x20);
+  - ADDRESS_OR_UNKNOWN at 45: uVar14 = (**(code **)(*plVar7 + 0x120))(plVar7,lVar13 + 0x20);
+  - ADDRESS_OR_UNKNOWN at 53: lVar13 + 0x20,0,1,local_74);
   - call at 35: FUN_0083eb68(lVar6,lVar13 + 0x20);
   - call at 42: (lVar11 = *(long *)(lVar13 + 0x10), lVar6 = FUN_0083fd98(lVar6 + 0x1b8), lVar11 == lVar6)
   - call at 51: lVar6 = FUN_008372b8(param_1,*(undefined8 *)(lVar13 + 0x10),*(undefined2 *)(lVar13 + 0x18),
   - call at 57: FUN_00825c28(lVar6,lVar13 + 0x50);
+
+### FUN_009612e0
+
+derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/00/009612e0.c
+
+Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
+- line 186: plVar6 = *(long **)(param_1 + 0x140);
+  - Subsequent same-variable accesses: add_0x20
+  - ADDRESS_OR_UNKNOWN at 270: (**(code **)(*plVar6 + 0x20))();
+
+### FUN_016b7f10
+
+derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/016b7f10.c
+
+Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
+- line 89: plVar7 = *(long **)(param_1 + 0x140);
+  - Subsequent same-variable accesses: add_0x20
+  - ADDRESS_OR_UNKNOWN at 105: (**(code **)(*plVar7 + 0x20))();
 
 ### FUN_019382e8
 
@@ -43,10 +157,20 @@ derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/019382e8.c
 Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
 - line 57: lVar10 = *(long *)(param_1 + 0x140);
   - Subsequent same-variable accesses: add_0x20, add_0x58
+  - ADDRESS_OR_UNKNOWN at 66: lVar10 = lVar10 + 0x20;
   - call at 132: lVar10 = FUN_0193c0a8(param_1,1);
   - call at 134: FUN_0193c824(param_1 + 0x1f8,*(undefined4 *)(lVar10 + 0x10),*(undefined2 *)(lVar10 + 0x14));
   - call at 142: lVar10 = FUN_0193c0a8(param_1,0);
   - call at 144: FUN_0193c824(param_1 + 0x1c8,*(undefined4 *)(lVar10 + 0x10),*(undefined2 *)(lVar10 + 0x14));
+
+### FUN_02852550
+
+derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/02/02852550.c
+
+Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
+- line 325: plVar23 = *(long **)(param_1 + 0x140);
+  - Subsequent same-variable accesses: add_0x20
+  - ADDRESS_OR_UNKNOWN at 343: (**(code **)(*plVar23 + 0x20))(plVar23);
 
 ### FUN_0302f5b4
 
@@ -55,11 +179,33 @@ derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/03/0302f5b4.c
 Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
 - line 578: lVar20 = *(long *)(param_1 + 0x140);
   - Subsequent same-variable accesses: add_0x20, add_0x58
+  - ADDRESS_OR_UNKNOWN at 671: lVar1 = lVar20 + 0x20;
+  - ADDRESS_OR_UNKNOWN at 674: *(undefined8 *)((long)piVar10 + lVar20 + 0x20) = 0xffffff00ffffff;
   - call at 664: lVar20 = FUN_0333d16c(0,1);
   - call at 693: lVar20 = FUN_0333d16c(0,1);
 
 
 ## Owner pointer field stores
+
+### FUN_01b2aa30
+- 268: *(undefined8 *)(param_1 + 0x140) = 0;
+- 285: *(undefined8 *)(param_2 + 0x140) = 0;
+- 287: *(undefined8 *)(param_1 + 0x140) = uVar7;
+
+### FUN_01443720
+- 151: *(undefined8 *)(param_1 + 0x140) = 0;
+- 155: *(long **)(param_1 + 0x140) = plVar6;
+
+### FUN_027f89f4
+- 49: *(undefined8 *)(param_1 + 0x140) = 0;
+- 146: *(undefined8 *)(param_1 + 0x140) = 0;
+
+### FUN_009612e0
+- 187: *(undefined8 *)(param_1 + 0x140) = 0;
+
+### FUN_016b7f10
+- 90: *(undefined8 *)(param_1 + 0x140) = 0;
+- 109: *(undefined8 *)(param_1 + 0x140) = local_d8;
 
 ### FUN_0174ac74
 - 336: *(ulong *)(lVar13 + 0x140) = *(ulong *)(lVar13 + 0x140) | 1L << (uVar22 & 0x3f);
@@ -117,8 +263,23 @@ Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
 - 647: *(ulong *)(lVar13 + 0x140) = *(ulong *)(lVar13 + 0x140) | 1L << (uVar22 & 0x3f);
 - 653: *(ulong *)(lVar13 + 0x140) = *(ulong *)(lVar13 + 0x140) | 1L << (uVar22 & 0x3f);
 
+### FUN_009925a4
+- 523: *(byte **)(param_1 + 0x140) = pbVar19;
+- 770: *(byte **)(param_1 + 0x140) = pbVar12;
+
 ### FUN_02e0d018
 - 192: *(undefined8 *)(param_1 + 0x140) = 0;
+
+### FUN_0238b584
+- 527: *(char **)(lVar12 + 0x140) = pcVar1;
+- 589: *(char **)(lVar12 + 0x140) = pcVar1;
+- 651: *(char **)(lVar12 + 0x140) = pcVar1;
+- 713: *(char **)(lVar12 + 0x140) = pcVar1;
+- 775: *(char **)(lVar12 + 0x140) = pcVar1;
+- 837: *(char **)(lVar12 + 0x140) = pcVar1;
+- 899: *(char **)(lVar12 + 0x140) = pcVar1;
+- 961: *(char **)(lVar12 + 0x140) = pcVar1;
+- 1285: *(char **)(lVar12 + 0x140) = pcVar1;
 
 ### FUN_0052d5e4
 - 287: *(undefined8 *)(param_1 + 0x140) = 0;
@@ -134,11 +295,6 @@ Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
 
 ### FUN_0318f5c0
 - 73: *(long *)(param_1 + 0x140) = lVar20;
-
-### FUN_01b2aa30
-- 268: *(undefined8 *)(param_1 + 0x140) = 0;
-- 285: *(undefined8 *)(param_2 + 0x140) = 0;
-- 287: *(undefined8 *)(param_1 + 0x140) = uVar7;
 
 ### FUN_01b34b24
 - 208: *(long *)(param_1 + 0x140) = lVar8;
@@ -157,8 +313,24 @@ Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
 - 118: *(undefined8 *)(param_2 + 0x140) = local_40;
 - 124: *(undefined8 *)(param_2 + 0x140) = local_60;
 
+### FUN_00960668
+- 408: *(undefined8 *)(param_1 + 0x140) = 0;
+- 424: *(long *)(param_1 + 0x140) = lVar9;
+
+### FUN_015d6ff4
+- 830: *(char **)(lVar14 + 0x140) = pcVar21;
+
+### FUN_017deacc
+- 2970: *(undefined8 *)(param_1 + 0x140) = 0;
+
 ### FUN_028f14e0
 - 44: *(undefined8 *)(param_1 + 0x140) = 0;
+
+### FUN_02946368
+- 471: *(long **)(param_1 + 0x140) = local_150;
+
+### FUN_02a69b58
+- 47: if (*(long *)(param_1 + 0x140) == *(long *)(param_1 + 0x148)) break;
 
 ### FUN_02b22e7c
 - 69: *(undefined8 *)(param_1 + 0x140) = 0;
@@ -318,13 +490,6 @@ Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
 ### FUN_008cca50
 - 102: *(undefined8 *)(puVar3 + 0x140) = 0;
 
-### FUN_00960668
-- 408: *(undefined8 *)(param_1 + 0x140) = 0;
-- 424: *(long *)(param_1 + 0x140) = lVar9;
-
-### FUN_009612e0
-- 187: *(undefined8 *)(param_1 + 0x140) = 0;
-
 ### FUN_00996460
 - 442: *(long *)(param_3 + 0x140) = *(long *)(param_3 + 0x140) + 0x60;
 
@@ -378,24 +543,17 @@ Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
 ### FUN_0143ac78
 - 151: *(long *)(param_1 + 0x140) = param_2[0xb];
 
-### FUN_01443720
-- 151: *(undefined8 *)(param_1 + 0x140) = 0;
-
 ### FUN_0145b0c8
 - 1086: *(undefined8 *)(param_1 + 0x140) = 0xffffffffffffffff;
-
-### FUN_016b7f10
-- 90: *(undefined8 *)(param_1 + 0x140) = 0;
-- 109: *(undefined8 *)(param_1 + 0x140) = local_d8;
 
 ### FUN_01701494
 - 956: if (*(char *)(lVar11 + 0x140) == '\0') goto LAB_01702604;
 
-### FUN_017deacc
-- 2970: *(undefined8 *)(param_1 + 0x140) = 0;
-
 ### FUN_019c9384
 - 65: *(undefined8 *)(param_2 + 0x140) = 0;
+
+### FUN_01a14354
+- 137: *(long **)(param_1 + 0x140) = plVar4;
 
 ### FUN_01a71028
 - 115: *(undefined8 *)(lVar12 + 0x140) = 0;
@@ -427,10 +585,6 @@ Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
 ### FUN_027c564c
 - 75: *(undefined8 *)(lVar8 + 0x140) = uVar1;
 
-### FUN_027f89f4
-- 49: *(undefined8 *)(param_1 + 0x140) = 0;
-- 146: *(undefined8 *)(param_1 + 0x140) = 0;
-
 ### FUN_0289ad50
 - 238: *(undefined8 *)(param_5 + 0x140) = uVar18;
 
@@ -442,9 +596,6 @@ Status: C_SAME_VARIABLE_ALIAS_CANDIDATE
 
 ### FUN_02941260
 - 62: *(undefined8 *)(param_1 + 0x140) = 0x1f0000001f;
-
-### FUN_02a69b58
-- 47: if (*(long *)(param_1 + 0x140) == *(long *)(param_1 + 0x148)) break;
 
 ### FUN_02ae991c
 - 97: *(undefined8 *)(DAT_043ef568 + 0x140) = 0x1f;
