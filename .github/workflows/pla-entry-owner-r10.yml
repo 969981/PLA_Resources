@@ -1,4 +1,5 @@
 name: PLA R10 entry owner pointer consumer audit
+# R10b: include Ghidra undefined8 ** load forms and distinguish zeroing from reads.
 
 on:
   push:
