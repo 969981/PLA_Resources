@@ -1,0 +1,80 @@
+name: PLA R11 byte-exact ARM64 spawner seed slices
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - .github/workflows/pla-entry-arm64-r11.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pla-entry-arm64-r11
+  cancel-in-progress: false
+
+jobs:
+  original-elf-static-slices:
+    if: github.repository == '969981/PLA_Resources'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout exact original main.elf and scan script without Ghidra
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /Unpack/v1.1.1/exefs/main/main.elf
+            /Unpack/v1.1.1/exefs/main/main.elf.sha256
+            /scripts/pla_trace_entry_arm64_r11.py
+            /.github/workflows/pla-entry-arm64-r11.yml
+            /docs/research/v1.1.1/semantic_inventory/pla_entry_arm64_r11.json
+            /docs/research/v1.1.1/semantic_inventory/pla_entry_arm64_r11.md
+      - name: Verify source hash and install small static readers
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install --no-cache-dir --user capstone==5.0.5 pyelftools==0.31
+          python3 -m py_compile scripts/pla_trace_entry_arm64_r11.py
+          python3 scripts/pla_trace_entry_arm64_r11.py \
+            --elf Unpack/v1.1.1/exefs/main/main.elf \
+            --out-json docs/research/v1.1.1/semantic_inventory/pla_entry_arm64_r11.json \
+            --out-md docs/research/v1.1.1/semantic_inventory/pla_entry_arm64_r11.md
+          python3 - <<'PY'
+          import json
+          j=json.load(open('docs/research/v1.1.1/semantic_inventory/pla_entry_arm64_r11.json'))
+          assert j['elf_sha256']=='260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794'
+          assert j['status']=='ARM64_BYTE_EXACT_STATIC_WINDOW_ONLY'
+          assert len(j['functions'])==11
+          assert all(x['decoded_count']>=8 for x in j['functions'].values())
+          print('Original ARM64 windows verified; original inputs untouched.')
+          PY
+      - name: Commit only new read-only evidence outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            docs/research/v1.1.1/semantic_inventory/pla_entry_arm64_r11.json \
+            docs/research/v1.1.1/semantic_inventory/pla_entry_arm64_r11.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'research(pla): publish R11 pinned ELF ARM64 seed producer and consumer windows'
+            git fetch -q origin master
+            git rebase origin/master
+            git push origin HEAD:refs/heads/master
+          fi
+      - name: Archive static slices
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PLA-R11-original-ARM64-slices
+          retention-days: 30
+          if-no-files-found: warn
+          path: |
+            docs/research/v1.1.1/semantic_inventory/pla_entry_arm64_r11.json
+            docs/research/v1.1.1/semantic_inventory/pla_entry_arm64_r11.md
