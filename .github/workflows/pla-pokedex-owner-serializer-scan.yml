@@ -1,0 +1,93 @@
+name: PLA 1.1.1 Pokedex owner and serializer static scan
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/pla-pokedex-owner-serializer-scan.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pla111-pokedex-owner-serializer-c-static
+  cancel-in-progress: false
+
+jobs:
+  static-scan:
+    if: github.repository == '969981/PLA_Resources'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Read-only checkout of pinned C and scanner
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          filter: blob:none
+          fetch-depth: 1
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/scan_pla_pokedex_owner_save.py
+            /derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/
+            /docs/research/v1.1.1/semantic_inventory/pokedex_owner_and_serializer_scan_r3.json
+            /docs/research/v1.1.1/semantic_inventory/pokedex_owner_and_serializer_scan_r3.md
+            /.github/workflows/pla-pokedex-owner-serializer-scan.yml
+
+      - name: Synthetic scanner tests and Python syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile scripts/scan_pla_pokedex_owner_save.py
+          python3 scripts/scan_pla_pokedex_owner_save.py --self-test
+
+      - name: Full existing C export coverage and no-mutation scan
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/scan_pla_pokedex_owner_save.py \
+            --c-root derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c \
+            --expected-count 82731 \
+            --out docs/research/v1.1.1/semantic_inventory/pokedex_owner_and_serializer_scan_r3.md \
+            --json-out docs/research/v1.1.1/semantic_inventory/pokedex_owner_and_serializer_scan_r3.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('docs/research/v1.1.1/semantic_inventory')
+          j=json.loads((root/'pokedex_owner_and_serializer_scan_r3.json').read_text())
+          assert j['status']=='STATIC_SOURCE_CANDIDATES_NOT_DATAFLOW_PROOF'
+          assert j['scanned_c_functions']==82731 and j['unreadable']==0
+          assert j['owner_offset_298']['syntactic_writer_occurrences']>0
+          assert j['original_elf_sha256']=='260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794'
+          assert 'NOT proof' in (root/'pokedex_owner_and_serializer_scan_r3.md').read_text() or 'NOT a proven' in (root/'pokedex_owner_and_serializer_scan_r3.md').read_text()
+          print('Coverage and proof-boundary gates passed.')
+          PY
+
+      - name: Publish only two new research outputs, idempotently
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            docs/research/v1.1.1/semantic_inventory/pokedex_owner_and_serializer_scan_r3.md \
+            docs/research/v1.1.1/semantic_inventory/pokedex_owner_and_serializer_scan_r3.json
+          if git diff --cached --quiet; then
+            echo 'Exact evidence unchanged; no new commit.'
+          else
+            git commit -m 'research(pla): publish full-C Pokedex owner and serializer audit'
+            git fetch -q origin master
+            git rebase origin/master
+            git push origin HEAD:refs/heads/master
+          fi
+
+      - name: Retain evidence files on success and failure
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: PLA-Pokedex-Owner-Serializer-Static-R3
+          retention-days: 30
+          if-no-files-found: warn
+          path: |
+            docs/research/v1.1.1/semantic_inventory/pokedex_owner_and_serializer_scan_r3.md
+            docs/research/v1.1.1/semantic_inventory/pokedex_owner_and_serializer_scan_r3.json
