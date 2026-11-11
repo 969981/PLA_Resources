@@ -1,0 +1,159 @@
+name: PLA v1.1.1 read-only Ghidra native Pokedex vtables R6
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - .github/workflows/pla-pokedex-native-ghidra-vtable-r6.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pla111-native-ghidra-pokedex-r6
+  cancel-in-progress: false
+
+jobs:
+  native-ghidra-vtable:
+    if: github.repository == '969981/PLA_Resources'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      SOURCE: derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla
+      GHIDRA_URL: https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.2_build/ghidra_12.2_PUBLIC_20261016.zip
+      GHIDRA_SHA256: 2c2cd776db3c1f6a097ba418922378ac3649cadd5e844a6f5f088ae628a7be67
+      OUTPUT: docs/research/v1.1.1/semantic_inventory
+    steps:
+      - name: Sparse checkout only original native project and read-only script
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /tools/ghidra/pla_restore_split.py
+            /tools/ghidra/PLATracePokedexVtablesR6.java
+            /.github/workflows/pla-pokedex-native-ghidra-vtable-r6.yml
+            /derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/parts_manifest.json
+            /derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/project/
+            /derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/project_parts/
+            /docs/research/v1.1.1/semantic_inventory/pokedex_vtable_native_ghidra_r6.ndjson
+            /docs/research/v1.1.1/semantic_inventory/pokedex_vtable_native_ghidra_r6.md
+
+      - name: Restore exact native Ghidra project without importing ELF
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile tools/ghidra/pla_restore_split.py
+          python3 tools/ghidra/pla_restore_split.py \
+            --source "$SOURCE" \
+            --out "$RUNNER_TEMP/pla_native" \
+            --project-only | tee "$RUNNER_TEMP/native_restore_stdout.json"
+          python3 - "$RUNNER_TEMP/pla_native/restore_report.json" <<'PY'
+          import json,sys
+          d=json.load(open(sys.argv[1]))
+          assert d['status']=='NATIVE_PROJECT_REASSEMBLED_AND_SHA256_VERIFIED',d
+          assert d['native_project'] is True and d['project_name']=='PLA111',d
+          print('Native original verified')
+          PY
+          test -f "$RUNNER_TEMP/pla_native/project/PLA111.gpr"
+
+      - name: Install pinned Java 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - name: Install SHA-256 verified Ghidra 12.2
+        shell: bash
+        run: |
+          set -euo pipefail
+          archive="$RUNNER_TEMP/ghidra_12.2_PUBLIC_20261016.zip"
+          mkdir -p "$RUNNER_TEMP/ghidra_dist"
+          curl --fail --location --retry 4 --retry-delay 10 --output "$archive" "$GHIDRA_URL"
+          printf '%s  %s\n' "$GHIDRA_SHA256" "$archive" | sha256sum --check
+          unzip -q "$archive" -d "$RUNNER_TEMP/ghidra_dist"
+          analyzer="$(find "$RUNNER_TEMP/ghidra_dist" -type f -path '*/support/analyzeHeadless' -print -quit)"
+          test -n "$analyzer"
+          chmod +x "$analyzer"
+          echo "GHIDRA_HEADLESS=$analyzer" >> "$GITHUB_ENV"
+          rm -f "$archive"
+
+      - name: Inspect original vtables with no analysis and read-only database
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$OUTPUT"
+          "$GHIDRA_HEADLESS" "$RUNNER_TEMP/pla_native/project" PLA111 \
+            -process main.elf -noanalysis -readOnly \
+            -scriptPath "$GITHUB_WORKSPACE/tools/ghidra" \
+            -postScript PLATracePokedexVtablesR6.java "$GITHUB_WORKSPACE/$OUTPUT/pokedex_vtable_native_ghidra_r6.ndjson" \
+            -log "$RUNNER_TEMP/pla_vtable_ghidra.log" \
+            -scriptlog "$RUNNER_TEMP/pla_vtable_script.log"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path('docs/research/v1.1.1/semantic_inventory')
+          rows=[json.loads(x) for x in (base/'pokedex_vtable_native_ghidra_r6.ndjson').read_text().splitlines()]
+          assert rows[0]['status']=='READ_ONLY_GHIDRA_VTABLE_REFERENCES'
+          assert rows[0]['image_base']=='00100000' and rows[0]['program']=='main.elf'
+          assert rows[-1]=={'type':'summary','complete':True,'targets':15,'tables':3,'slots':132}
+          targets=[x for x in rows if x['type']=='target_references']
+          slots=[x for x in rows if x['type']=='vtable_slot']
+          assert len(targets)==15 and len(slots)==132,(len(targets),len(slots))
+          assert any(x['reference_count']>0 for x in targets)
+          notable=[x for x in slots if x.get('reference_count',0)>0 or x.get('u64') not in (None,'0x0000000000000000')]
+          print('Target refs:',[(x['target'],x['reference_count']) for x in targets])
+          print('Interesting slots:',len(notable))
+          txt=['# PLA R6 — original Ghidra 12.2 read-only vtable inspection','',
+               'Verified restored original native Ghidra project; headless -noanalysis -readOnly.',
+               'Pinned source ELF SHA-256: 260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794.',
+               'Evidence is Ghidra native data and references, NOT observed runtime virtual dispatch.',
+               '','| Target | xrefs | Symbol |','| --- | ---: | --- |']
+          for x in targets:
+            txt.append('| '+x['target']+' | '+str(x['reference_count'])+' | '+str(x['symbol'])+' |')
+          txt+=['','## Nonzero or referenced vtable entries','',
+                '| Table | Offset (bytes) | Address | Data qword | Data value | Xrefs |',
+                '| --- | ---: | --- | --- | --- | ---: |']
+          for x in notable:
+            txt.append('| '+x['table']+' | '+str(x['slot'])+' | '+x['address']+
+                ' | '+str(x.get('u64'))+' | '+str(x.get('defined_data_value'))+
+                ' | '+str(x.get('reference_count',0))+' |')
+          txt+=['','## Strict limits','',
+                '- Raw ELF vtable words are relocation placeholders; zero is not necessarily a null virtual method.',
+                '- Ghidra references or nonzero qwords are not automatically verified runtime BLR dispatch.',
+                '- No game-side Commit success or cold restart was attempted.',
+                '']
+          (base/'pokedex_vtable_native_ghidra_r6.md').write_text('\n'.join(txt),encoding='utf-8')
+          PY
+
+      - name: Publish only derived research results
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            "$OUTPUT/pokedex_vtable_native_ghidra_r6.ndjson" \
+            "$OUTPUT/pokedex_vtable_native_ghidra_r6.md"
+          if git diff --cached --quiet; then
+            echo 'Read-only evidence unchanged'
+          else
+            git commit -m 'research(pla): publish original Ghidra vtable and cross-reference evidence'
+            git fetch -q origin master
+            git rebase origin/master
+            git push origin HEAD:refs/heads/master
+          fi
+
+      - name: Retain derived vtable analysis even on job failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PLA111-Pokedex-Native-Ghidra-R6
+          retention-days: 30
+          if-no-files-found: warn
+          path: |
+            docs/research/v1.1.1/semantic_inventory/pokedex_vtable_native_ghidra_r6.ndjson
+            docs/research/v1.1.1/semantic_inventory/pokedex_vtable_native_ghidra_r6.md
