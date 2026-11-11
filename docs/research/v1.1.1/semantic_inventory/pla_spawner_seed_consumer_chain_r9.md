@@ -20,7 +20,7 @@
 ## 2. CONFIRMED：条目关联的实体清理及刷新条件
 
 - [FUN_01B54E58](https://github.com/969981/PLA_Resources/blob/master/derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01b54e58.c) 实际调用 `FUN_01B56418`，还依据刷新控制对象中的计数与模式字段决定是否触发。
-- [FUN_01BAB534](https://github.com/969981/PLA_Resources/blob/master/derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01bab534.c) 在活动对象刷新数量变化时读取 `spawner+0x418` 并标记 `entry+0x43`；也会调用 `FUN_01B54E58`，属于 **调度/状态** 环节。
+- [FUN_01BAB534](https://github.com/969981/PLA_Resources/blob/master/derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01bab534.c) 在活动对象刷新数量变化时写入 `spawner+0x418` 的数量，并对不再需要的 `entry+0x43` 写入空位标记；也会调用 `FUN_01B54E58`，属于 **调度/状态** 环节。
 - [FUN_01BAB8F4](https://github.com/969981/PLA_Resources/blob/master/derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01bab8f4.c) 从控制对象 `+0x4C8` 获取 spawner，逐条读取 8 组 `entry+0x42/+0x43` 状态，判断是否均已死亡或为空。它读取的是 **生命周期标记**，不表示已使用 `GenerateSeed`。
 - [FUN_01B55130](https://github.com/969981/PLA_Resources/blob/master/derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01b55130.c) 在实体清理时取 `*(entity+0x140)` 指向的条目，把条目 `+0x43` 置为 1，清空 `+0x20` 和 `+0x58` 等位置。
 - [FUN_01B570CC](https://github.com/969981/PLA_Resources/blob/master/derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01b570cc.c) 也经实体 `+0x140` 指针重置相同状态；[FUN_01B54FA0](https://github.com/969981/PLA_Resources/blob/master/derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01b54fa0.c) 是调用清理及注销的上层。
