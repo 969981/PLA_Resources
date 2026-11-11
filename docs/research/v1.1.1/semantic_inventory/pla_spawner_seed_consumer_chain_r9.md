@@ -39,6 +39,8 @@
 
 上述 `param_1+0x350` 和 `param_1+0x6F0` 是各自独立调用者中的字段位置；即使两者都运行 xoroshiro128+，**不能证明它们的 seed 源自 spawner entry+0x20**。需要通过结构体指针与寄存器读写来证明，不能仅用整数常量或函数相近地址推断。
 
+**新增排除证据——`FUN_01BBE470 → FUN_01BB3778` 独立随机流：** [FUN_01BBE470](https://github.com/969981/PLA_Resources/blob/master/derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01bbe470.c) 在函数入口附近先从其自身 `param_1+0x350/+0x358` 的 xoroshiro128+ 状态推进一轮，将旧输出写入 `param_1+0x1F8`。在实际调用 `FUN_01BB3778(param_1)` 之前，明确执行 `*(u64 *)(param_1+0x350) = *(u64 *)(param_1+0x1F8)` 以及 `*(u64 *)(param_1+0x358) = 0x82A2B175229D6A5B`。下游的 `FUN_01BB3778` 把 `param_1+0x350` 传给 `FUN_01094470`。这说明**该次调用**采用来自控制对象自身上一轮随机输出的随机流，不是从 `entry+0x20` 显式读取的 Seed；但不能排除游戏其他独立分支使用同一生成工具的可能。审计标签：`CONFIRMED_SEPARATE_RNG_STREAM_ON_OBSERVED_CALL_EDGE`。
+
 ## 4. 被排除的误判候选
 
 - [FUN_01BFE800](https://github.com/969981/PLA_Resources/blob/master/derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/01bfe800.c) 虽命中 spawner 相关 0x20、0x58、0x400、0x408、0x4C8 等高分模式，代码实为大范围逐字段拷贝；并无已证实的随机数使用。**EXCLUDED as direct RNG consumer**。
