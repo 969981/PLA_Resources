@@ -1,0 +1,87 @@
+name: PLA 1.1.1 serializer owner pointer trace
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/pla-serializer-owner-pointer-trace.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pla111-serializer-owner-pointer-static
+  cancel-in-progress: false
+
+jobs:
+  raw-elf-pointers:
+    if: github.repository == '969981/PLA_Resources'
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    steps:
+      - name: Sparse checkout original derived ELF and independent read-only scanner
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/trace_pla_serializer_owner_pointers.py
+            /Unpack/v1.1.1/exefs/main/main.elf
+            /.github/workflows/pla-serializer-owner-pointer-trace.yml
+            /docs/research/v1.1.1/semantic_inventory/serializer_owner_ptr_trace_r4.md
+            /docs/research/v1.1.1/semantic_inventory/serializer_owner_ptr_trace_r4.json
+
+      - name: Recheck pristine ELF and scan real data/code references
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile scripts/trace_pla_serializer_owner_pointers.py
+          printf '%s  %s\n' \
+            '260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794' \
+            'Unpack/v1.1.1/exefs/main/main.elf' | sha256sum --check
+          python3 scripts/trace_pla_serializer_owner_pointers.py \
+            --elf Unpack/v1.1.1/exefs/main/main.elf \
+            --output-md docs/research/v1.1.1/semantic_inventory/serializer_owner_ptr_trace_r4.md \
+            --output-json docs/research/v1.1.1/semantic_inventory/serializer_owner_ptr_trace_r4.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path("docs/research/v1.1.1/semantic_inventory/serializer_owner_ptr_trace_r4.json").read_text())
+          assert j["status"]=="RAW_ELF_DIRECT_BL_AND_EXACT_DATA_POINTERS_ONLY"
+          assert j["anchor_verified"]=={"site":"0x112F518","callee":"0x112F528"}
+          assert j["source_sha256"]=="260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794"
+          assert j["targets"]["SerializerCopyAndEmit"]["direct_bl_total"]>=1
+          print("Original ELF identity and direct pointer evidence gates passed")
+          PY
+
+      - name: Publish only newly generated evidence, idempotently
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            docs/research/v1.1.1/semantic_inventory/serializer_owner_ptr_trace_r4.md \
+            docs/research/v1.1.1/semantic_inventory/serializer_owner_ptr_trace_r4.json
+          if git diff --cached --quiet; then
+            echo 'Evidence unchanged'
+          else
+            git commit -m 'research(pla): publish exact raw ELF serializer pointer xrefs'
+            git fetch -q origin master
+            git rebase origin/master
+            git push origin HEAD:refs/heads/master
+          fi
+
+      - name: Retain evidence on failure or success
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PLA-Serializer-Owner-Pointers-R4
+          retention-days: 30
+          if-no-files-found: warn
+          path: |
+            docs/research/v1.1.1/semantic_inventory/serializer_owner_ptr_trace_r4.md
+            docs/research/v1.1.1/semantic_inventory/serializer_owner_ptr_trace_r4.json
