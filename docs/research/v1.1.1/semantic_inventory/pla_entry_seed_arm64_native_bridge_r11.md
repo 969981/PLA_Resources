@@ -124,6 +124,14 @@ EntityRNG(EntitySeed)
 
 不能把写入后的 `Entry+0x20` 数值直接当成 `EntitySeed`：它先作为 **Slot/GenerateSeed** 初始化一层 RNG。
 
+### R11 本地/Actions 对账工具
+
+- [`scripts/pla_rng_guest_parity_r11.py`](https://github.com/969981/PLA_Resources/blob/master/scripts/pla_rng_guest_parity_r11.py)：读取一条 **真实 guest 只读采样**，用已有的 R8 算法参考 `Xoroshiro128Plus`、`entity_from_seed`、`group_frame` 计算 SlotSeed→EntitySeed、EC、6 IV，并在提供 TID32 后按 PKHeX `ForceShinyState` 逻辑对比 PA8 PID。
+- 未取得完整数据时严格输出 `SKIP_MISSING_EVIDENCE`，不会伪造 native 对账通过。内置的正常和错误样本测试只是 **SYNTHETIC UNIT TEST**，不能证明游戏生成链。
+- `python scripts/pla_rng_guest_parity_r11.py --write-template /tmp/pla_capture.json` 只生成空白输入模板，`python scripts/pla_rng_guest_parity_r11.py --capture /tmp/pla_capture.json --report /tmp/pla_parity.json` 执行可审计比较。
+- [`pla-rng-parity-r11.yml`](https://github.com/969981/PLA_Resources/blob/master/.github/workflows/pla-rng-parity-r11.yml) 的 Actions 仅检查参考算法和未提供 native 样本时不能 PASS 的防误判行为。
+
+
 ## 5. 下一道唯一未闭合关口
 
 1. 从同一运行时 `Owner+0x140` 得到 `EntryPtr`，验证是否与 `SpawnerPtr + N*0x80` 相等。
