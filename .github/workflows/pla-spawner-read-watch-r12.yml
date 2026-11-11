@@ -1,0 +1,52 @@
+name: PLA R12 Seed READ watchpoint observer validation (synthetic only)
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - .github/workflows/pla-spawner-read-watch-r12.yml
+      - scripts/pla_spawner_seed_read_gdb_r12.py
+      - scripts/audit_pla_spawner_seed_read_r12.py
+      - tests/test_pla_spawner_seed_read_r12.py
+      - scripts/pla_rng_reference_r8.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-watchpoint-validation:
+    if: github.repository == '969981/PLA_Resources'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/pla_rng_reference_r8.py
+            /scripts/audit_pla_spawner_seed_read_r12.py
+            /scripts/pla_spawner_seed_read_gdb_r12.py
+            /tests/test_pla_spawner_seed_read_r12.py
+            /.github/workflows/pla-spawner-read-watch-r12.yml
+      - name: Validate Python code, GDB API mock, read-vs-write classification and error cases
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile \
+            scripts/pla_spawner_seed_read_gdb_r12.py \
+            scripts/audit_pla_spawner_seed_read_r12.py \
+            scripts/pla_rng_reference_r8.py \
+            tests/test_pla_spawner_seed_read_r12.py
+          python3 scripts/audit_pla_spawner_seed_read_r12.py --self-test
+          python3 tests/test_pla_spawner_seed_read_r12.py
+      - name: Document scope limitation
+        shell: bash
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ## PLA R12 watchpoint validation
+          - Verified: Python compilation; independent audit negative and positive cases; mock GDB memory signatures; explicit WP_READ configuration; post-STR producer register/memory sampling; synthetic PC/LR log.
+          - **NOT verified**: actual emulator hardware watchpoint support; real guest Entry+0x20 READ PC; native SlotRNG outputs; EC/PID/IV from same PA8.
+          - A green CI job is **not** a live PLA game observation.
+          EOF
