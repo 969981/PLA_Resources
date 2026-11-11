@@ -8,8 +8,8 @@ from collections import Counter
 SHA = "260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794"
 TOTAL = 82731
 ROOT = "derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/"
-LOAD = re.compile(r"\b(?P<dst>[a-zA-Z]\w*)\s*=\s*(?:\([a-zA-Z_]\w*(?:\s*\*)?\)\s*)?\*\s*\(\s*(?:u?long|undefined8|void|char|byte)\s*\*\s*\)\s*\(\s*(?P<base>[a-zA-Z]\w*)\s*\+\s*0x140\s*\)\s*;",re.I)
-STORE = re.compile(r"\*\s*\(\s*(?:u?long|undefined8|void|char|byte)\s*\*\s*\)\s*\(\s*(?P<base>[a-zA-Z]\w*)\s*\+\s*0x140\s*\)\s*=\s*(?P<rhs>[^;\n]{1,220});",re.I)
+LOAD = re.compile(r"\b(?P<dst>[a-zA-Z]\w*)\s*=\s*(?:\([a-zA-Z_]\w*(?:\s*\*)?\)\s*)?\*\s*\(\s*(?:u?long|undefined8|void|char|byte)\s*\*{1,2}\s*\)\s*\(\s*(?P<base>[a-zA-Z]\w*)\s*\+\s*0x140\s*\)\s*;",re.I)
+STORE = re.compile(r"\*\s*\(\s*(?:u?long|undefined8|void|char|byte)\s*\*{1,2}\s*\)\s*\(\s*(?P<base>[a-zA-Z]\w*)\s*\+\s*0x140\s*\)\s*=\s*(?P<rhs>[^;\n]{1,220});",re.I)
 NEST = re.compile(r"\*\s*\(\s*(?:u?long|undefined8|uint|int)\s*\*\s*\)\s*\(\s*\*\s*\(\s*(?:u?long|undefined8)\s*\*\s*\)\s*\(\s*[A-Za-z]\w*\s*\+\s*0x140\s*\)\s*\+\s*0x20\s*\)",re.I)
 CALL = re.compile(r"\bFUN_([0-9a-f]{8})\s*\(",re.I)
 CONST = re.compile(r"(?<![0-9a-fA-F])0x140\b",re.I)
@@ -26,15 +26,28 @@ def analyze(body,name):
             uses=sorted({"add_"+z.group("off") for z in ADDS.finditer(suffix) if z.group("var")==var}|
                         {"subscript_"+z.group("off") for z in ARRAY.finditer(suffix) if z.group("var")==var})
             calls=[{"line":k+1,"code":rows[k].strip()[:250]} for k in range(i+1,min(i+141,len(rows))) if re.search(r"\b"+re.escape(var)+r"\b",rows[k]) and CALL.search(rows[k])]
-            loads.append({"line":i+1,"var":var,"base":x.group("base"),"source":line.strip()[:300],"uses":uses,"near_calls":calls[:5]})
+            use_sites=[]
+            for k in range(i+1,min(i+141,len(rows))):
+                v=rows[k]
+                pattern=r"\\b"+re.escape(var)+r"\\s*(?:\\[\\s*4\\s*\\]|\\+\\s*0x20\\b)"
+                if not re.search(pattern,v):continue
+                # Control object may reset the entry field, which is not a seed consumer.
+                writing=bool(re.search(r"\\b"+re.escape(var)+r"\\s*\\[\\s*4\\s*\\]\\s*=",v))
+                writing=writing or bool(re.search(r"\\*\\s*\\(\\s*(?:u?long|undefined8)\\s*\\*\\s*\\)\\s*\\(\\s*"+re.escape(var)+r"\\s*\\+\\s*0x20\\s*\\)\\s*=",v))
+                reading=(not writing) and (bool(re.search(r"=\\s*"+re.escape(var)+r"\\s*\\[\\s*4\\s*\\]",v)) or
+                         bool(re.search(r"=\\s*\\*\\s*\\(\\s*(?:u?long|undefined8)\\s*\\*\\s*\\)\\s*\\(\\s*"+re.escape(var)+r"\\s*\\+\\s*0x20\\s*\\)",v)))
+                use_sites.append({"line":k+1,"mode":"WRITE_OR_CLEAR" if writing else "READ_CANDIDATE" if reading else "ADDRESS_OR_UNKNOWN","source":v.strip()[:300]})
+            loads.append({"line":i+1,"var":var,"base":x.group("base"),"source":line.strip()[:300],
+                          "uses":uses,"use_sites":use_sites[:25],"near_calls":calls[:5]})
         for x in STORE.finditer(line):
             stores.append({"line":i+1,"base":x.group("base"),"rhs":x.group("rhs"),"source":line.strip()[:300]})
         if NEST.search(line):
             nests.append({"line":i+1,"source":line.strip()[:300]})
     candidates=[x for x in loads if "add_0x20" in x["uses"] or "subscript_4" in x["uses"]]
+    probable_reads=[x for x in candidates if any(y["mode"]=="READ_CANDIDATE" for y in x["use_sites"])]
     return {"function":"FUN_"+name,"path":ROOT+name[:2]+"/"+name+".c",
-            "loads":loads[:25],"stores":stores[:25],"nested":nests[:25],"candidates":candidates[:25],
-            "call_ids":sorted(set(CALL.findall(body))),"counts":{"loads":len(loads),"stores":len(stores),"nested":len(nests),"candidates":len(candidates)},
+            "loads":loads[:25],"stores":stores[:25],"nested":nests[:25],"candidates":candidates[:25],"probable_reads":probable_reads[:25],
+            "call_ids":sorted(set(CALL.findall(body))),"counts":{"loads":len(loads),"stores":len(stores),"nested":len(nests),"candidates":len(candidates),"probable_reads":len(probable_reads)},
             "status":"NESTED_140_20_EXPRESSION" if nests else "C_SAME_VARIABLE_ALIAS_CANDIDATE" if candidates else "140_FIELD_LOAD_OR_STORE_ONLY"}
 def audit(root):
     paths=sorted(root.glob("*/*.c"))
@@ -73,6 +86,7 @@ def markdown(j):
         for x in r["candidates"]:
             t+=["- line "+str(x["line"])+": "+x["source"],
                 "  - Subsequent same-variable accesses: "+", ".join(x["uses"])]
+            for y in x["use_sites"][:9]:t.append("  - "+y["mode"]+" at "+str(y["line"])+": "+y["source"])
             for y in x["near_calls"][:4]:t.append("  - call at "+str(y["line"])+": "+y["code"])
         for y in r["nested"]:t.append("- nested expression "+str(y["line"])+": "+y["source"])
         t.append("")
@@ -97,6 +111,7 @@ def main():
     k=analyze(s,"01b55130")
     assert len(k["loads"])==1 and len(k["stores"])==1 and len(k["candidates"])==1
     assert "add_0x20" in k["candidates"][0]["uses"]
+    assert len(analyze("puVar8 = *(undefined8 **)(param_1 + 0x140);\\npuVar8[4] = 0;","01b55130")["loads"])==1
     assert not analyze("(**(code **)(*param_1 + 0x140))(param_1);","01b55130")["loads"]
     print("R10 synthetic lexical source tests PASS")
     if v.self_test:return
