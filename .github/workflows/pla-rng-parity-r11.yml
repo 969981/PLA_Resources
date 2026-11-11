@@ -1,0 +1,46 @@
+name: PLA R11 PKHeX reference parity fixture verification
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - .github/workflows/pla-rng-parity-r11.yml
+      - scripts/pla_rng_guest_parity_r11.py
+      - scripts/pla_rng_reference_r8.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-tests-only:
+    if: github.repository == '969981/PLA_Resources'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/pla_rng_reference_r8.py
+            /scripts/pla_rng_guest_parity_r11.py
+            /.github/workflows/pla-rng-parity-r11.yml
+      - name: Run deterministic reference and capture-format unit tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile scripts/pla_rng_reference_r8.py scripts/pla_rng_guest_parity_r11.py
+          python3 scripts/pla_rng_reference_r8.py --self-test
+          python3 scripts/pla_rng_guest_parity_r11.py --self-test
+          python3 scripts/pla_rng_guest_parity_r11.py --write-template /tmp/pla-r11-empty-guest-template.json
+          python3 scripts/pla_rng_guest_parity_r11.py --capture /tmp/pla-r11-empty-guest-template.json --report /tmp/pla-r11-empty-guest-result.json
+          python3 - <<'PY'
+          import json
+          r=json.load(open('/tmp/pla-r11-empty-guest-result.json'))
+          assert r['status']=='PARTIAL_OR_NO_GUEST_EVIDENCE'
+          assert r['counts']['PASS']==0
+          assert r['counts']['FAIL']==0
+          assert r['counts']['SKIP_MISSING_EVIDENCE']>0
+          print('R11: no fake native success from an empty capture.')
+          PY
