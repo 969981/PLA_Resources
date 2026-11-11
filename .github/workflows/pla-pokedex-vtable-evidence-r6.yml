@@ -1,0 +1,86 @@
+name: PLA 1.1.1 native Pokedex factory and vtable evidence R6
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - .github/workflows/pla-pokedex-vtable-evidence-r6.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pla-111-vtable-evidence-r6
+  cancel-in-progress: false
+
+jobs:
+  native-evidence:
+    if: github.repository == '969981/PLA_Resources'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Sparse checkout original ELF and read-only scripts
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /Unpack/v1.1.1/exefs/main/main.elf
+            /scripts/trace_pla_pokedex_vtable_r6.py
+            /scripts/trace_pla_serializer_owner_pointers.py
+            /.github/workflows/pla-pokedex-vtable-evidence-r6.yml
+            /docs/research/v1.1.1/semantic_inventory/pokedex_vtable_factory_raw_elf_r6.md
+            /docs/research/v1.1.1/semantic_inventory/pokedex_vtable_factory_raw_elf_r6.json
+      - name: Verify original ELF and extract exact ARM64 evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check capstone==5.0.6
+          python3 -m py_compile scripts/trace_pla_serializer_owner_pointers.py scripts/trace_pla_pokedex_vtable_r6.py
+          printf '%s  %s\n' \
+            260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794 \
+            Unpack/v1.1.1/exefs/main/main.elf | sha256sum --check
+          python3 scripts/trace_pla_pokedex_vtable_r6.py \
+            --elf Unpack/v1.1.1/exefs/main/main.elf \
+            --out-md docs/research/v1.1.1/semantic_inventory/pokedex_vtable_factory_raw_elf_r6.md \
+            --out-json docs/research/v1.1.1/semantic_inventory/pokedex_vtable_factory_raw_elf_r6.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open("docs/research/v1.1.1/semantic_inventory/pokedex_vtable_factory_raw_elf_r6.json"))
+          assert d["status"]=="STATIC_RAW_ELF_NOT_DYNAMIC_VTABLE_PROOF"
+          assert d["sha256"]=="260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794"
+          assert len(d["targets"]["context_constructor"]["direct_BL"])>=1
+          assert len(d["targets"]["slot_factory_wrapper"]["direct_BL"])>=1
+          assert len(d["targets"]["slot_object_allocator"]["direct_BL"])>=1
+          assert d["windows"]["object_initializer_or_error"]
+          print("Verified raw constructor evidence and no unproven dynamic-dispatch claim")
+          PY
+      - name: Publish only new research reports
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- docs/research/v1.1.1/semantic_inventory/pokedex_vtable_factory_raw_elf_r6.md \
+            docs/research/v1.1.1/semantic_inventory/pokedex_vtable_factory_raw_elf_r6.json
+          if git diff --cached --quiet; then
+            echo 'Evidence unchanged'
+          else
+            git commit -m 'research(pla): publish native Pokedex factory and vtable target xrefs'
+            git fetch -q origin master
+            git rebase origin/master
+            git push origin HEAD:refs/heads/master
+          fi
+      - name: Preserve evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PLA111-Pokedex-Factory-R6
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            docs/research/v1.1.1/semantic_inventory/pokedex_vtable_factory_raw_elf_r6.md
+            docs/research/v1.1.1/semantic_inventory/pokedex_vtable_factory_raw_elf_r6.json
