@@ -100,9 +100,42 @@ FUN_0287F8B0
 
 Ghidra 原生程序引用里还同时有三类独立证据：`0x0114725C <- 0x01145DA4` 构造引用、`0x0114BC50 <- 0x0114726C` 分配引用，以及 `FUN_010CD044` 在 `FUN_01147C34` 中的 37 个直接 `BL` 注册操作。这些与虚表数据相互支撑。
 
-**仍未证明的唯一方法层关键边**：`FUN_010CD044` 通过传入对象的 `vtable+0x10` 返回哪种具体 listener/ref 及其实际虚表，`FUN_010CEEA0/+0x40`、`FUN_010CEC54/+0x48`、`FUN_010CEB08/+0x58` 对该 listener 的 `BLR` 是否确实进入上述 `PokedexSave` 主虚表槽位。已静态恢复方法表不等于实机实际使用路径；仍需还原 `FUN_008A782C` 等 getter thunk 或记录动态对象身份。
+**仍未证明的唯一方法层关键边**：`FUN_010CD044` 通过传入对象的 `vtable+0x10` 返回哪种具体 listener/ref 及其实际虚表，`FUN_010CEEA0/+0x40`、`FUN_010CEC54/+0x48`、`FUN_010CEB08/+0x58` 对该 listener 的 `BLR` 是否确实进入上述 `PokedexSave` 主虚表槽位。现已由 `FUN_008A782C → 控制记录 +0x18 → FUN_010D68E4` 的静态证据闭合对象身份，运行时调度顺序仍需实机/guest 验证。
 
-## 6. 保存任务与持久化边界
+## 6. 注册 listener 的真实对象身份：引用控制结构闭环（CONFIRMED static linkage）
+
+新一轮 [原始 ELF + 回调入口扫描](https://github.com/969981/PLA_Resources/actions/runs/42943359227) 把 `FUN_008A782C` 和 `FUN_010D68E4` 的必要中间环节恢复了出来。配合已发布的 C：
+- [`FUN_008A93D8`](https://github.com/969981/PLA_Resources/blob/master/derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/00/008a93d8.c) 初始化图鉴对象基础类，并执行 `FUN_02A43E4C(&local_48, allocator, param_1+10)`，传入的 `param_1+10` 为 **图鉴对象 `object+0x50`**。
+- [`FUN_02A43E4C`](https://github.com/969981/PLA_Resources/blob/master/derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/02/02a43e4c.c) 写入共享控制记录 `*(long *)(control+0x18) = param_3`；故 `control+0x18=object+0x50`。基础类随后将控制句柄 `local_48` 存入 `object+0x58`。
+- Ghidra 原生主虚表 `+0x10 → 0x008A782C`，原始 ARM64：
+
+```asm
+0x008A782C add x1,x0,#0x58
+0x008A7830 mov x0,x8
+0x008A7834 stp xzr,xzr,[x8]
+0x008A7838 b   #0x7802f0
+```
+
+  其在 `object+0x58` 的控制句柄基础上生成注册引用（后面 tail 分发实现需要完整上下文，故不直接将 `0x007802F0` 命名为唯一完整函数入口）。
+
+- [`FUN_010CD044`](https://github.com/969981/PLA_Resources/blob/master/derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/010cd044.c) 在注册对象时调用参数的 `vtable+0x10`，将返回的句柄插入 manager `+0xD8/+0xE0` 回调引用列表。
+- [`FUN_010D68E4`](https://github.com/969981/PLA_Resources/blob/master/derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/01/010d68e4.c) 在锁住有效的控制引用以后，实际执行：
+
+```asm
+0x010D6970 ldr  x9,[x0,#0x18]   ; control + 0x18
+0x010D6974 sub  x10,x9,#0x50    ; (object+0x50)-0x50 = object
+0x010D6978 cmp  x9,#0
+0x010D697C csel x9,xzr,x10,eq
+0x010D6980 str  x9,[x8]         ; 输出恢复对象基址
+```
+
+- 因此 hashdb manager 列表中的受管理引用能恢复到**同一个图鉴对象的主对象基址**，而不必假设两个无关对象只是字段偏移相似。其调用者 `FUN_010CEEA0` / `FUN_010CEC54` / `FUN_010CEB08` 使用原始主对象指针，分别查询虚表 `+0x40/+0x48/+0x58`。主虚表实际目标如上表已由 Ghidra 原生数据库恢复。
+
+**结论**：将 `context+0x298 → 受管理引用注册 → 引用控制记录 → 原对象身份 → 主虚表回调方法 → KZukan=0x02168706 数据读写包装` 标记为 **CONFIRMED STATIC**。这不是基于同一个 hash 值的经验联想，而是由构造源地址、控制块逆算、函数指针表、原生 ARM64 BL 及 Ghidra 静态引用逐段证明的关系。
+
+但**静态回调能力不是实时触发证明**。主虚表 `+0x40` 会重置后尾调写方法；`+0x48` 是读；`+0x58` 在检查的原生代码窗口直接 `RET`。何时实际调用这些方法，哪些入口用于初始化、加载或保存，仍需观察运行时事件/任务调度。不能把 `FUN_010CEEA0` 的 `+0x40` 自动解释为每次 `UpdateAllReportPoke` 的正常保存。
+
+## 7. 保存任务与持久化边界
 
 ```text
 SaveSystem context+0x298  —— 已证明来自 FUN_0114725C / FUN_0114BC50
@@ -111,7 +144,7 @@ Pokedex 实例 + 主/附加虚表 —— 原始 ARM64 已恢复安装语句
             |
 注册到 hashdb listener —— FUN_01147C34 → FUN_010CD044，已证明
             |
-listener vtable +0x40/+0x48/+0x58 —— 注册管理器回调已确认；是否直接等于 Pokedex 主虚表待查
+listener vtable +0x40/+0x48/+0x58 —— 受管理引用经 control+0x18-0x50 恢复到原图鉴对象，静态虚表目标已确认
             |
 Pokedex 特定读取/写入包装 —— 0x0112E4C0 / 0x0112E660 已通过直接 BL 证明
             |
@@ -137,11 +170,12 @@ Commit 成功 ACK + 冷启动读回 —— 未验收
 | 图鉴 `state+0x6C` + `0x1E460` 读写 wrapper | **CONFIRMED** |
 | `KZukan` 原生 hashdb 记录读写 | **CONFIRMED** |
 | Pokedex 对象主虚表 +0x48 / +0x50 → 图鉴读/写包装函数 | **CONFIRMED 静态方法槽位与目标** |
-| 注册 listener/引用虚表是否直接分发至该 Pokedex 主虚表 | **UNRESOLVED**，需要 getter 与 listener 身份 |
+| 注册引用经弱引用控制块恢复到原图鉴对象并读取主虚表 | **CONFIRMED STATIC** |
+| 真实游戏中何时调度该方法（初始化、加载、保存） | **UNRESOLVED — runtime sequencing** |
 | UpdateAllReportPoke → 自动保存调度 | **UNRESOLVED** |
 | 文件事务 Commit ACK / 失败重试 / 重启读回 | **NOT VERIFIED** |
 
-## 7. 本轮新增可复现成果
+## 8. 本轮新增可复现成果
 
 - 原始 ELF 小范围原生汇编/xref 扫描：`scripts/trace_pla_pokedex_vtable_r6.py`。
 - ARM64 结果：`pokedex_vtable_factory_raw_elf_r6.md/.json`。
