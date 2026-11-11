@@ -23,6 +23,8 @@ import gdb
 
 GHIDRA_IMAGE_BASE = 0x100000
 POKEDEX_SIZE = 0x1E460
+AUX_OFFSET = 0x1E4CC
+AUX_SIZE = 0xF54  # end at +0x1F420 mutex; not included in KZukan saved block
 KZUKAN = 0x02168706
 SCHEMA = "pla111-r7-guest-events-v1"
 ALL_STAGES = {"update", "block", "mirror", "io", "commit"}
@@ -154,9 +156,11 @@ class PLAR7Observer:
 
     def pokedex(self, obj):
         if not obj: return {"object":None,"sha256":None}
-        return {"object":hex(obj),
-                "block_offset":hex(0x6C),
-                **self.hash_memory(obj+0x6C, POKEDEX_SIZE)}
+        result = {"object":hex(obj), "block_offset":hex(0x6C),
+                  **self.hash_memory(obj+0x6C, POKEDEX_SIZE)}
+        result["aux_offset"] = hex(AUX_OFFSET)
+        result["aux_sha256"] = self.hash_memory(obj+AUX_OFFSET, AUX_SIZE).get("sha256")
+        return result
 
     def descriptor(self, manager):
         result = {"manager":hex(manager) if manager else None,
@@ -271,8 +275,12 @@ class PLAR7Finish(gdb.FinishBreakpoint):
                 before_hash=self.before.get("state",{}).get("sha256")
                 new_hash=after.get("sha256")
                 changed=(before_hash!=new_hash if before_hash and new_hash else None)
+                old_aux=self.before.get("state",{}).get("aux_sha256")
+                new_aux=after.get("aux_sha256")
+                aux_changed=(old_aux!=new_aux if old_aux and new_aux else None)
                 o.emit(self.origin.replace("_enter","_exit"),
-                       state=after, previous_sha256=before_hash, changed=changed,
+                       state=after, previous_sha256=before_hash,
+                       changed=changed, aux_changed=aux_changed,
                        result_x0=hex(o.reg("x0")))
             elif self.kind=="snapshot":
                 block=self.before.get("block",{})
