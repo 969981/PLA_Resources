@@ -1,0 +1,4950 @@
+{
+  "status": "STATIC_CODE_CANDIDATES_NOT_PROVEN_SPAWNS",
+  "pinned_original_elf_sha256": "260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794",
+  "c_files_checked": 82731,
+  "counts": {
+    "spawn_keyword": 950,
+    "forward_rotation_like": 120,
+    "crypto_entropy": 19,
+    "seed_const": 31,
+    "calls_seed_constructor": 10
+  },
+  "candidate_count": 143,
+  "candidates": [
+    {
+      "function": "FUN_018c7a74",
+      "c_path": "01/018c7a74.c",
+      "score": 38,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": true,
+      "related_calls": [
+        "FUN_00db8508",
+        "FUN_00db8524"
+      ],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 66,
+          "excerpt": "local_80 = 0x82a2b175229d6a5b;"
+        },
+        {
+          "line_in_body": 203,
+          "excerpt": "local_b8 = \"spawn_pattern_num\";"
+        },
+        {
+          "line_in_body": 289,
+          "excerpt": "local_80 = uVar14 >> 0x1b | uVar14 << 0x25;"
+        },
+        {
+          "line_in_body": 292,
+          "excerpt": "(uVar14 ^ ((ulong)local_88 >> 0x28 | (long)local_88 << 0x18) ^ uVar14 << 0x10);"
+        },
+        {
+          "line_in_body": 353,
+          "excerpt": "local_80 = uVar15 >> 0x1b | uVar15 << 0x25;"
+        },
+        {
+          "line_in_body": 355,
+          "excerpt": "(uVar15 ^ ((ulong)local_88 >> 0x28 | (long)local_88 << 0x18) ^"
+        },
+        {
+          "line_in_body": 356,
+          "excerpt": "uVar15 << 0x10);"
+        }
+      ],
+      "extra_excerpt_count": 18,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_00abad68",
+      "c_path": "00/00abad68.c",
+      "score": 31,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [
+        "FUN_00db84c4"
+      ],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 505,
+          "excerpt": "local_78 = 0x82a2b175229d6a5b;"
+        },
+        {
+          "line_in_body": 518,
+          "excerpt": "local_78 = uVar17 >> 0x1b | uVar17 << 0x25;"
+        },
+        {
+          "line_in_body": 520,
+          "excerpt": "(uVar17 ^ ((ulong)local_80 >> 0x28 | (long)local_80 << 0x18) ^ uVar17 << 0x10);"
+        },
+        {
+          "line_in_body": 545,
+          "excerpt": "local_78 = uVar17 >> 0x1b | uVar17 << 0x25;"
+        },
+        {
+          "line_in_body": 548,
+          "excerpt": "(uVar17 ^ ((ulong)local_80 >> 0x28 | (long)local_80 << 0x18) ^ uVar17 << 0x10"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_00abb904",
+      "c_path": "00/00abb904.c",
+      "score": 31,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [
+        "FUN_00db84c4"
+      ],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 47,
+          "excerpt": "local_68 = 0x82a2b175229d6a5b;"
+        },
+        {
+          "line_in_body": 166,
+          "excerpt": "local_68 = uVar17 >> 0x1b | uVar17 << 0x25;"
+        },
+        {
+          "line_in_body": 169,
+          "excerpt": "(uVar17 ^ ((ulong)local_70 >> 0x28 | (long)local_70 << 0x18) ^ uVar17 << 0x10);"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_00abcec8",
+      "c_path": "00/00abcec8.c",
+      "score": 29,
+      "seed_const": true,
+      "crypto_entropy": true,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 33,
+          "excerpt": "nn::crypto::GenerateCryptographicallyRandomBytes(&local_58,8);"
+        },
+        {
+          "line_in_body": 487,
+          "excerpt": "uVar13 = 0x82a2b175229d6a5b;"
+        },
+        {
+          "line_in_body": 491,
+          "excerpt": "uVar13 = uVar21 >> 0x1b | uVar21 << 0x25;"
+        },
+        {
+          "line_in_body": 493,
+          "excerpt": "local_58 = uVar21 ^ (local_58 >> 0x28 | local_58 << 0x18) ^ uVar21 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_010924e0",
+      "c_path": "01/010924e0.c",
+      "score": 29,
+      "seed_const": true,
+      "crypto_entropy": true,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 225,
+          "excerpt": "nn::crypto::GenerateCryptographicallyRandomBytes(auStack_b0 + 0x98,8);"
+        },
+        {
+          "line_in_body": 233,
+          "excerpt": "uVar12 = 0x82a2b175229d6a5b;"
+        },
+        {
+          "line_in_body": 245,
+          "excerpt": "uVar12 = uVar15 >> 0x1b | uVar15 << 0x25;"
+        },
+        {
+          "line_in_body": 247,
+          "excerpt": "unaff_x19 = uVar15 ^ (unaff_x19 >> 0x28 | unaff_x19 << 0x18) ^ uVar15 << 0x10;"
+        },
+        {
+          "line_in_body": 265,
+          "excerpt": "uVar12 = uVar15 >> 0x1b | uVar15 << 0x25;"
+        },
+        {
+          "line_in_body": 267,
+          "excerpt": "unaff_x19 = uVar15 ^ (unaff_x19 >> 0x28 | unaff_x19 << 0x18) ^ uVar15 << 0x10;"
+        },
+        {
+          "line_in_body": 287,
+          "excerpt": "uVar12 = uVar15 >> 0x1b | uVar15 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 5,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01093640",
+      "c_path": "01/01093640.c",
+      "score": 29,
+      "seed_const": true,
+      "crypto_entropy": true,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 18,
+          "excerpt": "nn::crypto::GenerateCryptographicallyRandomBytes(&local_18,8);"
+        },
+        {
+          "line_in_body": 26,
+          "excerpt": "uVar8 = 0x82a2b175229d6a5b;"
+        },
+        {
+          "line_in_body": 39,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 41,
+          "excerpt": "local_18 = uVar9 ^ (local_18 >> 0x28 | local_18 << 0x18) ^ uVar9 << 0x10;"
+        },
+        {
+          "line_in_body": 59,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 61,
+          "excerpt": "local_18 = uVar9 ^ (local_18 >> 0x28 | local_18 << 0x18) ^ uVar9 << 0x10;"
+        },
+        {
+          "line_in_body": 81,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 5,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0192d274",
+      "c_path": "01/0192d274.c",
+      "score": 29,
+      "seed_const": true,
+      "crypto_entropy": true,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 158,
+          "excerpt": "local_da8 = 0x82a2b175229d6a5b;"
+        },
+        {
+          "line_in_body": 160,
+          "excerpt": "nn::crypto::GenerateCryptographicallyRandomBytes(&local_cd0,8);"
+        },
+        {
+          "line_in_body": 166,
+          "excerpt": "local_da8 = 0x82a2b175229d6a5b;"
+        },
+        {
+          "line_in_body": 730,
+          "excerpt": "local_da8 = uVar17 >> 0x1b | uVar17 << 0x25;"
+        },
+        {
+          "line_in_body": 733,
+          "excerpt": "(uVar17 ^ ((ulong)local_db0 >> 0x28 | (long)local_db0 << 0x18) ^ uVar17 << 0x10);"
+        },
+        {
+          "line_in_body": 914,
+          "excerpt": "(local_da8 ^ ((ulong)local_db0 >> 0x28 | (long)local_db0 << 0x18) ^"
+        },
+        {
+          "line_in_body": 915,
+          "excerpt": "local_da8 << 0x10);"
+        }
+      ],
+      "extra_excerpt_count": 35,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01b56418",
+      "c_path": "01/01b56418.c",
+      "score": 27,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 30,
+          "excerpt": "*(ulong *)(param_1 + 0x4b0) = uVar6 ^ (uVar8 >> 0x28 | uVar8 << 0x18) ^ uVar6 << 0x10;"
+        },
+        {
+          "line_in_body": 31,
+          "excerpt": "*(ulong *)(param_1 + 0x4b8) = uVar6 >> 0x1b | uVar6 << 0x25;"
+        },
+        {
+          "line_in_body": 58,
+          "excerpt": "uVar6 = uVar10 >> 0x1b | uVar10 << 0x25;"
+        },
+        {
+          "line_in_body": 60,
+          "excerpt": "uVar8 = uVar10 ^ (uVar8 >> 0x28 | uVar8 << 0x18) ^ uVar10 << 0x10;"
+        },
+        {
+          "line_in_body": 77,
+          "excerpt": "uVar6 = 0x82a2b175229d6a5b;"
+        },
+        {
+          "line_in_body": 81,
+          "excerpt": "uVar11 = uVar10 >> 0x1b | uVar10 << 0x25;"
+        },
+        {
+          "line_in_body": 83,
+          "excerpt": "uVar10 = uVar10 ^ (uVar8 >> 0x28 | uVar8 << 0x18) ^ uVar10 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 3,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01bbe470",
+      "c_path": "01/01bbe470.c",
+      "score": 27,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 108,
+          "excerpt": "*(ulong *)(param_1 + 0x350) = uVar17 ^ (uVar14 >> 0x28 | uVar14 << 0x18) ^ uVar17 << 0x10;"
+        },
+        {
+          "line_in_body": 109,
+          "excerpt": "*(ulong *)(param_1 + 0x358) = uVar17 >> 0x1b | uVar17 << 0x25;"
+        },
+        {
+          "line_in_body": 165,
+          "excerpt": "pcStack_220 = (char *)0x82a2b175229d6a5b;"
+        },
+        {
+          "line_in_body": 226,
+          "excerpt": "*(undefined8 *)(param_1 + 0x358) = 0x82a2b175229d6a5b;"
+        },
+        {
+          "line_in_body": 256,
+          "excerpt": "*(undefined8 *)(param_1 + 0x358) = 0x82a2b175229d6a5b;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02c8bac0",
+      "c_path": "02/02c8bac0.c",
+      "score": 27,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 65,
+          "excerpt": "local_50 = 0x82a2b175229d6a5b;"
+        },
+        {
+          "line_in_body": 73,
+          "excerpt": "local_50 = 0x82a2b175229d6a5b;"
+        },
+        {
+          "line_in_body": 75,
+          "excerpt": "local_50 = 0x82a2b175229d6a5b;"
+        },
+        {
+          "line_in_body": 87,
+          "excerpt": "(uVar20 ^ ((ulong)puVar14 >> 0x28 | (long)puVar14 << 0x18) ^ uVar20 << 0x10);"
+        },
+        {
+          "line_in_body": 88,
+          "excerpt": "puVar21 = (undefined1 *)(uVar20 >> 0x1b | uVar20 << 0x25);"
+        },
+        {
+          "line_in_body": 107,
+          "excerpt": "(uVar20 ^ ((ulong)puVar14 >> 0x28 | (long)puVar14 << 0x18) ^ uVar20 << 0x10);"
+        },
+        {
+          "line_in_body": 108,
+          "excerpt": "puVar21 = (undefined1 *)(uVar20 >> 0x1b | uVar20 << 0x25);"
+        }
+      ],
+      "extra_excerpt_count": 37,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0091d93c",
+      "c_path": "00/0091d93c.c",
+      "score": 16,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [
+        "FUN_029546dc"
+      ],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 30,
+          "excerpt": "local_30 = 0x82a2b175229d6a5b;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_009205f4",
+      "c_path": "00/009205f4.c",
+      "score": 16,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [
+        "FUN_02954720"
+      ],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 48,
+          "excerpt": "param_1[0x14] = -0x7d5d4e8add6295a5;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_00927348",
+      "c_path": "00/00927348.c",
+      "score": 16,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [
+        "FUN_00db84c4"
+      ],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 12,
+          "excerpt": "param_1[0xf] = 0x82a2b175229d6a5b;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0167e620",
+      "c_path": "01/0167e620.c",
+      "score": 16,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [
+        "FUN_00db84c4"
+      ],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 47,
+          "excerpt": "local_108 = 0x82a2b175229d6a5b;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01effca0",
+      "c_path": "01/01effca0.c",
+      "score": 16,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [
+        "FUN_00db84c4"
+      ],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 47,
+          "excerpt": "local_108 = 0x82a2b175229d6a5b;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_001f450c",
+      "c_path": "00/001f450c.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shl27"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 454,
+          "excerpt": "(ulong)(*(long *)(param_1 + 0xd18) != 0) << 0x1b;"
+        },
+        {
+          "line_in_body": 1937,
+          "excerpt": "*(ulong *)(param_1 + 0xf40) & 0xffffff | (ulong)(*plVar14 != 0) << 0x18;"
+        },
+        {
+          "line_in_body": 1949,
+          "excerpt": "*(ulong *)(param_1 + 0xf40) & 0xffff | (ulong)(*plVar14 != 0) << 0x10;"
+        },
+        {
+          "line_in_body": 2587,
+          "excerpt": "*(ulong *)(param_1 + 0xf40) & 0x1fffffffff | (ulong)(*plVar14 != 0) << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_00434320",
+      "c_path": "00/00434320.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shr27",
+        "shr24"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 59,
+          "excerpt": "(uVar11 >> 0x16 & 0x10 | uVar11 >> 0x18 & 1 | uVar11 >> 0x15 & 0x40 |"
+        },
+        {
+          "line_in_body": 60,
+          "excerpt": "uVar11 >> 0x17 & 4) << 0x10 |"
+        },
+        {
+          "line_in_body": 62,
+          "excerpt": "uVar11 >> 0x1b & 4) << 0x18 |"
+        },
+        {
+          "line_in_body": 69,
+          "excerpt": "<< 0x10 | (uVar11 >> 10 & 0x10 | uVar11 >> 0xc & 1 | uVar11 >> 9 & 0x40 |"
+        },
+        {
+          "line_in_body": 70,
+          "excerpt": "uVar11 >> 0xb & 4) << 0x18 |"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_004ac870",
+      "c_path": "00/004ac870.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shr27",
+        "shr24"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 23,
+          "excerpt": "uVar10 = (uVar10 >> 0x10 | uVar10 << 0x10) ^ *param_3;"
+        },
+        {
+          "line_in_body": 24,
+          "excerpt": "uVar9 = (uVar9 >> 0x10 | uVar9 << 0x10) ^ param_3[1];"
+        },
+        {
+          "line_in_body": 25,
+          "excerpt": "uVar6 = -(ulong)((param_1 & 0xfffffff) >> 0x1b) & 0xfffffffc00000000 | (ulong)(param_1 << 4) << 2;"
+        },
+        {
+          "line_in_body": 26,
+          "excerpt": "uVar11 = (uVar11 >> 0x10 | uVar11 << 0x10) ^ param_3[2];"
+        },
+        {
+          "line_in_body": 28,
+          "excerpt": "uVar12 = (uVar12 >> 0x10 | uVar12 << 0x10) ^ param_3[3];"
+        },
+        {
+          "line_in_body": 38,
+          "excerpt": "*(uint *)(&DAT_03a1e2f8 + (ulong)(uVar3 >> 0x18) * 4);"
+        },
+        {
+          "line_in_body": 42,
+          "excerpt": "*(uint *)(&DAT_03a1eaf8 + (ulong)(uVar4 >> 0x18) * 4);"
+        }
+      ],
+      "extra_excerpt_count": 20,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_008b8218",
+      "c_path": "00/008b8218.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 394,
+          "excerpt": "uVar21 = uVar22 >> 0x1b | uVar22 << 0x25;"
+        },
+        {
+          "line_in_body": 396,
+          "excerpt": "uVar13 = uVar22 ^ (uVar13 >> 0x28 | uVar13 << 0x18) ^ uVar22 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_008d780c",
+      "c_path": "00/008d780c.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 897,
+          "excerpt": "uVar19 = uVar13 >> 0x1b | uVar13 << 0x25;"
+        },
+        {
+          "line_in_body": 899,
+          "excerpt": "uVar10 = uVar13 ^ (uVar10 >> 0x28 | uVar10 << 0x18) ^ uVar13 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0091e4a4",
+      "c_path": "00/0091e4a4.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 46,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 48,
+          "excerpt": "uVar6 = uVar9 ^ (uVar6 >> 0x28 | uVar6 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0091e984",
+      "c_path": "00/0091e984.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 111,
+          "excerpt": "uVar14 = uVar15 >> 0x1b | uVar15 << 0x25;"
+        },
+        {
+          "line_in_body": 113,
+          "excerpt": "uVar12 = uVar15 ^ (uVar12 >> 0x28 | uVar12 << 0x18) ^ uVar15 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0091ebf8",
+      "c_path": "00/0091ebf8.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 160,
+          "excerpt": "uVar11 = uVar12 >> 0x1b | uVar12 << 0x25;"
+        },
+        {
+          "line_in_body": 162,
+          "excerpt": "uVar10 = uVar12 ^ (uVar10 >> 0x28 | uVar10 << 0x18) ^ uVar12 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_009273d4",
+      "c_path": "00/009273d4.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 42,
+          "excerpt": "uVar4 = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 44,
+          "excerpt": "uVar6 = uVar7 ^ (uVar6 >> 0x28 | uVar6 << 0x18) ^ uVar7 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_00927460",
+      "c_path": "00/00927460.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 18,
+          "excerpt": "uVar4 = uVar5 >> 0x1b | uVar5 << 0x25;"
+        },
+        {
+          "line_in_body": 20,
+          "excerpt": "uVar2 = uVar5 ^ (uVar2 >> 0x28 | uVar2 << 0x18) ^ uVar5 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0092a90c",
+      "c_path": "00/0092a90c.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 326,
+          "excerpt": "uVar14 = uVar15 >> 0x1b | uVar15 << 0x25;"
+        },
+        {
+          "line_in_body": 328,
+          "excerpt": "uVar13 = uVar15 ^ (uVar13 >> 0x28 | uVar13 << 0x18) ^ uVar15 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_00bec6f0",
+      "c_path": "00/00bec6f0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 34,
+          "excerpt": "*puVar4 = uVar5 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar5 << 0x10;"
+        },
+        {
+          "line_in_body": 35,
+          "excerpt": "puVar4[1] = uVar5 >> 0x1b | uVar5 << 0x25;"
+        },
+        {
+          "line_in_body": 62,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_00c8ac40",
+      "c_path": "00/00c8ac40.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 25,
+          "excerpt": "*puVar5 = uVar6 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar6 << 0x10;"
+        },
+        {
+          "line_in_body": 26,
+          "excerpt": "puVar5[1] = uVar6 >> 0x1b | uVar6 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_00cd8790",
+      "c_path": "00/00cd8790.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 53,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 55,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "*puVar4 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 65,
+          "excerpt": "puVar4[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_00cd98bc",
+      "c_path": "00/00cd98bc.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40",
+        "shr24"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 96,
+          "excerpt": "auVar20[3] = (byte)(uVar9 >> 0x18) | (byte)(uVar18 >> 0x18);"
+        },
+        {
+          "line_in_body": 100,
+          "excerpt": "auVar20[7] = (byte)(uVar11 >> 0x18) | (byte)(uVar22 >> 0x18);"
+        },
+        {
+          "line_in_body": 104,
+          "excerpt": "auVar20[0xb] = (byte)(uVar13 >> 0x18) | (byte)(uVar23 >> 0x18);"
+        },
+        {
+          "line_in_body": 108,
+          "excerpt": "auVar20[0xf] = (byte)(uVar15 >> 0x18) | (byte)(uVar24 >> 0x18);"
+        },
+        {
+          "line_in_body": 143,
+          "excerpt": "*puVar5 = uVar6 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar6 << 0x10;"
+        },
+        {
+          "line_in_body": 144,
+          "excerpt": "puVar5[1] = uVar6 >> 0x1b | uVar6 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_00db854c",
+      "c_path": "00/00db854c.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 14,
+          "excerpt": "*param_2 = uVar3 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar3 << 0x10;"
+        },
+        {
+          "line_in_body": 15,
+          "excerpt": "param_2[1] = uVar3 >> 0x1b | uVar3 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01094470",
+      "c_path": "01/01094470.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 117,
+          "excerpt": "uVar25 = uVar41 >> 0x1b | uVar41 << 0x25;"
+        },
+        {
+          "line_in_body": 118,
+          "excerpt": "uVar23 = uVar41 ^ (uVar20 >> 0x28 | uVar20 << 0x18) ^ uVar41 << 0x10;"
+        },
+        {
+          "line_in_body": 190,
+          "excerpt": "uVar40 = (int)uVar23 + (int)(uVar41 >> 0x1b);"
+        },
+        {
+          "line_in_body": 191,
+          "excerpt": "*param_12 = uVar25 ^ (uVar23 >> 0x28 | uVar23 << 0x18) ^ uVar25 << 0x10;"
+        },
+        {
+          "line_in_body": 192,
+          "excerpt": "param_12[1] = uVar25 >> 0x1b | uVar25 << 0x25;"
+        },
+        {
+          "line_in_body": 217,
+          "excerpt": "uVar25 = uVar42 >> 0x1b | uVar42 << 0x25;"
+        },
+        {
+          "line_in_body": 219,
+          "excerpt": "uVar23 = uVar42 ^ (uVar23 >> 0x28 | uVar23 << 0x18) ^ uVar42 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01095da0",
+      "c_path": "01/01095da0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 364,
+          "excerpt": "*param_6 = uVar15 ^ (uVar17 >> 0x28 | uVar17 << 0x18) ^ uVar15 << 0x10;"
+        },
+        {
+          "line_in_body": 365,
+          "excerpt": "param_6[1] = uVar15 >> 0x1b | uVar15 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01097c50",
+      "c_path": "01/01097c50.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 217,
+          "excerpt": "uVar23 = uVar24 >> 0x1b | uVar24 << 0x25;"
+        },
+        {
+          "line_in_body": 219,
+          "excerpt": "uVar22 = uVar24 ^ (uVar22 >> 0x28 | uVar22 << 0x18) ^ uVar24 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0109f020",
+      "c_path": "01/0109f020.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 41,
+          "excerpt": "uVar17 = uVar19 >> 0x1b | uVar19 << 0x25;"
+        },
+        {
+          "line_in_body": 43,
+          "excerpt": "uVar16 = uVar19 ^ (uVar16 >> 0x28 | uVar16 << 0x18) ^ uVar19 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_011240d0",
+      "c_path": "01/011240d0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 29,
+          "excerpt": "uVar6 = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 30,
+          "excerpt": "uVar4 = uVar7 ^ (uVar4 >> 0x28 | uVar4 << 0x18) ^ uVar7 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_011448d0",
+      "c_path": "01/011448d0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 25,
+          "excerpt": "*puVar5 = uVar6 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar6 << 0x10;"
+        },
+        {
+          "line_in_body": 26,
+          "excerpt": "puVar5[1] = uVar6 >> 0x1b | uVar6 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_011e3c30",
+      "c_path": "01/011e3c30.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 36,
+          "excerpt": "*puVar4 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 37,
+          "excerpt": "puVar4[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 66,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_013957b0",
+      "c_path": "01/013957b0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 36,
+          "excerpt": "*puVar4 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 37,
+          "excerpt": "puVar4[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 66,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0160e230",
+      "c_path": "01/0160e230.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 29,
+          "excerpt": "uVar6 = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 30,
+          "excerpt": "uVar4 = uVar7 ^ (uVar4 >> 0x28 | uVar4 << 0x18) ^ uVar7 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01662d20",
+      "c_path": "01/01662d20.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 312,
+          "excerpt": "*puVar21 = uVar28 ^ (uVar27 >> 0x28 | uVar27 << 0x18) ^ uVar28 << 0x10;"
+        },
+        {
+          "line_in_body": 313,
+          "excerpt": "puVar21[1] = uVar28 >> 0x1b | uVar28 << 0x25;"
+        },
+        {
+          "line_in_body": 334,
+          "excerpt": "uVar28 = uVar30 >> 0x1b | uVar30 << 0x25;"
+        },
+        {
+          "line_in_body": 336,
+          "excerpt": "uVar27 = uVar30 ^ (uVar27 >> 0x28 | uVar27 << 0x18) ^ uVar30 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_017da8e0",
+      "c_path": "01/017da8e0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 36,
+          "excerpt": "*puVar4 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 37,
+          "excerpt": "puVar4[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 66,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_018e0e40",
+      "c_path": "01/018e0e40.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 36,
+          "excerpt": "*puVar4 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 37,
+          "excerpt": "puVar4[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 66,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_019065e8",
+      "c_path": "01/019065e8.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 52,
+          "excerpt": "*puVar6 = uVar8 ^ (uVar10 >> 0x28 | uVar10 << 0x18) ^ uVar8 << 0x10;"
+        },
+        {
+          "line_in_body": 53,
+          "excerpt": "puVar6[1] = uVar8 >> 0x1b | uVar8 << 0x25;"
+        },
+        {
+          "line_in_body": 80,
+          "excerpt": "uVar8 = uVar11 >> 0x1b | uVar11 << 0x25;"
+        },
+        {
+          "line_in_body": 82,
+          "excerpt": "uVar10 = uVar11 ^ (uVar10 >> 0x28 | uVar10 << 0x18) ^ uVar11 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0190c338",
+      "c_path": "01/0190c338.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40",
+        "shr24"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 625,
+          "excerpt": "uVar65 = (undefined1)((uint)fVar50 >> 0x18);"
+        },
+        {
+          "line_in_body": 629,
+          "excerpt": "uVar77 = (undefined1)((uint)fVar51 >> 0x18);"
+        },
+        {
+          "line_in_body": 633,
+          "excerpt": "uVar84 = (undefined1)((uint)fVar117 >> 0x18);"
+        },
+        {
+          "line_in_body": 668,
+          "excerpt": "uVar67 = (undefined1)((uint)fVar115 >> 0x18);"
+        },
+        {
+          "line_in_body": 677,
+          "excerpt": "auVar6[0xb] = (char)((uint)fVar51 >> 0x18);"
+        },
+        {
+          "line_in_body": 709,
+          "excerpt": "bVar66 = (byte)((uint)local_2d0 >> 0x18) & ~(byte)((uint)iVar29 >> 0x18);"
+        },
+        {
+          "line_in_body": 713,
+          "excerpt": "bVar71 = (byte)((uint)fStack_2cc >> 0x18) & ~(byte)((uint)iVar30 >> 0x18);"
+        }
+      ],
+      "extra_excerpt_count": 39,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01930680",
+      "c_path": "01/01930680.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 269,
+          "excerpt": "uVar12 = uVar20 ^ (uVar12 >> 0x28 | uVar12 << 0x18) ^ uVar20 << 0x10;"
+        },
+        {
+          "line_in_body": 270,
+          "excerpt": "uVar20 = uVar20 >> 0x1b | uVar20 << 0x25;"
+        },
+        {
+          "line_in_body": 297,
+          "excerpt": "uVar20 = uVar21 >> 0x1b | uVar21 << 0x25;"
+        },
+        {
+          "line_in_body": 299,
+          "excerpt": "uVar12 = uVar21 ^ (uVar12 >> 0x28 | uVar12 << 0x18) ^ uVar21 << 0x10;"
+        },
+        {
+          "line_in_body": 307,
+          "excerpt": "uVar22 = uVar21 >> 0x1b | uVar21 << 0x25;"
+        },
+        {
+          "line_in_body": 309,
+          "excerpt": "uVar12 = uVar21 ^ (uVar12 >> 0x28 | uVar12 << 0x18) ^ uVar21 << 0x10;"
+        },
+        {
+          "line_in_body": 312,
+          "excerpt": "*param_5 = uVar20 ^ (uVar12 >> 0x28 | uVar12 << 0x18) ^ uVar20 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 1,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_019313e0",
+      "c_path": "01/019313e0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 18,
+          "excerpt": "uVar4 = uVar5 >> 0x1b | uVar5 << 0x25;"
+        },
+        {
+          "line_in_body": 20,
+          "excerpt": "uVar2 = uVar5 ^ (uVar2 >> 0x28 | uVar2 << 0x18) ^ uVar5 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01931c40",
+      "c_path": "01/01931c40.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 666,
+          "excerpt": "*param_6 = uVar20 ^ (uVar27 >> 0x28 | uVar27 << 0x18) ^ uVar20 << 0x10;"
+        },
+        {
+          "line_in_body": 667,
+          "excerpt": "param_6[1] = uVar20 >> 0x1b | uVar20 << 0x25;"
+        },
+        {
+          "line_in_body": 694,
+          "excerpt": "uVar20 = uVar30 >> 0x1b | uVar30 << 0x25;"
+        },
+        {
+          "line_in_body": 696,
+          "excerpt": "uVar27 = uVar30 ^ (uVar27 >> 0x28 | uVar27 << 0x18) ^ uVar30 << 0x10;"
+        },
+        {
+          "line_in_body": 874,
+          "excerpt": "uVar20 = uVar30 >> 0x1b | uVar30 << 0x25;"
+        },
+        {
+          "line_in_body": 876,
+          "excerpt": "uVar27 = uVar30 ^ (uVar27 >> 0x28 | uVar27 << 0x18) ^ uVar30 << 0x10;"
+        },
+        {
+          "line_in_body": 982,
+          "excerpt": "uVar20 = uVar30 >> 0x1b | uVar30 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 7,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_019337cc",
+      "c_path": "01/019337cc.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 47,
+          "excerpt": "uVar7 = uVar6 >> 0x1b | uVar6 << 0x25;"
+        },
+        {
+          "line_in_body": 49,
+          "excerpt": "uVar4 = uVar6 ^ (uVar4 >> 0x28 | uVar4 << 0x18) ^ uVar6 << 0x10;"
+        },
+        {
+          "line_in_body": 59,
+          "excerpt": "*param_2 = uVar6 ^ (uVar4 >> 0x28 | uVar4 << 0x18) ^ uVar6 << 0x10;"
+        },
+        {
+          "line_in_body": 60,
+          "excerpt": "param_2[1] = uVar6 >> 0x1b | uVar6 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01938098",
+      "c_path": "01/01938098.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 63,
+          "excerpt": "uVar8 = uVar12 >> 0x1b | uVar12 << 0x25;"
+        },
+        {
+          "line_in_body": 65,
+          "excerpt": "uVar10 = uVar12 ^ (uVar10 >> 0x28 | uVar10 << 0x18) ^ uVar12 << 0x10;"
+        },
+        {
+          "line_in_body": 107,
+          "excerpt": "uVar8 = uVar12 >> 0x1b | uVar12 << 0x25;"
+        },
+        {
+          "line_in_body": 109,
+          "excerpt": "uVar10 = uVar12 ^ (uVar10 >> 0x28 | uVar10 << 0x18) ^ uVar12 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0193c0a8",
+      "c_path": "01/0193c0a8.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40",
+        "shr24"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 333,
+          "excerpt": "fVar106 = (float)CONCAT13((byte)((uint)fVar52 >> 0x18) & ~(byte)((uint)iVar95 >> 0x18),"
+        },
+        {
+          "line_in_body": 340,
+          "excerpt": "CONCAT17((byte)((uint)fVar94 >> 0x18) & ~(byte)((uint)iVar105 >> 0x18),"
+        },
+        {
+          "line_in_body": 347,
+          "excerpt": "auVar98[0xb] = (byte)((uint)fVar104 >> 0x18) & ~(byte)((uint)iVar108 >> 0x18);"
+        },
+        {
+          "line_in_body": 351,
+          "excerpt": "auVar98[0xf] = (byte)((uint)fVar124 >> 0x18) & ~(byte)((uint)iVar109 >> 0x18);"
+        },
+        {
+          "line_in_body": 425,
+          "excerpt": "bVar89 = (byte)((uint)fVar79 >> 0x18) & ~(byte)((uint)iVar109 >> 0x18);"
+        },
+        {
+          "line_in_body": 432,
+          "excerpt": "CONCAT13((byte)((uint)fVar53 >> 0x18) &"
+        },
+        {
+          "line_in_body": 433,
+          "excerpt": "~(byte)((uint)iVar95 >> 0x18),"
+        }
+      ],
+      "extra_excerpt_count": 36,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0193c824",
+      "c_path": "01/0193c824.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 36,
+          "excerpt": "uVar6 = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 38,
+          "excerpt": "uVar5 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0193c990",
+      "c_path": "01/0193c990.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 91,
+          "excerpt": "uVar15 = uVar16 >> 0x1b | uVar16 << 0x25;"
+        },
+        {
+          "line_in_body": 93,
+          "excerpt": "uVar14 = uVar16 ^ (uVar14 >> 0x28 | uVar14 << 0x18) ^ uVar16 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_019e1cf0",
+      "c_path": "01/019e1cf0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 36,
+          "excerpt": "*puVar4 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 37,
+          "excerpt": "puVar4[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 66,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01b4be70",
+      "c_path": "01/01b4be70.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 221,
+          "excerpt": "uVar12 = uVar18 >> 0x1b | uVar18 << 0x25;"
+        },
+        {
+          "line_in_body": 223,
+          "excerpt": "uVar13 = uVar18 ^ (uVar13 >> 0x28 | uVar13 << 0x18) ^ uVar18 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01b4cbc8",
+      "c_path": "01/01b4cbc8.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 18,
+          "excerpt": "uVar4 = uVar5 >> 0x1b | uVar5 << 0x25;"
+        },
+        {
+          "line_in_body": 20,
+          "excerpt": "uVar2 = uVar5 ^ (uVar2 >> 0x28 | uVar2 << 0x18) ^ uVar5 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01b56acc",
+      "c_path": "01/01b56acc.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40",
+        "shr24"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 63,
+          "excerpt": "*puVar10 = uVar14 ^ (uVar2 >> 0x28 | uVar2 << 0x18) ^ uVar14 << 0x10;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "puVar10[1] = uVar14 >> 0x1b | uVar14 << 0x25;"
+        },
+        {
+          "line_in_body": 93,
+          "excerpt": "uVar23 = (undefined1)((uint)fVar17 >> 0x18);"
+        },
+        {
+          "line_in_body": 102,
+          "excerpt": "auVar25[0xb] = (char)((uint)fVar16 >> 0x18);"
+        },
+        {
+          "line_in_body": 108,
+          "excerpt": "*puVar10 = uVar15 ^ (uVar2 >> 0x28 | uVar2 << 0x18) ^ uVar15 << 0x10;"
+        },
+        {
+          "line_in_body": 109,
+          "excerpt": "puVar10[1] = uVar15 >> 0x1b | uVar15 << 0x25;"
+        },
+        {
+          "line_in_body": 137,
+          "excerpt": "fVar27 = (float)CONCAT13((byte)((uint)fVar18 >> 0x18) & ~(byte)((uint)iVar7 >> 0x18),"
+        }
+      ],
+      "extra_excerpt_count": 5,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01b5e970",
+      "c_path": "01/01b5e970.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 34,
+          "excerpt": "*puVar4 = uVar5 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar5 << 0x10;"
+        },
+        {
+          "line_in_body": 35,
+          "excerpt": "puVar4[1] = uVar5 >> 0x1b | uVar5 << 0x25;"
+        },
+        {
+          "line_in_body": 62,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01b9d1ec",
+      "c_path": "01/01b9d1ec.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 302,
+          "excerpt": "uVar33 = uVar34 >> 0x1b | uVar34 << 0x25;"
+        },
+        {
+          "line_in_body": 304,
+          "excerpt": "uVar31 = uVar34 ^ (uVar31 >> 0x28 | uVar31 << 0x18) ^ uVar34 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01b9f7b4",
+      "c_path": "01/01b9f7b4.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 77,
+          "excerpt": "*puVar16 = uVar17 ^ (uVar15 >> 0x28 | uVar15 << 0x18) ^ uVar17 << 0x10;"
+        },
+        {
+          "line_in_body": 78,
+          "excerpt": "puVar16[1] = uVar17 >> 0x1b | uVar17 << 0x25;"
+        },
+        {
+          "line_in_body": 108,
+          "excerpt": "uVar9 = uVar10 >> 0x1b | uVar10 << 0x25;"
+        },
+        {
+          "line_in_body": 110,
+          "excerpt": "uVar8 = uVar10 ^ (uVar8 >> 0x28 | uVar8 << 0x18) ^ uVar10 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01b9fba4",
+      "c_path": "01/01b9fba4.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 93,
+          "excerpt": "uVar11 = uVar13 >> 0x1b | uVar13 << 0x25;"
+        },
+        {
+          "line_in_body": 95,
+          "excerpt": "uVar9 = uVar13 ^ (uVar9 >> 0x28 | uVar9 << 0x18) ^ uVar13 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01ba107c",
+      "c_path": "01/01ba107c.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 89,
+          "excerpt": "uVar9 = uVar10 >> 0x1b | uVar10 << 0x25;"
+        },
+        {
+          "line_in_body": 91,
+          "excerpt": "uVar8 = uVar10 ^ (uVar8 >> 0x28 | uVar8 << 0x18) ^ uVar10 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01ba15f0",
+      "c_path": "01/01ba15f0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 29,
+          "excerpt": "uVar6 = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 30,
+          "excerpt": "uVar4 = uVar7 ^ (uVar4 >> 0x28 | uVar4 << 0x18) ^ uVar7 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01bf10a0",
+      "c_path": "01/01bf10a0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 29,
+          "excerpt": "uVar6 = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 30,
+          "excerpt": "uVar4 = uVar7 ^ (uVar4 >> 0x28 | uVar4 << 0x18) ^ uVar7 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01c2fbf0",
+      "c_path": "01/01c2fbf0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 42,
+          "excerpt": "*puVar9 = uVar10 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar10 << 0x10;"
+        },
+        {
+          "line_in_body": 43,
+          "excerpt": "puVar9[1] = uVar10 >> 0x1b | uVar10 << 0x25;"
+        },
+        {
+          "line_in_body": 68,
+          "excerpt": "*puVar9 = uVar10 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar10 << 0x10;"
+        },
+        {
+          "line_in_body": 69,
+          "excerpt": "puVar9[1] = uVar10 >> 0x1b | uVar10 << 0x25;"
+        },
+        {
+          "line_in_body": 92,
+          "excerpt": "*puVar9 = uVar10 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar10 << 0x10;"
+        },
+        {
+          "line_in_body": 93,
+          "excerpt": "puVar9[1] = uVar10 >> 0x1b | uVar10 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01c2ff70",
+      "c_path": "01/01c2ff70.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 36,
+          "excerpt": "*puVar4 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 37,
+          "excerpt": "puVar4[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 66,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01c520b0",
+      "c_path": "01/01c520b0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 36,
+          "excerpt": "*puVar4 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 37,
+          "excerpt": "puVar4[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 66,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01c61c60",
+      "c_path": "01/01c61c60.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 36,
+          "excerpt": "*puVar4 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 37,
+          "excerpt": "puVar4[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 66,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01c61df0",
+      "c_path": "01/01c61df0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 36,
+          "excerpt": "*puVar4 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 37,
+          "excerpt": "puVar4[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 66,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01c876c0",
+      "c_path": "01/01c876c0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 29,
+          "excerpt": "uVar6 = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 30,
+          "excerpt": "uVar4 = uVar7 ^ (uVar4 >> 0x28 | uVar4 << 0x18) ^ uVar7 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01e1013c",
+      "c_path": "01/01e1013c.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 18,
+          "excerpt": "uVar4 = uVar5 >> 0x1b | uVar5 << 0x25;"
+        },
+        {
+          "line_in_body": 20,
+          "excerpt": "uVar2 = uVar5 ^ (uVar2 >> 0x28 | uVar2 << 0x18) ^ uVar5 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01e101b0",
+      "c_path": "01/01e101b0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 26,
+          "excerpt": "*param_2 = uVar9 ^ (uVar8 >> 0x28 | uVar8 << 0x18) ^ uVar9 << 0x10;"
+        },
+        {
+          "line_in_body": 27,
+          "excerpt": "param_2[1] = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 54,
+          "excerpt": "uVar6 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 56,
+          "excerpt": "uVar8 = uVar9 ^ (uVar8 >> 0x28 | uVar8 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01e10270",
+      "c_path": "01/01e10270.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 37,
+          "excerpt": "uVar8 = uVar10 >> 0x1b | uVar10 << 0x25;"
+        },
+        {
+          "line_in_body": 39,
+          "excerpt": "uVar6 = uVar10 ^ (uVar6 >> 0x28 | uVar6 << 0x18) ^ uVar10 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01e1030c",
+      "c_path": "01/01e1030c.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 26,
+          "excerpt": "uVar6 = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 28,
+          "excerpt": "uVar3 = uVar7 ^ (uVar3 >> 0x28 | uVar3 << 0x18) ^ uVar7 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01ebf3b0",
+      "c_path": "01/01ebf3b0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 36,
+          "excerpt": "*puVar4 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 37,
+          "excerpt": "puVar4[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 66,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01f439e0",
+      "c_path": "01/01f439e0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 36,
+          "excerpt": "*puVar4 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 37,
+          "excerpt": "puVar4[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 66,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01f48210",
+      "c_path": "01/01f48210.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 34,
+          "excerpt": "*puVar4 = uVar5 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar5 << 0x10;"
+        },
+        {
+          "line_in_body": 35,
+          "excerpt": "puVar4[1] = uVar5 >> 0x1b | uVar5 << 0x25;"
+        },
+        {
+          "line_in_body": 62,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01f822c4",
+      "c_path": "01/01f822c4.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 321,
+          "excerpt": "*puVar11 = uVar13 ^ (uVar10 >> 0x28 | uVar10 << 0x18) ^ uVar13 << 0x10;"
+        },
+        {
+          "line_in_body": 322,
+          "excerpt": "puVar11[1] = uVar13 >> 0x1b | uVar13 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0259744c",
+      "c_path": "02/0259744c.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 131,
+          "excerpt": "*puVar20 = uVar22 ^ (uVar24 >> 0x28 | uVar24 << 0x18) ^ uVar22 << 0x10;"
+        },
+        {
+          "line_in_body": 132,
+          "excerpt": "puVar20[1] = uVar22 >> 0x1b | uVar22 << 0x25;"
+        },
+        {
+          "line_in_body": 159,
+          "excerpt": "uVar22 = uVar27 >> 0x1b | uVar27 << 0x25;"
+        },
+        {
+          "line_in_body": 161,
+          "excerpt": "uVar24 = uVar27 ^ (uVar24 >> 0x28 | uVar24 << 0x18) ^ uVar27 << 0x10;"
+        },
+        {
+          "line_in_body": 635,
+          "excerpt": "*puVar20 = uVar22 ^ (uVar24 >> 0x28 | uVar24 << 0x18) ^ uVar22 << 0x10;"
+        },
+        {
+          "line_in_body": 636,
+          "excerpt": "puVar20[1] = uVar22 >> 0x1b | uVar22 << 0x25;"
+        },
+        {
+          "line_in_body": 663,
+          "excerpt": "uVar22 = uVar27 >> 0x1b | uVar27 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 1,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_025a1de8",
+      "c_path": "02/025a1de8.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 74,
+          "excerpt": "uVar7 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 76,
+          "excerpt": "uVar2 = uVar9 ^ (uVar2 >> 0x28 | uVar2 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_025a2030",
+      "c_path": "02/025a2030.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 59,
+          "excerpt": "uVar21 = uVar25 >> 0x1b | uVar25 << 0x25;"
+        },
+        {
+          "line_in_body": 61,
+          "excerpt": "uVar20 = uVar25 ^ (uVar20 >> 0x28 | uVar20 << 0x18) ^ uVar25 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_025d3c0c",
+      "c_path": "02/025d3c0c.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 25,
+          "excerpt": "*puVar5 = uVar6 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar6 << 0x10;"
+        },
+        {
+          "line_in_body": 26,
+          "excerpt": "puVar5[1] = uVar6 >> 0x1b | uVar6 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_025d3cb0",
+      "c_path": "02/025d3cb0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 28,
+          "excerpt": "uVar6 = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 30,
+          "excerpt": "uVar5 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_025d3d5c",
+      "c_path": "02/025d3d5c.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 28,
+          "excerpt": "uVar6 = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 30,
+          "excerpt": "uVar5 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_025d3e08",
+      "c_path": "02/025d3e08.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 28,
+          "excerpt": "uVar6 = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 30,
+          "excerpt": "uVar5 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_025d3eb4",
+      "c_path": "02/025d3eb4.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 26,
+          "excerpt": "*puVar6 = uVar7 ^ (uVar2 >> 0x28 | uVar2 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 27,
+          "excerpt": "puVar6[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_025d3f70",
+      "c_path": "02/025d3f70.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 28,
+          "excerpt": "uVar6 = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 30,
+          "excerpt": "uVar5 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_025d401c",
+      "c_path": "02/025d401c.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 26,
+          "excerpt": "*puVar6 = uVar7 ^ (uVar2 >> 0x28 | uVar2 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 27,
+          "excerpt": "puVar6[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_025d40d8",
+      "c_path": "02/025d40d8.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 26,
+          "excerpt": "*puVar6 = uVar7 ^ (uVar2 >> 0x28 | uVar2 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 27,
+          "excerpt": "puVar6[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_025d4194",
+      "c_path": "02/025d4194.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 193,
+          "excerpt": "*puVar14 = uVar12 ^ (uVar15 >> 0x28 | uVar15 << 0x18) ^ uVar12 << 0x10;"
+        },
+        {
+          "line_in_body": 194,
+          "excerpt": "puVar14[1] = uVar12 >> 0x1b | uVar12 << 0x25;"
+        },
+        {
+          "line_in_body": 221,
+          "excerpt": "uVar12 = uVar13 >> 0x1b | uVar13 << 0x25;"
+        },
+        {
+          "line_in_body": 223,
+          "excerpt": "uVar15 = uVar13 ^ (uVar15 >> 0x28 | uVar15 << 0x18) ^ uVar13 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_025d46fc",
+      "c_path": "02/025d46fc.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 193,
+          "excerpt": "*puVar14 = uVar12 ^ (uVar15 >> 0x28 | uVar15 << 0x18) ^ uVar12 << 0x10;"
+        },
+        {
+          "line_in_body": 194,
+          "excerpt": "puVar14[1] = uVar12 >> 0x1b | uVar12 << 0x25;"
+        },
+        {
+          "line_in_body": 221,
+          "excerpt": "uVar12 = uVar13 >> 0x1b | uVar13 << 0x25;"
+        },
+        {
+          "line_in_body": 223,
+          "excerpt": "uVar15 = uVar13 ^ (uVar15 >> 0x28 | uVar15 << 0x18) ^ uVar13 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_025d61b8",
+      "c_path": "02/025d61b8.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 68,
+          "excerpt": "uVar19 = uVar22 >> 0x1b | uVar22 << 0x25;"
+        },
+        {
+          "line_in_body": 70,
+          "excerpt": "uVar16 = uVar22 ^ (uVar16 >> 0x28 | uVar16 << 0x18) ^ uVar22 << 0x10;"
+        },
+        {
+          "line_in_body": 487,
+          "excerpt": "uVar19 = uVar22 >> 0x1b | uVar22 << 0x25;"
+        },
+        {
+          "line_in_body": 489,
+          "excerpt": "uVar16 = uVar22 ^ (uVar16 >> 0x28 | uVar16 << 0x18) ^ uVar22 << 0x10;"
+        },
+        {
+          "line_in_body": 1029,
+          "excerpt": "*puVar15 = uVar19 ^ (uVar16 >> 0x28 | uVar16 << 0x18) ^ uVar19 << 0x10;"
+        },
+        {
+          "line_in_body": 1030,
+          "excerpt": "puVar15[1] = uVar19 >> 0x1b | uVar19 << 0x25;"
+        },
+        {
+          "line_in_body": 1831,
+          "excerpt": "*puVar15 = uVar19 ^ (uVar16 >> 0x28 | uVar16 << 0x18) ^ uVar19 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 23,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_025e2580",
+      "c_path": "02/025e2580.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 36,
+          "excerpt": "*puVar4 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 37,
+          "excerpt": "puVar4[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 66,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0265a010",
+      "c_path": "02/0265a010.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 36,
+          "excerpt": "*puVar4 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 37,
+          "excerpt": "puVar4[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 66,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0265d920",
+      "c_path": "02/0265d920.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 34,
+          "excerpt": "*puVar4 = uVar5 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar5 << 0x10;"
+        },
+        {
+          "line_in_body": 35,
+          "excerpt": "puVar4[1] = uVar5 >> 0x1b | uVar5 << 0x25;"
+        },
+        {
+          "line_in_body": 62,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_026685b0",
+      "c_path": "02/026685b0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 34,
+          "excerpt": "*puVar4 = uVar5 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar5 << 0x10;"
+        },
+        {
+          "line_in_body": 35,
+          "excerpt": "puVar4[1] = uVar5 >> 0x1b | uVar5 << 0x25;"
+        },
+        {
+          "line_in_body": 62,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0269b7f0",
+      "c_path": "02/0269b7f0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 29,
+          "excerpt": "uVar6 = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 30,
+          "excerpt": "uVar4 = uVar7 ^ (uVar4 >> 0x28 | uVar4 << 0x18) ^ uVar7 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_026b10e0",
+      "c_path": "02/026b10e0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 34,
+          "excerpt": "*puVar4 = uVar5 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar5 << 0x10;"
+        },
+        {
+          "line_in_body": 35,
+          "excerpt": "puVar4[1] = uVar5 >> 0x1b | uVar5 << 0x25;"
+        },
+        {
+          "line_in_body": 62,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02786be0",
+      "c_path": "02/02786be0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 36,
+          "excerpt": "*puVar4 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 37,
+          "excerpt": "puVar4[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 66,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02786d20",
+      "c_path": "02/02786d20.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 53,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 55,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "*puVar4 = uVar7 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 65,
+          "excerpt": "puVar4[1] = uVar7 >> 0x1b | uVar7 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0278d150",
+      "c_path": "02/0278d150.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 34,
+          "excerpt": "*puVar4 = uVar5 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar5 << 0x10;"
+        },
+        {
+          "line_in_body": 35,
+          "excerpt": "puVar4[1] = uVar5 >> 0x1b | uVar5 << 0x25;"
+        },
+        {
+          "line_in_body": 62,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02795570",
+      "c_path": "02/02795570.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 34,
+          "excerpt": "*puVar4 = uVar5 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar5 << 0x10;"
+        },
+        {
+          "line_in_body": 35,
+          "excerpt": "puVar4[1] = uVar5 >> 0x1b | uVar5 << 0x25;"
+        },
+        {
+          "line_in_body": 62,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 64,
+          "excerpt": "uVar7 = uVar9 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_027dc400",
+      "c_path": "02/027dc400.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 29,
+          "excerpt": "uVar6 = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 30,
+          "excerpt": "uVar4 = uVar7 ^ (uVar4 >> 0x28 | uVar4 << 0x18) ^ uVar7 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0293f82c",
+      "c_path": "02/0293f82c.c",
+      "score": 15,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": true,
+      "related_calls": [],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 4,
+          "excerpt": "/* WARNING: Control flow encountered bad instruction data */"
+        },
+        {
+          "line_in_body": 91,
+          "excerpt": "param_1[0x1a] = -0x7d5d4e8add6295a5;"
+        },
+        {
+          "line_in_body": 378,
+          "excerpt": "param_1[0x1a] = -0x7d5d4e8add6295a5;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0294f0dc",
+      "c_path": "02/0294f0dc.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 462,
+          "excerpt": "uVar17 = uVar21 >> 0x1b | uVar21 << 0x25;"
+        },
+        {
+          "line_in_body": 464,
+          "excerpt": "uVar18 = uVar21 ^ (uVar18 >> 0x28 | uVar18 << 0x18) ^ uVar21 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02954744",
+      "c_path": "02/02954744.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 18,
+          "excerpt": "*(ulong *)(param_1 + 8) = uVar5 ^ (uVar4 >> 0x28 | uVar4 << 0x18) ^ uVar5 << 0x10;"
+        },
+        {
+          "line_in_body": 19,
+          "excerpt": "*(ulong *)(param_1 + 0x10) = uVar5 >> 0x1b | uVar5 << 0x25;"
+        },
+        {
+          "line_in_body": 49,
+          "excerpt": "uVar5 = uVar6 >> 0x1b | uVar6 << 0x25;"
+        },
+        {
+          "line_in_body": 51,
+          "excerpt": "uVar2 = uVar6 ^ (uVar2 >> 0x28 | uVar2 << 0x18) ^ uVar6 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0296a628",
+      "c_path": "02/0296a628.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 181,
+          "excerpt": "*(uint *)(lVar19 + 0x3c) = (uint)*(ushort *)(lVar19 + 0x3e) << 0x10;"
+        },
+        {
+          "line_in_body": 642,
+          "excerpt": "*(uint *)(lVar19 + 0x3c) = (uint)*(ushort *)(lVar19 + 0x3e) << 0x10;"
+        },
+        {
+          "line_in_body": 664,
+          "excerpt": "*(uint *)(lVar19 + 0x3c) = (uint)*(ushort *)(lVar19 + 0x3e) << 0x10;"
+        },
+        {
+          "line_in_body": 996,
+          "excerpt": "*(uint *)(lVar19 + 0x3c) = (uint)*(ushort *)(lVar19 + 0x3e) << 0x10;"
+        },
+        {
+          "line_in_body": 1043,
+          "excerpt": "*(uint *)(lVar19 + 0x3c) = (uint)*(ushort *)(lVar19 + 0x3e) << 0x10;"
+        },
+        {
+          "line_in_body": 1272,
+          "excerpt": "*(uint *)(lVar19 + 0x3c) = (uint)*(ushort *)(lVar19 + 0x3e) << 0x10;"
+        },
+        {
+          "line_in_body": 1426,
+          "excerpt": "*(uint *)(lVar19 + 0x3c) = (uint)*(ushort *)(lVar19 + 0x3e) << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 9,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_029723a8",
+      "c_path": "02/029723a8.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 182,
+          "excerpt": "*(uint *)(lVar9 + 0x3c) = (uint)*(ushort *)(lVar9 + 0x3e) << 0x10;"
+        },
+        {
+          "line_in_body": 268,
+          "excerpt": "uVar12 = uVar19 >> 0x1b | uVar19 << 0x25;"
+        },
+        {
+          "line_in_body": 270,
+          "excerpt": "uVar10 = uVar19 ^ (uVar10 >> 0x28 | uVar10 << 0x18) ^ uVar19 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0297eb68",
+      "c_path": "02/0297eb68.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40",
+        "shr24"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 203,
+          "excerpt": "*(uint *)(lVar19 + 0x3c) = (uint)*(ushort *)(lVar19 + 0x3e) << 0x10;"
+        },
+        {
+          "line_in_body": 288,
+          "excerpt": "uVar17 = uVar21 >> 0x1b | uVar21 << 0x25;"
+        },
+        {
+          "line_in_body": 290,
+          "excerpt": "uVar15 = uVar21 ^ (uVar15 >> 0x28 | uVar15 << 0x18) ^ uVar21 << 0x10;"
+        },
+        {
+          "line_in_body": 503,
+          "excerpt": "*(uint *)(lVar19 + 0x3c) = (uint)*(ushort *)(lVar19 + 0x3e) << 0x10;"
+        },
+        {
+          "line_in_body": 521,
+          "excerpt": "iVar25 = *(int *)(lVar20 + 0xc) << 0x18;"
+        },
+        {
+          "line_in_body": 598,
+          "excerpt": "iVar12 = -(iVar25 >> 0x18);"
+        },
+        {
+          "line_in_body": 622,
+          "excerpt": "uVar17 = uVar21 >> 0x1b | uVar21 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 1,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02981a0c",
+      "c_path": "02/02981a0c.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 177,
+          "excerpt": "*(uint *)(lVar4 + 0x3c) = (uint)*(ushort *)(lVar4 + 0x3e) << 0x10;"
+        },
+        {
+          "line_in_body": 232,
+          "excerpt": "uVar8 = uVar13 >> 0x1b | uVar13 << 0x25;"
+        },
+        {
+          "line_in_body": 233,
+          "excerpt": "uVar5 = uVar13 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar13 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_029849ec",
+      "c_path": "02/029849ec.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 327,
+          "excerpt": "*(uint *)(lVar9 + 0x3c) = (uint)*(ushort *)(lVar9 + 0x3e) << 0x10;"
+        },
+        {
+          "line_in_body": 444,
+          "excerpt": "uVar11 = uVar18 >> 0x1b | uVar18 << 0x25;"
+        },
+        {
+          "line_in_body": 446,
+          "excerpt": "uVar8 = uVar18 ^ (uVar8 >> 0x28 | uVar8 << 0x18) ^ uVar18 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02987c34",
+      "c_path": "02/02987c34.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 227,
+          "excerpt": "*(uint *)(lVar12 + 0x3c) = (uint)*(ushort *)(lVar12 + 0x3e) << 0x10;"
+        },
+        {
+          "line_in_body": 289,
+          "excerpt": "uVar9 = uVar15 >> 0x1b | uVar15 << 0x25;"
+        },
+        {
+          "line_in_body": 291,
+          "excerpt": "uVar7 = uVar15 ^ (uVar7 >> 0x28 | uVar7 << 0x18) ^ uVar15 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02991b68",
+      "c_path": "02/02991b68.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 51,
+          "excerpt": "uVar13 = uVar15 >> 0x1b | uVar15 << 0x25;"
+        },
+        {
+          "line_in_body": 53,
+          "excerpt": "uVar8 = uVar15 ^ (uVar8 >> 0x28 | uVar8 << 0x18) ^ uVar15 << 0x10;"
+        },
+        {
+          "line_in_body": 304,
+          "excerpt": "*(uint *)(lVar9 + 0x3c) = (uint)*(ushort *)(lVar9 + 0x3e) << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02992864",
+      "c_path": "02/02992864.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 145,
+          "excerpt": "*(uint *)(lVar4 + 0x3c) = (uint)*(ushort *)(lVar4 + 0x3e) << 0x10;"
+        },
+        {
+          "line_in_body": 210,
+          "excerpt": "uVar8 = uVar14 >> 0x1b | uVar14 << 0x25;"
+        },
+        {
+          "line_in_body": 212,
+          "excerpt": "uVar5 = uVar14 ^ (uVar5 >> 0x28 | uVar5 << 0x18) ^ uVar14 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_029d228c",
+      "c_path": "02/029d228c.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 59,
+          "excerpt": "uVar8 = uVar10 >> 0x1b | uVar10 << 0x25;"
+        },
+        {
+          "line_in_body": 61,
+          "excerpt": "uVar6 = uVar10 ^ (uVar6 >> 0x28 | uVar6 << 0x18) ^ uVar10 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_029d26a4",
+      "c_path": "02/029d26a4.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 87,
+          "excerpt": "uVar8 = uVar10 >> 0x1b | uVar10 << 0x25;"
+        },
+        {
+          "line_in_body": 89,
+          "excerpt": "uVar6 = uVar10 ^ (uVar6 >> 0x28 | uVar6 << 0x18) ^ uVar10 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_029d96b8",
+      "c_path": "02/029d96b8.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 39,
+          "excerpt": "*(ulong *)(DAT_043ecde0 + 8) = uVar10 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar10 << 0x10;"
+        },
+        {
+          "line_in_body": 40,
+          "excerpt": "*(ulong *)(lVar11 + 0x10) = uVar10 >> 0x1b | uVar10 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_029efacc",
+      "c_path": "02/029efacc.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40",
+        "shr24"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 1096,
+          "excerpt": "uVar30 = uVar10 >> 0x1b | uVar10 << 0x25;"
+        },
+        {
+          "line_in_body": 1097,
+          "excerpt": "uVar9 = uVar10 ^ (uVar9 >> 0x28 | uVar9 << 0x18) ^ uVar10 << 0x10;"
+        },
+        {
+          "line_in_body": 1628,
+          "excerpt": "*(ulong *)(DAT_043ecde0 + 8) = uVar10 ^ (uVar9 >> 0x28 | uVar9 << 0x18) ^ uVar10 << 0x10;"
+        },
+        {
+          "line_in_body": 1629,
+          "excerpt": "*(ulong *)(lVar15 + 0x10) = uVar10 >> 0x1b | uVar10 << 0x25;"
+        },
+        {
+          "line_in_body": 1751,
+          "excerpt": "local_c0 = CONCAT53((int5)(local_c0 >> 0x18),0x10000);"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_029f7504",
+      "c_path": "02/029f7504.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40",
+        "shr24"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 60,
+          "excerpt": "(byte)((ulong)plVar4[0xb] >> 0x18) >> 1)) &"
+        },
+        {
+          "line_in_body": 98,
+          "excerpt": "*(ulong *)(lVar24 + 8) = uVar31 ^ (uVar26 >> 0x28 | uVar26 << 0x18) ^ uVar31 << 0x10;"
+        },
+        {
+          "line_in_body": 99,
+          "excerpt": "*(ulong *)(lVar24 + 0x10) = uVar31 >> 0x1b | uVar31 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_029f7874",
+      "c_path": "02/029f7874.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 89,
+          "excerpt": "*(ulong *)(DAT_043ecde0 + 8) = uVar18 ^ (uVar2 >> 0x28 | uVar2 << 0x18) ^ uVar18 << 0x10;"
+        },
+        {
+          "line_in_body": 90,
+          "excerpt": "*(ulong *)(lVar12 + 0x10) = uVar18 >> 0x1b | uVar18 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_029fa2c4",
+      "c_path": "02/029fa2c4.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 73,
+          "excerpt": "uVar8 = uVar9 >> 0x1b | uVar9 << 0x25;"
+        },
+        {
+          "line_in_body": 75,
+          "excerpt": "uVar1 = uVar9 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar9 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02a0018c",
+      "c_path": "02/02a0018c.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 426,
+          "excerpt": "*(ulong *)(DAT_043ecde0 + 8) = uVar30 ^ (uVar26 >> 0x28 | uVar26 << 0x18) ^ uVar30 << 0x10;"
+        },
+        {
+          "line_in_body": 427,
+          "excerpt": "*(ulong *)(lVar34 + 0x10) = uVar30 >> 0x1b | uVar30 << 0x25;"
+        },
+        {
+          "line_in_body": 483,
+          "excerpt": "*(ulong *)(DAT_043ecde0 + 8) = uVar31 ^ (uVar21 >> 0x28 | uVar21 << 0x18) ^ uVar31 << 0x10;"
+        },
+        {
+          "line_in_body": 484,
+          "excerpt": "*(ulong *)(lVar34 + 0x10) = uVar31 >> 0x1b | uVar31 << 0x25;"
+        },
+        {
+          "line_in_body": 494,
+          "excerpt": "*(ulong *)(DAT_043ecde0 + 8) = uVar31 ^ (uVar21 >> 0x28 | uVar21 << 0x18) ^ uVar31 << 0x10;"
+        },
+        {
+          "line_in_body": 495,
+          "excerpt": "*(ulong *)(lVar34 + 0x10) = uVar31 >> 0x1b | uVar31 << 0x25;"
+        },
+        {
+          "line_in_body": 506,
+          "excerpt": "*(ulong *)(DAT_043ecde0 + 8) = uVar31 ^ (uVar21 >> 0x28 | uVar21 << 0x18) ^ uVar31 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 3,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02a04a84",
+      "c_path": "02/02a04a84.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 79,
+          "excerpt": "uVar13 = uVar14 >> 0x1b | uVar14 << 0x25;"
+        },
+        {
+          "line_in_body": 81,
+          "excerpt": "uVar6 = uVar14 ^ (uVar6 >> 0x28 | uVar6 << 0x18) ^ uVar14 << 0x10;"
+        },
+        {
+          "line_in_body": 401,
+          "excerpt": "uVar13 = uVar14 >> 0x1b | uVar14 << 0x25;"
+        },
+        {
+          "line_in_body": 403,
+          "excerpt": "uVar6 = uVar14 ^ (uVar6 >> 0x28 | uVar6 << 0x18) ^ uVar14 << 0x10;"
+        },
+        {
+          "line_in_body": 450,
+          "excerpt": "uVar13 = uVar14 >> 0x1b | uVar14 << 0x25;"
+        },
+        {
+          "line_in_body": 452,
+          "excerpt": "uVar6 = uVar14 ^ (uVar6 >> 0x28 | uVar6 << 0x18) ^ uVar14 << 0x10;"
+        },
+        {
+          "line_in_body": 502,
+          "excerpt": "uVar13 = uVar14 >> 0x1b | uVar14 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 3,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02a07d10",
+      "c_path": "02/02a07d10.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 235,
+          "excerpt": "uVar11 = uVar13 >> 0x1b | uVar13 << 0x25;"
+        },
+        {
+          "line_in_body": 237,
+          "excerpt": "uVar8 = uVar13 ^ (uVar8 >> 0x28 | uVar8 << 0x18) ^ uVar13 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02a3afc0",
+      "c_path": "02/02a3afc0.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 96,
+          "excerpt": "*(ulong *)(DAT_043ecde0 + 8) = uVar7 ^ (uVar1 >> 0x28 | uVar1 << 0x18) ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 97,
+          "excerpt": "*(ulong *)(lVar4 + 0x10) = uVar7 >> 0x1b | uVar7 << 0x25;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02c8c93c",
+      "c_path": "02/02c8c93c.c",
+      "score": 15,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": true,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [
+        "shl16",
+        "shl24",
+        "shl37",
+        "shr27",
+        "shr40"
+      ],
+      "evidence": [
+        {
+          "line_in_body": 28,
+          "excerpt": "uVar5 = uVar7 ^ (uVar4 >> 0x28 | uVar4 << 0x18);"
+        },
+        {
+          "line_in_body": 30,
+          "excerpt": "uVar6 = uVar7 >> 0x1b | uVar7 << 0x25;"
+        },
+        {
+          "line_in_body": 32,
+          "excerpt": "uVar4 = uVar5 ^ uVar7 << 0x10;"
+        },
+        {
+          "line_in_body": 35,
+          "excerpt": "param_1 = (ulong)(((int)uVar5 + (int)(uVar7 >> 0x1b) & 0x7fU) + uVar3);"
+        },
+        {
+          "line_in_body": 36,
+          "excerpt": "*param_2 = uVar6 ^ (uVar4 >> 0x28 | uVar4 << 0x18) ^ uVar6 << 0x10;"
+        },
+        {
+          "line_in_body": 37,
+          "excerpt": "param_2[1] = uVar6 >> 0x1b | uVar6 << 0x25;"
+        },
+        {
+          "line_in_body": 48,
+          "excerpt": "*param_2 = uVar6 ^ (uVar4 >> 0x28 | uVar4 << 0x18) ^ uVar6 << 0x10;"
+        }
+      ],
+      "extra_excerpt_count": 9,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_008c5ef4",
+      "c_path": "00/008c5ef4.c",
+      "score": 14,
+      "seed_const": true,
+      "crypto_entropy": true,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 46,
+          "excerpt": "param_1[0xe] = -0x7d5d4e8add6295a5;"
+        },
+        {
+          "line_in_body": 53,
+          "excerpt": "nn::crypto::GenerateCryptographicallyRandomBytes(&local_28,8);"
+        },
+        {
+          "line_in_body": 54,
+          "excerpt": "param_1[0xe] = -0x7d5d4e8add6295a5;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_00db84c4",
+      "c_path": "00/00db84c4.c",
+      "score": 14,
+      "seed_const": true,
+      "crypto_entropy": true,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 9,
+          "excerpt": "nn::crypto::GenerateCryptographicallyRandomBytes(&local_18,8);"
+        },
+        {
+          "line_in_body": 11,
+          "excerpt": "param_1[1] = 0x82a2b175229d6a5b;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_010f130c",
+      "c_path": "01/010f130c.c",
+      "score": 14,
+      "seed_const": true,
+      "crypto_entropy": true,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 49,
+          "excerpt": "nn::crypto::GenerateCryptographicallyRandomBytes(&local_58,8);"
+        },
+        {
+          "line_in_body": 55,
+          "excerpt": "puVar9[2] = 0x82a2b175229d6a5b;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_01c4d498",
+      "c_path": "01/01c4d498.c",
+      "score": 14,
+      "seed_const": true,
+      "crypto_entropy": true,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 259,
+          "excerpt": "param_1[0xdf] = 0x82a2b175229d6a5b;"
+        },
+        {
+          "line_in_body": 265,
+          "excerpt": "nn::crypto::GenerateCryptographicallyRandomBytes(&local_58,8);"
+        },
+        {
+          "line_in_body": 269,
+          "excerpt": "param_1[0xdf] = 0x82a2b175229d6a5b;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_0293d640",
+      "c_path": "02/0293d640.c",
+      "score": 14,
+      "seed_const": true,
+      "crypto_entropy": true,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 47,
+          "excerpt": "plVar7[2] = -0x7d5d4e8add6295a5;"
+        },
+        {
+          "line_in_body": 105,
+          "excerpt": "nn::crypto::GenerateCryptographicallyRandomBytes(local_78,8);"
+        },
+        {
+          "line_in_body": 106,
+          "excerpt": "plVar7[2] = -0x7d5d4e8add6295a5;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02942fac",
+      "c_path": "02/02942fac.c",
+      "score": 14,
+      "seed_const": true,
+      "crypto_entropy": true,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 330,
+          "excerpt": "nn::crypto::GenerateCryptographicallyRandomBytes(&local_168,8);"
+        },
+        {
+          "line_in_body": 332,
+          "excerpt": "*(undefined8 *)(param_1 + 0x70) = 0x82a2b175229d6a5b;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_029546dc",
+      "c_path": "02/029546dc.c",
+      "score": 14,
+      "seed_const": true,
+      "crypto_entropy": true,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 9,
+          "excerpt": "nn::crypto::GenerateCryptographicallyRandomBytes(&local_18,8);"
+        },
+        {
+          "line_in_body": 11,
+          "excerpt": "*(undefined8 *)(param_1 + 0x10) = 0x82a2b175229d6a5b;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_00d8c250",
+      "c_path": "00/00d8c250.c",
+      "score": 12,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 35,
+          "excerpt": "puVar3[1] = 0x82a2b175229d6a5b;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_00db8508",
+      "c_path": "00/00db8508.c",
+      "score": 12,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 8,
+          "excerpt": "param_1[1] = 0x82a2b175229d6a5b;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_00e60cc0",
+      "c_path": "00/00e60cc0.c",
+      "score": 12,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 45,
+          "excerpt": "puVar7[1] = 0x82a2b175229d6a5b;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_00e60e90",
+      "c_path": "00/00e60e90.c",
+      "score": 12,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 45,
+          "excerpt": "puVar7[1] = 0x82a2b175229d6a5b;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_010f0bb8",
+      "c_path": "01/010f0bb8.c",
+      "score": 12,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 91,
+          "excerpt": "plVar7[5] = -0x7d5d4e8add6295a5;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02941934",
+      "c_path": "02/02941934.c",
+      "score": 12,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 53,
+          "excerpt": "param_1[0xe] = -0x7d5d4e8add6295a5;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02954720",
+      "c_path": "02/02954720.c",
+      "score": 12,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 8,
+          "excerpt": "*(undefined8 *)(param_1 + 0x10) = 0x82a2b175229d6a5b;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_02a09bf0",
+      "c_path": "02/02a09bf0.c",
+      "score": 12,
+      "seed_const": true,
+      "crypto_entropy": false,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": false,
+      "related_calls": [],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 59,
+          "excerpt": "*(undefined8 *)(lVar3 + 0x10) = 0x82a2b175229d6a5b;"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_00d8ae6c",
+      "c_path": "00/00d8ae6c.c",
+      "score": 7,
+      "seed_const": false,
+      "crypto_entropy": false,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": true,
+      "related_calls": [
+        "FUN_00db84c4"
+      ],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 4,
+          "excerpt": "/* WARNING: Control flow encountered bad instruction data */"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "function": "FUN_04451300",
+      "c_path": "04/04451300.c",
+      "score": 5,
+      "seed_const": false,
+      "crypto_entropy": true,
+      "forward_rotation_like": false,
+      "reverse_rotation_like": false,
+      "spawn_string": true,
+      "related_calls": [],
+      "shift_tokens": [],
+      "evidence": [
+        {
+          "line_in_body": 4,
+          "excerpt": "/* WARNING: Control flow encountered bad instruction data */"
+        },
+        {
+          "line_in_body": 7,
+          "excerpt": "void nn::crypto::GenerateCryptographicallyRandomBytes(void *param_1,ulong param_2)"
+        }
+      ],
+      "extra_excerpt_count": 0,
+      "status": "CANDIDATE_ONLY"
+    }
+  ],
+  "omitted": 0,
+  "limitations": [
+    "xoroshiro constant is shared by many native modules",
+    "C rotation patterns may be optimizer artifacts",
+    "Ghidra decompiler has known missing noret functions",
+    "No claim is made that any candidate is the native Pokemon generator",
+    "No game guest, fixed seed or monster instance was observed"
+  ]
+}
