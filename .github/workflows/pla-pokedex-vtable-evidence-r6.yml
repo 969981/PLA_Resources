@@ -57,7 +57,8 @@ jobs:
           assert len(d["targets"]["slot_object_allocator"]["direct_BL"])>=1
           assert d["windows"]["object_initializer_or_error"]
           assert d["vtable_raw_words"]["primary_vtable"]["ghidra_va"]=="0x041F23C8"
-          for name in ('primary_vtable_callback40','primary_vtable_callback48_load','primary_vtable_callback50_write'):
+          for name in ('primary_vtable_get_registered_ref','secondary_vtable_get_registered_ref',
+                       'primary_vtable_callback40','primary_vtable_callback48_load','primary_vtable_callback50_write'):
               assert d['windows'][name],name
           print("Verified raw constructor evidence and no unproven dynamic-dispatch claim")
           PY
