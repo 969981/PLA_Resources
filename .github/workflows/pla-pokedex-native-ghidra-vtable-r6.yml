@@ -34,6 +34,7 @@ jobs:
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /tools/ghidra/pla_restore_split.py
+            /tools/ghidra/pla_embed_elf.py
             /tools/ghidra/PLATracePokedexVtablesR6.java
             /.github/workflows/pla-pokedex-native-ghidra-vtable-r6.yml
             /derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/parts_manifest.json
