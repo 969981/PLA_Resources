@@ -1,0 +1,152 @@
+{
+  "status": "RAW_ELF_DIRECT_BL_AND_EXACT_DATA_POINTERS_ONLY",
+  "source_sha256": "260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794",
+  "elf_bytes": 69781384,
+  "ghidra_minus_elf_va": "0x100000",
+  "anchor_verified": {
+    "site": "0x112F518",
+    "callee": "0x112F528"
+  },
+  "targets": {
+    "SerializerWriteWrapper": {
+      "ghidra_va": "0x010CE274",
+      "direct_bl_call_sites": [
+        "0x01150690"
+      ],
+      "direct_bl_total": 1,
+      "exact_nonexecutable_pointers": [],
+      "exact_data_pointer_total": 0
+    },
+    "SerializerCopyAndEmit": {
+      "ghidra_va": "0x010CE5DC",
+      "direct_bl_call_sites": [
+        "0x010CE30C"
+      ],
+      "direct_bl_total": 1,
+      "exact_nonexecutable_pointers": [],
+      "exact_data_pointer_total": 0
+    },
+    "SerializerSize": {
+      "ghidra_va": "0x010CE508",
+      "direct_bl_call_sites": [
+        "0x010CE29C",
+        "0x010CE624"
+      ],
+      "direct_bl_total": 2,
+      "exact_nonexecutable_pointers": [],
+      "exact_data_pointer_total": 0
+    },
+    "PokedexGetContextSlot": {
+      "ghidra_va": "0x01148F20",
+      "direct_bl_call_sites": [
+        "0x00C53688",
+        "0x00C53DEC",
+        "0x00C5453C",
+        "0x00C54C9C",
+        "0x00DAAAD0",
+        "0x00DAABB0",
+        "0x00DAAC90",
+        "0x00DAB328",
+        "0x00DABF94",
+        "0x00E93424",
+        "0x00E93F1C",
+        "0x011A3E10",
+        "0x0120E574",
+        "0x0120EAA0",
+        "0x0120EC24",
+        "0x0120EE7C",
+        "0x0125E1A0",
+        "0x0139877C",
+        "0x013F3BB0",
+        "0x013F4258",
+        "0x013F5834",
+        "0x01413238",
+        "0x01456144",
+        "0x0160DD54",
+        "0x01683F9C",
+        "0x01685DB8",
+        "0x01907184",
+        "0x01B72EE0",
+        "0x027DCCD8",
+        "0x0286BCCC"
+      ],
+      "direct_bl_total": 30,
+      "exact_nonexecutable_pointers": [],
+      "exact_data_pointer_total": 0
+    },
+    "PokedexMutation": {
+      "ghidra_va": "0x0112F528",
+      "direct_bl_call_sites": [
+        "0x0112F518",
+        "0x0286BCE0"
+      ],
+      "direct_bl_total": 2,
+      "exact_nonexecutable_pointers": [],
+      "exact_data_pointer_total": 0
+    },
+    "SaveJobController": {
+      "ghidra_va": "0x011457E4",
+      "direct_bl_call_sites": [
+        "0x011457C0",
+        "0x0275D668",
+        "0x0275E804",
+        "0x027DBD1C",
+        "0x027DCF44"
+      ],
+      "direct_bl_total": 5,
+      "exact_nonexecutable_pointers": [],
+      "exact_data_pointer_total": 0
+    },
+    "SaveJobCommitWrapper": {
+      "ghidra_va": "0x01148690",
+      "direct_bl_call_sites": [
+        "0x010CC0A8",
+        "0x01145878",
+        "0x01454F4C",
+        "0x01683A28",
+        "0x027DBB04"
+      ],
+      "direct_bl_total": 5,
+      "exact_nonexecutable_pointers": [],
+      "exact_data_pointer_total": 0
+    },
+    "CommitAdapter": {
+      "ghidra_va": "0x02A8F2F4",
+      "direct_bl_call_sites": [
+        "0x011486CC"
+      ],
+      "direct_bl_total": 1,
+      "exact_nonexecutable_pointers": [],
+      "exact_data_pointer_total": 0
+    },
+    "FileWriteAdapter": {
+      "ghidra_va": "0x02A8D6BC",
+      "direct_bl_call_sites": [
+        "0x010CE390",
+        "0x01144134"
+      ],
+      "direct_bl_total": 2,
+      "exact_nonexecutable_pointers": [],
+      "exact_data_pointer_total": 0
+    },
+    "PokedexEventMutationTask": {
+      "ghidra_va": "0x027DCC74",
+      "direct_bl_call_sites": [
+        "0x00D17CE0",
+        "0x00D17E8C",
+        "0x0120BC88",
+        "0x0120BCE0"
+      ],
+      "direct_bl_total": 4,
+      "exact_nonexecutable_pointers": [],
+      "exact_data_pointer_total": 0
+    }
+  },
+  "limitations": [
+    "No virtual or indirect BLR call targets are recovered.",
+    "Only absolute aligned 64-bit words in nonexecutable PT_LOAD segments are scanned.",
+    "Relative offsets, 32-bit relocations, packed tables and runtime relocation-generated pointers are not captured.",
+    "A matching raw pointer does not prove table/vtable ownership, object identity or serialization.",
+    "No validation that the serializer buffer contains PokedexSave data or that Commit succeeded."
+  ]
+}
