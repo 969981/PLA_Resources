@@ -39,6 +39,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 -m py_compile scripts/trace_pla_serializer_owner_pointers.py
+          python3 -m pip install --disable-pip-version-check capstone==5.0.6
           printf '%s  %s\n' \
             '260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794' \
             'Unpack/v1.1.1/exefs/main/main.elf' | sha256sum --check
