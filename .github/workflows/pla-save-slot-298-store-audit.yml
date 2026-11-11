@@ -1,0 +1,90 @@
+name: PLA Pokedex SaveSystem +0x298 native STR audit
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/pla-save-slot-298-store-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pla111-save-slot-298-native-audit
+  cancel-in-progress: false
+
+jobs:
+  exact-str-candidate-audit:
+    if: github.repository == '969981/PLA_Resources'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Pinned original ELF and existing C only
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /Unpack/v1.1.1/exefs/main/main.elf
+            /derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/
+            /scripts/trace_pla_save_slot_298_stores.py
+            /.github/workflows/pla-save-slot-298-store-audit.yml
+            /docs/research/v1.1.1/semantic_inventory/save_slot_298_str_audit_r5.md
+            /docs/research/v1.1.1/semantic_inventory/save_slot_298_str_audit_r5.json
+
+      - name: Verify hash and scan field stores without new Ghidra
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check capstone==5.0.6
+          python3 -m py_compile scripts/trace_pla_save_slot_298_stores.py
+          python3 scripts/trace_pla_save_slot_298_stores.py --self-test
+          printf '%s  %s\n' \
+            '260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794' \
+            'Unpack/v1.1.1/exefs/main/main.elf' | sha256sum --check
+          python3 scripts/trace_pla_save_slot_298_stores.py \
+            --elf Unpack/v1.1.1/exefs/main/main.elf \
+            --c-root derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c \
+            --out-md docs/research/v1.1.1/semantic_inventory/save_slot_298_str_audit_r5.md \
+            --out-json docs/research/v1.1.1/semantic_inventory/save_slot_298_str_audit_r5.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('docs/research/v1.1.1/semantic_inventory/save_slot_298_str_audit_r5.json').read_text())
+          assert d['status']=='RAW_STR_OFFSET_CANDIDATES_NOT_PROVEN_POKEDEX_OWNERS'
+          assert d['source_sha256']=='260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794'
+          assert d['c_coverage']==82731
+          assert d['stores_298_total']>=1
+          assert all(x['offset']=='0x298' for x in [])
+          print('Independent provenance and proof boundary gates passed')
+          PY
+
+      - name: Publish only bounded new findings
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            docs/research/v1.1.1/semantic_inventory/save_slot_298_str_audit_r5.md \
+            docs/research/v1.1.1/semantic_inventory/save_slot_298_str_audit_r5.json
+          if git diff --cached --quiet; then
+            echo 'No new evidence to commit'
+          else
+            git commit -m 'research(pla): publish exact ARM64 SaveSystem slot writer candidates'
+            git fetch -q origin master
+            git rebase origin/master
+            git push origin HEAD:refs/heads/master
+          fi
+
+      - name: Retain evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PLA-SaveSystem-Slot298-Raw-STr-R5
+          path: |
+            docs/research/v1.1.1/semantic_inventory/save_slot_298_str_audit_r5.md
+            docs/research/v1.1.1/semantic_inventory/save_slot_298_str_audit_r5.json
+          if-no-files-found: warn
+          retention-days: 30
