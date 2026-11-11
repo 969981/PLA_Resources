@@ -35,6 +35,8 @@ WINDOWS={
     "get_pokedex_slot":(0x01148F20,0x01148F9C),
     "primary_vtable_get_registered_ref":(0x008A782C,0x008A791C),
     "secondary_vtable_get_registered_ref":(0x008A7C1C,0x008A7CCC),
+    "reference_copy_helper":(0x007802F0,0x007803F0),
+    "registry_ref_to_object":(0x010D68E4,0x010D69B0),
     "primary_vtable_callback40":(0x0112E3D0,0x0112E414),
     "primary_vtable_callback48_load":(0x0112E414,0x0112E5CC),
     "primary_vtable_callback50_write":(0x0112E5CC,0x0112E6F0),
