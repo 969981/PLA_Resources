@@ -68,7 +68,9 @@ def analyze_case(rows):
     aborted_runs={r["run_id"] for r in _matching(rows,"probe_aborted")}
     reliable_runs=armed_runs-aborted_runs
     clean = [r for r in rows if r["run_id"] in reliable_runs]
-    reports=[r for r in _matching(clean,"report_update_exit") if r.get("changed") is True and _has_good_hash(r)]
+    reports=[r for r in _matching(clean,"report_update_exit") if
+             (r.get("changed") is True or r.get("aux_changed") is True)]
+    persisted_block_updates=[r for r in reports if r.get("changed") is True and _has_good_hash(r)]
     writes=[r for r in _matching(clean,"zukan_write_enter") if _has_good_hash(r)]
     key_writes=[r for r in _matching(clean,"hash_write_post")
                 if (r.get("block") or {}).get("found") and (r.get("block") or {}).get("pending")==1]
@@ -81,7 +83,7 @@ def analyze_case(rows):
                  if isinstance(r.get("nn_fs_commit_result"),int) and r.get("nn_fs_commit_result")!=0]
     load_exits=[r for r in _matching(clean,"zukan_load_exit") if _has_good_hash(r)]
     match_pairs=[]
-    for report in reports:
+    for report in persisted_block_updates:
         for loaded in load_exits:
             if loaded["run_id"]!=report["run_id"] and _digest(loaded)==_digest(report):
                 match_pairs.append({
@@ -92,6 +94,8 @@ def analyze_case(rows):
     # This is only sequential compatibility evidence. No true shared transaction ID.
     observed_events = {
         "report_memory_changed":bool(reports),
+        "report_kzukan_block_changed":bool(persisted_block_updates),
+        "report_auxiliary_only_changed":any(r.get("aux_changed") is True and r.get("changed") is False for r in reports),
         "pokedex_write_method_entered":bool(writes),
         "kzukan_descriptor_pending_set":bool(key_writes),
         "snapshot_source_copied_to_mirror":bool(snapshots),
@@ -108,7 +112,8 @@ def analyze_case(rows):
     if not reliable_runs:
         blockers.append("No fully armed live guest probe (or it aborted).")
     for key,label in (
-        ("report_memory_changed","Report update before/after full-block digest"),
+        ("report_memory_changed","Report update before/after block and auxiliary digests"),
+        ("report_kzukan_block_changed","Report changed the persisted KZukan block, not only auxiliary progress"),
         ("pokedex_write_method_entered","Pokedex vtable+0x50 entry"),
         ("kzukan_descriptor_pending_set","KZukan desc+0x28 set on actual write"),
         ("snapshot_source_copied_to_mirror","KZukan pending 1->0 plus source/mirror digest equality"),
@@ -156,7 +161,7 @@ def _self_test():
     staged=[
         row("probe_started",1),row("probe_armed",2),
         row("report_update_enter",3),
-        row("report_update_exit",4,changed=True,state={"sha256":h1}),
+        row("report_update_exit",4,changed=True,aux_changed=True,state={"sha256":h1}),
         row("zukan_write_enter",5,state={"sha256":h1}),
         row("hash_write_post",6,block={"found":True,"pending":1}),
         row("snapshot_exit",7,before_pending=1,block={
@@ -174,7 +179,7 @@ def _self_test():
         a=report(rows)["cases"]["offline-fixture"]
         assert a["verdict"]=="PERSISTENCE_NOT_VERIFIED"
         assert all(a["observed"][x] for x in (
-            "report_memory_changed","pokedex_write_method_entered",
+            "report_memory_changed","report_kzukan_block_changed","pokedex_write_method_entered",
             "kzukan_descriptor_pending_set","snapshot_source_copied_to_mirror",
             "hashdb_writefile_returned_ok","hashdb_write_job_result_2",
             "native_commit_returned_zero","cold_restart_pokedex_digest_match"))
@@ -198,6 +203,13 @@ def _self_test():
         path.write_text(json.dumps(row("report_update_exit",1,changed=True,state={"sha256":h1}))+"\n",encoding="utf-8")
         a=report(load_events([path]))["cases"]["offline-fixture"]
         assert not any(a["observed"].values())
+        # The auxiliary +0x1E4CC region can change without a KZukan 0x1E460 block change.
+        path.write_text("\n".join(json.dumps(x) for x in [
+            row("probe_started",1),row("probe_armed",2),
+            row("report_update_exit",3,changed=False,aux_changed=True,state={"sha256":h1})])+"\n",encoding="utf-8")
+        observed=report(load_events([path]))["cases"]["offline-fixture"]["observed"]
+        assert observed["report_memory_changed"] and observed["report_auxiliary_only_changed"]
+        assert not observed["report_kzukan_block_changed"]
         # Synthetic fixture source cannot be accepted by production auditor.
         x=row("probe_armed",1)
         x["origin"]="synthetic_test"
