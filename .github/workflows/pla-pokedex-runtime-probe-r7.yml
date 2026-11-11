@@ -1,0 +1,48 @@
+name: PLA v1.1.1 R7 guest-runtime observer validation (offline only)
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - .github/workflows/pla-pokedex-runtime-probe-r7.yml
+      - scripts/pla_pokedex_runtime_gdb_r7.py
+      - scripts/audit_pla_pokedex_runtime_r7.py
+      - docs/research/v1.1.1/semantic_inventory/pokedex_runtime_observability_r7.md
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-observer:
+    if: github.repository == '969981/PLA_Resources'
+    name: Validate R7 scripts and negative/failure case logic (no guest)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/pla-pokedex-runtime-probe-r7.yml
+            /scripts/pla_pokedex_runtime_gdb_r7.py
+            /scripts/audit_pla_pokedex_runtime_r7.py
+            /docs/research/v1.1.1/semantic_inventory/pokedex_runtime_observability_r7.md
+      - name: Compile without importing gdb, run deterministic synthetic-only evidence tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile scripts/pla_pokedex_runtime_gdb_r7.py scripts/audit_pla_pokedex_runtime_r7.py
+          python3 scripts/audit_pla_pokedex_runtime_r7.py --self-test
+      - name: Record test scope in summary
+        shell: bash
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ## PLA R7 offline instrumentation validation
+          - Tested: Python syntax, JSONL schema, mock status 2/3, pending-copy transition, separate Commit result codes, independent boot run correlation.
+          - Not tested: AArch64 guest breakpoint execution, actual UpdateAllReportPoke, hashdb IO to disk, nn::fs::Commit success from game, or persistence after relaunch.
+          - Verdict: PERSISTENCE_NOT_VERIFIED until new guest evidence is collected and inspected.
+          EOF
