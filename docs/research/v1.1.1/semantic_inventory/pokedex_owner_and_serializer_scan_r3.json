@@ -1,0 +1,3124 @@
+{
+  "status": "STATIC_SOURCE_CANDIDATES_NOT_DATAFLOW_PROOF",
+  "version": "PLA 1.1.1",
+  "analysis_run": 42774682950,
+  "original_elf_sha256": "260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794",
+  "scanned_c_functions": 82731,
+  "unreadable": 0,
+  "owner_offset_298": {
+    "syntactic_writer_occurrences": 146,
+    "unique_functions": 88,
+    "candidates": [
+      {
+        "path": "00/00268eb4.c",
+        "function": "00268eb4",
+        "base": "param_1",
+        "line": 132,
+        "score": 4,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": true,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined2 *)(param_1 + 1) = 0x101;\n        *(ulong *)(param_1 + 0x298) = (long)piVar5 + (ulong)uVar3;\n      }",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/0052860c.c",
+        "function": "0052860c",
+        "base": "param_1",
+        "line": 91,
+        "score": 4,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": true,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined2 *)(param_1 + 0x280) = 0;\n        *(undefined8 *)(param_1 + 0x298) = 0;\n        *(undefined4 *)(param_1 + 0x2a0) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00528bc8.c",
+        "function": "00528bc8",
+        "base": "param_1",
+        "line": 81,
+        "score": 4,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": true,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined2 *)(param_1 + 0x280) = 0;\n        *(undefined8 *)(param_1 + 0x298) = 0;\n        *(undefined4 *)(param_1 + 0x2a0) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00848bb0.c",
+        "function": "00848bb0",
+        "base": "param_1",
+        "line": 41,
+        "score": 4,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": true,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined **)(param_1 + 0x290) = puVar1;\n  *(undefined8 *)(param_1 + 0x298) = 0;\n  *(undefined8 *)(param_1 + 0x2a0) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/009907fc.c",
+        "function": "009907fc",
+        "base": "param_1",
+        "line": 506,
+        "score": 4,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": true,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x290) = *(undefined8 *)(param_1 + 0x1d0);\n  *(undefined8 *)(param_1 + 0x298) = *(undefined8 *)(param_1 + 0x1d8);\n  *(undefined8 *)(param_1 + 0x280) = *(undefined8 *)(param_1 + 0x1c0);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02fede20.c",
+        "function": "02fede20",
+        "base": "param_1",
+        "line": 31,
+        "score": 4,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": true,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined1 **)(param_1 + 0x2a8) = &LAB_02ff92e0;\n  *(undefined1 **)(param_1 + 0x298) = &LAB_02fdf270;\n  *(undefined1 **)(param_1 + 0x2a0) = &LAB_02fdf290;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "03/03014b98.c",
+        "function": "03014b98",
+        "base": "param_1",
+        "line": 75,
+        "score": 4,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": true,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(long *)(param_1 + 0x280) = param_1 + 0x290;\n  *(long *)(param_1 + 0x298) = param_1 + 0x2a8;\n  *(long *)(param_1 + 0x2b0) = param_1 + 0x2c0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "03/03338cb8.c",
+        "function": "03338cb8",
+        "base": "param_1",
+        "line": 191,
+        "score": 4,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": true,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined2 *)(param_1 + 0x244) = 0xfffe;\n  *(long *)(param_1 + 0x298) = param_1 + 0x2a0;\n  *(undefined2 *)(param_1 + 0x2a4) = 0xfffe;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/0016d530.c",
+        "function": "0016d530",
+        "base": "lVar2",
+        "line": 41,
+        "score": 3,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": true,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar2 + 0x290) = uVar1;\n  *(undefined8 *)(lVar2 + 0x298) = uVar1;\n  *(undefined8 *)(lVar2 + 0x2a0) = uVar1;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/006172f4.c",
+        "function": "006172f4",
+        "base": "lVar5",
+        "line": 224,
+        "score": 3,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": true,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar5 + 0x280) = 0;\n        *(undefined8 *)(lVar5 + 0x298) = 0;\n        *(undefined8 *)(lVar5 + 0x290) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/008cca50.c",
+        "function": "008cca50",
+        "base": "puVar3",
+        "line": 194,
+        "score": 3,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": true,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "puVar3[0x277] = 0;\n    *(undefined8 *)(puVar3 + 0x298) = 0;\n    *(undefined8 *)(puVar3 + 0x290) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/011405e0.c",
+        "function": "011405e0",
+        "base": "lVar2",
+        "line": 133,
+        "score": 3,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": true,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar2 + 0x2a8) = 0;\n    *(undefined8 *)(lVar2 + 0x298) = 0;\n    *(undefined1 *)(lVar2 + 0x2b3) = 1;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/0272693c.c",
+        "function": "0272693c",
+        "base": "lVar4",
+        "line": 350,
+        "score": 3,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": true,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "plVar2 = (long *)(**(code **)(*plVar3 + 0x10))(plVar3,0x70,8);\n  *(long **)(lVar4 + 0x298) = plVar2;\n  if (plVar2 == (long *)0x0) {",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02e4a2ac.c",
+        "function": "02e4a2ac",
+        "base": "param_4",
+        "line": 137,
+        "score": 3,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": true,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "uVar1 = param_2[0x2b];\n  *(undefined8 *)(param_4 + 0x298) = param_2[0x29];\n  *(undefined8 *)(param_4 + 0x2a8) = uVar1;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02e75160.c",
+        "function": "02e75160",
+        "base": "__s",
+        "line": 76,
+        "score": 3,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": true,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "nn::os::InitializeMutex(__s + 0x268,true,0);\n    *(undefined4 *)(__s + 0x298) = 0;\n    *(undefined8 *)(__s + 0x290) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/0010bf50.c",
+        "function": "0010bf50",
+        "base": "param_1",
+        "line": 1335,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "uVar2 = 1;\n    *(uint *)(param_1 + 0x298) = uVar15;\n  }",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/0010bf50.c",
+        "function": "0010bf50",
+        "base": "param_1",
+        "line": 1424,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(uint *)(param_1 + 0x290) = (uint)uVar5 & 0xffff;\n        *(undefined8 *)(param_1 + 0x298) = 0;\n        *(uint *)(param_1 + 0x294) = (uint)uVar5;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/0010bf50.c",
+        "function": "0010bf50",
+        "base": "param_1",
+        "line": 1430,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "else if (iVar4 == 0) {\n        *(undefined8 *)(param_1 + 0x298) = 0;\n      }",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/0010bf50.c",
+        "function": "0010bf50",
+        "base": "param_1",
+        "line": 1550,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "}\n            *(uint *)(param_1 + 0x298) = uVar11;\n            iVar4 = iVar4 + 1;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00113190.c",
+        "function": "00113190",
+        "base": "param_1",
+        "line": 295,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x29c) = (*(undefined8 **)puVar1)[1];\n  *(undefined8 *)(param_1 + 0x298) = uVar2;\n  uVar3 = *(undefined8 *)(*(long *)puVar1 + 0x18);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00203b60.c",
+        "function": "00203b60",
+        "base": "param_1",
+        "line": 36,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "memset(__s,0,*(size_t *)(lVar2 + 0x18));\n      *(void **)(param_1 + 0x298) = __s;\n      return 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/0026d018.c",
+        "function": "0026d018",
+        "base": "param_1",
+        "line": 83,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x290) = *(undefined8 *)(param_4 + 0xe0);\n      *(undefined8 *)(param_1 + 0x298) = *(undefined8 *)(param_4 + 0xe8);\n      *(undefined8 *)(param_1 + 0x2a0) = *(undefined8 *)(param_4 + 0xf0);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/0053d1f0.c",
+        "function": "0053d1f0",
+        "base": "param_1",
+        "line": 363,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x290) = 0;\n    *(undefined4 *)(param_1 + 0x298) = 0;\n    *(undefined8 *)(param_1 + 0x250) = *(undefined8 *)(param_1 + 200);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00ae676c.c",
+        "function": "00ae676c",
+        "base": "param_1",
+        "line": 21,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x288) = param_2[1];\n  *(undefined8 *)(param_1 + 0x298) = uVar2;\n  uVar2 = *param_2;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00ae6e18.c",
+        "function": "00ae6e18",
+        "base": "param_1",
+        "line": 44,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x288) = param_2[1];\n  *(undefined8 *)(param_1 + 0x298) = uVar2;\n  uVar2 = *param_2;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00ae6ef0.c",
+        "function": "00ae6ef0",
+        "base": "param_1",
+        "line": 47,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x288) = param_2[1];\n  *(undefined8 *)(param_1 + 0x298) = uVar3;\n  uVar3 = *param_2;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00ae7090.c",
+        "function": "00ae7090",
+        "base": "param_1",
+        "line": 28,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x290) = uVar4;\n  *(undefined8 *)(param_1 + 0x298) = uVar5;\n  *(undefined8 *)(param_1 + 0x278) = uVar5;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00af01d4.c",
+        "function": "00af01d4",
+        "base": "param_1",
+        "line": 87,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x2a0) = uStack_78;\n  *(undefined8 *)(param_1 + 0x298) = local_80;\n  uVar6 = plVar9[1];",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00b6f390.c",
+        "function": "00b6f390",
+        "base": "param_1",
+        "line": 284,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "}\n      *(undefined8 *)(param_1 + 0x298) = 0;\n    }",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00b75ff4.c",
+        "function": "00b75ff4",
+        "base": "param_1",
+        "line": 665,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "}\n          *(long *)(param_1 + 0x298) = *(long *)(param_1 + 0x298) + 1;\n        }",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/0110c3e4.c",
+        "function": "0110c3e4",
+        "base": "param_1",
+        "line": 175,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x2a0) = *(undefined8 *)(param_2 + 0x2a0);\n    *(undefined8 *)(param_1 + 0x298) = uVar3;\n    *(undefined8 *)(param_1 + 0x290) = uVar2;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/0120bc6c.c",
+        "function": "0120bc6c",
+        "base": "param_1",
+        "line": 35,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x2a0) = uStack_30;\n    *(undefined8 *)(param_1 + 0x298) = local_38;\n    uVar1 = FUN_027dcc74(uVar2);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/019e3e98.c",
+        "function": "019e3e98",
+        "base": "param_1",
+        "line": 22,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "plVar1 = *(long **)(param_1 + 0x298);\n  *(long **)(param_1 + 0x298) = plVar2;\n  if (plVar1 != (long *)0x0) {",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/01a71f00.c",
+        "function": "01a71f00",
+        "base": "param_1",
+        "line": 533,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x290) = 0;\n    *(undefined8 *)(param_1 + 0x298) = 0;\n    *(undefined8 *)(param_1 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/01a71f00.c",
+        "function": "01a71f00",
+        "base": "param_1",
+        "line": 541,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(code **)(param_1 + 0x288) = local_118;\n  *(undefined1 **)(param_1 + 0x298) = local_108;\n  *(code **)(param_1 + 0x290) = local_110;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/01bfcca8.c",
+        "function": "01bfcca8",
+        "base": "param_1",
+        "line": 75,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined1 *)(local_68 + 0x1c) = 1;\n            *(long *)(param_1 + 0x298) = param_2[1];\n            *(long *)(param_1 + 0x290) = *param_2;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/01c15204.c",
+        "function": "01c15204",
+        "base": "param_1",
+        "line": 18,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x290) = *(undefined8 *)(param_1 + 0x2d0);\n  *(undefined8 *)(param_1 + 0x298) = *(undefined8 *)(param_1 + 0x2d8);\n  *(undefined4 *)(param_1 + 0x2a0) = *(undefined4 *)(param_1 + 0x2e0);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/01c15518.c",
+        "function": "01c15518",
+        "base": "param_1",
+        "line": 18,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x290) = *(undefined8 *)(param_1 + 0x2d0);\n  *(undefined8 *)(param_1 + 0x298) = *(undefined8 *)(param_1 + 0x2d8);\n  *(undefined4 *)(param_1 + 0x2a0) = *(undefined4 *)(param_1 + 0x2e0);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/01c1785c.c",
+        "function": "01c1785c",
+        "base": "param_1",
+        "line": 27,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x2b0) = *(undefined8 *)(param_1 + 0x300);\n  *(undefined8 *)(param_1 + 0x298) = *(undefined8 *)(param_1 + 0x2d8);\n  *(undefined4 *)(param_1 + 0x2c0) = uVar1;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/01c5aa48.c",
+        "function": "01c5aa48",
+        "base": "param_1",
+        "line": 14,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "FUN_01c5a23c(param_1 + -0x208);\n    *(undefined4 *)(param_1 + 0x298) = 1;\n  }",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/01c60590.c",
+        "function": "01c60590",
+        "base": "param_1",
+        "line": 730,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "FUN_01c5fc04(param_1,&local_e0,&local_100);\n  *(undefined4 *)(param_1 + 0x298) = 3;\n  return;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02583818.c",
+        "function": "02583818",
+        "base": "param_1",
+        "line": 126,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "plVar3 = *(long **)(param_1 + 0x298);\n  *(long **)(param_1 + 0x298) = plVar4;\n  if (plVar3 != (long *)0x0) {",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/025d17dc.c",
+        "function": "025d17dc",
+        "base": "param_1",
+        "line": 835,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "bVar23 = false;\n    *(undefined4 *)(param_1 + 0x298) = 0;\n    if (*pcVar2 == '\\0') goto LAB_025d1948;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/025d17dc.c",
+        "function": "025d17dc",
+        "base": "param_1",
+        "line": 1093,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "if (*piVar3 < iVar13) goto LAB_025d1d44;\n      *(int *)(param_1 + 0x298) = iVar13;\n      if (*(long *)(param_1 + 0x290) == 0xeaaa3234ef9be65) {",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/025d39a8.c",
+        "function": "025d39a8",
+        "base": "param_1",
+        "line": 50,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "}\n  *(undefined4 *)(param_1 + 0x298) = 0;\n  *(undefined1 *)(param_1 + 0x2a0) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/025d3b0c.c",
+        "function": "025d3b0c",
+        "base": "param_1",
+        "line": 50,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "}\n  *(undefined4 *)(param_1 + 0x298) = 0;\n  *(undefined1 *)(param_1 + 0x2a0) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/0280f0f4.c",
+        "function": "0280f0f4",
+        "base": "param_1",
+        "line": 51,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x290) = 0;\n    *(undefined8 *)(param_1 + 0x298) = 0;\n    *(undefined8 *)(param_1 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/0280f0f4.c",
+        "function": "0280f0f4",
+        "base": "param_1",
+        "line": 63,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x290) = param_3[2];\n    *(undefined8 *)(param_1 + 0x298) = uVar4;\n    *(undefined8 *)(param_1 + 0x280) = uVar2;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/028aab80.c",
+        "function": "028aab80",
+        "base": "param_1",
+        "line": 127,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x2a0) = 0;\n    *(undefined8 *)(param_1 + 0x298) = 0;\n    *(undefined8 *)(param_1 + 0x290) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/0294f0dc.c",
+        "function": "0294f0dc",
+        "base": "param_1",
+        "line": 163,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined1 *)(param_1 + 0x297) = *(undefined1 *)((long)param_2 + 0x17);\n  *(undefined1 *)(param_1 + 0x298) = *(undefined1 *)(param_2 + 3);\n  *(undefined8 *)(param_1 + 0x2a8) = param_2[5];",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02950338.c",
+        "function": "02950338",
+        "base": "param_1",
+        "line": 146,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined1 *)(param_1 + 0x297) = *(undefined1 *)(param_2 + 0x297);\n  *(undefined1 *)(param_1 + 0x298) = *(undefined1 *)(param_2 + 0x298);\n  uVar6 = *(undefined8 *)(param_2 + 0x2a8);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02a49934.c",
+        "function": "02a49934",
+        "base": "param_1",
+        "line": 162,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "puVar6 = *(undefined8 **)(param_1 + 0x298);\n  *(undefined8 *)(param_1 + 0x298) = 0;\n  if (puVar6 != (undefined8 *)0x0) {",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02a49d9c.c",
+        "function": "02a49d9c",
+        "base": "param_1",
+        "line": 237,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "puVar10 = *(undefined8 **)(param_1 + 0x298);\n  *(undefined8 *)(param_1 + 0x298) = 0;\n  if (puVar10 != (undefined8 *)0x0) {",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02aed4e4.c",
+        "function": "02aed4e4",
+        "base": "param_1",
+        "line": 31,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*plVar1 = lVar6;\n            *(undefined8 *)(param_1 + 0x298) = 0;\n            cVar4 = ExclusiveMonitorsStatus();",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02aed4e4.c",
+        "function": "02aed4e4",
+        "base": "param_1",
+        "line": 43,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*plVar1 = lVar6;\n      *(undefined8 *)(param_1 + 0x298) = 0;\n      cVar4 = ExclusiveMonitorsStatus();",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02aed4e4.c",
+        "function": "02aed4e4",
+        "base": "param_1",
+        "line": 58,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*plVar1 = lVar6;\n      *(long *)(param_1 + 0x298) = lVar8;\n      cVar4 = ExclusiveMonitorsStatus();",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02aeebd0.c",
+        "function": "02aeebd0",
+        "base": "param_1",
+        "line": 35,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*plVar1 = lVar9;\n      *(long *)(param_1 + 0x298) = lVar2;\n      cVar3 = ExclusiveMonitorsStatus();",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02aeebd0.c",
+        "function": "02aeebd0",
+        "base": "param_1",
+        "line": 49,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*plVar1 = lVar9;\n          *(long *)(param_1 + 0x298) = lVar2;\n          cVar3 = ExclusiveMonitorsStatus();",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02aeebd0.c",
+        "function": "02aeebd0",
+        "base": "param_1",
+        "line": 152,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*plVar1 = lVar6;\n      *(long *)(param_1 + 0x298) = lVar9;\n      cVar3 = ExclusiveMonitorsStatus();",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02e478e4.c",
+        "function": "02e478e4",
+        "base": "param_1",
+        "line": 44,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined1 *)(param_1 + 0x210) = 1;\n  *(undefined1 *)(param_1 + 0x298) = 1;\n  *(undefined8 *)(param_1 + 0xd0) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02e7c8b4.c",
+        "function": "02e7c8b4",
+        "base": "param_1",
+        "line": 190,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "} while (uVar3 < *(uint *)(param_1 + 600));\n  *(undefined4 *)(param_1 + 0x298) = 0;\n  if ((*(uint *)(param_1 + 0x290) < 0xc) && (*(uint *)(param_1 + 0x294) < 0xb)) {",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02f26970.c",
+        "function": "02f26970",
+        "base": "param_1",
+        "line": 94,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "(**(code **)(*plVar1 + 0x10))(plVar1,&PTR_PTR_042a9250);\n    *(undefined8 *)(param_1 + 0x298) = 0;\n    puVar2 = *(undefined8 **)(param_1 + 0x2a0);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "03/0316017c.c",
+        "function": "0316017c",
+        "base": "param_1",
+        "line": 61,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined8 *)(param_1 + 0x278) = 0;\n  *(undefined4 *)(param_1 + 0x298) = 0;\n  *(undefined8 *)(param_1 + 0x290) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "03/03392ec4.c",
+        "function": "03392ec4",
+        "base": "param_1",
+        "line": 20,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined1 **)(param_1 + 0x188) = &LAB_0331fb8c;\n  *(undefined8 *)(param_1 + 0x298) = 0x8000000000000000;\n  *(undefined8 *)(param_1 + 0x2a0) = param_3;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "03/0339823c.c",
+        "function": "0339823c",
+        "base": "param_1",
+        "line": 85,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(int *)(puVar2 + 3) = iVar5;\n    *(int *)(param_1 + 0x298) = iVar1;\nLAB_03398354:",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "03/0339823c.c",
+        "function": "0339823c",
+        "base": "param_1",
+        "line": 132,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(int *)(puVar2 + 3) = iVar5;\n    *(int *)(param_1 + 0x298) = iVar1;\n    iVar5 = *piVar15;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "03/03398734.c",
+        "function": "03398734",
+        "base": "param_1",
+        "line": 45,
+        "score": 1,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": true
+        },
+        "excerpt": "*(undefined4 *)(puVar2 + 3) = uVar4;\n    *(int *)(param_1 + 0x298) = iVar1;\n    if (*(char *)(param_1 + 0x2a8) != '\\0') {",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00203b60.c",
+        "function": "00203b60",
+        "base": "lVar3",
+        "line": 33,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar3 + 0x290) = 0;\n      *(undefined8 *)(lVar3 + 0x298) = 0;\n      *(undefined8 *)(lVar3 + 0x2a0) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00529758.c",
+        "function": "00529758",
+        "base": "lVar6",
+        "line": 593,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined2 *)(lVar6 + 0x280) = 0;\n        *(undefined8 *)(lVar6 + 0x298) = 0;\n        *(undefined4 *)(lVar6 + 0x2a0) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/0099494c.c",
+        "function": "0099494c",
+        "base": "lVar20",
+        "line": 313,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar20 + 0x290) = *(undefined8 *)(lVar20 + 0x2d0);\n        *(undefined8 *)(lVar20 + 0x298) = *(undefined8 *)(lVar20 + 0x2d8);\n        *(undefined4 *)(lVar20 + 0x2a0) = *(undefined4 *)(lVar20 + 0x2e0);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00b756d8.c",
+        "function": "00b756d8",
+        "base": "lVar7",
+        "line": 83,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "}\n    *(undefined8 *)(lVar7 + 0x298) = 0;\n  }",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d4d5ec.c",
+        "function": "00d4d5ec",
+        "base": "lVar12",
+        "line": 80,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar12 + 0x290) = 0;\n    *(undefined8 *)(lVar12 + 0x298) = 0;\n    *(undefined8 *)(lVar12 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d4d5ec.c",
+        "function": "00d4d5ec",
+        "base": "lVar12",
+        "line": 91,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar12 + 0x290) = param_3[2];\n    *(undefined8 *)(lVar12 + 0x298) = uVar4;\n    *(undefined8 *)(lVar12 + 0x280) = uVar7;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d4d780.c",
+        "function": "00d4d780",
+        "base": "lVar12",
+        "line": 80,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar12 + 0x290) = 0;\n    *(undefined8 *)(lVar12 + 0x298) = 0;\n    *(undefined8 *)(lVar12 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d4d780.c",
+        "function": "00d4d780",
+        "base": "lVar12",
+        "line": 91,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar12 + 0x290) = param_3[2];\n    *(undefined8 *)(lVar12 + 0x298) = uVar4;\n    *(undefined8 *)(lVar12 + 0x280) = uVar7;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d4d784.c",
+        "function": "00d4d784",
+        "base": "lVar12",
+        "line": 80,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar12 + 0x290) = 0;\n    *(undefined8 *)(lVar12 + 0x298) = 0;\n    *(undefined8 *)(lVar12 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d4d784.c",
+        "function": "00d4d784",
+        "base": "lVar12",
+        "line": 91,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar12 + 0x290) = param_3[2];\n    *(undefined8 *)(lVar12 + 0x298) = uVar4;\n    *(undefined8 *)(lVar12 + 0x280) = uVar7;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d4f364.c",
+        "function": "00d4f364",
+        "base": "lVar11",
+        "line": 669,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "(*local_170)(&local_160,lVar11 + 0x2b0);\n      *(code **)(lVar11 + 0x298) = local_178;\n      *(undefined1 **)(lVar11 + 0x2a8) = local_168;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d4f364.c",
+        "function": "00d4f364",
+        "base": "lVar11",
+        "line": 678,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar11 + 0x290) = 0;\n      *(undefined8 *)(lVar11 + 0x298) = 0;\n      (*pcVar30)(lVar11 + 0x2b0);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d4f364.c",
+        "function": "00d4f364",
+        "base": "lVar11",
+        "line": 987,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "(*local_170)(&local_160,lVar11 + 0x2b0);\n    *(code **)(lVar11 + 0x298) = local_178;\n    *(undefined1 **)(lVar11 + 0x2a8) = local_168;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d4f364.c",
+        "function": "00d4f364",
+        "base": "lVar11",
+        "line": 996,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar11 + 0x290) = 0;\n    *(undefined8 *)(lVar11 + 0x298) = 0;\n    (*pcVar30)(lVar11 + 0x2b0);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d6f670.c",
+        "function": "00d6f670",
+        "base": "lVar8",
+        "line": 87,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(code **)(lVar8 + 0x288) = local_b8;\n    *(long **)(lVar8 + 0x298) = local_a8;\n    *(code **)(lVar8 + 0x290) = local_b0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d6f670.c",
+        "function": "00d6f670",
+        "base": "lVar8",
+        "line": 93,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar8 + 0x290) = 0;\n    *(undefined8 *)(lVar8 + 0x298) = 0;\n    *(undefined8 *)(lVar8 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d6f670.c",
+        "function": "00d6f670",
+        "base": "lVar8",
+        "line": 169,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(code **)(lVar8 + 0x288) = local_b8;\n    *(long **)(lVar8 + 0x298) = local_a8;\n    *(code **)(lVar8 + 0x290) = local_b0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d6f670.c",
+        "function": "00d6f670",
+        "base": "lVar8",
+        "line": 175,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar8 + 0x290) = 0;\n    *(undefined8 *)(lVar8 + 0x298) = 0;\n    *(undefined8 *)(lVar8 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d6f670.c",
+        "function": "00d6f670",
+        "base": "lVar8",
+        "line": 251,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(code **)(lVar8 + 0x288) = local_b8;\n    *(long **)(lVar8 + 0x298) = local_a8;\n    *(code **)(lVar8 + 0x290) = local_b0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d6f670.c",
+        "function": "00d6f670",
+        "base": "lVar8",
+        "line": 257,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar8 + 0x290) = 0;\n    *(undefined8 *)(lVar8 + 0x298) = 0;\n    *(undefined8 *)(lVar8 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d6f670.c",
+        "function": "00d6f670",
+        "base": "lVar8",
+        "line": 335,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar8 + 0x290) = 0;\n    *(undefined8 *)(lVar8 + 0x298) = 0;\n    *(undefined8 *)(lVar8 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "00/00d6f670.c",
+        "function": "00d6f670",
+        "base": "lVar8",
+        "line": 343,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(code **)(lVar8 + 0x288) = local_b8;\n  *(long **)(lVar8 + 0x298) = local_a8;\n  *(code **)(lVar8 + 0x290) = local_b0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/011ce40c.c",
+        "function": "011ce40c",
+        "base": "lVar1",
+        "line": 95,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar1 + 0x290) = 0;\n    *(undefined8 *)(lVar1 + 0x298) = 0;\n    (*pcVar3)(lVar1 + 0x2b0);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/011ce40c.c",
+        "function": "011ce40c",
+        "base": "lVar1",
+        "line": 105,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar1 + 0x290) = local_1f0;\n  *(code **)(lVar1 + 0x298) = local_1e8;\n  do {",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/0120ddac.c",
+        "function": "0120ddac",
+        "base": "lVar7",
+        "line": 104,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar7 + 0x290) = 0;\n    *(undefined8 *)(lVar7 + 0x298) = 0;\n    (*pcVar9)(lVar7 + 0x2b0);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/0120ddac.c",
+        "function": "0120ddac",
+        "base": "lVar7",
+        "line": 109,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "(*local_b0)(&local_a0,lVar7 + 0x2b0);\n  *(code **)(lVar7 + 0x298) = local_b8;\n  *(long **)(lVar7 + 0x2a8) = local_a8;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/0120ef44.c",
+        "function": "0120ef44",
+        "base": "lVar5",
+        "line": 108,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar5 + 0x290) = 0;\n    *(undefined8 *)(lVar5 + 0x298) = 0;\n    (*pcVar7)(lVar5 + 0x2b0);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/0120ef44.c",
+        "function": "0120ef44",
+        "base": "lVar5",
+        "line": 113,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "(*local_b0)(&local_a0,lVar5 + 0x2b0);\n  *(code **)(lVar5 + 0x298) = local_b8;\n  *(long **)(lVar5 + 0x2a8) = local_a8;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/01241758.c",
+        "function": "01241758",
+        "base": "puVar4",
+        "line": 62,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "puVar4[0x28b] = 0;\n  *(undefined4 *)(puVar4 + 0x298) = 0;\n  puVar4[0x299] = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/0124ff60.c",
+        "function": "0124ff60",
+        "base": "lVar1",
+        "line": 49,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar1 + 0x2a0) = 0;\n    *(undefined8 *)(lVar1 + 0x298) = 0;\n    *(undefined8 *)(lVar1 + 0x290) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/0124ff60.c",
+        "function": "0124ff60",
+        "base": "lVar1",
+        "line": 57,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined1 **)(lVar1 + 0x290) = &LAB_01253d50;\n  *(undefined1 **)(lVar1 + 0x298) = &LAB_01253d74;\n  *(undefined1 **)(lVar1 + 0x2a0) = &LAB_01253d78;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/0125484c.c",
+        "function": "0125484c",
+        "base": "lVar1",
+        "line": 49,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar1 + 0x2a0) = 0;\n    *(undefined8 *)(lVar1 + 0x298) = 0;\n    *(undefined8 *)(lVar1 + 0x290) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/0125484c.c",
+        "function": "0125484c",
+        "base": "lVar1",
+        "line": 57,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined1 **)(lVar1 + 0x290) = &LAB_0125823c;\n  *(undefined1 **)(lVar1 + 0x298) = &LAB_01258260;\n  *(undefined1 **)(lVar1 + 0x2a0) = &LAB_01258264;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/012707ac.c",
+        "function": "012707ac",
+        "base": "lVar1",
+        "line": 50,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar1 + 0x2a0) = 0;\n    *(undefined8 *)(lVar1 + 0x298) = 0;\n    *(undefined8 *)(lVar1 + 0x290) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/012707ac.c",
+        "function": "012707ac",
+        "base": "lVar1",
+        "line": 58,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined1 **)(lVar1 + 0x290) = &LAB_012734fc;\n  *(undefined1 **)(lVar1 + 0x298) = &LAB_01273520;\n  *(undefined1 **)(lVar1 + 0x2a0) = &LAB_01273524;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/01340df4.c",
+        "function": "01340df4",
+        "base": "lVar9",
+        "line": 96,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(code **)(lVar9 + 0x288) = local_b8;\n    *(long **)(lVar9 + 0x298) = local_a8;\n    *(code **)(lVar9 + 0x290) = local_b0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/01340df4.c",
+        "function": "01340df4",
+        "base": "lVar9",
+        "line": 102,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar9 + 0x290) = 0;\n    *(undefined8 *)(lVar9 + 0x298) = 0;\n    *(undefined8 *)(lVar9 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/01340df4.c",
+        "function": "01340df4",
+        "base": "lVar9",
+        "line": 167,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar9 + 0x290) = 0;\n    *(undefined8 *)(lVar9 + 0x298) = 0;\n    *(undefined8 *)(lVar9 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/01340df4.c",
+        "function": "01340df4",
+        "base": "lVar9",
+        "line": 175,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(code **)(lVar9 + 0x288) = local_b8;\n    *(long **)(lVar9 + 0x298) = local_a8;\n    *(code **)(lVar9 + 0x290) = local_b0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013451ac.c",
+        "function": "013451ac",
+        "base": "lVar9",
+        "line": 96,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(code **)(lVar9 + 0x288) = local_b8;\n    *(long **)(lVar9 + 0x298) = local_a8;\n    *(code **)(lVar9 + 0x290) = local_b0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013451ac.c",
+        "function": "013451ac",
+        "base": "lVar9",
+        "line": 102,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar9 + 0x290) = 0;\n    *(undefined8 *)(lVar9 + 0x298) = 0;\n    *(undefined8 *)(lVar9 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013451ac.c",
+        "function": "013451ac",
+        "base": "lVar9",
+        "line": 163,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar9 + 0x290) = 0;\n    *(undefined8 *)(lVar9 + 0x298) = 0;\n    *(undefined8 *)(lVar9 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013451ac.c",
+        "function": "013451ac",
+        "base": "lVar9",
+        "line": 171,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(code **)(lVar9 + 0x288) = local_b8;\n    *(long **)(lVar9 + 0x298) = local_a8;\n    *(code **)(lVar9 + 0x290) = local_b0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013451ac.c",
+        "function": "013451ac",
+        "base": "lVar9",
+        "line": 245,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(code **)(lVar9 + 0x288) = local_b8;\n    *(long **)(lVar9 + 0x298) = local_a8;\n    *(code **)(lVar9 + 0x290) = local_b0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013451ac.c",
+        "function": "013451ac",
+        "base": "lVar9",
+        "line": 251,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar9 + 0x290) = 0;\n    *(undefined8 *)(lVar9 + 0x298) = 0;\n    *(undefined8 *)(lVar9 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013451ac.c",
+        "function": "013451ac",
+        "base": "lVar9",
+        "line": 316,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar9 + 0x290) = 0;\n    *(undefined8 *)(lVar9 + 0x298) = 0;\n    *(undefined8 *)(lVar9 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013451ac.c",
+        "function": "013451ac",
+        "base": "lVar9",
+        "line": 324,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(code **)(lVar9 + 0x288) = local_b8;\n    *(long **)(lVar9 + 0x298) = local_a8;\n    *(code **)(lVar9 + 0x290) = local_b0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013465e0.c",
+        "function": "013465e0",
+        "base": "lVar13",
+        "line": 123,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(code **)(lVar13 + 0x288) = local_178;\n    *(code **)(lVar13 + 0x298) = local_168;\n    *(code **)(lVar13 + 0x290) = local_170;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013465e0.c",
+        "function": "013465e0",
+        "base": "lVar13",
+        "line": 129,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar13 + 0x290) = 0;\n    *(undefined8 *)(lVar13 + 0x298) = 0;\n    *(undefined8 *)(lVar13 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013465e0.c",
+        "function": "013465e0",
+        "base": "lVar13",
+        "line": 190,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar13 + 0x290) = 0;\n    *(undefined8 *)(lVar13 + 0x298) = 0;\n    *(undefined8 *)(lVar13 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013465e0.c",
+        "function": "013465e0",
+        "base": "lVar13",
+        "line": 198,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(code **)(lVar13 + 0x288) = local_178;\n    *(code **)(lVar13 + 0x298) = local_168;\n    *(code **)(lVar13 + 0x290) = local_170;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013465e0.c",
+        "function": "013465e0",
+        "base": "lVar13",
+        "line": 264,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(code **)(lVar13 + 0x288) = local_178;\n    *(code **)(lVar13 + 0x298) = local_168;\n    *(code **)(lVar13 + 0x290) = local_170;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013465e0.c",
+        "function": "013465e0",
+        "base": "lVar13",
+        "line": 270,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar13 + 0x290) = 0;\n    *(undefined8 *)(lVar13 + 0x298) = 0;\n    *(undefined8 *)(lVar13 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013465e0.c",
+        "function": "013465e0",
+        "base": "lVar13",
+        "line": 494,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(code **)(lVar13 + 0x288) = local_178;\n    *(code **)(lVar13 + 0x298) = local_168;\n    *(code **)(lVar13 + 0x290) = local_170;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013465e0.c",
+        "function": "013465e0",
+        "base": "lVar13",
+        "line": 500,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar13 + 0x290) = 0;\n    *(undefined8 *)(lVar13 + 0x298) = 0;\n    *(undefined8 *)(lVar13 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013465e0.c",
+        "function": "013465e0",
+        "base": "lVar13",
+        "line": 578,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar13 + 0x290) = 0;\n    *(undefined8 *)(lVar13 + 0x298) = 0;\n    *(undefined8 *)(lVar13 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013465e0.c",
+        "function": "013465e0",
+        "base": "lVar13",
+        "line": 586,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(code **)(lVar13 + 0x288) = local_178;\n  *(code **)(lVar13 + 0x298) = local_168;\n  *(code **)(lVar13 + 0x290) = local_170;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/0134ea80.c",
+        "function": "0134ea80",
+        "base": "lVar38",
+        "line": 113,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar38 + 0x270) = uVar51;\n    *(undefined8 *)(lVar38 + 0x298) = uVar53;\n    *(undefined8 *)(lVar38 + 0x2a0) = uVar39;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013c1ed0.c",
+        "function": "013c1ed0",
+        "base": "lVar1",
+        "line": 97,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar1 + 0x290) = 0;\n    *(undefined8 *)(lVar1 + 0x298) = 0;\n    (*pcVar2)(lVar1 + 0x2b0);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013c1ed0.c",
+        "function": "013c1ed0",
+        "base": "lVar1",
+        "line": 101,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "FUN_013c3528(&local_1b0,lVar1 + 0x2b0);\n  *(code **)(lVar1 + 0x298) = FUN_013c3524;\n  *(undefined1 **)(lVar1 + 0x2a8) = &LAB_013c353c;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013cad18.c",
+        "function": "013cad18",
+        "base": "lVar1",
+        "line": 52,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar1 + 0x2a0) = 0;\n    *(undefined8 *)(lVar1 + 0x298) = 0;\n    *(undefined8 *)(lVar1 + 0x290) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013cad18.c",
+        "function": "013cad18",
+        "base": "lVar1",
+        "line": 60,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined1 **)(lVar1 + 0x290) = &LAB_013cd8f8;\n  *(undefined1 **)(lVar1 + 0x298) = &LAB_013cd91c;\n  *(undefined1 **)(lVar1 + 0x2a0) = &LAB_013cd920;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013fc234.c",
+        "function": "013fc234",
+        "base": "lVar15",
+        "line": 459,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(code **)(lVar15 + 0x288) = local_f8;\n    *(code **)(lVar15 + 0x298) = local_e8;\n    *(code **)(lVar15 + 0x290) = local_f0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013fc234.c",
+        "function": "013fc234",
+        "base": "lVar15",
+        "line": 465,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar15 + 0x290) = 0;\n    *(undefined8 *)(lVar15 + 0x298) = 0;\n    *(undefined8 *)(lVar15 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013fc234.c",
+        "function": "013fc234",
+        "base": "lVar15",
+        "line": 541,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(code **)(lVar15 + 0x288) = local_f8;\n    *(code **)(lVar15 + 0x298) = local_e8;\n    *(code **)(lVar15 + 0x290) = local_f0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/013fc234.c",
+        "function": "013fc234",
+        "base": "lVar15",
+        "line": 547,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar15 + 0x290) = 0;\n    *(undefined8 *)(lVar15 + 0x298) = 0;\n    *(undefined8 *)(lVar15 + 0x280) = 0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/014fb1ec.c",
+        "function": "014fb1ec",
+        "base": "lVar5",
+        "line": 94,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "(*local_c0)(&local_b0,lVar5 + 0x2b0);\n    *(code **)(lVar5 + 0x298) = local_c8;\n    *(long **)(lVar5 + 0x2a8) = local_b8;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/014fb1ec.c",
+        "function": "014fb1ec",
+        "base": "lVar5",
+        "line": 103,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar5 + 0x290) = 0;\n    *(undefined8 *)(lVar5 + 0x298) = 0;\n    (*pcVar7)(lVar5 + 0x2b0);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/014fc20c.c",
+        "function": "014fc20c",
+        "base": "lVar6",
+        "line": 137,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "(*local_d0)(&local_c0,lVar6 + 0x2b0);\n    *(code **)(lVar6 + 0x298) = local_d8;\n    *(long **)(lVar6 + 0x2a8) = local_c8;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/014fc20c.c",
+        "function": "014fc20c",
+        "base": "lVar6",
+        "line": 146,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar6 + 0x290) = 0;\n    *(undefined8 *)(lVar6 + 0x298) = 0;\n    (*pcVar8)(lVar6 + 0x2b0);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/01505ee0.c",
+        "function": "01505ee0",
+        "base": "lVar5",
+        "line": 85,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "(*local_c0)(&local_b0,lVar5 + 0x2b0);\n    *(code **)(lVar5 + 0x298) = local_c8;\n    *(long **)(lVar5 + 0x2a8) = local_b8;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/01505ee0.c",
+        "function": "01505ee0",
+        "base": "lVar5",
+        "line": 94,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 *)(lVar5 + 0x290) = 0;\n    *(undefined8 *)(lVar5 + 0x298) = 0;\n    (*pcVar7)(lVar5 + 0x2b0);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/01b29e90.c",
+        "function": "01b29e90",
+        "base": "lVar11",
+        "line": 461,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "plVar9 = *(long **)(lVar11 + 0x298);\n  *(undefined8 *)(lVar11 + 0x298) = 0;\n  if (plVar9 != (long *)0x0) {",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "01/01c2fbac.c",
+        "function": "01c2fbac",
+        "base": "param_2",
+        "line": 13,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined4 *)(param_2 + 0x294) = 0;\n    *(float *)(param_2 + 0x298) = 1.0 / (float)param_3;\n    *(undefined4 *)(param_2 + 0x29c) = *(undefined4 *)(param_2 + 0x220);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/0221da9c.c",
+        "function": "0221da9c",
+        "base": "lVar13",
+        "line": 308,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined1 **)(lVar13 + 0x290) = &LAB_02221b40;\n  *(undefined1 **)(lVar13 + 0x298) = &LAB_02221d60;\n  sVar14 = strlen(pcVar31);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/0224f7c0.c",
+        "function": "0224f7c0",
+        "base": "lVar13",
+        "line": 300,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined1 **)(lVar13 + 0x290) = &LAB_022535c0;\n  *(undefined1 **)(lVar13 + 0x298) = &LAB_022537d0;\n  sVar14 = strlen(pcVar27);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/024ff084.c",
+        "function": "024ff084",
+        "base": "lVar13",
+        "line": 299,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "pcVar28 = *(char **)(lVar13 + 0x60);\n  *(undefined1 **)(lVar13 + 0x298) = &LAB_02502a04;\n  *(undefined1 **)(lVar13 + 0x2a0) = &LAB_02502ac0;",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02a94b70.c",
+        "function": "02a94b70",
+        "base": "param_5",
+        "line": 101,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(ulong *)(param_5 + 0x280) = CONCAT44(fVar10,extraout_var);\n  *(ulong *)(param_5 + 0x298) = CONCAT44(uVar21,fVar15);\n  *(ulong *)(param_5 + 0x290) = CONCAT44(fVar11,extraout_var_00);",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      },
+      {
+        "path": "02/02eaec3c.c",
+        "function": "02eaec3c",
+        "base": "lVar3",
+        "line": 54,
+        "score": 0,
+        "flags": {
+          "owner_global": false,
+          "known_pokedex_accessor": false,
+          "save_type_binding": false,
+          "adjacent_managed_slots": false,
+          "known_resource_ready_group": false,
+          "state_mutex": false,
+          "state_records": false,
+          "object_base_is_first_arg": false
+        },
+        "excerpt": "*(undefined8 **)(*(long *)(lVar3 + 0x288) + lVar6) = puVar4;\n  *(int *)(lVar3 + 0x298) = *(int *)(lVar3 + 0x298) + 1;\nLAB_02eaed18:",
+        "identity": "UNRESOLVED_BASE_OBJECT_IDENTITY"
+      }
+    ],
+    "candidates_omitted": 0
+  },
+  "selected_specific_field_occurrence_counts": {
+    "0x1e1": 283,
+    "0x4f78": 1,
+    "0x1e4cc": 2,
+    "0x1f420": 12
+  },
+  "selected_cross_call_candidates": [
+    {
+      "path": "02/027dba38.c",
+      "function": "027dba38",
+      "calls": [
+        "FUN_01148690",
+        "FUN_011457e4"
+      ],
+      "owner_global": true,
+      "record_offsets": [
+        "0x6c"
+      ],
+      "contains_memcpy": false,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    },
+    {
+      "path": "02/027dcc74.c",
+      "function": "027dcc74",
+      "calls": [
+        "FUN_01148f20",
+        "FUN_011457e4"
+      ],
+      "owner_global": true,
+      "record_offsets": [],
+      "contains_memcpy": false,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    },
+    {
+      "path": "00/00927644.c",
+      "function": "00927644",
+      "calls": [
+        "FUN_0113219c"
+      ],
+      "owner_global": true,
+      "record_offsets": [],
+      "contains_memcpy": false,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    },
+    {
+      "path": "00/00daaa90.c",
+      "function": "00daaa90",
+      "calls": [
+        "FUN_01148f20"
+      ],
+      "owner_global": true,
+      "record_offsets": [],
+      "contains_memcpy": false,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    },
+    {
+      "path": "00/00daab70.c",
+      "function": "00daab70",
+      "calls": [
+        "FUN_01148f20"
+      ],
+      "owner_global": true,
+      "record_offsets": [],
+      "contains_memcpy": false,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    },
+    {
+      "path": "00/00daac50.c",
+      "function": "00daac50",
+      "calls": [
+        "FUN_01148f20"
+      ],
+      "owner_global": true,
+      "record_offsets": [],
+      "contains_memcpy": false,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    },
+    {
+      "path": "00/00dab054.c",
+      "function": "00dab054",
+      "calls": [
+        "FUN_01148f20"
+      ],
+      "owner_global": true,
+      "record_offsets": [],
+      "contains_memcpy": false,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    },
+    {
+      "path": "00/00dabdc0.c",
+      "function": "00dabdc0",
+      "calls": [
+        "FUN_01148f20"
+      ],
+      "owner_global": true,
+      "record_offsets": [],
+      "contains_memcpy": false,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    },
+    {
+      "path": "01/010cbf14.c",
+      "function": "010cbf14",
+      "calls": [
+        "FUN_01148690"
+      ],
+      "owner_global": true,
+      "record_offsets": [
+        "0x6c"
+      ],
+      "contains_memcpy": false,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    },
+    {
+      "path": "01/011457e4.c",
+      "function": "011457e4",
+      "calls": [
+        "FUN_01148690"
+      ],
+      "owner_global": true,
+      "record_offsets": [],
+      "contains_memcpy": false,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    },
+    {
+      "path": "01/011a3bb8.c",
+      "function": "011a3bb8",
+      "calls": [
+        "FUN_01148f20"
+      ],
+      "owner_global": true,
+      "record_offsets": [],
+      "contains_memcpy": false,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    },
+    {
+      "path": "01/0120e4bc.c",
+      "function": "0120e4bc",
+      "calls": [
+        "FUN_01148f20"
+      ],
+      "owner_global": true,
+      "record_offsets": [],
+      "contains_memcpy": false,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    },
+    {
+      "path": "01/013f4074.c",
+      "function": "013f4074",
+      "calls": [
+        "FUN_01148f20"
+      ],
+      "owner_global": true,
+      "record_offsets": [
+        "0x6c",
+        "0x74",
+        "0x78",
+        "0x58"
+      ],
+      "contains_memcpy": true,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    },
+    {
+      "path": "01/0141308c.c",
+      "function": "0141308c",
+      "calls": [
+        "FUN_01148f20"
+      ],
+      "owner_global": true,
+      "record_offsets": [
+        "0x58"
+      ],
+      "contains_memcpy": true,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    },
+    {
+      "path": "01/01456030.c",
+      "function": "01456030",
+      "calls": [
+        "FUN_01148f20"
+      ],
+      "owner_global": true,
+      "record_offsets": [
+        "0x6c",
+        "0x58"
+      ],
+      "contains_memcpy": false,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    },
+    {
+      "path": "01/01683cbc.c",
+      "function": "01683cbc",
+      "calls": [
+        "FUN_01148f20"
+      ],
+      "owner_global": true,
+      "record_offsets": [
+        "0x58"
+      ],
+      "contains_memcpy": false,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    },
+    {
+      "path": "01/01906830.c",
+      "function": "01906830",
+      "calls": [
+        "FUN_01148f20"
+      ],
+      "owner_global": true,
+      "record_offsets": [
+        "0x58"
+      ],
+      "contains_memcpy": false,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    },
+    {
+      "path": "02/0275d460.c",
+      "function": "0275d460",
+      "calls": [
+        "FUN_011457e4"
+      ],
+      "owner_global": true,
+      "record_offsets": [
+        "0x78",
+        "0x58"
+      ],
+      "contains_memcpy": false,
+      "contains_file_io": false,
+      "identity": "STATIC_C_CALLER_CANDIDATE"
+    }
+  ],
+  "selected_cross_call_candidates_omitted": 0,
+  "filesystem_io_functions": [
+    {
+      "path": "00/0040ae00.c",
+      "function": "0040ae00",
+      "io": [
+        "nn::fs::WriteFile"
+      ],
+      "calls": [],
+      "owner_global": false,
+      "record_offsets": [],
+      "identity": "IO_ONLY_NO_POKEDEX_PROVENANCE"
+    },
+    {
+      "path": "02/02a8d6bc.c",
+      "function": "02a8d6bc",
+      "io": [
+        "nn::fs::WriteFile"
+      ],
+      "calls": [],
+      "owner_global": false,
+      "record_offsets": [],
+      "identity": "IO_ONLY_NO_POKEDEX_PROVENANCE"
+    },
+    {
+      "path": "02/02a8f2f4.c",
+      "function": "02a8f2f4",
+      "io": [
+        "nn::fs::Commit"
+      ],
+      "calls": [],
+      "owner_global": false,
+      "record_offsets": [],
+      "identity": "IO_ONLY_NO_POKEDEX_PROVENANCE"
+    },
+    {
+      "path": "03/033a3920.c",
+      "function": "033a3920",
+      "io": [
+        "nn::fs::WriteFile"
+      ],
+      "calls": [],
+      "owner_global": false,
+      "record_offsets": [],
+      "identity": "IO_ONLY_NO_POKEDEX_PROVENANCE"
+    },
+    {
+      "path": "03/033a4f40.c",
+      "function": "033a4f40",
+      "io": [
+        "nn::fs::Commit"
+      ],
+      "calls": [],
+      "owner_global": false,
+      "record_offsets": [],
+      "identity": "IO_ONLY_NO_POKEDEX_PROVENANCE"
+    },
+    {
+      "path": "04/04451748.c",
+      "function": "04451748",
+      "io": [
+        "nn::fs::WriteFile"
+      ],
+      "calls": [],
+      "owner_global": false,
+      "record_offsets": [],
+      "identity": "IO_ONLY_NO_POKEDEX_PROVENANCE"
+    },
+    {
+      "path": "04/04451b48.c",
+      "function": "04451b48",
+      "io": [
+        "nn::fs::Commit"
+      ],
+      "calls": [],
+      "owner_global": false,
+      "record_offsets": [],
+      "identity": "IO_ONLY_NO_POKEDEX_PROVENANCE"
+    }
+  ],
+  "filesystem_io_functions_omitted": 0,
+  "limitations": [
+    "Offset +0x298 appears in many unrelated object types; writer rows are NOT a proven match to the Pokedex context.",
+    "Regex detects only explicit C assignments at +0x298, not writes via alias variables, memcpy, nested structures or indirect calls.",
+    "Ghidra C is imperfect and misses some control flow; this is not a complete binary xref set.",
+    "String references, function co-occurrence and nearby offsets do NOT establish byte-level serialization.",
+    "No Dirty field, serializer or persistence success is declared by this scan."
+  ]
+}
