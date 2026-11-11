@@ -45,21 +45,21 @@
 
 - FUN_010CD4C0 加载待解析数据、处理长度和 SHA-256 验证，然后调用 FUN_010CD634；
 - FUN_010CD634 根据记录标识匹配或插入 0x30 字节描述符，必要时调用 FUN_010D4780 扩容；
-- **FUN_010CD634 的 C 行约 300：** \`*(undefined1 *)(__dest + 10) = 1;\`；由于 __dest 为 \`uint*\`，实际字节偏移 **+0x28**。
+- **FUN_010CD634 的 C 行约 300：** `*(undefined1 *)(__dest + 10) = 1;`；由于 __dest 为 `uint*`，实际字节偏移 **+0x28**。
 - 在该语句之前/之后均能找到对源缓冲读入数据的操作。此函数提供了明确的 **read/load-to-mirror-pending** 标志生产证据。
 
 **OBSERVED — FUN_010CE5DC（c/01/010ce5dc.c）**：
 
 遍历 0x30-byte desc，满足 pending 且 source/mirror 非空时：
 
-\`\`\`c
+```c
 if (desc->needs_copy && desc->source && desc->mirror) {
     memcpy(desc->mirror, desc->source, desc->size);
     desc->needs_copy = 0;
 }
-\`\`\`
+```
 
-后面序列化每条记录时，取 **desc+0x10 镜像指针**（反编译变量为 \`lVar9 = *(long *)(puVar2 + 4)\`，puVar2 为 4 字节指针），和 +0x20 长度，写入输出流。即使 needs_copy==0，该记录仍会写入镜像中的现有数据。
+后面序列化每条记录时，取 **desc+0x10 镜像指针**（反编译变量为 `lVar9 = *(long *)(puVar2 + 4)`，puVar2 为 4 字节指针），和 +0x20 长度，写入输出流。即使 needs_copy==0，该记录仍会写入镜像中的现有数据。
 
 **严格区分**：+0x28 是镜像同步 pending 位，不能因此命名 PokedexDirty。仅从代码已经证明它会在解析加载数据时置位，而不是只因游戏内图鉴研究发生变化才置位。
 
@@ -67,7 +67,7 @@ if (desc->needs_copy && desc->source && desc->mirror) {
 
 **OBSERVED — 原始 ELF 0x01150670~0x011506CC：**
 
-\`\`\`asm
+```asm
 0x01150680 mov   x19, x0
 0x01150684 ldr   x0, [x0, #0x410]   ; job->serializer manager
 0x01150688 add   x2, x19, #0x418
@@ -78,17 +78,17 @@ if (desc->needs_copy && desc->source && desc->mirror) {
 0x011506A8 mov   w8, #2
 0x011506AC cinc  w8, w8, eq        ; 成功 2，失败 3
 0x011506B4 str   w8, [x19, #0x448] ; 持锁期间写入作业结果
-\`\`\`
+```
 
 真实汇编周边调用了位于 job+0x450 的 LockMutex / UnlockMutex 实现。
-\`FUN_0115057C\` 在构造这个 job 时把参数写到 job+0x410，初始化 job+0x448 状态和 job+0x450 互斥锁。这提供了明确的作业参数来源与实例布局，而不是只靠名字。
+`FUN_0115057C` 在构造这个 job 时把参数写到 job+0x410，初始化 job+0x448 状态和 job+0x450 互斥锁。这提供了明确的作业参数来源与实例布局，而不是只靠名字。
 
 **OBSERVED — FUN_010CE274：**调用 FUN_010CE5DC 序列化记录，准备哈希等元信息，调用 FUN_010CE800 得到目标文件句柄，最终调用 FUN_02A8D6BC → nn::fs::WriteFile。它的布尔返回值实际流入上述后台 job 的成功/失败转换。
 
 **OBSERVED — 任务标签**：
 
-- FUN_010CED3C 在创建任务后把字符串 \`"save hashdb"\` 传给任务运行器；使用 manager+0xD0 作业引用，job+0x302 bit 0 用于完成性检查。
-- FUN_010CE980 类似启动 \`"load hashdb"\`；其任务引用是 manager+0xC8，和保存作业不同。
+- FUN_010CED3C 在创建任务后把字符串 `"save hashdb"` 传给任务运行器；使用 manager+0xD0 作业引用，job+0x302 bit 0 用于完成性检查。
+- FUN_010CE980 类似启动 `"load hashdb"`；其任务引用是 manager+0xC8，和保存作业不同。
 - FUN_010CEACC 读取 load 任务的 +0x448；不能因为作业具有同一结构就把它当作 save hashdb 的专用结果查询函数。
 - 两条「hashdb」任务的具体游戏逻辑归属、保存文件路径及其对 PokedexSave 的覆盖范围尚需独立确认。
 
@@ -101,11 +101,11 @@ if (desc->needs_copy && desc->source && desc->mirror) {
 3. FUN_010CE274 稍后才执行实际 WriteFile；失败可使返回值为 0。
 4. 0x01150670 作业代码将失败转成 **job+0x448 = 3**，成功转成 **2**。
 
-**OBSERVED negative in these inspected functions**：FUN_010CE274、FUN_010CE5DC 与 job 0x01150670 的局部失败路径，没有重新将 desc+0x28 设置为 1。FUN_010CED3C 允许在已有 job 未运行或已完成时构建/提交下一个 \`save hashdb\` job，但没有发现它根据 +0x448==3 **立即自动重试** 的显式分支。
+**OBSERVED negative in these inspected functions**：FUN_010CE274、FUN_010CE5DC 与 job 0x01150670 的局部失败路径，没有重新将 desc+0x28 设置为 1。FUN_010CED3C 允许在已有 job 未运行或已完成时构建/提交下一个 `save hashdb` job，但没有发现它根据 +0x448==3 **立即自动重试** 的显式分支。
 
 **不能推断数据已经丢失**：desc+0x10 的镜像仍保存先前复制的数据；下一次调用 FUN_010CE5DC 时，无论 +0x28 是否为 0，都将遍历所有描述符并将镜像内容写入流。因此如果同一镜像与描述符仍在、且有新一次保存尝试，失败快照有机会再次写入。**但**后续新修改是否会重新置位或更新镜像、旧 job 的清理是否改变这些数据、失败后是否自动触发重试，均未证明。
 
-**NOT PROVEN**：通用磁盘 \`Commit\` 是否与这次 hashdb WriteFile 同事务、文件系统原子性/断电行为、失败后是否成功重传，以及冷启动后的持久化读回。
+**NOT PROVEN**：通用磁盘 `Commit` 是否与这次 hashdb WriteFile 同事务、文件系统原子性/断电行为、失败后是否成功重传，以及冷启动后的持久化读回。
 
 ## 6. 与图鉴更新链的关联：目前仍断开的边
 
@@ -113,11 +113,11 @@ if (desc->needs_copy && desc->source && desc->mirror) {
 
 - 特定 PokedexSave 图鉴 state 与 hashdb 的 desc+0x08 指针是否别名；
 - 哪个注册器将图鉴状态实际编码为 hashdb 记录键、缓冲区和长度；
-- 是否存在专门处理 \`UpdateAllReportPoke\` 的 pending copy/Dirty 行为；
+- 是否存在专门处理 `UpdateAllReportPoke` 的 pending copy/Dirty 行为；
 - 写盘 hashdb 事务与图鉴变更的实际持久化同步确认；
 - 真实运行时成功/失败实验。
 
-因此当前**不支持**将 FUN_010CE5DC 的 +0x28 改名 \`PokedexDirty\`，也不支持宣称 \`UpdateAllReportPoke\` 调用即写盘成功。
+因此当前**不支持**将 FUN_010CE5DC 的 +0x28 改名 `PokedexDirty`，也不支持宣称 `UpdateAllReportPoke` 调用即写盘成功。
 
 ## 7. 下一步最值得做的事
 
