@@ -76,7 +76,33 @@ FUN_0287F8B0
 
 这确实将 **一个具体的 `PokedexSave` 状态对象中的 `state+0x6C`、完整 `0x1E460` 数据块** 关联到了图鉴 hashdb 键，而不再只是同名 / 同 hash / 同步标志的猜测。
 
-## 5. 下一步需要证明的方法分发和持久化边界
+## 5. Ghidra 原生工程还原主虚表方法（CONFIRMED static entry mapping）
+
+首次试图读取原始 Ghidra 工程时 [Actions #42942448823](https://github.com/969981/PLA_Resources/actions/runs/42942448823) 因稀疏检出遗漏 `tools/ghidra/pla_embed_elf.py` 而在恢复工具导入阶段失败；添加该依赖并重新运行后，[Actions #42942725014](https://github.com/969981/PLA_Resources/actions/runs/42942725014) 已 **SUCCESS**，完成：
+
+- 恢复并 SHA 校验原生 Ghidra 项目（不是从 ELF 新建一个项目）；
+- 官方固定 Ghidra 12.2 使用 `-process main.elf -noanalysis -readOnly`；
+- [`PLATracePokedexVtablesR6.java`](https://github.com/969981/PLA_Resources/blob/master/tools/ghidra/PLATracePokedexVtablesR6.java) 从 Ghidra 原生 ReferenceManager、Memory、Listing 导出 15 个目标和 132 个表槽位；
+- [原生 NDJSON](pokedex_vtable_native_ghidra_r6.ndjson) 和 [摘要](pokedex_vtable_native_ghidra_r6.md) 均已发布到 master。
+- **重要技术修正**：原始 ELF 的大多数虚表函数指针为零重定位占位，但原始 Ghidra 数据库的内存引用中真实记录了已恢复的非零地址。原始 ELF 零值不是实时空虚表，也不应代替 Ghidra 数据库引用。
+
+主虚表 `0x041F23C8` 的实际函数指针：
+
+| 虚表偏移（字节） | Ghidra 数据库恢复的函数入口 | 原生 ARM64 的实际行为 |
+| --- | --- | --- |
+| `+0x10` | `0x008A782C` | 用于 `FUN_010CD044` 获得注册对象引用的候选接口；具体返回对象仍待下层验证 |
+| `+0x40` | `0x0112E3D0` | 先重置 `state+0x68` 后，`BR` 跳至 `[object->vtable+0x50]`；这是间接尾调到本对象写方法的静态证据 |
+| `+0x48` | `0x0112E414` | `0x0112E4C0 BL FUN_0112E580`，读 `KZukan`（`state+0x6C`，大小 `0x1E460`） |
+| `+0x50` | `0x0112E5CC` | `0x0112E660 BL FUN_0112E6F0`，写 `KZukan`（`state+0x6C`，大小 `0x1E460`） |
+| `+0x58` | `0x010D741C` | 原始 ARM64 `RET`；局部行为为空操作 |
+
+**注意入口与调用地址不同**：`0x0112E414` 和 `0x0112E5CC` 是虚表指向的真正入口；`0x0112E4C0` 和 `0x0112E660` 是两种入口内部向共享数据读写函数发起 `BL` 的调用位置。此前 C 反编译受错误 `noreturn` 传播影响没有单独导出所有包装入口；本轮以原始汇编和 Ghidra 原始数据恢复其身份。
+
+Ghidra 原生程序引用里还同时有三类独立证据：`0x0114725C <- 0x01145DA4` 构造引用、`0x0114BC50 <- 0x0114726C` 分配引用，以及 `FUN_010CD044` 在 `FUN_01147C34` 中的 37 个直接 `BL` 注册操作。这些与虚表数据相互支撑。
+
+**仍未证明的唯一方法层关键边**：`FUN_010CD044` 通过传入对象的 `vtable+0x10` 返回哪种具体 listener/ref 及其实际虚表，`FUN_010CEEA0/+0x40`、`FUN_010CEC54/+0x48`、`FUN_010CEB08/+0x58` 对该 listener 的 `BLR` 是否确实进入上述 `PokedexSave` 主虚表槽位。已静态恢复方法表不等于实机实际使用路径；仍需还原 `FUN_008A782C` 等 getter thunk 或记录动态对象身份。
+
+## 6. 保存任务与持久化边界
 
 ```text
 SaveSystem context+0x298  —— 已证明来自 FUN_0114725C / FUN_0114BC50
@@ -85,7 +111,7 @@ Pokedex 实例 + 主/附加虚表 —— 原始 ARM64 已恢复安装语句
             |
 注册到 hashdb listener —— FUN_01147C34 → FUN_010CD044，已证明
             |
-listener vtable +0x40/+0x48/+0x58 —— 真实调用点已证明，目标槽位仍待确认
+listener vtable +0x40/+0x48/+0x58 —— 注册管理器回调已确认；是否直接等于 Pokedex 主虚表待查
             |
 Pokedex 特定读取/写入包装 —— 0x0112E4C0 / 0x0112E660 已通过直接 BL 证明
             |
@@ -110,14 +136,16 @@ Commit 成功 ACK + 冷启动读回 —— 未验收
 | Pokedex 主/附加虚表安装 | **CONFIRMED** |
 | 图鉴 `state+0x6C` + `0x1E460` 读写 wrapper | **CONFIRMED** |
 | `KZukan` 原生 hashdb 记录读写 | **CONFIRMED** |
-| 注册对象虚表 → 图鉴读/写包装函数 | **UNRESOLVED**，待重定位/Ghidra refs |
+| Pokedex 对象主虚表 +0x48 / +0x50 → 图鉴读/写包装函数 | **CONFIRMED 静态方法槽位与目标** |
+| 注册 listener/引用虚表是否直接分发至该 Pokedex 主虚表 | **UNRESOLVED**，需要 getter 与 listener 身份 |
 | UpdateAllReportPoke → 自动保存调度 | **UNRESOLVED** |
 | 文件事务 Commit ACK / 失败重试 / 重启读回 | **NOT VERIFIED** |
 
-## 6. 本轮新增可复现成果
+## 7. 本轮新增可复现成果
 
 - 原始 ELF 小范围原生汇编/xref 扫描：`scripts/trace_pla_pokedex_vtable_r6.py`。
 - ARM64 结果：`pokedex_vtable_factory_raw_elf_r6.md/.json`。
 - 原 Ghidra 12.2 read-only vtable/xref 脚本：`tools/ghidra/PLATracePokedexVtablesR6.java`。
-- 原 Ghidra 工程还原、只读扫描工作流：`.github/workflows/pla-pokedex-native-ghidra-vtable-r6.yml`。
+- 原 Ghidra 工程还原、只读扫描工作流：`.github/workflows/pla-pokedex-native-ghidra-vtable-r6.yml`，验证成功运行 `42942725014`。
+- 原 Ghidra 内存引用与每个槽位结果：`pokedex_vtable_native_ghidra_r6.ndjson`、`pokedex_vtable_native_ghidra_r6.md`。
 - 不重跑全量分析，不覆盖原始 ELF/Ghidra/SQLite/82,731 C 文件。
