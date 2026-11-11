@@ -1,0 +1,84 @@
+name: PLA 1.1.1 R9 original spawner seed consumer audit
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - .github/workflows/pla-spawner-seed-consumer-r9.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pla-spawner-seed-consumer-r9
+  cancel-in-progress: false
+
+jobs:
+  provenance-candidate-audit:
+    if: github.repository == '969981/PLA_Resources'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout pinned original Ghidra C only, never re-run Ghidra
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/trace_pla_spawner_seed_consumers_r9.py
+            /derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c/
+            /.github/workflows/pla-spawner-seed-consumer-r9.yml
+            /docs/research/v1.1.1/semantic_inventory/pla_spawner_seed_consumers_r9.json
+            /docs/research/v1.1.1/semantic_inventory/pla_spawner_seed_consumers_r9.md
+      - name: Audit all original C and publish only bounded evidence outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile scripts/trace_pla_spawner_seed_consumers_r9.py
+          python3 scripts/trace_pla_spawner_seed_consumers_r9.py --self-test
+          python3 scripts/trace_pla_spawner_seed_consumers_r9.py \
+            --c-root derived/v1.1.1/Ghidra_12.2_Run_42774682950/pla/c \
+            --out-json docs/research/v1.1.1/semantic_inventory/pla_spawner_seed_consumers_r9.json \
+            --out-md docs/research/v1.1.1/semantic_inventory/pla_spawner_seed_consumers_r9.md
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path('docs/research/v1.1.1/semantic_inventory/pla_spawner_seed_consumers_r9.json')
+          j=json.loads(p.read_text(encoding='utf-8'))
+          assert j['sha256']=='260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794'
+          assert j['c_files']==82731
+          assert j['candidate_count']>5
+          assert any('FUN_01b56418'==x['function'] for x in j['candidates'])
+          assert any('FUN_01c521e4'==x['function'] for x in j['candidates'])
+          print('R9 original Ghidra C provenance, source candidates and graph verified.')
+          PY
+      - name: Commit only new R9 output files (no original code or DB changes)
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            docs/research/v1.1.1/semantic_inventory/pla_spawner_seed_consumers_r9.md \
+            docs/research/v1.1.1/semantic_inventory/pla_spawner_seed_consumers_r9.json
+          if git diff --cached --quiet; then
+            echo 'Identical outputs; skip commit.'
+          else
+            git commit -m 'research(pla): publish R9 spawner seed consumer audit from original C'
+            git fetch -q origin master
+            git rebase origin/master
+            git push origin HEAD:refs/heads/master
+          fi
+      - name: Upload audit artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: PLA-R9-Seed-Consumer-Audit
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            docs/research/v1.1.1/semantic_inventory/pla_spawner_seed_consumers_r9.md
+            docs/research/v1.1.1/semantic_inventory/pla_spawner_seed_consumers_r9.json
