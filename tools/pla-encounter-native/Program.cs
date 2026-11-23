@@ -70,6 +70,9 @@ try
     if (loc is null)
         throw new InvalidDataException($"PLA GameLocation could not load: {loadStatus}");
     var game = new GameManagerPLA(loc, 2); // English; string indices are language independent.
+    // Initialize common .dat text before accessing GetStrings; normal GameManagerPLA.Initialize()
+    // does this through ResetText(), but that also initializes unrelated game data.
+    game.GetFilteredFolder(GameFile.GameText, path => Path.GetExtension(path) == ".dat");
     string[] placeNames = game.GetStrings(TextName.metlist_00000);
     var story = (FolderContainer)game.GetFile(GameFile.StoryText);
     story.Initialize();
