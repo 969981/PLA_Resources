@@ -247,6 +247,33 @@ def main(argv=None):
          "encounter_name":g["encounter_name"],
          "classification":g["classification"],**row}
         for g in groups for row in g["slots"]])
+    # Independent per-slot PKHeX candidate matrix. A match proves only Species/Form/Level.
+    pkhex_keys = pkhex_static_keys(pkhex) if pkhex else {}
+    matrix=[]
+    for row in gifts:
+        key=f"{row['species']}:{row['form']}:{row['level']}"
+        matrix.append({"source_kind":"gift","source_group_index":"",
+                       "source_slot_index":row["source_record_index"],
+                       "event":row["event_id"],"group_classification":"gift_or_story_add",
+                       "species":row["species"],"form":row["form"],"level":row["level"],
+                       "shiny":row["shiny"],"alpha":row["alpha"],
+                       "flawless_ivs":row["flawless_ivs"],"gender":row["gender"],
+                       "ball":row["ball"],
+                       "pkhex_candidate_count":len(pkhex_keys.get(key,[])),
+                       "legality_status":"NOT_VERIFIED"})
+    for g in groups:
+        for row in g["slots"]:
+            key=f"{row['species']}:{row['form']}:{row['level']}"
+            matrix.append({"source_kind":"event","source_group_index":g["source_group_index"],
+                           "source_slot_index":row["source_slot_index"],
+                           "event":g["encounter_name"],"group_classification":g["classification"],
+                           "species":row["species"],"form":row["form"],"level":row["level"],
+                           "shiny":row["shiny"],"alpha":row["alpha"],
+                           "flawless_ivs":row["flawless_ivs"],"gender":row["gender"],
+                           "ball":"",
+                           "pkhex_candidate_count":len(pkhex_keys.get(key,[])),
+                           "legality_status":"NOT_VERIFIED"})
+    csv_write(dst/"pla_pkhex_candidate_matrix.csv",matrix)
     (dst/"pla_static_gift_audit.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({k:v for k,v in report.items() if k!="candidate_matches"},ensure_ascii=False,indent=2))
 

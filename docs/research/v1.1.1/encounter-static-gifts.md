@@ -59,3 +59,15 @@ CI：[PLA Static Gift and Scripted Encounter Source Audit](../../../.github/work
 4. 对已证明的合法固定模板输出专用结构化 JSON 和校验工具；在明确消费者格式前不要将它们塞进野生 `encounter_la.pkl`。
 
 参考：[pkNX PokeAdd.fbs](https://github.com/kwsch/pkNX/blob/master/FlatBuffers/Arceus/Schemas/Poke/PokeAdd.fbs) · [pkNX EventEncountArchive.fbs](https://github.com/kwsch/pkNX/blob/master/FlatBuffers/Arceus/Schemas/Field/Static/EventEncountArchive.fbs)
+
+## GitHub Actions 原生验收结果（2026-11-23）
+
+- [Static/Gift Audit Run #45166696695](https://github.com/969981/PLA_Resources/actions/runs/45166696695) 全部步骤成功。包括 6 项合成测试、两份原生文件解码、源计数断言和 PKHeX 源码对账。
+- 原始 SHA-256：`poke_add.bin` = `654af780fbdd5ce65b48a24e5ea98c63dac88f8d61a86414fd6ff30949f5defc`；`poke_event_encount.bin` = `6a0f4ae4d720c817f09ac67b0125c7f2511308d081118bc8335d35a774501a92`。
+- 共 **251 个组、298 槽**：208 个 `mut_` 组包含 **250 槽**，余下 43 个脚本组包含 **48 槽**。这只是按组名进行审计分箱，不是合法性分类的终点。
+- 8 条赠送 + 298 条事件槽位的原生 `ShinyLock` 全部等于 **2 (Never)**。需要结合实际脚本才能解释 PKHeX 中异色小火马的固定必闪规则。
+- 298 条事件槽位中 **7 条具有 IsOybn 标记**；包括 `mev002`、`numelgon01`、`harysen01`、`zoroark01`、`onigohri01`、`beequen01`、`iwaak01`。其中部分尺寸标量是 127 而非 255，不能机械推导头目尺寸。
+- PKHeX 固定模板源解析出 65 个不同的 Species/Form/Level 键。原生条目中有 **33 条槽位候选匹配**：8 条赠送、21 条非 `mut_` 事件槽位、4 条 `mut_` 事件槽位。**相同键不等于合法性匹配**。
+- 当前脚本另外导出 `pla_pkhex_candidate_matrix.csv`，汇总 306 个原始槽位和逐槽对照标记，合法性状态保持 NOT_VERIFIED，不猜测捕获。
+
+后续最重要的是解析 **脚本调用链与 PKHeX StaticLA 的逐项缺口**，尤其训练场再挑战、多个相同物种的事件槽位及原生性别/尺寸与 HOME 转移差异。
