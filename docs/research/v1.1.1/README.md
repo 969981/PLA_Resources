@@ -5,3 +5,9 @@ Initial data source: user-generated local Windows file-system inventory. Total l
 Priorities: GFPak internal archive extraction; 10-language `.dat/.tbl`; BLUA format; BNTX/TRINITY model family; effect/audio conversion; `field/encount/` gameplay data. All parser and field semantic claims remain `UNKNOWN` until byte evidence, offsets, hashes and repeatable validation exist.
 
 Log individual experiments in new dated files, including source file SHA-256, parser/tool commit, shell command, output hashes, exceptions, tested hypotheses and confidence/evidence status.
+
+## 2026-11-23 · PLA encounter format research
+
+- [Native wild encounter export and SHA receipts](encounter-native-export.md): 1,738 areas, 7,132 slots; Actions export verified.
+- [PLA encounter_la.pkl extraction, decoding and editing](encounter-pkl-read-edit.md): detailed binary Mini layout, Python find/show/set commands, Oodle → pkNX → PKL reproduction.
+- [Static, gift, and story event audit](encounter-static-gifts.md): independently parses 8 gift and 251 event groups, does not conflate battles and captures.

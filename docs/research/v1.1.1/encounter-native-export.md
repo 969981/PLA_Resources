@@ -33,8 +33,12 @@ python scripts/compare_pla_encounters.py ".pla-work/native-output/encounter_la.p
 
 The reference counts (1,738 areas, 7,132 slots, 519/213/169/227/610 types) come from a **separate PKHeX reference**, and must never be inserted into a supposedly native export as predetermined values. Every CI export has its own actual counts and source hashes.
 
-## Linux Oodle compatibility (verified build blocker)
+## Linux Oodle compatibility (resolved in successful native export)
 
 The first .NET 10 CI build succeeded, but pkNX's original GFPak decoder requires the proprietary Windows `oo2core_8_win64` runtime. It cannot run unmodified on Ubuntu for Oodle-compressed entries. The revised pipeline uses the open-source MIT-licensed `oozextract` v0.5.7 `unoodle` tool to decode native Oodle payloads into a temporary **derived uncompressed GFPak**. The original file remains untouched; an independent Python reader records original SHA-256, compression counts, nested `AreaSettings.bin` hash and derivative hash. The C# exporter reads the derived archive but hashes the original resources using `PLA_SOURCE_ROMFS`. Invalid decompression aborts the export; no proprietary Oodle DLL is bundled.
 
 Upstream: https://github.com/lvlvllvlvllvlvl/oozextract . CI output must show a successful decompression plus a complete PKL comparison before the run is considered accepted.
+
+## Reading and editing the produced PKL
+
+See [the complete PLA PKL guide](encounter-pkl-read-edit.md) for exact 8-byte slot layout, offsets, original data extraction commands, and guarded `find`/`show`/`set-slot`/`set-area` operations. All manually edited PKLs have separate SHA-256 audit receipts and must not be labeled native.

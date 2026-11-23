@@ -1,0 +1,100 @@
+name: PLA PKL Reader Editor Roundtrip Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feat/pla-encounter-pkl-audit-20261123
+    paths:
+      - .github/workflows/pla-encounter-pkl-editor.yml
+      - scripts/pla_encounter_pkl.py
+      - scripts/edit_pla_encounter_pkl.py
+      - scripts/compare_pla_encounters.py
+      - tests/test_*pkl*.py
+      - docs/research/v1.1.1/encounter-pkl-read-edit.md
+  pull_request:
+    paths:
+      - .github/workflows/pla-encounter-pkl-editor.yml
+      - scripts/pla_encounter_pkl.py
+      - scripts/edit_pla_encounter_pkl.py
+      - scripts/compare_pla_encounters.py
+      - tests/test_*pkl*.py
+
+permissions:
+  contents: read
+
+jobs:
+  roundtrip:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Sparse checkout scripts and synthetic fixtures
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/pla_encounter_pkl.py
+            /scripts/edit_pla_encounter_pkl.py
+            /scripts/compare_pla_encounters.py
+            /tests/test_pla_encounter_pkl.py
+            /tests/test_edit_pla_encounter_pkl.py
+            /tests/test_compare_pla_encounters.py
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run synthetic CLI, editing and decoder tests
+        run: python -m unittest discover -s tests -p 'test_*pkl*.py' -v
+      - name: Download pinned PKHeX reference (verification only)
+        run: |
+          mkdir -p .pla-work/pkl-qa
+          curl --fail --silent --show-error --location --retry 3 \
+            "https://raw.githubusercontent.com/kwsch/PKHeX/a5311f9f55a84376fd2e2499b25d9fb9640d9f2d/PKHeX.Core/Resources/legality/wild/Gen8/encounter_la.pkl" \
+            --output .pla-work/pkl-qa/reference.pkl
+          echo "e39f106cadafef463322ab3dc17dafec91684d981a1187cbc307a249af7d36a4  .pla-work/pkl-qa/reference.pkl" | sha256sum --check
+      - name: Decode / encode exact reference PKL, verify byte-identical
+        run: |
+          python scripts/pla_encounter_pkl.py inspect .pla-work/pkl-qa/reference.pkl
+          python scripts/pla_encounter_pkl.py unpack .pla-work/pkl-qa/reference.pkl \
+            --output .pla-work/pkl-qa/reference.json
+          python scripts/pla_encounter_pkl.py pack .pla-work/pkl-qa/reference.json \
+            --output .pla-work/pkl-qa/roundtrip.pkl --check-roundtrip
+          cmp .pla-work/pkl-qa/reference.pkl .pla-work/pkl-qa/roundtrip.pkl
+      - name: Search and safe edit a copy; original reference remains identical
+        run: |
+          python scripts/edit_pla_encounter_pkl.py find .pla-work/pkl-qa/reference.pkl \
+            --species 550 --form 2 --location 9 --type 0 \
+            > .pla-work/pkl-qa/matches.json
+          python - <<'PY'
+          import json, pathlib, subprocess
+          p=pathlib.Path('.pla-work/pkl-qa')
+          m=json.loads((p/'matches.json').read_text())['displayed_matches']
+          matching=[s for s in m if s['gender']==2]
+          assert len(matching)>=1
+          chosen=matching[0]
+          subprocess.run(['python', 'scripts/edit_pla_encounter_pkl.py', 'set-slot',
+             str(p/'reference.pkl'), '--area', str(chosen['area_index']),
+             '--slot', str(chosen['slot_index']), '--set', 'gender=0',
+             '--expect-sha256', 'e39f106cadafef463322ab3dc17dafec91684d981a1187cbc307a249af7d36a4',
+             '--reason', 'CI: synthetic interpretation of one reference slot (not native)',
+             '--output', str(p/'modified.pkl')], check=True)
+          import hashlib
+          assert hashlib.sha256((p/'reference.pkl').read_bytes()).hexdigest() == \
+              'e39f106cadafef463322ab3dc17dafec91684d981a1187cbc307a249af7d36a4'
+          receipt=json.loads((p/'modified.pkl.audit.json').read_text())
+          assert receipt['status']=='USER_MODIFIED_NOT_NATIVE'
+          assert receipt['output_sha256']!=receipt['source_sha256']
+          PY
+      - name: Validate edited PKL and show semantic delta
+        run: |
+          python scripts/pla_encounter_pkl.py inspect .pla-work/pkl-qa/modified.pkl
+          python scripts/compare_pla_encounters.py \
+            .pla-work/pkl-qa/reference.pkl .pla-work/pkl-qa/modified.pkl \
+            --output .pla-work/pkl-qa/edited-comparison.json
+          python - <<'PY'
+          import json
+          j=json.load(open('.pla-work/pkl-qa/edited-comparison.json',encoding='utf-8'))
+          assert j['native_only_area_records']==1, j
+          assert j['reference_only_area_records']==1, j
+          PY

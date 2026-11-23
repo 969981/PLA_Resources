@@ -35,4 +35,4 @@ No ROM data, secret, key or proprietary dependency should be copied into tools/t
 
 ## Encounter data / PKHeX PLA (`encounter_la.pkl`)
 
-See [PLA v1.1.1 encounter research](docs/research/v1.1.1/encounter-pkl.md) for native FlatBuffers outbreak audits, PKHeX `la` format pack/unpack tools, and the remaining evidence needed for a full resident-GFPak-backed export. The current scripts do not claim to have rebuilt the game-derived complete `.pkl`.
+The PLA v1.1.1 native `resident_release.gfpak` → FlatBuffers → location mapping → `encounter_la.pkl` pipeline has **passed GitHub Actions** (1,738 areas, 7,132 slots, 86,760 bytes); see [native export evidence](docs/research/v1.1.1/encounter-native-export.md) and [full extraction, decoding, editing, and verification guide](docs/research/v1.1.1/encounter-pkl-read-edit.md). For **static/story gifts** consult [separate source audit](docs/research/v1.1.1/encounter-static-gifts.md). Edited PKLs are user-modified copies, never original evidence.

@@ -1,6 +1,6 @@
 # PLA v1.1.1 — encounter analysis and PKHeX `.pkl`
 
-## Current stage and provenance
+## Initial stage and provenance (superseded by complete native export)
 
 PLA's PKHeX wild encounter resource is `encounter_la.pkl`, not a Pokémon save file. To generate it correctly from game resources, the producer must join **native encounter tables** to **spawners, geographic placements, met-location IDs, MMO lotteries, and other conditions**. Neither an encounter table by itself nor a set of `new_huge_outbreak_*.bin` files is sufficient.
 
@@ -13,9 +13,9 @@ PLA's PKHeX wild encounter resource is `encounter_la.pkl`, not a Pokémon save f
 | `bin/field/encount/new_huge_outbreak_group_lottery.bin` | `NewHugeOutbreakGroupLotteryArchive` | 7 |
 | `bin/field/encount/new_huge_outbreak_lottery.bin` | `NewHugeOutbreakLotteryArchive` | 5 |
 | `bin/field/encount/new_huge_outbreak_time_limit.bin` | `NewHugeOutbreakTimeLimitArchive` | 3 |
-| `bin/archive/field/resident_release.gfpak` | GFPak containing `AreaSettings.bin`, encounter and placement data | NOT EXTRACTED |
+| `bin/archive/field/resident_release.gfpak` | GFPak with `AreaSettings.bin`, encounter and placement data | **2,066 entries; native decoder verified 2026-11-23** |
 
-The first five counts were measured from *actual* FlatBuffers root vectors, not from filenames or the CSV inventory. These are NOT Pokémon slot counts. The `resident_release.gfpak` entry is a critical source and has not been decoded in this implementation.
+The first five counts were measured from *actual* FlatBuffers root vectors, not from filenames or the CSV inventory. These are NOT Pokémon slot counts. The `resident_release.gfpak` was **subsequently decoded** in the complete native export. This section records the earlier baseline stage; see the updated guide below.
 
 Use the native source auditor to produce byte-backed SHA-256, record counts, and samples without changing original bytes:
 
@@ -50,13 +50,12 @@ python -m unittest discover -s tests -p "test_*.py" -v
 
 An independent structural read of the upstream PKHeX reference `encounter_la.pkl` (Git blob `1ddcd7340389d96ccc8374b740156b5b03ccfa73`, 86,760 bytes) yielded **1,738** area records and **7,132** slots. Area type counts for types 0..4 were **519 / 213 / 169 / 227 / 610**. The min/max wild level values seen in the slots were **2..91**. These are reference measurements, **NOT** results generated from this repository's RomFS, and are useful for independent regression comparisons.
 
-### Remaining steps before native full-generation is complete
+### Completed subsequent work and remaining legality questions
 
-1. Extract and verify `resident_release.gfpak`; identify nested `AreaSettings.bin`, encounter tables, place name mappings, placement objects.
-2. Join table IDs to map spawners, wormholes, landmarks and MMO groups; emit audited, location-aware normalized area JSON with source paths and hashes. Avoid inferring coordinates or location IDs.
-3. Resolve alpha bonuses, gender and IV constraints, shiny locks and level modifiers from native semantics. Mark unknowns explicitly.
-4. Pack JSON to `encounter_la.pkl`, inspect with the current PKHeX loader, compare it to the upstream reference and account for differences.
-5. Run full source-version checks and rights review before publishing game-derived binary artifacts. A structurally valid `.pkl` is not proof of correct encounter semantics.
+- **Native wild export complete:** the PLA v1.1.1 GFPak/FlatBuffers/Spawner/Location chain generated **1,738 areas, 7,132 slots, 86,760 bytes** in [Actions run #45148337059](https://github.com/969981/PLA_Resources/actions/runs/45148337059).
+- **Full reproducibility, wire format and safe editing:** [encounter-pkl-read-edit.md](encounter-pkl-read-edit.md) contains exact binary offsets and Python CLI commands for inspect, search, JSON unpack, re-pack and audited single-slot editing.
+- **Static/gift encounters:** separate [source audit](encounter-static-gifts.md), not added to the wild `.pkl`. Real capturability and story conditions still need native script tracing and PKHeX StaticLA comparison.
+- **One native/reference discrepancy:** two gender bytes for Species 550 Form 2 at location set [9,56,60]; preserve native provenance rather than silently altering it.
 
 ## Upstream research references
 
