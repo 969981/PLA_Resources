@@ -1,0 +1,79 @@
+name: PLA Native Encounter PKL Export
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feat/pla-encounter-pkl-audit-20261123
+    paths:
+      - .github/workflows/pla-encounter-native-export.yml
+      - tools/pla-encounter-native/**
+      - scripts/compare_pla_encounters.py
+      - scripts/pla_encounter_pkl.py
+
+permissions:
+  contents: read
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Sparse checkout PLA source bytes (no modifications)
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/pla-encounter-native-export.yml
+            /tools/pla-encounter-native/**
+            /scripts/pla_encounter_pkl.py
+            /scripts/compare_pla_encounters.py
+            /v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/archive/field/resident_release.gfpak
+            /v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/field/encount/**
+            /v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/pokemon/data/poke_misc.bin
+            /v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/message/English/**
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - name: Pin pkNX research implementation
+        run: |
+          git clone --depth 1 --filter=blob:none https://github.com/kwsch/pkNX.git vendor/pkNX
+          actual="$(git -C vendor/pkNX rev-parse HEAD)"
+          expected="3bc649eea311ab1f249af43a562f8d70fe90ed9b"
+          test "$actual" = "$expected" || { echo "::error::pkNX upstream drift: $actual"; exit 1; }
+      - name: Build portable PLA native exporter
+        run: |
+          dotnet build tools/pla-encounter-native/PLAEncounter.csproj --configuration Release -p:PkNXRoot="$GITHUB_WORKSPACE/vendor/pkNX"
+      - name: Prepare read-only RomFS layout
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/pla-game" ".pla-work/native-output"
+          ln -s "$GITHUB_WORKSPACE/v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1" "$RUNNER_TEMP/pla-game/romfs"
+          test -s "$RUNNER_TEMP/pla-game/romfs/bin/archive/field/resident_release.gfpak"
+          test -s "$RUNNER_TEMP/pla-game/romfs/bin/message/English/script/place_name.tbl"
+      - name: Generate encounter_la.pkl from original RomFS
+        shell: bash
+        run: |
+          dotnet tools/pla-encounter-native/bin/Release/net10.0/PLAEncounter.dll \
+            "$RUNNER_TEMP/pla-game/romfs" "$GITHUB_WORKSPACE/.pla-work/native-output"
+          python scripts/pla_encounter_pkl.py inspect ".pla-work/native-output/encounter_la.pkl"
+      - name: Compare with PKHeX reference
+        shell: bash
+        run: |
+          curl --fail --silent --show-error --location --retry 3 \
+            "https://raw.githubusercontent.com/kwsch/PKHeX/master/PKHeX.Core/Resources/legality/wild/Gen8/encounter_la.pkl" \
+            --output "$RUNNER_TEMP/pla-reference.pkl"
+          python scripts/compare_pla_encounters.py \
+            ".pla-work/native-output/encounter_la.pkl" "$RUNNER_TEMP/pla-reference.pkl" \
+            --output ".pla-work/native-output/pkhex-reference-compare.json"
+      - name: Publish native evidence and PKL for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pla-v1.1.1-native-encounter-pkl
+          path: .pla-work/native-output/**
+          if-no-files-found: warn
+          retention-days: 7
