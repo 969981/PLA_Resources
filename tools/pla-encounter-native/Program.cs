@@ -77,9 +77,15 @@ try
     var story = (FolderContainer)game.GetFile(GameFile.StoryText);
     story.Initialize();
     var ahtb = new AHTB(story.GetFileData("place_name.tbl"));
-    if (ahtb.Entries.Count != placeNames.Length || ahtb.Entries.Count == 0)
-        throw new InvalidDataException($"Place name table/text mismatch: {ahtb.Entries.Count} vs {placeNames.Length}");
+    // pkNX.ToIndexedDictionary intentionally maps one AHTB entry per provided text string.
+    // v1.1.1 has a trailing AHTB entry (157 indexes vs 156 localized names).
+    // Missing native entries are fatal; surplus entries remain visible in the audit.
+    if (placeNames.Length == 0 || ahtb.Entries.Count < placeNames.Length)
+        throw new InvalidDataException($"Place name table/text insufficient: {ahtb.Entries.Count} vs {placeNames.Length}");
     var placeMap = ahtb.ToIndexedDictionary(placeNames);
+    evidence["place_name_table_entries"] = ahtb.Entries.Count;
+    evidence["place_name_text_entries"] = placeNames.Length;
+    evidence["place_name_unmapped_trailing_entries"] = ahtb.Entries.Count - placeNames.Length;
 
     var bytes = new List<byte[]>();
     var dedup = new HashSet<string>(StringComparer.Ordinal);
