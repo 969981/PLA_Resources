@@ -21,3 +21,10 @@ To check real local source presence, optionally pass `--source-root "J:\ROMS\Nin
 - `Run-PLA-Parallel.py`, `Audit-PLA-Coverage.py`: parallel jobs, resume, failure retry and total reconciliation.
 
 Do not call proposed scripts implemented until they are written, tested and proven against real assets.
+
+## Encounter tools (PLA 1.1.1)
+
+- `audit_pla_encounter_sources.py`: read-only, SHA-256-backed FlatBuffers structure audit of five `bin/field/encount/*.bin` resources.
+- `pla_encounter_pkl.py`: exact `la` Mini container pack/unpack/inspect with validation and JSON roundtrip (requires correctly sourced area JSON; does not read resident GFPak).
+
+See [encounter research](../docs/research/v1.1.1/encounter-pkl.md).

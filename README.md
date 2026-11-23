@@ -32,3 +32,7 @@ No ROM data, secret, key or proprietary dependency should be copied into tools/t
 - [Verified original NSO main to AArch64 ELF](docs/research/v1.1.1/main-elf-conversion.md): `Unpack/v1.1.1/exefs/main/main.elf`, SHA-256 `260bd03043d6f147723739fe350230f6fac8a9cc49f59ae18e1af0757c4b6794`.
 - [Full Ghidra 12.2 analysis and lossless publication](docs/research/v1.1.1/ghidra-full-analysis.md): editable native `.gpr/.rep`, indexed SQLite with byte-exact original ELF BLOB chunks, whole-line NDJSON shards, per-function C pseudocode and complete coverage/error index.
 - [Run full analysis](.github/workflows/pla-ghidra-full.yml) and [publish validated shards](.github/workflows/pla-ghidra-publish.yml). Publication is conditional on actual successful Ghidra analysis and validates SQLite/NDJSON reconstruction before Git commits. Static decompiled C is not original game source code.
+
+## Encounter data / PKHeX PLA (`encounter_la.pkl`)
+
+See [PLA v1.1.1 encounter research](docs/research/v1.1.1/encounter-pkl.md) for native FlatBuffers outbreak audits, PKHeX `la` format pack/unpack tools, and the remaining evidence needed for a full resident-GFPak-backed export. The current scripts do not claim to have rebuilt the game-derived complete `.pkl`.
