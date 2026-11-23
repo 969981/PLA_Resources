@@ -1,0 +1,66 @@
+name: PLA Static Gift and Scripted Encounter Source Audit
+
+on:
+  push:
+    branches:
+      - feat/pla-encounter-pkl-audit-20261123
+    paths:
+      - .github/workflows/pla-static-gifts-audit.yml
+      - scripts/audit_pla_static_gifts.py
+      - tests/test_pla_static_gifts.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Sparse checkout native PLA tables and audit tooling
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/pla-static-gifts-audit.yml
+            /scripts/audit_pla_static_gifts.py
+            /tests/test_pla_static_gifts.py
+            /v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/pokemon/data/poke_add.bin
+            /v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/pokemon/data/poke_event_encount.bin
+      - name: Python synthetic decoder tests
+        run: python -m unittest discover -s tests -p "test_pla_static_gifts.py" -v
+      - name: Fetch pinned PKHeX static legality references (comparison only)
+        run: |
+          curl --fail --silent --show-error --location --retry 3 \
+            "https://raw.githubusercontent.com/kwsch/PKHeX/a5311f9f55a84376fd2e2499b25d9fb9640d9f2d/PKHeX.Core/Legality/Encounters/Data/Gen8/Encounters8a.cs" \
+            --output "$RUNNER_TEMP/Encounters8a.cs"
+      - name: Decode source bytes into standalone gift and scripted encounter ledgers
+        run: |
+          python scripts/audit_pla_static_gifts.py \
+            "v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1" \
+            --pkhex-source "$RUNNER_TEMP/Encounters8a.cs" \
+            --output ".pla-work/static-gift-evidence"
+      - name: Assert all native records accounted for (not capturability)
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path(".pla-work/static-gift-evidence/pla_static_gift_audit.json")
+          data=json.loads(p.read_text(encoding="utf8"))
+          assert data["gift_source_records"]==8, data
+          assert data["event_source_groups"]==251, data
+          assert data["event_source_slots"]==298, data
+          assert data["pkhex_source_sha256"], data
+          print("Native source count regression check passed: 8 gift, 251 group, 298 slot")
+          PY
+      - name: Publish decoded ledgers and evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pla-1.1.1-static-gift-source-audit
+          path: .pla-work/static-gift-evidence/**
+          if-no-files-found: warn
+          retention-days: 14

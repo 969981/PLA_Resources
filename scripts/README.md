@@ -21,3 +21,16 @@ To check real local source presence, optionally pass `--source-root "J:\ROMS\Nin
 - `Run-PLA-Parallel.py`, `Audit-PLA-Coverage.py`: parallel jobs, resume, failure retry and total reconciliation.
 
 Do not call proposed scripts implemented until they are written, tested and proven against real assets.
+
+## Encounter tools (PLA 1.1.1)
+
+- `audit_pla_encounter_sources.py`: read-only, SHA-256-backed FlatBuffers structure audit of five `bin/field/encount/*.bin` resources.
+- `pla_encounter_pkl.py`: exact `la` Mini container pack/unpack/inspect with validation and JSON roundtrip (requires correctly sourced area JSON; does not read resident GFPak).
+
+- `extract_pla_resident.py`: GFLXPACK parser and strict Oodle-derived uncompressed archive; requires `oozextract` for PLA Oodle payloads.
+- `compare_pla_encounters.py`: full-area semantic/hash comparison of native vs PKHeX reference PKL.
+- `edit_pla_encounter_pkl.py`: find/show and guarded set-slot/set-area edits with SHA receipts; never overwrites the original.
+- `audit_pla_static_gifts.py`: scripted and gift FlatBuffers, not compatible with wild Mini data.
+- `../tools/pla-encounter-native/`: .NET 10 native pkNX-based joined encoder, built by CI with pinned open-source dependencies.
+
+**Reproduction:** see [native extraction, PKL format / reader / editor guide](../docs/research/v1.1.1/encounter-pkl-read-edit.md), [native export evidence](../docs/research/v1.1.1/encounter-native-export.md), and [static/gift audit](../docs/research/v1.1.1/encounter-static-gifts.md).
