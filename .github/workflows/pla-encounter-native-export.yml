@@ -9,6 +9,7 @@ on:
       - .github/workflows/pla-encounter-native-export.yml
       - tools/pla-encounter-native/**
       - scripts/compare_pla_encounters.py
+      - scripts/extract_pla_resident.py
       - scripts/pla_encounter_pkl.py
 
 permissions:
@@ -30,10 +31,28 @@ jobs:
             /tools/pla-encounter-native/**
             /scripts/pla_encounter_pkl.py
             /scripts/compare_pla_encounters.py
+            /scripts/extract_pla_resident.py
             /v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/archive/field/resident_release.gfpak
             /v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/field/encount/**
             /v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/pokemon/data/poke_misc.bin
             /v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/message/English/**
+      - name: Build open-source Oodle decompressor (oozextract 0.5.7, MIT)
+        shell: bash
+        run: |
+          cargo install oozextract --version 0.5.7 --locked --features cli --root "$RUNNER_TEMP/ooz-tools"
+          test -x "$RUNNER_TEMP/ooz-tools/bin/unoodle"
+      - name: Independently verify native GFPak and extract AreaSettings
+        shell: bash
+        run: |
+          mkdir -p .pla-work/native-output
+          python scripts/extract_pla_resident.py \
+            "v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1/bin/archive/field/resident_release.gfpak" \
+            --output "$RUNNER_TEMP/AreaSettings.bin" \
+            --report ".pla-work/native-output/resident-extraction.json" \
+            --ooz-command "$RUNNER_TEMP/ooz-tools/bin/unoodle" \
+            --normalize-to "$RUNNER_TEMP/resident-uncompressed.gfpak"
+          test -s "$RUNNER_TEMP/AreaSettings.bin"
+          test -s "$RUNNER_TEMP/resident-uncompressed.gfpak"
       - name: Setup .NET 10
         uses: actions/setup-dotnet@v4
         with:
@@ -50,14 +69,19 @@ jobs:
       - name: Prepare read-only RomFS layout
         shell: bash
         run: |
-          mkdir -p "$RUNNER_TEMP/pla-game" ".pla-work/native-output"
-          ln -s "$GITHUB_WORKSPACE/v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1" "$RUNNER_TEMP/pla-game/romfs"
+          native="$GITHUB_WORKSPACE/v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1"
+          mkdir -p "$RUNNER_TEMP/pla-game/romfs/bin/archive/field" ".pla-work/native-output"
+          ln -s "$native/bin/field" "$RUNNER_TEMP/pla-game/romfs/bin/field"
+          ln -s "$native/bin/pokemon" "$RUNNER_TEMP/pla-game/romfs/bin/pokemon"
+          ln -s "$native/bin/message" "$RUNNER_TEMP/pla-game/romfs/bin/message"
+          cp "$RUNNER_TEMP/resident-uncompressed.gfpak" "$RUNNER_TEMP/pla-game/romfs/bin/archive/field/resident_release.gfpak"
           test -s "$RUNNER_TEMP/pla-game/romfs/bin/archive/field/resident_release.gfpak"
           test -s "$RUNNER_TEMP/pla-game/romfs/bin/message/English/script/place_name.tbl"
       - name: Generate encounter_la.pkl from original RomFS
         shell: bash
         run: |
-          dotnet tools/pla-encounter-native/bin/Release/net10.0/PLAEncounter.dll \
+          PLA_SOURCE_ROMFS="$GITHUB_WORKSPACE/v1.1.1/b38cd4c18831237d85312886f3a377b5_NCA/1" \
+            dotnet tools/pla-encounter-native/bin/Release/net10.0/PLAEncounter.dll \
             "$RUNNER_TEMP/pla-game/romfs" "$GITHUB_WORKSPACE/.pla-work/native-output"
           python scripts/pla_encounter_pkl.py inspect ".pla-work/native-output/encounter_la.pkl"
       - name: Compare with PKHeX reference

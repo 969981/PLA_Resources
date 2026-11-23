@@ -32,3 +32,9 @@ python scripts/compare_pla_encounters.py ".pla-work/native-output/encounter_la.p
 **Acceptance states**: `GENERATED_NATIVE` must mean that original source byte hashes exist, all native decoders succeeded, no missing named location mapping was ignored, and `encounter_la.pkl` passes structural validation. A comparison discrepancy must be reported as a discrepancy, not automatically interpreted as an extraction failure or as an improvement. A CI failure does not mean the game data contains no encounters; inspect the error report.
 
 The reference counts (1,738 areas, 7,132 slots, 519/213/169/227/610 types) come from a **separate PKHeX reference**, and must never be inserted into a supposedly native export as predetermined values. Every CI export has its own actual counts and source hashes.
+
+## Linux Oodle compatibility (verified build blocker)
+
+The first .NET 10 CI build succeeded, but pkNX's original GFPak decoder requires the proprietary Windows `oo2core_8_win64` runtime. It cannot run unmodified on Ubuntu for Oodle-compressed entries. The revised pipeline uses the open-source MIT-licensed `oozextract` v0.5.7 `unoodle` tool to decode native Oodle payloads into a temporary **derived uncompressed GFPak**. The original file remains untouched; an independent Python reader records original SHA-256, compression counts, nested `AreaSettings.bin` hash and derivative hash. The C# exporter reads the derived archive but hashes the original resources using `PLA_SOURCE_ROMFS`. Invalid decompression aborts the export; no proprietary Oodle DLL is bundled.
+
+Upstream: https://github.com/lvlvllvlvllvlvl/oozextract . CI output must show a successful decompression plus a complete PKL comparison before the run is considered accepted.

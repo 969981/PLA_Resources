@@ -14,6 +14,7 @@ if (args.Length != 2)
 
 string romfs = Path.GetFullPath(args[0]);
 string outDir = Path.GetFullPath(args[1]);
+string sourceRomfs = Path.GetFullPath(Environment.GetEnvironmentVariable("PLA_SOURCE_ROMFS") ?? romfs);
 Directory.CreateDirectory(outDir);
 string ResidentPath() => Path.Combine(romfs, "bin/archive/field/resident_release.gfpak");
 string FilePath(string suffix) => Path.Combine(romfs, suffix.Replace('/', Path.DirectorySeparatorChar));
@@ -36,7 +37,7 @@ try
 {
     foreach (var relative in originalPaths)
     {
-        var path = FilePath(relative);
+        var path = Path.Combine(sourceRomfs, relative.Replace('/', Path.DirectorySeparatorChar));
         if (!File.Exists(path))
             throw new FileNotFoundException("Required original resource is missing", path);
         var info = new FileInfo(path);
@@ -73,7 +74,7 @@ try
     var story = (FolderContainer)game.GetFile(GameFile.StoryText);
     story.Initialize();
     var ahtb = new AHTB(story.GetFileData("place_name.tbl"));
-    if (ahtb.Entries.Count > placeNames.Length || ahtb.Entries.Count == 0)
+    if (ahtb.Entries.Count != placeNames.Length || ahtb.Entries.Count == 0)
         throw new InvalidDataException($"Place name table/text mismatch: {ahtb.Entries.Count} vs {placeNames.Length}");
     var placeMap = ahtb.ToIndexedDictionary(placeNames);
 
@@ -133,6 +134,7 @@ try
     evidence["version"] = "1.1.1";
     evidence["game"] = "PLA";
     evidence["source_bytes"] = sourceEvidence;
+    evidence["normalization"] = sourceRomfs != romfs ? "Oodle decompressed into separate, read-only derived RomFS overlay" : "native original";
     evidence["resident_nested_area_settings_sha256"] = Convert.ToHexString(SHA256.HashData(settingsRaw)).ToLowerInvariant();
     evidence["location_mappings"] = placeMap.Count;
     evidence["gfpak_nested_entries"] = resident.Count;
